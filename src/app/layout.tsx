@@ -1,6 +1,5 @@
 "use client";
-import Navbar from "@/components/shared/Navbar/Index";
-import Footer from "@/components/shared/Footer/Index";
+
 import "./globals.css";
 import { useEffect } from "react";
 
@@ -29,9 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased bg-bg_white`}>
-        <Navbar />
+
         {children}
-        <Footer />
+
       </body>
     </html>
   );
