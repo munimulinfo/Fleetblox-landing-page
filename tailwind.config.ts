@@ -53,6 +53,8 @@ module.exports = {
 			ti_dark_grey: '#333333',
 			ti_grey: '#999999',
 			ti_light_grey: '#DFDFDF',
+			ti_light_black: '#303030',
+			ti_black: '#151515',
 			black: '#000000'
 		},
 		fontFamily: {
