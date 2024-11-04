@@ -6,23 +6,26 @@ import Image from 'next/image';
 import { Country } from '@/Interface/interface';
 import start from '@/../public/images/start-with-us.jpg'
 import Link from 'next/link';
+import { useSearchParams } from 'next/dist/client/components/navigation';
 
 const SelectCountry = () => {
+    const searchParams = useSearchParams();
+    const country = searchParams.get('country');
+    console.log(country);
 
     const [searchQuery, setSearchQuery] = useState('');
-    const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+    const [selectedCountry, setSelectedCountry] = useState<string | null>(country);
 
-    
 
     const filteredCountries = countries.filter(country =>
         country.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     const handleCountrySelect = (country: Country) => {
-        if (selectedCountry === country) {
+        if (selectedCountry === country.name) {
             setSelectedCountry(null);
         } else {
-            setSelectedCountry(country);
+            setSelectedCountry(country.name);
         }
     };
 
@@ -59,7 +62,7 @@ const SelectCountry = () => {
                     {filteredCountries.map((country) => (
                         <div
                             key={country.name}
-                            className={`w-full flex items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedCountry?.name === country.name ? 'select_car_collection_bg border-p_light_blue ' : ''
+                            className={`w-full flex items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedCountry === country.name ? 'select_car_collection_bg border-p_light_blue ' : ''
                                 }`}
                             onClick={() => handleCountrySelect(country as unknown as Country)}
                         >
@@ -88,7 +91,7 @@ const SelectCountry = () => {
                             }`}
                         disabled={!selectedCountry}
                     >
-                        <Link href={`/collections/select-brand?collectionId=${selectedCountry?.name}`}>
+                        <Link href={`/collections/select-brand?country=${selectedCountry}`}>
                             Next
                         </Link>
                     </button>
