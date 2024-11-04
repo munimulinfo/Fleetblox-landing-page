@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+ 
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -64,6 +64,10 @@ body {
   }
 }
 
+* {
+  scroll-behavior: smooth
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -80,13 +84,49 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-
 div::-webkit-scrollbar {
   display: none;
 }
 
-
 @layer components {
+  /* start pre-landing page */
+  .pre_landing_page_title {
+    color: var(--apps-texts-icons-color-light-black, #303030);
+    text-align: center;
+
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .pre_landing_page_text {
+    color: var(--apps-texts-icons-color-dark-grey, #6f6464);
+    text-align: center;
+
+    /* Apps/Body text/Body 14 */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; /* 128.571% */
+  }
+
+  .pre_landing_page_btn {
+    /* Apps/Buttons/Button 14 */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  /* end pre-landing page */
+
+  /* start seclect car collectio  */
+  .select_car_collection_bg {
+    background: rgba(45, 101, 242, 0.06);
+  }
+  /* end seclect car collectio  */
+
   /* start style navbar */
   .font_style_nav {
     @apply font-openSans font-semibold leading-[24px] text-ti_royel_blue;

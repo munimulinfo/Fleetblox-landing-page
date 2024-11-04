@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
             Platform Designed to Maximize Fleet Revenu nce.
           </p>
           <div className="mt-[32px] flex items-center gap-[20px]">
-            <CustomeButton href="/start-with-us" text="Show early interest" className="" />
+            <CustomeButton href="/collections/select-country" text="Show early interest" className="" />
             <div className="group cursor-pointer font-openSans text-[16px] font-semibold text-p_dark_blue">
               And Get Up to 15% Discount
             </div>

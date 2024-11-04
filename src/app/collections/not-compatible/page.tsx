@@ -1,0 +1,51 @@
+import Image from "next/image";
+import failed from "@/../public/images/feild.svg";
+import start from "@/../public/images/start-with-us.jpg";
+
+const NotCompatible = () => {
+  return (
+    <div className="relative h-screen w-screen">
+      <Image
+        src={start}
+        alt="start with us"
+        className="absolute inset-0 h-full w-full"
+      />
+
+      <div className="z-[1000000] flex min-h-screen items-center justify-center overflow-auto bg-bg_white p-4">
+        <div className="relative flex h-[780px] w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[60px] py-[60px] shadow-lg">
+          <div className="flex flex-shrink-0 flex-col items-center justify-center">
+            <Image alt="failed image" className="mb-[10px]" src={failed} />
+            <h2 className="pre_landing_page_title font-inter">
+              Your fleet is not compatible!
+            </h2>
+            <p className="pre_landing_page_text">
+              {` Unfortunately, your fleet isn’t compatible with our platform yet. We’re working to expand compatibility. Stay with us for all kind of future updates.`}
+            </p>
+          </div>
+          <div className="mt-[60px]">
+            <h1 className="font-inter text-[18px] font-semibold text-ti_dark_grey">
+              Join our newsletter
+            </h1>
+            <div className="mt-[16px] flex justify-between gap-[10px]">
+              {/* Search Section */}
+              <div className="mb-[16px] flex w-3/4 flex-shrink-0 items-center gap-[8px] rounded-md bg-bg_dusty_white px-[10px] py-[12px]">
+                <input
+                  type="text"
+                  placeholder="Enter email"
+                  className="w-full bg-bg_dusty_white font-inter text-[12px] leading-[16px] text-ti_grey outline-none"
+                />
+              </div>
+              <div className="w-1/4">
+                <button className="w-full rounded-md bg-p_blue px-[14px] py-[9.3px] font-inter text-[14px] font-semibold text-bg_white">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default NotCompatible;

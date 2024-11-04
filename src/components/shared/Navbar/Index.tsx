@@ -18,7 +18,7 @@ const Index: React.FC = () => {
 
           </div>
           <div className="flex items-center gap-[10px]">
-            <CustomeButton text="Get 15% Off" className="mt-0" />
+            <CustomeButton href="/select-country" text="Get 15% Off" className="mt-0" />
           </div>
         </div>
       </div>

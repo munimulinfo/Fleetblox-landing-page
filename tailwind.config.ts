@@ -47,10 +47,10 @@ module.exports = {
 			bg_yellow: '#FBEECA',
 			bg_green: '#F3FFEE',
 			bg_powerd_blue: '#FAFAFF',
-			bg_dusty_white: '#F7F7F7',
+			bg_dusty_white: '#F6F6F6',
 			bg_white: '#FFFFFF',
 			ti_royel_blue: '#000E32',
-			ti_dark_grey: '#333333',
+			ti_dark_grey: '#6F6464',
 			ti_grey: '#999999',
 			ti_light_grey: '#DFDFDF',
 			ti_light_black: '#303030',
@@ -59,7 +59,8 @@ module.exports = {
 		},
 		fontFamily: {
 			montserrat: ["Montserrat", "sans-serif"],
-			openSans: ["Open Sans", "sans-serif"]
+			openSans: ["Open Sans", "sans-serif"],
+			inter: ["Inter", "sans-serif"]
 		},
 		extends: {
 			fontSize: {

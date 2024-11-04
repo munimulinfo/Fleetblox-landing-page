@@ -15,7 +15,7 @@ const Index: React.FC = () => {
               <h1 className="footer_title z-[300] font-montserrat xl:text-[33px] 2xl:text-[40px] 2.5xl:text-[52px]">
                 Get Up to 15% Off — Show Early <br /> Interest Before We Launch!
               </h1>
-              <CustomeButton text="Get my discount" className=" capitalize z-[110] mt-[32px]" />
+              <CustomeButton href="/select-country" text="Get my discount" className=" capitalize z-[110] mt-[32px]" />
 
              
               <div className="absolute -top-[50px] z-[90] size-[450px] rounded-full bg-p_light_blue opacity-20 blur-[210px] 2xl:size-[600px]"></div>
