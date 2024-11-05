@@ -3,29 +3,30 @@ import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Search } from 'lucide-react';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
 import start from '@/../public/images/start-with-us.jpg'
 import { BrandCarList } from '@/Static_data/data'
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import NotCompitable from '@/components/shared/NotCompitable';
 
 const BrandSelector = () => {
     const router = useRouter()
 
-
-    const searchParams = useSearchParams();
-    const country = searchParams.get('country');
-
     const [searchQuery, setSearchQuery] = useState('');
+    const brands = localStorage.getItem('brands');
 
-    const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+    const [selectedBrands, setSelectedBrands] = useState<string[]>(brands ? JSON.parse(brands) : []);
     console.log(selectedBrands, 'selectedBrands list');
 
     const handleBrandSelect = (brand: string) => {
         if (selectedBrands.includes(brand)) {
-            setSelectedBrands(selectedBrands.filter(selectedBrand => selectedBrand !== brand));
+            const updatedBrands = selectedBrands.filter(selectedBrand => selectedBrand !== brand);
+            setSelectedBrands(updatedBrands);
+            localStorage.setItem('brands', JSON.stringify(updatedBrands));
         } else {
-            setSelectedBrands([...selectedBrands, brand]);
+            const updatedBrands = [...selectedBrands, brand];
+            setSelectedBrands(updatedBrands);
+            localStorage.setItem('brands', JSON.stringify(updatedBrands));
         }
     };
 
@@ -43,7 +44,7 @@ const BrandSelector = () => {
             <div className="min-h-screen z-[1000000] bg-bg_white flex items-center justify-center p-4 overflow-auto">
                 <div className="relative bg-bg_white rounded-lg shadow-lg w-full max-w-[650px] h-[780px] flex flex-col px-[60px] py-[60px]">
                     {/* Header Section */}
-                    <Link href={`/collections/select-country?country=${country}`} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
+                    <Link href={`/collections/select-country`} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
                         <ArrowLeft size={20} className=' text-ti_dark_grey' />
                         <span className='text-ti_dark_grey font-inter font-semibold text-[14px] leading-[18px]'>{`Back`}</span>
                     </Link>
@@ -102,9 +103,7 @@ const BrandSelector = () => {
 
                     {/* Footer Buttons */}
                     <div className="mt-[40px] flex-shrink-0 flex items-center gap-4">
-                        <button className=" w-1/2 pre_landing_page_btn border text-ti_grey px-[14px] py-[8px] border-ti_light_grey rounded-md">
-                            <Link href='/collections/not-compatible'>{`I can’t find my country`}</Link>
-                        </button>
+                        <NotCompitable href='/collections/not-compatible' text="I can’t find my car brand" />
                         <button
                             onClick={() => router.push(`/collections/select-brand/${selectedBrands.map(brand => brand).join(',')}`)}
                             className={` w-1/2 pre_landing_page_btn  text-bg_white   px-[14px] py-[10px] rounded-md ${selectedBrands.length ? ' bg-p_blue' : 'bg-p_blue/50  '

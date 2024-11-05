@@ -6,12 +6,9 @@ import Image from 'next/image';
 import { Country } from '@/Interface/interface';
 import start from '@/../public/images/start-with-us.jpg'
 import Link from 'next/link';
-import { useSearchParams } from 'next/dist/client/components/navigation';
 
 const SelectCountry = () => {
-    const searchParams = useSearchParams();
-    const country = searchParams.get('country');
-    console.log(country);
+    const country = localStorage.getItem('country');
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCountry, setSelectedCountry] = useState<string | null>(country);
@@ -24,8 +21,10 @@ const SelectCountry = () => {
     const handleCountrySelect = (country: Country) => {
         if (selectedCountry === country.name) {
             setSelectedCountry(null);
+            localStorage.removeItem('country');
         } else {
             setSelectedCountry(country.name);
+            localStorage.setItem('country', country.name);
         }
     };
 

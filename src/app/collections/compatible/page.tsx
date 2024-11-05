@@ -1,13 +1,29 @@
+'use client'
 import Image from "next/image";
 import success from "@/../public/images/success.svg";
 import start from "@/../public/images/start-with-us.jpg";
 
 import trueIcon from '@/../public/images/true.svg'
 import falseIcon from '@/../public/images/false.svg'
-import { compatibleBrands } from "@/Static_data/data";
+import { BrandCarList } from "@/Static_data/data";
 import Link from "next/link";
 
 const NotCompatible = () => {
+
+  const selectedBrands = localStorage.getItem('brands');
+
+
+  const filteredCompatibleBrands = BrandCarList.filter((brand) => {
+    const isSelected = selectedBrands?.includes(brand.brand);
+    return isSelected ? {
+      brand: brand.brand,
+      brandLogo: brand.brandLogo,
+      // year: brand.year,
+      // models: brand.models
+    } : false;
+  }).filter(Boolean);
+
+  console.log(filteredCompatibleBrands, 'filteredCompatibleBrands');
 
 
   return (
@@ -18,7 +34,7 @@ const NotCompatible = () => {
           alt="start with us"
           className="absolute inset-0 h-full w-full"
         />
-     </Link>
+      </Link>
 
       <div className="z-[1000000] flex min-h-screen items-center justify-center overflow-auto bg-bg_white p-4">
         <div className="relative flex h-[780px] items-center justify-between  w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[60px] py-[60px] shadow-lg">
@@ -29,16 +45,16 @@ const NotCompatible = () => {
                 Your fleet is compatible!
               </h2>
               <p className="pre_landing_page_text">
-                {`Your cars are compatible with our platform! Send us your personal and brand information, and get up to 15% discount!`}
+                {`The brands and models you selected are compatible with us! If a car isn’t on the list, it’s not supported. Share your details to receive up to 15% off!`}
               </p>
             </div>
             <div className="mt-[40px] w-full space-y-[5px] rounded-md">
               {
-                compatibleBrands.map((brand) => (
-                  <div key={brand.name} className="flex items-center justify-between border rounded-md px-[16px] py-[12px]">
-                    <Image src={brand.image} alt={brand.name} className=" w-[70px] h-[40px]  object-cover" />
-                    <p className="font-inter text-[16px] font-semibold text-ti_black">{brand.name}</p>
-                    {brand.compatible ? <Image src={trueIcon} width={16} height={16} alt="success" /> : <Image src={falseIcon} width={16} height={16} alt="failed" />}
+                filteredCompatibleBrands.map((brand) => (
+                  <div key={brand.brand} className="flex items-center justify-between border rounded-md px-[16px] py-[12px]">
+                    <Image src={brand.brandLogo} alt={brand.brand} className="h-[40px] w-auto object-contain" />
+                    <p className="font-inter text-[16px] font-semibold text-ti_black">{brand.brand}</p>
+                    {/* {brand.compatible ? <Image src={trueIcon} width={16} height={16} alt="success" /> : <Image src={falseIcon} width={16} height={16} alt="failed" />} */}
                   </div>
                 ))
               }

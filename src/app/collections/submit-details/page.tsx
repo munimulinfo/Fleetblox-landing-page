@@ -1,6 +1,6 @@
 'use client'
 import { ChevronDown } from 'lucide-react';
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import start from "@/../public/images/start-with-us.jpg";
 import Canada from "@/../public/images/canada.png";
 
@@ -9,32 +9,25 @@ import { countryCodes } from '@/Static_data/data';
 
 
 const SubmitDetails = () => {
-
-    // const [formData, setFormData] = useState({
-    //     fullName: '',
-    //     email: '',
-    //     phone: '',
-    //     brandName: '',
-    //     fleetSize: '',
-    //     businessType: '',
-    //     teamSize: '',
-    //     location: '',
-    //     country: '',
-    //     state: '',
-    //     city: '',
-    //     postalCode: '',
-    //     address: '',
-    // });
-
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // };
-
     const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
         phone: '',
+        brandName: '',
+        fleetSize: '',
+        businessType: '',
+        teamSize: '',
+        location: '',
+        country: '',
+        state: '',
+        city: '',
+        postalCode: '',
+        address: '',
         countryCode: '+1',
         flag: Canada
     });
+
+
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 
@@ -47,7 +40,7 @@ const SubmitDetails = () => {
         }));
     };
 
-    const selectCountryCode = (code) => {
+    const selectCountryCode = (code: { code: string; flag: StaticImageData }) => {
         setFormData(prev => ({
             ...prev,
             countryCode: code.code,
