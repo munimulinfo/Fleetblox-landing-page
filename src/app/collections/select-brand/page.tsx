@@ -23,6 +23,13 @@ const BrandSelector = () => {
             const updatedBrands = selectedBrands.filter(selectedBrand => selectedBrand !== brand);
             setSelectedBrands(updatedBrands);
             localStorage.setItem('brands', JSON.stringify(updatedBrands));
+            
+            // Get existing brand models from localStorage
+            const storedBrandModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
+            // Remove the unselected brand's models
+            delete storedBrandModels[brand];
+            // Update localStorage
+            localStorage.setItem('brandModels', JSON.stringify(storedBrandModels));
         } else {
             const updatedBrands = [...selectedBrands, brand];
             setSelectedBrands(updatedBrands);

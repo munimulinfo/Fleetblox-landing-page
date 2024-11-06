@@ -54,18 +54,35 @@ const ModelSelector = ({ params }: CustomPageProps) => {
     const handleNext = () => {
         if (currentBrandIndex < filteredModels.length - 1) {
             setCurrentBrandIndex(prev => prev + 1);
-            setSelectedModels([]);
         } else {
             router.push('/collections/compatible');
         }
     };
 
+    const handleNotFindModel = () => {
+        const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
+        storedModels[modelData.brand] = null;
+        localStorage.setItem('brandModels', JSON.stringify(storedModels));
+        if (currentBrandIndex < filteredModels.length - 1) {
+            setCurrentBrandIndex(prev => prev + 1);
+            setSelectedModels([]);
+        } else {
+            router.push('/collections/compatible');
+        }
+    }
+
     const modelData = filteredModels[currentBrandIndex];
+
+    const backButton = () => {
+        if (currentBrandIndex > 0) {
+            setCurrentBrandIndex(prev => prev - 1)
+        }
+    }
+
 
     if (!modelData) {
         return <div>No models found</div>;
     }
-
     return (
         <div className='relative h-screen w-screen'>
             <Image
@@ -76,10 +93,13 @@ const ModelSelector = ({ params }: CustomPageProps) => {
             <div className="min-h-screen z-[1000000] bg-bg_white flex items-center justify-center p-4 overflow-auto">
                 <div className="relative bg-bg_white rounded-lg shadow-lg w-full max-w-[650px] h-[780px] flex flex-col px-[60px] py-[60px]">
                     {/* Header Section */}
-                    <Link href={`/collections/select-brand`} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
+                    {currentBrandIndex <= 0 ? <Link href={`/collections/select-brand`} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
                         <ArrowLeft size={20} className=' text-ti_dark_grey' />
                         <span className='text-ti_dark_grey font-inter font-semibold text-[14px] leading-[18px]'>{`Back`}</span>
-                    </Link>
+                    </Link> : <div onClick={backButton} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
+                        <ArrowLeft size={20} className=' text-ti_dark_grey' />
+                        <span className='text-ti_dark_grey font-inter font-semibold text-[14px] leading-[18px]'>{`Back`}</span>
+                    </div>}
 
                     <div className="mb-[40px] flex-shrink-0">
                         <h2 className="pre_landing_page_title font-inter">Select your car models</h2>
@@ -119,7 +139,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
 
                     {/* Footer Buttons */}
                     <div className="mt-[40px] flex-shrink-0 flex items-center gap-4">
-                        <button className={` w-1/2 pre_landing_page_btn font-inter border text-ti_grey px-[14px] py-[8px] border-ti_light_grey rounded-md `}>
+                        <button onClick={handleNotFindModel} className={` w-1/2 pre_landing_page_btn font-inter border text-ti_grey px-[14px] py-[8px] border-ti_light_grey rounded-md `}>
                             {`I can't find my car model`}
                         </button>
                         <button

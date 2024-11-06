@@ -8,23 +8,30 @@ import falseIcon from '@/../public/images/false.svg'
 import { BrandCarList } from "@/Static_data/data";
 import Link from "next/link";
 
-const NotCompatible = () => {
+const Compatible = () => {
 
   const selectedBrands = localStorage.getItem('brands');
+  const storedBrandModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
 
+  console.log(storedBrandModels, 'storedBrandModels');
 
   const filteredCompatibleBrands = BrandCarList.filter((brand) => {
     const isSelected = selectedBrands?.includes(brand.brand);
-    return isSelected ? {
-      brand: brand.brand,
-      brandLogo: brand.brandLogo,
-      // year: brand.year,
-      // models: brand.models
-    } : false;
-  }).filter(Boolean);
+    if (isSelected) {
+      return {
+        brand: brand.brand,
+        brandLogo: brand.brandLogo,
+        compatible: storedBrandModels[brand.brand] !== null
+      }
+    }
+    return false;
+  }).filter(Boolean).map(brand => ({
+    brand: brand.brand,
+    brandLogo: brand.brandLogo,
+    compatible: storedBrandModels[brand.brand] !== null
+  }));
 
   console.log(filteredCompatibleBrands, 'filteredCompatibleBrands');
-
 
   return (
     <div className="relative h-screen w-screen">
@@ -54,7 +61,7 @@ const NotCompatible = () => {
                   <div key={brand.brand} className="flex items-center justify-between border rounded-md px-[16px] py-[12px]">
                     <Image src={brand.brandLogo} alt={brand.brand} className="h-[40px] w-auto object-contain" />
                     <p className="font-inter text-[16px] font-semibold text-ti_black">{brand.brand}</p>
-                    {/* {brand.compatible ? <Image src={trueIcon} width={16} height={16} alt="success" /> : <Image src={falseIcon} width={16} height={16} alt="failed" />} */}
+                    {brand.compatible ? <Image src={trueIcon} width={16} height={16} alt="success" /> : <Image src={falseIcon} width={16} height={16} alt="failed" />}
                   </div>
                 ))
               }
@@ -62,7 +69,7 @@ const NotCompatible = () => {
           </div>
           <div className="w-full">
             <button className="w-full rounded-md bg-p_blue px-[14px] py-[9.3px] font-inter text-[14px] font-semibold text-bg_white">
-              Next
+              <Link href="/collections/submit-details"> Next</Link>
             </button>
           </div>
         </div>
@@ -71,4 +78,4 @@ const NotCompatible = () => {
   );
 };
 
-export default NotCompatible;
+export default Compatible;

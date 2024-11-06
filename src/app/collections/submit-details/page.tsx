@@ -17,7 +17,7 @@ const SubmitDetails = () => {
         fleetSize: '',
         businessType: '',
         teamSize: '',
-        location: '',
+        locations: '',
         country: '',
         state: '',
         city: '',
@@ -94,17 +94,17 @@ const SubmitDetails = () => {
                             <div className="flex gap-[20px] mt-[16px]">
                                 <div className="w-full">
                                     <label
-                                        htmlFor="fullName"
+                                        htmlFor="email"
                                         className="block text-ti_dark_grey mb-[5px] text-[12px] font-semibold font-inter"
                                     >
                                         Email
                                     </label>
                                     <input
                                         type="text"
-                                        id="fullName"
-                                        name="fullName"
+                                        id="email"
+                                        name="email"
                                         placeholder="Enter email"
-                                        value={formData.fullName}
+                                        value={formData.email}
                                         onChange={handleChange}
                                         className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
                                     />
@@ -150,7 +150,7 @@ const SubmitDetails = () => {
                                         </div>
 
                                         <input
-                                            type="tel"
+                                            type="number"
                                             id="phone"
                                             name="phone"
                                             placeholder="Enter number"
@@ -173,8 +173,8 @@ const SubmitDetails = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    id="fullName"
-                                    name="fullName"
+                                    id="brandName"
+                                    name="brandName"
                                     placeholder="Enter name"
                                     value={formData.brandName}
                                     onChange={handleChange}
@@ -184,15 +184,15 @@ const SubmitDetails = () => {
                             <div className="flex gap-[20px] mt-[16px]">
                                 <div className="w-full">
                                     <label
-                                        htmlFor="fullName"
+                                        htmlFor="fleetSize"
                                         className="block text-ti_dark_grey mb-[5px] text-[12px] font-semibold font-inter"
                                     >
                                         Fleet size
                                     </label>
                                     <input
-                                        type="text"
-                                        id="fullName"
-                                        name="fullName"
+                                        type="number"
+                                        id="fleetSize"
+                                        name="fleetSize"
                                         placeholder="Enter number"
                                         value={formData.fleetSize}
                                         onChange={handleChange}
@@ -201,15 +201,15 @@ const SubmitDetails = () => {
                                 </div>
                                 <div className="w-full">
                                     <label
-                                        htmlFor="fullName"
+                                        htmlFor="businessType"
                                         className="block text-ti_dark_grey mb-[5px] text-[12px] font-semibold font-inter"
                                     >
                                         Business type (optional)
                                     </label>
                                     <input
                                         type="text"
-                                        id="fullName"
-                                        name="fullName"
+                                        id="businessType"
+                                        name="businessType"
                                         placeholder="Enter type"
                                         value={formData.businessType}
                                         onChange={handleChange}
@@ -226,28 +226,30 @@ const SubmitDetails = () => {
                                         Number of locations (if any)
                                     </label>
                                     <input
-                                        type="text"
-                                        id="fullName"
-                                        name="fullName"
+                                        type="number"
+
+                                        id="locations"
+                                        name="locations"
                                         placeholder="Enter number"
-                                        value={formData.fleetSize}
+                                        value={formData.locations}
                                         onChange={handleChange}
                                         className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
                                     />
                                 </div>
                                 <div className="w-full">
                                     <label
-                                        htmlFor="fullName"
+                                        htmlFor="teamSize"
                                         className="block text-ti_dark_grey mb-[5px] text-[12px] font-semibold font-inter"
                                     >
                                         Team size (if any)
                                     </label>
                                     <input
-                                        type="text"
-                                        id="fullName"
-                                        name="fullName"
+                                        type="number"
+
+                                        id="teamSize"
+                                        name="teamSize"
                                         placeholder="Enter type"
-                                        value={formData.businessType}
+                                        value={formData.teamSize}
                                         onChange={handleChange}
                                         className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
                                     />
@@ -263,10 +265,10 @@ const SubmitDetails = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        id="fullName"
-                                        name="fullName"
-                                        placeholder="Enter number"
-                                        value={formData.fleetSize}
+                                        id="country"
+                                        name="country"
+                                        placeholder="Canada"
+                                        value={formData.country}
                                         onChange={handleChange}
                                         className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
                                     />
@@ -280,10 +282,10 @@ const SubmitDetails = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        id="fullName"
-                                        name="fullName"
+                                        id="state"
+                                        name="state"
                                         placeholder="Enter type"
-                                        value={formData.businessType}
+                                        value={formData.state}
                                         onChange={handleChange}
                                         className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
                                     />
@@ -299,10 +301,10 @@ const SubmitDetails = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        id="fullName"
-                                        name="fullName"
-                                        placeholder="Enter number"
-                                        value={formData.fleetSize}
+                                        id="city"
+                                        name="city"
+                                        placeholder="Enter city"
+                                        value={formData.city}
                                         onChange={handleChange}
                                         className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
                                     />
@@ -315,11 +317,12 @@ const SubmitDetails = () => {
                                         Postal code
                                     </label>
                                     <input
-                                        type="text"
-                                        id="fullName"
-                                        name="fullName"
-                                        placeholder="Enter type"
-                                        value={formData.businessType}
+                                        type="number"
+
+                                        id="postalCode"
+                                        name="postalCode"
+                                        placeholder="Enter code"
+                                        value={formData.postalCode}
                                         onChange={handleChange}
                                         className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
                                     />
