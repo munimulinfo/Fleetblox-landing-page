@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import start from '@/../public/images/start-with-us.jpg'
-import Form from './Form'
 import Link from "next/link";
 
 const Index = () => {
@@ -12,8 +11,7 @@ const Index = () => {
                 alt="start with us"
                 className="absolute inset-0 h-full w-full"
             />
-        </Link>
-        <Form />
+        </Link> 
     </div>;
 };
 
