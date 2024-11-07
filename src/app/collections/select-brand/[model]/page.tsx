@@ -2,33 +2,30 @@
 import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { BrandCarList } from '@/Static_data/data';
 import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
-// Fix the params type to match Next.js route parameter typing
+
 interface CustomPageProps {
     params: {
-        model: string // Changed from string[] to string since Next.js provides route params as strings
+        model: string
     }
 }
 
 const ModelSelector = ({ params }: CustomPageProps) => {
     const { setCustomProgress, progress } = useProgressUpdater();
     const [totalBrands, setTotalBrands] = useState(0);
-    console.log(totalBrands, 'checking the total brands');
 
     const router = useRouter();
-    const { model } = params;
+    const modelParam = params.model;
 
     const filteredModels = React.useMemo(() => {
         return BrandCarList.filter((brand) => {
-            // Handle model param as string instead of array
-            const decodedBrandNames = decodeURIComponent(model).split(',');
+            const decodedBrandNames = decodeURIComponent(modelParam).split(',');
             setTotalBrands(decodedBrandNames.length);
             return decodedBrandNames.includes(brand.brand);
         });
-    }, [model]); // Only recompute when model changes
+    }, [modelParam]);
 
     const [currentBrandIndex, setCurrentBrandIndex] = useState(0);
     const [selectedModels, setSelectedModels] = useState<string[]>(() => {
@@ -44,25 +41,48 @@ const ModelSelector = ({ params }: CustomPageProps) => {
         const currentBrand = modelData.brand;
         const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
 
+        // Initialize current brand's models if not exists
         if (!storedModels[currentBrand]) {
-            storedModels[currentBrand] = null;
+            storedModels[currentBrand] = [];
         }
 
-        if (selectedModels.includes(model)) {
-            const updatedModels = selectedModels.filter(selectedModel => selectedModel !== model);
-            setSelectedModels(updatedModels);
-            storedModels[currentBrand] = updatedModels.length ? updatedModels : null;
+        // Get current brand's selected models
+        const currentBrandModels = storedModels[currentBrand] || [];
+
+        let updatedModels;
+        if (currentBrandModels.includes(model)) {
+            // Remove model if already selected
+            updatedModels = currentBrandModels.filter((selectedModel: string) => selectedModel !== model);
         } else {
-            const updatedModels = [...selectedModels, model];
-            setSelectedModels(updatedModels);
-            storedModels[currentBrand] = updatedModels;
+            // Add model if not selected
+            updatedModels = [...currentBrandModels, model];
         }
 
+        // Update state and localStorage
+        setSelectedModels(updatedModels);
+        storedModels[currentBrand] = updatedModels.length ? updatedModels : null;
         localStorage.setItem('brandModels', JSON.stringify(storedModels));
     };
+    // const handleModelSelect = (model: string) => {
+    //     const currentBrand = modelData.brand;
+    //     const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
 
 
-    const calculateProgress = 70 / totalBrands;
+    //     if (selectedModels.includes(model)) {
+    //         const updatedModels = selectedModels.filter(selectedModel => selectedModel !== model);
+    //         setSelectedModels(updatedModels);
+    //         storedModels[currentBrand] = updatedModels.length ? updatedModels : null;
+    //     } else {
+    //         const updatedModels = [...selectedModels, model];
+    //         setSelectedModels(updatedModels);
+    //         storedModels[currentBrand] = updatedModels;
+    //     }
+
+    //     localStorage.setItem('brandModels', JSON.stringify(storedModels));
+    // };
+
+
+    const calculateProgress = 60 / totalBrands;
 
     const handleNext = () => {
         if (currentBrandIndex < filteredModels.length - 1) {
@@ -73,15 +93,31 @@ const ModelSelector = ({ params }: CustomPageProps) => {
         }
     };
 
+    // const handleNotFindModel = () => {
+    //     const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
+    //     storedModels[modelData.brand] = null;
+    //     localStorage.setItem('brandModels', JSON.stringify(storedModels));
+    //     if (currentBrandIndex < filteredModels.length - 1) {
+    //         setCurrentBrandIndex(prev => prev + 1);
+    //         setCustomProgress(progress + calculateProgress);
+    //         setSelectedModels([]);
+    //     } else {
+    //         router.push('/result/not-compatible');
+
+    //     }
+    // }
     const handleNotFindModel = () => {
-        const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
-        storedModels[modelData.brand] = null;
-        localStorage.setItem('brandModels', JSON.stringify(storedModels));
         if (currentBrandIndex < filteredModels.length - 1) {
+            const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
+            storedModels[modelData.brand] = null;
+            localStorage.setItem('brandModels', JSON.stringify(storedModels));
             setCurrentBrandIndex(prev => prev + 1);
-            setSelectedModels([]);
+            setCustomProgress(progress + calculateProgress);
         } else {
-            router.push('/collections/not-compatible');
+            const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
+            storedModels[modelData.brand] = null;
+            localStorage.setItem('brandModels', JSON.stringify(storedModels));
+            router.push('/collections/compatible');
         }
     }
 
@@ -90,22 +126,30 @@ const ModelSelector = ({ params }: CustomPageProps) => {
     const backButton = () => {
         if (currentBrandIndex > 0) {
             setCurrentBrandIndex(prev => prev - 1)
+            setCustomProgress(progress - calculateProgress);
+        } else {
+            router.push('/collections/select-brand');
+            setCustomProgress(progress - 10);
         }
     }
 
     if (!modelData) {
         return <div>No models found</div>;
     }
+
+
+    const currentBrandModels = JSON.parse(localStorage.getItem('brandModels') || '{}')[modelData.brand]
+    console.log(currentBrandModels, 'index');
+
+
+
     return (
         <div className="relative bg-bg_white rounded-lg shadow-lg w-full max-w-[650px] h-[780px] flex flex-col px-[60px] py-[60px]">
             {/* Header Section */}
-            {currentBrandIndex <= 0 ? <Link href={`/collections/select-brand`} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
+            <div onClick={backButton} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
                 <ArrowLeft size={20} className=' text-ti_dark_grey' />
                 <span className='text-ti_dark_grey font-inter font-semibold text-[14px] leading-[18px]'>{`Back`}</span>
-            </Link> : <div onClick={backButton} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
-                <ArrowLeft size={20} className=' text-ti_dark_grey' />
-                <span className='text-ti_dark_grey font-inter font-semibold text-[14px] leading-[18px]'>{`Back`}</span>
-            </div>}
+            </div>
 
             <div className="mb-[40px] flex-shrink-0">
                 <h2 className="pre_landing_page_title font-inter">Select your car models</h2>
@@ -149,8 +193,8 @@ const ModelSelector = ({ params }: CustomPageProps) => {
                     {`I can't find my car model`}
                 </button>
                 <button
-                    className={`w-1/2 pre_landing_page_btn text-bg_white px-[14px] py-[9px] rounded-md ${selectedModels.length ? 'bg-p_blue' : 'bg-p_blue/50'}`}
-                    disabled={!selectedModels.length}
+                    className={`w-1/2 pre_landing_page_btn text-bg_white px-[14px] py-[9px] rounded-md ${currentBrandModels?.length > 0 ? 'bg-p_blue' : 'bg-p_blue/50'}`}
+                    disabled={!currentBrandModels || currentBrandModels.length <= 0}
                     onClick={handleNext}
                 >
                     Next

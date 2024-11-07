@@ -25,8 +25,6 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
     const [currentPath, setCurrentPath] = useState('/collections/select-country');
     const [progress, setProgressState] = useState(1);
 
-    console.log(progress, 'checking the progress in progress provider');
-
     // Function to update progress value
     const setProgress = (value: number) => {
         setProgressState(prev => prev + value);
@@ -55,12 +53,12 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
         setCurrentPath(pathname);
 
         // Update progress based on current path
-       if (pathname === steps.COMPATIBLE) {
+        if (pathname === steps.COMPATIBLE) {
             setCustomProgress(90);
         } else if (pathname === steps.SUBMIT_DETAILS) {
-            setCustomProgress(100);
+            setCustomProgress(progress);
         }
-    }, [pathname, steps]);
+    }, [pathname, steps, progress]);
 
     const value = {
         currentPath,

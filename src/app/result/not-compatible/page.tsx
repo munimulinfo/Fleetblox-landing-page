@@ -1,8 +1,34 @@
+'use client'
 import Image from "next/image";
 import failed from "@/../public/images/feild.svg";
 import start from "@/../public/images/start-with-us.jpg";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const NotCompatible = () => {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+
+  const [loading, setLoading] = useState(false);
+
+  localStorage.removeItem('brands');
+  localStorage.removeItem('brandModels');
+  localStorage.removeItem('country');
+
+  const handleSubscribe = async () => {
+    setLoading(true);
+    const response = await fetch(`/api?email=${email}`);
+    const data = await response.json();
+
+    if (data.status === 201) {
+      setLoading(false);
+      return router.push('/result/Successfull');
+    } else {
+      alert('Failed to subscribe!');
+    }
+    setLoading(false);
+  }
+
   return (
     <div className="relative h-screen w-screen">
       <Image
@@ -30,14 +56,15 @@ const NotCompatible = () => {
               {/* Search Section */}
               <div className="mb-[16px] flex w-3/4 flex-shrink-0 items-center gap-[8px] rounded-md bg-bg_dusty_white px-[10px] py-[12px]">
                 <input
-                  type="text"
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter email"
-                  className="w-full bg-bg_dusty_white font-inter text-[12px] leading-[16px] text-ti_grey outline-none"
+                  className="w-full bg-bg_dusty_white font-inter text-[12px] leading-[16px] text-ti_black outline-none"
                 />
               </div>
               <div className="w-1/4">
-                <button className="w-full rounded-md bg-p_blue px-[14px] py-[9.3px] font-inter text-[14px] font-semibold text-bg_white">
-                  Subscribe
+                <button disabled={loading} onClick={handleSubscribe} className="w-full rounded-md bg-p_blue px-[14px] py-[9.3px] font-inter text-[14px] font-semibold text-bg_white">
+                  {loading ? 'Subscribing...' : 'Subscribe'}
                 </button>
               </div>
             </div>

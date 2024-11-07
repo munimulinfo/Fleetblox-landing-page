@@ -42,7 +42,6 @@ const BrandSelector = () => {
     const { setCustomProgress, progress } = useProgressUpdater();
 
     const handleNext = React.useCallback(() => {
-        console.log(progress, 'checking the progress in select brand');
 
         setCustomProgress(progress + 10);
         router.push(`/collections/select-brand/${selectedBrands.join(',')}`);
@@ -116,7 +115,7 @@ const BrandSelector = () => {
 
             {/* Footer Buttons */}
             <div className="mt-[40px] flex-shrink-0 flex items-center gap-4">
-                <NotCompitable href='/collections/not-compatible' text="I can’t find my car brand" />
+                <NotCompitable href='/result/not-compatible' text="I can’t find my car brand" />
                 <button
                     onClick={handleNext}
                     className={` w-1/2 pre_landing_page_btn  text-bg_white   px-[14px] py-[10px] rounded-md ${selectedBrands.length ? ' bg-p_blue' : 'bg-p_blue/50  '

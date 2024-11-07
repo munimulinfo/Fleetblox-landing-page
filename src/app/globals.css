@@ -87,6 +87,9 @@ body::-webkit-scrollbar {
 div::-webkit-scrollbar {
   display: none;
 }
+form::-webkit-scrollbar {
+  display: none;
+}
 
 @layer components {
   /* start pre-landing page */

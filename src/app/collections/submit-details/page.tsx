@@ -6,12 +6,17 @@ import Canada from "@/../public/images/canada.png";
 import { useState } from "react";
 import { countryCodes } from '@/Static_data/data';
 import { useRouter } from 'next/navigation';
+import { useProgressUpdater } from '@/hooks/useProgress';
 const SubmitDetails = () => {
     const router = useRouter();
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const { setCustomProgress } = useProgressUpdater();
+    const [loading, setLoading] = useState(false);
+
+    
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
-        phone: '',
         brandName: '',
         fleetSize: '',
         businessType: '',
@@ -22,14 +27,35 @@ const SubmitDetails = () => {
         city: '',
         postalCode: '',
         address: '',
+        phone: '',
         countryCode: '+1',
         flag: Canada
     });
 
+    const brandModels = localStorage.getItem('brandModels')
 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 
+    const brands = localStorage.getItem('brands')
+
+    const submitData = {
+        email: formData.email,
+        fullName: formData.fullName,
+        brandName: formData.brandName,
+        fleetSize: formData.fleetSize,
+        businessType: formData.businessType,
+        teamSize: formData.teamSize,
+        locations: formData.locations,
+        country: formData.country,
+        state: formData.state,
+        city: formData.city,
+        postalCode: formData.postalCode,
+        address: formData.address,
+        contactNumber: `${formData.countryCode} ${formData.phone}`,
+        brandModels: JSON.parse(brandModels || '{}'),
+        brands: JSON.parse(brands || '[]'),
+        brandCountry: formData.country,
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -48,7 +74,27 @@ const SubmitDetails = () => {
         setIsDropdownOpen(false);
     };
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        setLoading(true);
+        e.preventDefault();
+        console.log(formData, 'formData');
+        setCustomProgress(100);
+        const response = await fetch('/api', {
+            method: 'POST',
+            body: JSON.stringify(submitData),
+        });
 
+        const data = await response.json(); 
+
+        if (data.status === 201) {
+            setLoading(false);
+            return router.push('/result/submitted-successfully');
+        } else {
+            setLoading(false);
+            alert('Something went wrong');
+        }
+        setLoading(false);
+    };
 
     return (
 
@@ -63,7 +109,7 @@ const SubmitDetails = () => {
             </div>
 
 
-            <div className="w-full flex flex-col gap-[40px] pt-[40px] overflow-y-scroll overflow-hidden" style={{ maxHeight: '1000px' }}>
+            <form onSubmit={handleSubmit} id='submitForm' className="w-full flex flex-col gap-[40px] pt-[40px] overflow-y-scroll overflow-hidden  scroll-mt-[120px]" style={{ maxHeight: '1000px' }}>
                 <div>
                     <h1 className=" mb-[20px] text-ti_light_black text-[18px] font-semibold font-inter">Personal info</h1>
                     <div>
@@ -76,11 +122,12 @@ const SubmitDetails = () => {
                         <input
                             type="text"
                             id="fullName"
+                            required
                             name="fullName"
                             placeholder="Enter name"
                             value={formData.fullName}
                             onChange={handleChange}
-                            className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                            className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                         />
                     </div>
                     <div className="flex gap-[20px] mt-[16px]">
@@ -94,11 +141,12 @@ const SubmitDetails = () => {
                             <input
                                 type="text"
                                 id="email"
+                                required
                                 name="email"
                                 placeholder="Enter email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                             />
                         </div>
                         <div className="w-full">
@@ -132,7 +180,7 @@ const SubmitDetails = () => {
                                                         <Image src={country.flag} alt={country.country} width={20} height={20} />
                                                         <div>
                                                             <span>{country.country}</span>
-                                                            <span className="ml-2 text-ti_grey">{country.code}</span>
+                                                            <span className="ml-2 text-ti_black">{country.code}</span>
                                                         </div>
                                                     </li>
                                                 ))}
@@ -148,7 +196,7 @@ const SubmitDetails = () => {
                                     placeholder="Enter number"
                                     value={formData.phone}
                                     onChange={handleChange}
-                                    className="flex-1 outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-r-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                    className="flex-1 outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-r-md text-[12px] font-inter leading-[16px] text-ti_black"
                                 />
                             </div>
                         </div>
@@ -166,11 +214,12 @@ const SubmitDetails = () => {
                         <input
                             type="text"
                             id="brandName"
+                            required
                             name="brandName"
                             placeholder="Enter name"
                             value={formData.brandName}
                             onChange={handleChange}
-                            className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                            className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                         />
                     </div>
                     <div className="flex gap-[20px] mt-[16px]">
@@ -183,12 +232,13 @@ const SubmitDetails = () => {
                             </label>
                             <input
                                 type="number"
+                                required
                                 id="fleetSize"
                                 name="fleetSize"
                                 placeholder="Enter number"
                                 value={formData.fleetSize}
                                 onChange={handleChange}
-                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                             />
                         </div>
                         <div className="w-full">
@@ -205,7 +255,7 @@ const SubmitDetails = () => {
                                 placeholder="Enter type"
                                 value={formData.businessType}
                                 onChange={handleChange}
-                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                             />
                         </div>
                     </div>
@@ -225,7 +275,7 @@ const SubmitDetails = () => {
                                 placeholder="Enter number"
                                 value={formData.locations}
                                 onChange={handleChange}
-                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                             />
                         </div>
                         <div className="w-full">
@@ -243,7 +293,7 @@ const SubmitDetails = () => {
                                 placeholder="Enter type"
                                 value={formData.teamSize}
                                 onChange={handleChange}
-                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                             />
                         </div>
                     </div>
@@ -258,11 +308,12 @@ const SubmitDetails = () => {
                             <input
                                 type="text"
                                 id="country"
+                                required
                                 name="country"
                                 placeholder="Canada"
                                 value={formData.country}
                                 onChange={handleChange}
-                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                             />
                         </div>
                         <div className="w-full">
@@ -275,11 +326,12 @@ const SubmitDetails = () => {
                             <input
                                 type="text"
                                 id="state"
+                                required
                                 name="state"
                                 placeholder="Enter type"
                                 value={formData.state}
                                 onChange={handleChange}
-                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                             />
                         </div>
                     </div>
@@ -295,10 +347,11 @@ const SubmitDetails = () => {
                                 type="text"
                                 id="city"
                                 name="city"
+                                required
                                 placeholder="Enter city"
                                 value={formData.city}
                                 onChange={handleChange}
-                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                             />
                         </div>
                         <div className="w-full">
@@ -310,26 +363,26 @@ const SubmitDetails = () => {
                             </label>
                             <input
                                 type="number"
-
+                                required
                                 id="postalCode"
                                 name="postalCode"
                                 placeholder="Enter code"
                                 value={formData.postalCode}
                                 onChange={handleChange}
-                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_grey"
+                                className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                             />
                         </div>
                     </div>
                 </div>
 
-
-            </div>
-
+            </form>
             <div className="w-full mt-[20px]">
-                <button onClick={() => router.push('/result/Successfull')} className="w-full rounded-md bg-p_blue px-[14px] py-[9.3px] font-inter text-[14px] font-semibold text-bg_white">
-                    Submit
+                <button disabled={loading} type='submit' form='submitForm' className="w-full rounded-md bg-p_blue px-[14px] py-[9.3px] font-inter text-[14px] font-semibold text-bg_white">
+                    {loading ? 'Submitting...' : 'Submit'}
                 </button>
             </div>
+
+
         </div>
 
     );

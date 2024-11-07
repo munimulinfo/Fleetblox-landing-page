@@ -88,7 +88,7 @@ const SelectCountry = () => {
 
         {/* Footer Buttons */}
         <div className="mt-[40px] flex-shrink-0 flex items-center gap-4">
-            <button className=" w-1/2 pre_landing_page_btn border text-ti_grey px-[14px] py-[8px] border-ti_light_grey rounded-md">
+            <button onClick={() => router.push('/result/not-compatible')} className=" w-1/2 pre_landing_page_btn border text-ti_grey px-[14px] py-[8px] border-ti_light_grey rounded-md">
                 {`I can’t find my country`}
             </button>
             <button
