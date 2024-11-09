@@ -2,7 +2,7 @@
 import Image from "next/image";
 import failed from "@/../public/images/feild.svg";
 import start from "@/../public/images/start-with-us.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const NotCompatible = () => {
@@ -11,9 +11,14 @@ const NotCompatible = () => {
 
   const [loading, setLoading] = useState(false);
 
-  localStorage.removeItem('brands');
-  localStorage.removeItem('brandModels');
-  localStorage.removeItem('country');
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('brands');
+      localStorage.removeItem('brandModels');
+      localStorage.removeItem('country');
+    }
+  }, []);
+
 
   const handleSubscribe = async () => {
     setLoading(true);

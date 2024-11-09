@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Search } from 'lucide-react';
 import { countries } from '@/Static_data/data';
 import Image from 'next/image';
@@ -12,11 +12,15 @@ import { useProgressUpdater } from '@/hooks/useProgress';
 
 const SelectCountry = () => {
     const router = useRouter();
-
-    const country = localStorage.getItem('country');
-    const [selectedCountry, setSelectedCountry] = useState<string | null>(country);
+    const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
 
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const country = localStorage.getItem('country');
+            setSelectedCountry(country);
+        }
+    }, []);
 
 
 

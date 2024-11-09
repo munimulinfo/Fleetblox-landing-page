@@ -16,6 +16,7 @@ interface EmailTemplateProps {
         [key: string]: string[];
     };
     brands: string[];
+    selectedCountry: string;
 }
 
 
@@ -93,6 +94,24 @@ export const emailTemplate = (data: EmailTemplateProps) => {
                                                                 <span style="color: #1f2937;">${data.locations}</span>
                                                             </td>
                                                         </tr>
+                                                        
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; border-radius: 8px; margin-bottom: 24px;">
+                                            <tr>
+                                                <td style="padding: 24px;">
+                                                    <h2 style="color: #1f2937; font-size: 18px; margin: 0 0 16px 0;">Country Details</h2>
+                                                    <table width="100%" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td width="50%" style="padding-bottom: 16px;">
+                                                                <span style="color: #4b5563; font-weight: 500; display: block; margin-bottom: 4px;">Selected Country</span>
+                                                                <span style="color: #1f2937;">${data.selectedCountry}</span>
+                                                            </td>
+                                                             
+                                                        </tr>
+
                                                     </table>
                                                 </td>
                                             </tr>

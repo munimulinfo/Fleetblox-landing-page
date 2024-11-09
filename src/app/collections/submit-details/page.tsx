@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import Image, { StaticImageData } from "next/image";
 import Canada from "@/../public/images/canada.png";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { countryCodes } from '@/Static_data/data';
 import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
@@ -13,7 +13,7 @@ const SubmitDetails = () => {
     const { setCustomProgress } = useProgressUpdater();
     const [loading, setLoading] = useState(false);
 
-    
+
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -32,11 +32,21 @@ const SubmitDetails = () => {
         flag: Canada
     });
 
-    const brandModels = localStorage.getItem('brandModels')
 
 
+    const [brandModels, setBrandModels] = useState('');
+    const [brands, setBrands] = useState('');
+    const [country, setCountry] = useState('');
 
-    const brands = localStorage.getItem('brands')
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setBrandModels(localStorage.getItem('brandModels') || '');
+            setBrands(localStorage.getItem('brands') || '');
+            setCountry(localStorage.getItem('country') || '');
+        }
+    }, []);
+
+ 
 
     const submitData = {
         email: formData.email,
@@ -55,6 +65,7 @@ const SubmitDetails = () => {
         brandModels: JSON.parse(brandModels || '{}'),
         brands: JSON.parse(brands || '[]'),
         brandCountry: formData.country,
+        selectedCountry: country,
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -84,7 +95,7 @@ const SubmitDetails = () => {
             body: JSON.stringify(submitData),
         });
 
-        const data = await response.json(); 
+        const data = await response.json();
 
         if (data.status === 201) {
             setLoading(false);

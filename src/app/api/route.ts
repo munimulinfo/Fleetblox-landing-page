@@ -5,70 +5,71 @@ import { SendMailOptions } from "nodemailer";
 
 // Create new job
 export async function POST(req: Request) {
-    try {
-        const reqBody = await req.json();
+  try {
+    const reqBody = await req.json();
 
-        if (!reqBody) {
-            return NextResponse.json({ status: "Data Not Found" }, { status: 400 });
-        }
-
-        const { email, fullName, brandName, fleetSize, businessType, teamSize, locations, country, state, city, postalCode, address, contactNumber, brandModels, brands } = reqBody;
-
-        const emailData = {
-            email,
-            fullName,
-            brandName,
-            fleetSize,
-            businessType,
-            teamSize,
-            locations,
-            country,
-            state,
-            city,
-            postalCode,
-            address,
-            contactNumber,
-            brandModels,
-            brands,
-        }
-
-        console.log(emailData, 'emailData from backend');
-
-        const emailHtml = emailTemplate(emailData);
-
-        const emailOptions: SendMailOptions = {
-            to: 'sarkarsoumik215@gmail.com',
-            subject: "✨ Exclusive 15% Off Fleet Booking -  Business Details Received 🚗",
-            html: emailHtml,
-        }
-
-        const emailResponse = await sendEmail(emailOptions);
-
-        console.log(emailResponse, 'emailResponse');
-
-
-        return NextResponse.json({
-            message: "Email sent successfully",
-            data: reqBody,
-            status: 201,
-        });
-    } catch (error) {
-        console.error("Error occurred:", error);
-        return NextResponse.json(
-            { status: "fail", error: error instanceof Error ? error.message : 'Unknown error' },
-            { status: 500 },
-        );
+    if (!reqBody) {
+      return NextResponse.json({ status: "Data Not Found" }, { status: 400 });
     }
+
+    const { selectedCountry, email, fullName, brandName, fleetSize, businessType, teamSize, locations, country, state, city, postalCode, address, contactNumber, brandModels, brands } = reqBody;
+
+    const emailData = {
+      email,
+      fullName,
+      brandName,
+      fleetSize,
+      businessType,
+      teamSize,
+      locations,
+      country,
+      state,
+      city,
+      postalCode,
+      address,
+      contactNumber,
+      brandModels,
+      brands,
+      selectedCountry,
+    }
+
+    console.log(emailData, 'emailData from backend');
+
+    const emailHtml = emailTemplate(emailData);
+
+    const emailOptions: SendMailOptions = {
+      to: 'sarkarsoumik215@gmail.com',
+      subject: "✨ Someone showed early interest 🚗",
+      html: emailHtml,
+    }
+
+    const emailResponse = await sendEmail(emailOptions);
+
+    console.log(emailResponse, 'emailResponse');
+
+
+    return NextResponse.json({
+      message: "Email sent successfully",
+      data: reqBody,
+      status: 201,
+    });
+  } catch (error) {
+    console.error("Error occurred:", error);
+    return NextResponse.json(
+      { status: "fail", error: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 },
+    );
+  }
 }
 
 export async function GET(req: Request) {
-    try {
-        const { searchParams } = new URL(req.url);
-        const email = searchParams.get('email');
-        const emailOptions: SendMailOptions = {
-            to: 'sarkarsoumik215@gmail.com',
-            subject: "✨ Exclusive 15% Off Fleet Booking -  Subscribed 🚗",
-            html: `<!DOCTYPE html>
+  try {
+    const { searchParams } = new URL(req.url);
+    const email = searchParams.get('email');
+    const emailOptions: SendMailOptions = {
+      to: 'sarkarsoumik215@gmail.com',
+      subject: "✨ Someone subscribed to the newsletter 🚗",
+      html: `<!DOCTYPE html>
 <html lang="en" style="margin: 0; padding: 0; box-sizing: border-box;">
 <head>
   <meta charset="UTF-8">
@@ -132,11 +133,11 @@ export async function GET(req: Request) {
 <body>
   <div class="container">
     <div class="header">
-      <h1>New Newsletter Subscriber</h1>
+      <h1>✨ Someone subscribed to the newsletter 🚗</h1>
     </div>
     <div class="content">
       <p>Hello Admin,</p>
-      <p>A new user with email <strong>${email}</strong> has subscribed to the newsletter.</p>
+      <p>A new user with email <b>${email}</b> has subscribed to the newsletter.</p>
     </div>
     <div class="footer">
       <p>This is an automated message, please do not reply.</p>
@@ -145,25 +146,25 @@ export async function GET(req: Request) {
 </body>
 </html>
             `,
-        }
-
-        const emailResponse = await sendEmail(emailOptions);
-
-        console.log(emailResponse, 'emailResponse');
-
-
-        return NextResponse.json({
-            message: "Subscribed successfully!",
-            status: 201,
-        });
-
-
-        return NextResponse.json({ message: "Hello, World!" }, { status: 200 });
-    } catch (error) {
-        console.error("Error occurred:", error);
-        return NextResponse.json(
-            { status: "fail", error: error instanceof Error ? error.message : 'Unknown error' },
-            { status: 500 },
-        );
     }
+
+    const emailResponse = await sendEmail(emailOptions);
+
+    console.log(emailResponse, 'emailResponse');
+
+
+    return NextResponse.json({
+      message: "Subscribed successfully!",
+      status: 201,
+    });
+
+
+    return NextResponse.json({ message: "Hello, World!" }, { status: 200 });
+  } catch (error) {
+    console.error("Error occurred:", error);
+    return NextResponse.json(
+      { status: "fail", error: error instanceof Error ? error.message : 'Unknown error' },
+      { status: 500 },
+    );
+  }
 }

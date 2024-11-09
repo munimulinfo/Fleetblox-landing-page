@@ -1,20 +1,34 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Search } from 'lucide-react';
 import Image from 'next/image';
-import { BrandCarList } from '@/Static_data/data' 
+import { BrandCarList } from '@/Static_data/data'
 import { useRouter } from 'next/navigation';
 import NotCompitable from '@/components/shared/NotCompitable';
 import { useProgressUpdater } from '@/hooks/useProgress';
 
 const BrandSelector = () => {
     const router = useRouter()
-
     const [searchQuery, setSearchQuery] = useState('');
-    const brands = localStorage.getItem('brands');
+    
+    
+    
 
-    const [selectedBrands, setSelectedBrands] = useState<string[]>(brands ? JSON.parse(brands) : []);
+    const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const brands = localStorage.getItem('brands');
+            if (brands) {
+                setSelectedBrands(JSON.parse(brands));
+            }
+        }
+    }, []);
+
+
+
+    console.log(selectedBrands, 'selectedBrands');
 
     const handleBrandSelect = (brand: string) => {
         if (selectedBrands.includes(brand)) {

@@ -2,11 +2,17 @@
 import Image from "next/image";
 import success from "@/../public/images/success.svg";
 import start from "@/../public/images/start-with-us.jpg";
+import { useEffect } from "react";
 
 const Successfull = () => {
-    localStorage.removeItem('brands');
-    localStorage.removeItem('brandModels');
-    localStorage.removeItem('country');
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            localStorage.removeItem('brands');
+            localStorage.removeItem('brandModels');
+            localStorage.removeItem('country');
+        }
+    }, []);
+    
 
     return (
         <div className="relative h-screen w-screen">

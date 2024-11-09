@@ -1,53 +1,62 @@
 'use client'
 import Image from "next/image";
-import success from "@/../public/images/success.svg";
-import failed from "@/../public/images/feild.svg";
+import success from "@/../public/images/Icons.png";
 
-// import start from "@/../public/images/start-with-us.jpg";
 
 import trueIcon from '@/../public/images/true.svg'
 import falseIcon from '@/../public/images/false.svg'
 import { BrandCarList } from "@/Static_data/data";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
+import { useCallback, useEffect,  useState } from "react";
 
 const Compatible = () => {
   const router = useRouter();
-  const selectedBrands = localStorage.getItem('brands');
-  const storedBrandModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
+  const [selectedBrands, setSelectedBrands] = useState('');
+  const [storedBrandModels, setStoredBrandModels] = useState<Record<string, string | null>>({});
+
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setSelectedBrands(localStorage.getItem('brands') || '');
+      setStoredBrandModels(JSON.parse(localStorage.getItem('brandModels') || '{}'));
+    }
+  }, []);
 
   const { setCustomProgress, progress } = useProgressUpdater();
 
-  console.log(storedBrandModels, 'storedBrandModels');
 
-  const filteredCompatibleBrands = BrandCarList.filter((brand) => {
-    const isSelected = selectedBrands?.includes(brand.brand);
-    if (isSelected) {
-      return {
-        brand: brand.brand,
-        brandLogo: brand.brandLogo,
-        compatible: storedBrandModels[brand.brand] !== null
-      }
+  // Filter and determine compatibility status using `useMemo` for memoization
+  const filteredCompatibleBrands = useCallback(() => {
+    return BrandCarList.filter(brand => selectedBrands.includes(brand.brand)).map(brand => ({
+      brand: brand.brand,
+      brandLogo: brand.brandLogo,
+      compatible: storedBrandModels[brand.brand] !== null
+    }));
+  }, [selectedBrands, storedBrandModels]);
+
+
+  if (filteredCompatibleBrands().length > 0) {
+    const areAllUncompatible = filteredCompatibleBrands()?.every(brand => brand.compatible === false);
+    if (!areAllUncompatible) {
+      console.log('areAllUncompatible', areAllUncompatible);
+    } else {
+      console.log(areAllUncompatible, 'areAllUncompatible');
+      router.push('/result/not-compatible');
     }
-    return false;
-  }).filter(Boolean).map(brand => ({
-    brand: brand.brand,
-    brandLogo: brand.brandLogo,
-    compatible: storedBrandModels[brand.brand] !== null
-  }));
+  }
 
 
-  const isAllCompatible = filteredCompatibleBrands.every(brand => brand.compatible === false);
-  console.log(isAllCompatible, 'isAllCompatible');
+  // useEffect(() => {
+  //   console.log(areAllIncompatible, 'areAllIncompatible');
+  //   if (areAllIncompatible) {
+  //     router.push('/result/not-compatible');
+  //   }
+  // }, [areAllIncompatible]);
 
   const handleNext = () => {
     setCustomProgress(progress + 10);
-    
-    if (isAllCompatible) {
-      router.push('/result/not-compatible');
-    } else {
-      router.push('/collections/submit-details');
-    }
+    router.push('/collections/submit-details');
   }
 
   return (
@@ -55,7 +64,7 @@ const Compatible = () => {
     <div className="relative flex h-[780px] items-center justify-between  w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[60px] py-[60px] shadow-lg">
       <div>
         <div className="flex flex-shrink-0 flex-col items-center justify-center">
-          {isAllCompatible ? <Image alt="failed image" className="mb-[10px]" src={failed} /> : <Image alt="failed image" className="mb-[10px]" src={success} />}
+          <Image alt="failed image" className="mb-[10px]" src={success} />
           <h2 className="pre_landing_page_title font-inter">
             Your fleet is  compatible!
           </h2>
@@ -65,7 +74,7 @@ const Compatible = () => {
         </div>
         <div className="mt-[40px] w-full space-y-[5px] rounded-md">
           {
-            filteredCompatibleBrands.map((brand) => (
+            filteredCompatibleBrands().map((brand) => (
               <div key={brand.brand} className="flex items-center justify-between border rounded-md px-[16px] py-[12px]">
                 <Image src={brand.brandLogo} alt={brand.brand} className="mix-blend-multiply flex items-center justify-center object-contain w-[70px] h-[40px]" />
                 <p className="font-inter text-[16px] font-semibold text-ti_black">{brand.brand}</p>
