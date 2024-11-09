@@ -14,9 +14,9 @@ import EE from '@/../public/images/estonia.png'
 
 
 
-import brand1 from '@/../public/images/New folder/Frame 1707481648.svg'
-import brand2 from '@/../public/images/New folder/Frame 1707481650.svg'
-import brand3 from '@/../public/images/New folder/Frame 1707481652.svg'
+import brand1 from '@/../public/images/New folder/1.svg'
+import brand2 from '@/../public/images/New folder/2.svg'
+import brand3 from '@/../public/images/New folder/3.svg'
 
 
 import Acura from '@/../public/images/Car_brands/Acura.svg'
