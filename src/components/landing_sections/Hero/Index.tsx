@@ -9,37 +9,58 @@ import HeroBanner from "@/../public/images/HeroBanner.svg";
 import HeroPng from "@/../public/images/PHN.png";
 import Tab from "@/../public/images/Tab.png";
 
+import Logo from "../../../../public/images/NavLogo.svg";
+import Link from "next/link";
+
 const Hero: React.FC = () => {
   return (
     <div className="mx-auto w-full">
+      {/* hero background */}
       <Image
         alt="image"
         src={HeroBanner}
-        className="absolute left-0 right-0 top-0 z-[-1] mx-auto w-full"
+        className="absolute left-0 right-0 top-0 z-[-1] mx-auto min-h-[539.656px] w-full object-cover"
       />
       <div className="absolute -top-[150px] right-0 size-[500px] rounded-full bg-p_blue opacity-60 blur-[160px]"></div>
 
-      <div className="relative mx-auto flex max-w-[1980px] items-start justify-between gap-[60px] overflow-hidden">
-        <div className="absolute -top-[150px] left-[150px] size-[500px] rounded-full bg-bg_yellow opacity-50 blur-[160px] 2.5xl:left-[200px]"></div>
-        <div className="z-[1] mt-[130px] w-3/5  max-w-[1920px] sm:px-6 md:px-8 lg:px-10 xl:px-[60px] 2xl:pl-[80px] 2xl:pr-[0px] 3xl:mx-auto 3xl:px-[100px] 3xl:ml-[30px]">
-          <h5 className="hero_title font-openSans text-[14px] text-ti_dark_grey sm:text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px]">
+      <div className="relative mx-auto flex max-w-[1980px] flex-col items-start justify-between overflow-hidden lg2:flex-row lg2:gap-[60px]">
+        <div className="absolute left-0 top-0 size-[156px] flex-shrink-0 rounded-full bg-bg_yellow opacity-40 blur-[40px] lg2:-top-[150px] lg2:left-[150px] lg2:size-[500px] lg2:blur-[160px] 2.5xl:left-[200px]"></div>
+
+        {/* left side content */}
+        <div className="custom_padding z-[1] mx-auto mt-[40px] w-full max-w-[1920px] lg2:mt-[130px] lg2:w-3/5 lg2:pl-[80px] lg2:pr-[0px] 3xl:mx-auto 3xl:ml-[30px] 3xl:px-[100px]">
+          <div className="mb-[40px] flex lg2:hidden">
+            <Link href="/">
+              <Image
+                src={Logo}
+                alt="logo"
+                className="h-[24px] w-[136.923px] object-contain"
+              />
+            </Link>
+          </div>
+
+          <h5 className="hero_title font-openSans text-[18px] text-ti_dark_grey lg:text-[20px] 2xl:text-[22px]">
             Complete Brand Solution
           </h5>
-          <h1 className="hero_title pt-[10px] font-montserrat text-[30px] text-ti_royel_blue xl:text-[33px] 2xl:text-[40px] 2.5xl:text-[48px] 3xl:text-[52px]">
-            The First Ever Cloud-Based <br /> Platform for Car Rentals
+          <h1 className="hero_title pt-[10px] font-montserrat text-[40px] text-ti_royel_blue 2xl:text-[40px] 2.5xl:text-[48px] 3xl:text-[52px]">
+            The First Ever Cloud-Based <br className="hidden lg2:block" />{" "}
+            Platform for Car Rentals
           </h1>
 
-          <p className="hero_text mt-[16px] max-w-[500px] text-[16px] text-ti_dark_grey xl:w-[500px] 2xl:w-[800px] 2xl:max-w-[600px] 2.5xl:w-[800px] 2.5xl:max-w-[700px] 3xl:max-w-[900px]">
+          <p className="hero_text mt-[16px] max-w-[800px] text-[16px] text-ti_dark_grey xl:w-[500px] 2xl:w-[800px] 2xl:max-w-[600px] 2.5xl:w-[800px] 2.5xl:max-w-[700px] 3xl:max-w-[900px]">
             Introducing FleetBlox, the Revolutionary Subscription-Based Rental
             Platform Designed to Maximize Fleet Revenu nce.
           </p>
-          <div className="mt-[32px] flex items-center gap-[20px]">
-            <CustomeButton href="/collections/select-country" text="Show early interest" className="" />
-            <div className="group cursor-pointer font-openSans text-[16px] font-semibold text-p_dark_blue">
+          <div className="mt-[32px] flex flex-col items-center gap-[20px] md:max-w-max md:flex-row">
+            <CustomeButton
+              href="/collections/select-country"
+              text="Show early interest"
+              className="w-full"
+            />
+            <div className="group min-w-max cursor-pointer font-openSans text-[16px] font-semibold text-p_dark_blue">
               And Get Up to 15% Discount
             </div>
           </div>
-          <div className="mt-[50px]">
+          <div className="mt-[50px] hidden max-w-max lg2:block">
             <h4 className="font-openSans text-[16px] font-semibold text-ti_grey">
               What We Provide
             </h4>
@@ -62,21 +83,23 @@ const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="relative mt-[130px] h-[690px] w-1/2">
+
+        {/* right side content */}
+        <div className="relative mt-[60px] flex h-[320px] w-full items-center justify-center lg2:my-[60px] lg2:ml-[120px] lg2:mt-[130px] lg2:block lg2:h-[690px] lg2:w-1/2 lg2:px-0 2xl:-ml-[15px]">
           <Image
             alt="Tab"
             src={Tab}
-            className="absolute top-0 ml-[4px] mt-[3px] h-[550px] min-w-[860px]"
+            className="absolute top-0 ml-[14px] mt-[3px] xxxs:h-[240.804px] xxs:w-[350px] xs:h-[300px] xs:w-[450px] lg2:ml-[4px] lg2:h-[544px] lg2:min-w-[853px]"
           />
 
-          <div className="absolute left-6 top-4 flex h-[468px] w-[780px] items-end justify-end">
+          <div className="absolute top-3 flex h-[200px]  w-[310px] xxxs:w-[345px] xxs:w-[320px] xs:h-[250px] xs:w-[405px] lg2:left-6 lg2:top-4 lg2:h-[468px] lg2:w-[780px]">
             <video
               autoPlay
               loop
               muted
               playsInline
               preload="auto"
-              className="h-full w-full rounded-3xl object-fill"
+              className="h-full w-full rounded-xl object-fill lg2:rounded-3xl"
             >
               <source
                 src="/videos/HeroVideo.mp4"
@@ -89,10 +112,29 @@ const Hero: React.FC = () => {
           <Image
             alt="image"
             // className="absolute -left-[120px] object-contain xl:bottom-[10px] xl:h-[350px] xl:w-[300px] 2xl:-left-[180px] 2xl:bottom-[110px] 2xl:h-[400px] 2xl:w-[400px] 2.5xl:-left-[185px] 2.5xl:bottom-[0px] 2.5xl:h-[550px] 2.5xl:w-[500px]"
-            className="absolute -left-[150px] bottom-[25px] h-[550px] w-[330px]"
+            className="absolute -left-[150px] bottom-[25px] hidden h-[550px] w-[330px] lg2:block"
             src={HeroPng}
             quality={60}
           />
+        </div>
+        <div className="custom_padding   sm:mt-[60px] w-full lg2:hidden">
+          <h4 className="font-openSans text-[16px] font-semibold text-ti_grey">
+            What We Provide
+          </h4>
+          <div className="mt-[10px] space-y-[10px]">
+            {HeroSection.map((item, idx) => (
+              <div className="flex items-start gap-[10px] py-[5px]" key={idx}>
+                <Image
+                  className="size-[24px]"
+                  alt={item.title}
+                  src={item.icon}
+                />
+                <h1 className="font-openSans text-[16px] font-semibold leading-[24px] text-[#333333]">
+                  {item.title}
+                </h1>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

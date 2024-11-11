@@ -16,7 +16,7 @@ import EE from '@/../public/images/estonia.png'
 
 import brand1 from '@/../public/images/New folder/1.svg'
 import brand2 from '@/../public/images/New folder/2.svg'
-import brand3 from '@/../public/images/New folder/3.svg'
+import brand3 from '@/../public/images/New folder/3.png'
 
 
 import Acura from '@/../public/images/Car_brands/Acura.svg'
@@ -48,7 +48,7 @@ const HeroSection =
 const cars = [
     { value: "20+", title: "Car Brands" },
     { value: "400+", title: " Cars Models" },
-    { value: "20", title: "Countries" },
+    { value: "20+", title: "Countries" },
 ];
 
 

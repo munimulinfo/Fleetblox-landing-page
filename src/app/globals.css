@@ -224,6 +224,19 @@ form::-webkit-scrollbar {
     );
   }
 
+  .allComponentSliderRight {
+  animation: animationSliderRight 10s linear infinite;
+}
+
+@keyframes animationSliderRight {
+  from {
+    transform: translateX(0)
+  }
+  to {
+    transform: translateX(100%)
+  }
+}
+
   .video_layer_3 {
     border-radius: 666px;
     opacity: 0.1;
@@ -489,5 +502,18 @@ form::-webkit-scrollbar {
   .shadow-bottom {
     padding-top: 10px;
     box-shadow: 1px 4px 40px 10px rgba(0, 0, 0, 0.09);
+  }
+
+ 
+}
+
+
+@layer components {
+  .custom_padding {
+    @apply px-[13px] xxxs:px-[18px] xxs:px-[20px] xs:px-[40px] sm:px-[60px] md:px-[100px] lg:px-[150px] 
+  }
+
+  .custom_video_padding {
+      @apply px-[13px] xxxs:px-[18px] xxs:px-[20px] xs:px-[40px] sm:px-[60px] lg:px-0
   }
 }
