@@ -9,7 +9,7 @@ interface NotCompitableProps {
 }
 
 const NotCompitable = ({ href, text, className }: NotCompitableProps) => {
-    return <button className={` w-1/2 pre_landing_page_btn font-inter border text-ti_grey px-[14px] py-[8px] border-ti_light_grey rounded-md ${className}`}>
+    return <button className={` w-1/2 pre_landing_page_btn font-inter   text-ti_grey px-[14px] py-[8px]   rounded-md ${className}`}>
         <Link href={href}>{text}</Link>
     </button>;
 };

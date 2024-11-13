@@ -38,16 +38,14 @@ export async function POST(req: Request) {
     const emailHtml = emailTemplate(emailData);
 
     const emailOptions: SendMailOptions = {
-      to: 'sarkarsoumik215@gmail.com',
+      to: 'Llamamindtech@gmail.com',
+      // to: 'sarkarsoumik215@gmail.com',
       subject: "✨ Someone showed early interest 🚗",
       html: emailHtml,
     }
 
-    const emailResponse = await sendEmail(emailOptions);
-
-    console.log(emailResponse, 'emailResponse');
-
-
+    await sendEmail(emailOptions);
+  
     return NextResponse.json({
       message: "Email sent successfully",
       data: reqBody,
@@ -67,7 +65,8 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const email = searchParams.get('email');
     const emailOptions: SendMailOptions = {
-      to: 'sarkarsoumik215@gmail.com',
+      to: 'Llamamindtech@gmail.com',
+      // to: 'sarkarsoumik215@gmail.com',
       subject: "✨ Someone subscribed to the newsletter 🚗",
       html: `<!DOCTYPE html>
 <html lang="en" style="margin: 0; padding: 0; box-sizing: border-box;">
@@ -157,9 +156,6 @@ export async function GET(req: Request) {
       message: "Subscribed successfully!",
       status: 201,
     });
-
-
-    return NextResponse.json({ message: "Hello, World!" }, { status: 200 });
   } catch (error) {
     console.error("Error occurred:", error);
     return NextResponse.json(

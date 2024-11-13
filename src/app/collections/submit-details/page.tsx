@@ -46,7 +46,7 @@ const SubmitDetails = () => {
         }
     }, []);
 
- 
+
 
     const submitData = {
         email: formData.email,
@@ -109,7 +109,7 @@ const SubmitDetails = () => {
 
     return (
 
-        <div className="relative flex max-h-[800px] overflow-scroll items-center justify-between  w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[60px] py-[60px] shadow-lg">
+        <div className="relative flex max-h-[800px] overflow-scroll items-center justify-between  w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]    md:shadow-lg">
             <div className="flex flex-shrink-0 flex-col items-center justify-center">
                 <h2 className="pre_landing_page_title font-inter">
                     Submit your details
@@ -120,7 +120,7 @@ const SubmitDetails = () => {
             </div>
 
 
-            <form onSubmit={handleSubmit} id='submitForm' className="w-full flex flex-col gap-[40px] pt-[40px] overflow-y-scroll overflow-hidden  scroll-mt-[120px]" style={{ maxHeight: '1000px' }}>
+            <form onSubmit={handleSubmit} id='submitForm' className="w-full flex flex-col gap-[40px] pt-[40px] overflow-y-scroll overflow-hidden  scroll-mt-[120px] max-h-[1200px]" >
                 <div>
                     <h1 className=" mb-[20px] text-ti_light_black text-[18px] font-semibold font-inter">Personal info</h1>
                     <div>
@@ -141,7 +141,7 @@ const SubmitDetails = () => {
                             className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                         />
                     </div>
-                    <div className="flex gap-[20px] mt-[16px]">
+                    <div className="flex  sm:flex-row flex-col gap-[20px] mt-[16px]">
                         <div className="w-full">
                             <label
                                 htmlFor="email"
@@ -233,7 +233,7 @@ const SubmitDetails = () => {
                             className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                         />
                     </div>
-                    <div className="flex gap-[20px] mt-[16px]">
+                    <div className="flex sm:flex-row flex-col gap-[20px] mt-[16px]">
                         <div className="w-full">
                             <label
                                 htmlFor="fleetSize"
@@ -270,7 +270,7 @@ const SubmitDetails = () => {
                             />
                         </div>
                     </div>
-                    <div className="flex gap-[20px] mt-[16px]">
+                    <div className="flex sm:flex-row flex-col gap-[20px] mt-[16px]">
                         <div className="w-full">
                             <label
                                 htmlFor="fullName"
@@ -308,7 +308,7 @@ const SubmitDetails = () => {
                             />
                         </div>
                     </div>
-                    <div className="flex gap-[20px] mt-[16px]">
+                    <div className="flex sm:flex-row flex-col gap-[20px] mt-[16px]">
                         <div className="w-full">
                             <label
                                 htmlFor="fullName"
@@ -346,7 +346,7 @@ const SubmitDetails = () => {
                             />
                         </div>
                     </div>
-                    <div className="flex gap-[20px] mt-[16px]">
+                    <div className="flex sm:flex-row flex-col gap-[20px] mt-[16px]">
                         <div className="w-full">
                             <label
                                 htmlFor="fullName"
@@ -387,7 +387,7 @@ const SubmitDetails = () => {
                 </div>
 
             </form>
-            <div className="w-full mt-[20px]">
+            <div className="w-full mt-[20px] ">
                 <button disabled={loading} type='submit' form='submitForm' className="w-full rounded-md bg-p_blue px-[14px] py-[9.3px] font-inter text-[14px] font-semibold text-bg_white">
                     {loading ? 'Submitting...' : 'Submit'}
                 </button>

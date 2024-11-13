@@ -18,11 +18,11 @@ const Successfull = () => {
             <Image
                 src={start}
                 alt="start with us"
-                className="absolute inset-0 h-full w-full"
+                className="absolute inset-0 h-full w-full hidden lg:block "
             />
 
-            <div className="z-[1000000] flex min-h-screen items-center justify-center overflow-auto bg-bg_white p-4">
-                <div className="relative flex h-[780px] w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[60px] py-[60px] shadow-lg">
+            <div className="z-[1000000] flex min-h-screen items-center justify-center overflow-auto bg-bg_white ">
+                <div className="relative flex h-[780px] w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[20px] xs:px-[30px] sm:px-[60px]  py-[20px] md:py-[60px] lg:shadow-lg">
                     <div className="flex flex-shrink-0 flex-col items-center justify-center">
                         <Image alt="failed image" className="mb-[10px]" src={success} />
                         <h2 className="pre_landing_page_title font-inter">

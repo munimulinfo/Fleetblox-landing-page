@@ -45,7 +45,7 @@ const SelectCountry = () => {
         setCustomProgress(progress + 10);
     };
 
-    return <div className=" relative bg-bg_white rounded-lg shadow-lg w-full max-w-[650px] h-[780px] flex flex-col px-[60px] py-[60px]">
+    return <div className=" relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] h-[800px] md:h-[780px] flex justify-between flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
         {/* Header Section */}
         <div className="mb-[40px] flex-shrink-0">
             <h2 className="pre_landing_page_title font-inter">Select your country</h2>
@@ -67,7 +67,7 @@ const SelectCountry = () => {
         </div>
 
         {/* Scrollable Countries List */}
-        <div className="space-y-[10px]  overflow-y-scroll" style={{ maxHeight: '450px' }}>
+        <div className="space-y-[10px]  overflow-y-scroll max-h-[550px] md:max-h-[450px]">
             {filteredCountries.map((country) => (
                 <div
                     key={country.name}
@@ -91,12 +91,12 @@ const SelectCountry = () => {
 
 
         {/* Footer Buttons */}
-        <div className="mt-[40px] flex-shrink-0 flex items-center gap-4">
-            <button onClick={() => router.push('/result/not-compatible')} className=" w-1/2 pre_landing_page_btn border text-ti_grey px-[14px] py-[8px] border-ti_light_grey rounded-md">
+        <div className="mt-[40px] flex-shrink-0 flex  lg:flex-row flex-col-reverse items-center gap-4">
+            <button onClick={() => router.push('/result/not-compatible')} className=" lg:w-1/2 pre_landing_page_btn w-full   text-ti_grey px-[14px] py-[8px]  rounded-md">
                 {`I can’t find my country`}
             </button>
             <button
-                className={` w-1/2 pre_landing_page_btn  text-bg_white   px-[14px] py-[10px] rounded-md ${selectedCountry ? ' bg-p_blue' : 'bg-p_blue/50  '
+                className={` w-full lg:w-1/2 pre_landing_page_btn  text-bg_white   px-[14px] py-[10px] rounded-md ${selectedCountry ? ' bg-p_blue' : 'bg-p_blue/50  '
                     }`}
                 disabled={!selectedCountry}
                 onClick={handleNext}

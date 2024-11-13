@@ -17,15 +17,15 @@ export default function RootLayout({
                 <Image
                     src={start}
                     alt="start with us"
-                    className="absolute inset-0 h-full w-full"
+                    className="absolute inset-0 h-full w-full hidden xl:block"
                 />
                 <Image
                     src={Logo}
                     alt="start with us"
-                    className="absolute left-10 top-10"
+                    className="absolute left-10 top-10 hidden xl:block"
                 />
-                <div className="z-[1000000] flex min-h-screen flex-col items-center justify-center overflow-auto bg-bg_white p-4">
-                    <div className="relative z-[2000000] -mb-[5px] flex h-[5px] overflow-hidden w-full max-w-[650px] items-start justify-start rounded-tl-lg rounded-tr-lg ">
+                <div className="z-[1000000] flex min-h-screen flex-col sm:items-center sm:justify-center overflow-auto bg-bg_white lg:p-4">
+                    <div className="relative z-[2000000] -mb-[5px] flex h-[5px] overflow-hidden w-full max-w-[650px] items-start justify-start sm:rounded-tl-lg sm:rounded-tr-lg  ">
                         <ProgressBar />
                     </div>
                     {children}

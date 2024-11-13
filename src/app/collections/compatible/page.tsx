@@ -8,7 +8,7 @@ import falseIcon from '@/../public/images/false.svg'
 import { BrandCarList } from "@/Static_data/data";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
-import { useCallback, useEffect,  useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Compatible = () => {
   const router = useRouter();
@@ -61,7 +61,7 @@ const Compatible = () => {
 
   return (
 
-    <div className="relative flex h-[780px] items-center justify-between  w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[60px] py-[60px] shadow-lg">
+    <div className="relative flex h-[780px] items-center justify-between  w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px] md:shadow-lg">
       <div>
         <div className="flex flex-shrink-0 flex-col items-center justify-center">
           <Image alt="failed image" className="mb-[10px]" src={success} />

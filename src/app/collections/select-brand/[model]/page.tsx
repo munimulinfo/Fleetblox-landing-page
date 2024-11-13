@@ -144,7 +144,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
 
 
     return (
-        <div className="relative bg-bg_white rounded-lg shadow-lg w-full max-w-[650px] h-[780px] flex flex-col px-[60px] py-[60px]">
+        <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] h-[850px] md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
             {/* Header Section */}
             <div onClick={backButton} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
                 <ArrowLeft size={20} className=' text-ti_dark_grey' />
@@ -188,12 +188,12 @@ const ModelSelector = ({ params }: CustomPageProps) => {
             </div>
 
             {/* Footer Buttons */}
-            <div className="mt-[40px] flex-shrink-0 flex items-center gap-4">
-                <button onClick={handleNotFindModel} className={` w-1/2 pre_landing_page_btn font-inter border text-ti_grey px-[14px] py-[8px] border-ti_light_grey rounded-md `}>
+            <div className="mt-[40px] flex-shrink-0 flex lg:flex-row flex-col-reverse items-center gap-4">
+                <button onClick={handleNotFindModel} className={`w-full lg:w-1/2 pre_landing_page_btn font-inter   text-ti_grey px-[14px] py-[8px]  rounded-md `}>
                     {`I can't find my car model`}
                 </button>
                 <button
-                    className={`w-1/2 pre_landing_page_btn text-bg_white px-[14px] py-[9px] rounded-md ${currentBrandModels?.length > 0 ? 'bg-p_blue' : 'bg-p_blue/50'}`}
+                    className={`w-full lg:w-1/2 pre_landing_page_btn text-bg_white px-[14px] py-[9px] rounded-md ${currentBrandModels?.length > 0 ? 'bg-p_blue' : 'bg-p_blue/50'}`}
                     disabled={!currentBrandModels || currentBrandModels.length <= 0}
                     onClick={handleNext}
                 >

@@ -11,9 +11,9 @@ import { useProgressUpdater } from '@/hooks/useProgress';
 const BrandSelector = () => {
     const router = useRouter()
     const [searchQuery, setSearchQuery] = useState('');
-    
-    
-    
+
+
+
 
     const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
@@ -68,7 +68,7 @@ const BrandSelector = () => {
 
     return (
 
-        <div className="relative bg-bg_white rounded-lg shadow-lg w-full max-w-[650px] h-[780px] flex flex-col px-[60px] py-[60px]">
+        <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] h-[850px] md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
             {/* Header Section */}
             <div onClick={handleBack} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
                 <ArrowLeft size={20} className=' text-ti_dark_grey' />
@@ -101,7 +101,7 @@ const BrandSelector = () => {
             </div>
 
             {/* Scrollable Countries List */}
-            <div className="space-y-[10px]  w-full overflow-y-scroll" style={{ maxHeight: '450px' }}>
+            <div className="space-y-[10px]  w-full overflow-y-scroll max-h-[500px] md:max-h-[450px]" >
                 {filteredBrands.map((brand) => (
                     <div
                         key={brand.brand}
@@ -128,11 +128,11 @@ const BrandSelector = () => {
 
 
             {/* Footer Buttons */}
-            <div className="mt-[40px] flex-shrink-0 flex items-center gap-4">
-                <NotCompitable href='/result/not-compatible' text="I can’t find my car brand" />
+            <div className="mt-[40px] flex-shrink-0 flex lg:flex-row flex-col-reverse items-center gap-4">
+                <NotCompitable href='/result/not-compatible' className=' w-full lg:w-1/2' text="I can’t find my car brand" />
                 <button
                     onClick={handleNext}
-                    className={` w-1/2 pre_landing_page_btn  text-bg_white   px-[14px] py-[10px] rounded-md ${selectedBrands.length ? ' bg-p_blue' : 'bg-p_blue/50  '
+                    className={` w-full lg:w-1/2 pre_landing_page_btn  text-bg_white   px-[14px] py-[10px] rounded-md ${selectedBrands.length ? ' bg-p_blue' : 'bg-p_blue/50  '
                         }`}
                     disabled={!selectedBrands.length}
                 >
