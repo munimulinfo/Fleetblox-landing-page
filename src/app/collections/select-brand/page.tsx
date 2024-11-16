@@ -110,14 +110,16 @@ const BrandSelector = () => {
                         onClick={() => handleBrandSelect(brand.brand)}
                     >
 
-                        <Image
-                            src={brand.brandLogo}
-                            alt={brand.brand}
+                        <div className='flex items-center'>
+                            <Image
+                                src={brand.brandLogo}
+                                alt={brand.brand}
 
-                            className='mix-blend-multiply flex items-center justify-center object-contain w-[70px] h-[40px]'
-                        />
-                        <div className=" leading-[18px]  font-semibold text-left text-ti_black font-inter text-[14px] ">
-                            {brand.brand}
+                                className='mix-blend-multiply flex items-center justify-center object-contain w-[70px] h-[40px] mr-[15px]'
+                            />
+                            <div className=" leading-[18px]  font-semibold text-left text-ti_black font-inter text-[14px] ">
+                                {brand.brand}
+                            </div>
                         </div>
                         <div className=" leading-[18px]  font-medium  text-ti_dark_grey font-inter text-[14px] ">
                             {brand.year}

@@ -5,7 +5,9 @@ import Image from 'next/image';
 import { BrandCarList } from '@/Static_data/data';
 import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
-
+import close from '@/../public/images/access_point/down.svg'
+import open from '@/../public/images/access_point/up.svg'
+import AccessPoint from './access';
 interface CustomPageProps {
     params: {
         model: string
@@ -16,9 +18,15 @@ const ModelSelector = ({ params }: CustomPageProps) => {
     const { setCustomProgress, progress } = useProgressUpdater();
     const [totalBrands, setTotalBrands] = useState(0);
 
+    // drop down 
+    const [isOpen, setIsOpen] = useState('');
+
+
+    // router
     const router = useRouter();
     const modelParam = params.model;
 
+    // search filtering
     const filteredModels = React.useMemo(() => {
         return BrandCarList.filter((brand) => {
             const decodedBrandNames = decodeURIComponent(modelParam).split(',');
@@ -37,6 +45,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
         return [];
     });
 
+    // select the model
     const handleModelSelect = (model: string) => {
         const currentBrand = modelData.brand;
         const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
@@ -63,27 +72,11 @@ const ModelSelector = ({ params }: CustomPageProps) => {
         storedModels[currentBrand] = updatedModels.length ? updatedModels : null;
         localStorage.setItem('brandModels', JSON.stringify(storedModels));
     };
-    // const handleModelSelect = (model: string) => {
-    //     const currentBrand = modelData.brand;
-    //     const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
-
-
-    //     if (selectedModels.includes(model)) {
-    //         const updatedModels = selectedModels.filter(selectedModel => selectedModel !== model);
-    //         setSelectedModels(updatedModels);
-    //         storedModels[currentBrand] = updatedModels.length ? updatedModels : null;
-    //     } else {
-    //         const updatedModels = [...selectedModels, model];
-    //         setSelectedModels(updatedModels);
-    //         storedModels[currentBrand] = updatedModels;
-    //     }
-
-    //     localStorage.setItem('brandModels', JSON.stringify(storedModels));
-    // };
 
 
     const calculateProgress = 60 / totalBrands;
 
+    // handle Next Button
     const handleNext = () => {
         if (currentBrandIndex < filteredModels.length - 1) {
             setCurrentBrandIndex(prev => prev + 1);
@@ -93,19 +86,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
         }
     };
 
-    // const handleNotFindModel = () => {
-    //     const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
-    //     storedModels[modelData.brand] = null;
-    //     localStorage.setItem('brandModels', JSON.stringify(storedModels));
-    //     if (currentBrandIndex < filteredModels.length - 1) {
-    //         setCurrentBrandIndex(prev => prev + 1);
-    //         setCustomProgress(progress + calculateProgress);
-    //         setSelectedModels([]);
-    //     } else {
-    //         router.push('/result/not-compatible');
 
-    //     }
-    // }
     const handleNotFindModel = () => {
         if (currentBrandIndex < filteredModels.length - 1) {
             const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
@@ -139,9 +120,14 @@ const ModelSelector = ({ params }: CustomPageProps) => {
 
 
     const currentBrandModels = JSON.parse(localStorage.getItem('brandModels') || '{}')[modelData.brand]
-    console.log(currentBrandModels, 'index');
 
-
+    const showAccessPoint = (modelName: string) => {
+        if (isOpen === modelName) {
+            setIsOpen('')
+        } else {
+            setIsOpen(modelName)
+        }
+    }
 
     return (
         <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] h-[850px] md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
@@ -170,19 +156,28 @@ const ModelSelector = ({ params }: CustomPageProps) => {
                 {modelData.models.map((model) => (
                     <div
                         key={model.name}
-                        className={`flex justify-between items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels.includes(model.name) ? 'select_car_collection_bg border-p_light_blue' : ''}`}
+                        className={`flex justify-between flex-col items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels.includes(model.name) ? 'select_car_collection_bg border-p_light_blue' : ''}`}
                         onClick={() => handleModelSelect(model.name)}
                     >
-                        <div className="flex items-center">
-                            <input
-                                type="checkbox"
-                                checked={selectedModels.includes(model.name)}
-                                onChange={() => handleModelSelect(model.name)}
-                            />
-                            <div className="ml-2 leading-[18px] font-semibold text-left text-ti_black font-inter text-[14px]">
-                                {model.name}
+                        <div className='flex items-center justify-between w-full'>
+                            <div className="flex items-center z-[1]">
+                                <input
+                                    type="checkbox"
+                                    checked={selectedModels.includes(model.name)}
+                                    onChange={() => handleModelSelect(model.name)}
+                                />
+                                <div className="ml-2 leading-[18px] font-semibold text-left text-ti_black font-inter text-[14px]">
+                                    {model.name}
+                                </div>
+                            </div>
+                            <div className='z-[1000] w-[20px]  h-[20px]' onClick={(e) => {
+                                e.stopPropagation(); // Prevent the outer onClick from being triggered
+                                showAccessPoint(model.name);
+                            }}>
+                                <Image className='  z-[10] size-[18px]  object-cover' src={isOpen === model.name ? open : close} alt='open' />
                             </div>
                         </div>
+                        {isOpen === model.name && <AccessPoint />}
                     </div>
                 ))}
             </div>

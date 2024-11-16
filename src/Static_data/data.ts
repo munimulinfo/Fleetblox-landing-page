@@ -26,6 +26,12 @@ import BMW from '@/../public/images/Car_brands/Bmw.png'
 import Buick from '@/../public/images/Car_brands/Buick.png'
 import Cadillac from '@/../public/images/Car_brands/Cadillac.png'
 
+
+import image1 from '@/../public/images/access_point/first.svg'
+import image2 from '@/../public/images/access_point/second.svg'
+import image3 from '@/../public/images/access_point/last.svg'
+
+
 const HeroSection =
     [
         {
@@ -261,4 +267,24 @@ const BrandCarList = [
     },
 ];
 
-export { HeroSection, cars, countries, compatibleBrands, countryCodes, BrandCarList }
+const pricingPlan = [
+    {
+        image: image1,
+        title: "Smart Fleet",
+        description: "Your digital garage management",
+        price: "499"
+    },
+    {
+        image: image2,
+        title: "Dynamic Fleet",
+        description: "Start your rental business",
+        price: "1,199"
+    } ,  
+    {
+        image: image3,
+        title: "Ultimate Fleet",
+        description: "Complete tools for rental success",
+        price: "1,999"
+    } ,  
+]
+export { HeroSection, cars, countries, compatibleBrands, countryCodes, BrandCarList, pricingPlan }
