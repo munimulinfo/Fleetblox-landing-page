@@ -75,17 +75,19 @@ const Compatible = () => {
                   <Image src={brand.brandLogo} alt={brand.brand} className="mix-blend-multiply flex items-center justify-center object-contain w-[70px] h-[40px]" />
                   <p className="font-inter text-[16px] font-semibold text-ti_black">{brand.brand}</p>
                 </div>
-                {brand.compatible ? (
-                  <div className="flex items-center gap-[5px]">
-                    <Image src={trueIcon} width={16} height={16} alt="success" />
-                    <span className="font-inter text-[14px]  text-[#4DB429]">Compatible</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-[5px]">
-                    <Image src={falseIcon} width={16} height={16} alt="failed" />
+                <div className="w-[110px]">
+                  {brand.compatible ? (
+                    <div className="flex items-center gap-[5px]">
+                      <Image src={trueIcon} width={16} height={16} alt="success" />
+                      <span className="font-inter text-[14px]  text-[#4DB429]">Compatible</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-[5px]">
+                      <Image src={falseIcon} width={16} height={16} alt="failed" />
                       <span className="font-inter text-[14px]  text-[#F00]">Incompatible</span>
-                  </div>
-                )}
+                    </div>
+                  )}
+                </div>
               </div>
             ))
           }

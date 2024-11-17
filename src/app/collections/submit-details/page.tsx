@@ -128,7 +128,7 @@ const SubmitDetails = () => {
         <div className="relative flex  overflow-scroll  justify-between  w-full max-w-[1360px] flex-col rounded-lg bg-bg_white px-[20px] xs:px-[30px] sm:px-[50px] py-[20px] md:py-[50px] md:shadow-lg">
             <div className="flex flex-shrink-0 flex-col ">
                 <h2 className="pre_landing_page_title text-left font-inter text-ti_light_black">
-                    Submit your details
+                    Complete your purchase
                 </h2>
                 <p className="pre_landing_page_text text-left">
                     {`Confirm your vehicle compatibility and choose your plan, then continue to payment. `}
@@ -173,29 +173,31 @@ const SubmitDetails = () => {
                                     <div key={brand.brand} className="flex items-center  justify-between border rounded-md px-[16px] py-[12px]">
                                         <div className=" flex items-center gap-[15px]">
                                             <Image src={brand.brandLogo} alt={brand.brand} className="mix-blend-multiply flex items-center justify-center object-contain w-[70px] h-[40px]" />
-                                            <div>
+                                            <div className='w-[550px]'>
                                                 <h1 className="font-inter text-[16px] font-semibold text-ti_black">{brand.brand}</h1>
-                                                <p className="font-inter text-[12px] font-normal text-ti_grey">{brand.models.map(model => model.name).join(', ')}</p>
+                                                <p className="font-inter text-[12px] font-normal text-ti_dark_grey">{brand.models.map(model => model.name).join(', ')}</p>
                                             </div>
                                         </div>
-                                        {brand.compatible ? (
-                                            <div className="flex items-center gap-[5px]">
-                                                <Image src={trueIcon} width={16} height={16} alt="success" />
-                                                <span className="font-inter text-[14px]  text-[#4DB429]">Compatible</span>
-                                            </div>
-                                        ) : (
-                                            <div className="flex items-center gap-[5px]">
-                                                <Image src={falseIcon} width={16} height={16} alt="failed" />
-                                                <span className="font-inter text-[14px]  text-[#F00]">Incompatible</span>
-                                            </div>
-                                        )}
+                                       <div className='w-[110px]'>
+                                            {brand.compatible ? (
+                                                <div className="flex items-center gap-[5px]">
+                                                    <Image src={trueIcon} width={16} height={16} alt="success" />
+                                                    <span className="font-inter text-[14px]  text-[#4DB429]">Compatible</span>
+                                                </div>
+                                            ) : (
+                                                <div className="flex items-center gap-[5px]">
+                                                    <Image src={falseIcon} width={16} height={16} alt="failed" />
+                                                    <span className="font-inter text-[14px]  text-[#F00]">Incompatible</span>
+                                                </div>
+                                            )}
+                                       </div>
                                     </div>
                                 ))
                             }
                         </div>
                     </div>
                 </div>
-                <form onSubmit={handleSubmit} id='submitForm' className="   px-[20px] max-w-[360px] flex flex-col    justify-between h-[670px] flex-initial   " >
+                <form onSubmit={handleSubmit} id='submitForm' className=" shadow-lg  pb-[20px] rounded-lg  px-[20px] max-w-[360px] flex flex-col    justify-between h-[670px] flex-initial   " >
                     <div>
                         <div className=''>
                             <h1 className=" mb-[10px] text-ti_dark_grey text-[14px] font-bold font-inter">Contact info</h1>

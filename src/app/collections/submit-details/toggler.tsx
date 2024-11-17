@@ -5,7 +5,7 @@ const PricingToggle = () => {
 
     return (
         <div className="flex items-center gap-4">
-            <h1 className={`text-[14px] font-inter font-semibold text-p_blue`}>
+            <h1 className={`text-[14px] font-inter font-semibold ${!isYearly ? 'text-p_blue' : 'text-ti_grey'}`}>
                 Monthly
             </h1>
 
@@ -22,7 +22,7 @@ const PricingToggle = () => {
                 />
             </button>
 
-            <h1 className={`text-[14px] font-inter font-semibold text-ti_grey`}>
+            <h1 className={`text-[14px] font-inter font-semibold ${isYearly ? 'text-p_blue' : 'text-ti_grey'}`}>
                 Yearly
             </h1>
         </div>

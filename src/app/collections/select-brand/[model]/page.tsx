@@ -130,25 +130,28 @@ const ModelSelector = ({ params }: CustomPageProps) => {
     }
 
     return (
-        <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] h-[850px] md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
-            {/* Header Section */}
-            <div onClick={backButton} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
-                <ArrowLeft size={20} className=' text-ti_dark_grey' />
-                <span className='text-ti_dark_grey font-inter font-semibold text-[14px] leading-[18px]'>{`Back`}</span>
-            </div>
+        <div className="relative bg-bg_white  justify-between rounded-lg md:shadow-lg w-full max-w-[650px] h-[850px] md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
 
-            <div className="mb-[40px] flex-shrink-0">
-                <h2 className="pre_landing_page_title font-inter">Select your car models</h2>
-                <p className="pre_landing_page_text">
-                    Choose your car models of each of your selected brands
-                </p>
-            </div>
+            <div>
+                {/* Header Section */}
+                <div onClick={backButton} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
+                    <ArrowLeft size={20} className=' text-ti_dark_grey' />
+                    <span className='text-ti_dark_grey font-inter font-semibold text-[14px] leading-[18px]'>{`Back`}</span>
+                </div>
 
-            {/* Search Section */}
-            <div className='mb-[32px] flex items-center justify-center flex-col'>
-                <Image className='h-[50px] w-auto object-contain' src={modelData.brandLogo} alt='model' />
-                <h1 className='text-p_dark_blue font-inter font-semibold text-[32px] mt-[2px]'>{modelData.brand}</h1>
-                <h3 className='text-ti_dark_grey font-medium font-inter text-[14px] leading-[18px]'>{modelData.year}</h3>
+                <div className="mb-[40px] flex-shrink-0">
+                    <h2 className="pre_landing_page_title font-inter">Select your car models</h2>
+                    <p className="pre_landing_page_text">
+                        Choose your car models of each of your selected brands
+                    </p>
+                </div>
+
+                {/* Search Section */}
+                <div className='mb-[32px] flex items-center justify-center flex-col'>
+                    <Image className='h-[50px] w-auto object-contain' src={modelData.brandLogo} alt='model' />
+                    <h1 className='text-p_dark_blue font-inter font-semibold text-[32px] mt-[2px]'>{modelData.brand}</h1>
+                    <h3 className='text-ti_dark_grey font-medium font-inter text-[14px] leading-[18px]'>{modelData.year}</h3>
+                </div>
             </div>
 
             {/* Scrollable Models List */}
@@ -181,6 +184,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
                     </div>
                 ))}
             </div>
+
 
             {/* Footer Buttons */}
             <div className="mt-[40px] flex-shrink-0 flex lg:flex-row flex-col-reverse items-center gap-4">
