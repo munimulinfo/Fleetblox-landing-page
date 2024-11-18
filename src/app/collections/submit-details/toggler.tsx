@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-
-const PricingToggle = () => {
+import EmailTypeConstant from './constant';
+const PricingToggle = ({ setPlanType }: { setPlanType: (planType: string) => void }) => {
     const [isYearly, setIsYearly] = useState(false);
 
     return (
@@ -10,7 +10,7 @@ const PricingToggle = () => {
             </h1>
 
             <button
-                onClick={() => setIsYearly(!isYearly)}
+                onClick={() => { setIsYearly(!isYearly); setPlanType(!isYearly ? EmailTypeConstant.PlanTypeConstant.YEARLY : EmailTypeConstant.PlanTypeConstant.MONTHLY) }}
                 className="relative inline-flex h-6 w-12 items-center rounded-full transition-colors duration-200 ease-in-out bg-p_blue"
                  
                 role="switch"

@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     }
 
     await sendEmail(emailOptions);
-  
+
     return NextResponse.json({
       message: "Email sent successfully",
       data: reqBody,

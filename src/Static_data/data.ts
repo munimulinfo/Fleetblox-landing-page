@@ -31,6 +31,7 @@ import image1 from '@/../public/images/access_point/first.svg'
 import image2 from '@/../public/images/access_point/second.svg'
 import image3 from '@/../public/images/access_point/last.svg'
 
+import PlanConstant from '@/app/collections/submit-details/constant'
 
 const HeroSection =
     [
@@ -272,19 +273,24 @@ const pricingPlan = [
         image: image1,
         title: "Smart Fleet",
         description: "Your digital garage management",
-        price: "499"
+        price: 499,
+        constant: PlanConstant.PlansConstant.SMART_FLEET
+
     },
     {
         image: image2,
         title: "Dynamic Fleet",
         description: "Start your rental business",
-        price: "1,199"
+        price: "1,199",
+        constant: PlanConstant.PlansConstant.DYNAMIC_FLEET
+
     } ,  
     {
         image: image3,
         title: "Ultimate Fleet",
         description: "Complete tools for rental success",
-        price: "1,999"
+        price: "1,999",
+        constant: PlanConstant.PlansConstant.ULTIMATE_FLEET
     } ,  
 ]
 export { HeroSection, cars, countries, compatibleBrands, countryCodes, BrandCarList, pricingPlan }

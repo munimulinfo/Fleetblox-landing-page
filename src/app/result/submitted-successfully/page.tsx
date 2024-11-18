@@ -26,10 +26,10 @@ const Successfull = () => {
                     <div className="flex flex-shrink-0 flex-col items-center justify-center">
                         <Image alt="failed image" className="mb-[10px]" src={success} />
                         <h2 className="pre_landing_page_title font-inter">
-                            Submitted successfully!
+                            Purchase completed
                         </h2>
                         <p className="pre_landing_page_text">
-                            {`Your details have been submitted successfully. We’ll be in touch soon, and you'll be eligible for up to a 15% discount on our platform at launch.`}
+                            {`You've successfully subscribed! Check your email to get started and begin building your experience with us.`}
                         </p>
                     </div>
 
