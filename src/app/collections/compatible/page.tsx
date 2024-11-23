@@ -5,35 +5,26 @@ import success from "@/../public/images/Icons.png";
 
 import trueIcon from '@/../public/images/true.svg'
 import falseIcon from '@/../public/images/false.svg'
-import { BrandCarList } from "@/Static_data/data";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
-import { useCallback, useEffect, useState } from "react";
-
+import { useCallback } from "react";
+import useBrandCarList from "@/hooks/useCompitibily";
+import { Loader } from '@/components/Loader'
 const Compatible = () => {
   const router = useRouter();
-  const [selectedBrands, setSelectedBrands] = useState('');
-  const [storedBrandModels, setStoredBrandModels] = useState<Record<string, string | null>>({});
+  const { selectedBrands, storedBrandModels, brandCarList, loading } = useBrandCarList(null)
 
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setSelectedBrands(localStorage.getItem('brands') || '');
-      setStoredBrandModels(JSON.parse(localStorage.getItem('brandModels') || '{}'));
-    }
-  }, []);
-
-  const { setCustomProgress, progress } = useProgressUpdater();
+  const { setCustomProgress, progress, } = useProgressUpdater();
 
 
   // Filter and determine compatibility status using `useMemo` for memoization
   const filteredCompatibleBrands = useCallback(() => {
-    return BrandCarList.filter(brand => selectedBrands.includes(brand.brand)).map(brand => ({
+    return brandCarList.filter(brand => selectedBrands.includes(brand.brand)).map(brand => ({
       brand: brand.brand,
       brandLogo: brand.brandLogo,
       compatible: storedBrandModels[brand.brand] !== null
     }));
-  }, [selectedBrands, storedBrandModels]);
+  }, [selectedBrands, storedBrandModels, brandCarList]);
 
 
   if (filteredCompatibleBrands().length > 0) {
@@ -46,9 +37,6 @@ const Compatible = () => {
     }
   }
 
-
-
-
   const handleNext = () => {
     setCustomProgress(progress + 10);
     router.push('/collections/submit-details');
@@ -56,7 +44,7 @@ const Compatible = () => {
 
   return (
 
-    <div className="relative flex h-[780px] items-center justify-between  w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px] md:shadow-lg">
+    <div className="relative flex min-h-screen md:min-h-[780px] items-center justify-between  w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px] md:shadow-lg">
       <div>
         <div className="flex flex-shrink-0 flex-col items-center justify-center">
           <Image alt="failed image" className="mb-[10px]" src={success} />
@@ -68,11 +56,11 @@ const Compatible = () => {
           </p>
         </div>
         <div className="mt-[40px] w-full space-y-[5px] rounded-md">
-          {
+          {loading ? <Loader /> :
             filteredCompatibleBrands().map((brand) => (
               <div key={brand.brand} className="flex items-center justify-between border rounded-md px-[16px] py-[12px]">
                 <div className=" flex items-center gap-[10px]">
-                  <Image src={brand.brandLogo} alt={brand.brand} className="mix-blend-multiply flex items-center justify-center object-contain w-[70px] h-[40px]" />
+                  <Image src={brand.brandLogo} alt={brand.brand} width={100} height={100} className="mix-blend-multiply flex items-center justify-center object-contain w-[70px] h-[40px]" />
                   <p className="font-inter text-[16px] font-semibold text-ti_black">{brand.brand}</p>
                 </div>
                 <div className="w-[110px]">

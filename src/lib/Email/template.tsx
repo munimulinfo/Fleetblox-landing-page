@@ -15,7 +15,6 @@ interface EmailTemplateProps {
     brandModels: {
         [key: string]: string[];
     };
-    brands: string[];
     selectedCountry: string;
 }
 

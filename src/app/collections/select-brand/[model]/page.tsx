@@ -1,13 +1,16 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
-import { BrandCarList } from '@/Static_data/data';
 import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
 import close from '@/../public/images/access_point/down.svg'
 import open from '@/../public/images/access_point/up.svg'
 import AccessPoint from './access';
+import { getCode } from 'country-list';
+import axios from 'axios';
+import { CarBrandsData } from '../page';
+import { Loader } from '@/components/Loader'
 interface CustomPageProps {
     params: {
         model: string
@@ -17,23 +20,71 @@ interface CustomPageProps {
 const ModelSelector = ({ params }: CustomPageProps) => {
     const { setCustomProgress, progress } = useProgressUpdater();
     const [totalBrands, setTotalBrands] = useState(0);
-
-    // drop down 
     const [isOpen, setIsOpen] = useState('');
-
-
-    // router
     const router = useRouter();
     const modelParam = params.model;
+    const [loading, setLoading] = useState(false)
+    // remove duplicate function
+    const removeDuplicates = (data: CarBrandsData): CarBrandsData => {
+        const brandSet = new Set<string>();
+        return data.reduce<CarBrandsData>((acc, brand) => {
+            if (!brandSet.has(brand.brand)) {
+                brandSet.add(brand.brand);
+
+                // Deduplicate models by name
+                const modelSet = new Set<string>();
+                const uniqueModels = brand.models.filter((model) => {
+                    if (!modelSet.has(model.name)) {
+                        modelSet.add(model.name);
+                        return true;
+                    }
+                    return false;
+                });
+
+                acc.push({ ...brand, models: uniqueModels });
+            }
+            return acc;
+        }, []);
+    };
+    const [brandCarList, setBrandCarList] = useState<CarBrandsData>([])
+
+
+    useEffect(() => {
+        const country = localStorage.getItem('country')
+        let countrySelect: string;
+        if (country) {
+            const code = getCode(country);
+            if (code === "US" || code === "CA") {
+                countrySelect = code
+            } else {
+                countrySelect = "EUROPE"
+            }
+        }
+        const fetchCountry = async () => {
+            try {
+                setLoading(true)
+                const { data } = await axios(`https://backend.illama360.com/api/dummy/check-compatibility-matrix?region=${countrySelect}`)
+                const uniqueBrandList = removeDuplicates(data.data);
+                setBrandCarList(uniqueBrandList);
+                setLoading(false)
+            } catch (error) {
+                setLoading(false)
+                console.log(error);
+            }
+        }
+        fetchCountry()
+    }, []);
+
+
 
     // search filtering
     const filteredModels = React.useMemo(() => {
-        return BrandCarList.filter((brand) => {
+        return brandCarList.filter((brand) => {
             const decodedBrandNames = decodeURIComponent(modelParam).split(',');
             setTotalBrands(decodedBrandNames.length);
             return decodedBrandNames.includes(brand.brand);
         });
-    }, [modelParam]);
+    }, [brandCarList, modelParam]);
 
     const [currentBrandIndex, setCurrentBrandIndex] = useState(0);
     const [selectedModels, setSelectedModels] = useState<string[]>(() => {
@@ -114,12 +165,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
         }
     }
 
-    if (!modelData) {
-        return <div>No models found</div>;
-    }
-
-
-    const currentBrandModels = JSON.parse(localStorage.getItem('brandModels') || '{}')[modelData.brand]
+    const currentBrandModels = JSON.parse(localStorage.getItem('brandModels') || '{}')[modelData?.brand]
 
     const showAccessPoint = (modelName: string) => {
         if (isOpen === modelName) {
@@ -130,7 +176,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
     }
 
     return (
-        <div className="relative bg-bg_white  justify-between rounded-lg md:shadow-lg w-full max-w-[650px] h-[850px] md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
+        <div className="relative bg-bg_white  justify-between rounded-lg md:shadow-lg w-full max-w-[650px] h-screen md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
 
             <div>
                 {/* Header Section */}
@@ -148,15 +194,15 @@ const ModelSelector = ({ params }: CustomPageProps) => {
 
                 {/* Search Section */}
                 <div className='mb-[32px] flex items-center justify-center flex-col'>
-                    <Image className='h-[50px] w-auto object-contain' src={modelData.brandLogo} alt='model' />
-                    <h1 className='text-p_dark_blue font-inter font-semibold text-[32px] mt-[2px]'>{modelData.brand}</h1>
-                    <h3 className='text-ti_dark_grey font-medium font-inter text-[14px] leading-[18px]'>{modelData.year}</h3>
+                    {modelData?.brandLogo && <Image className='h-[50px] w-auto object-contain' src={modelData.brandLogo} alt='brand logo' width={100} height={100} />}
+                    <h1 className='text-p_dark_blue font-inter font-semibold text-[32px] mt-[2px]'>{modelData?.brand}</h1>
+                    <h3 className='text-ti_dark_grey font-medium font-inter text-[14px] leading-[18px]'>{modelData?.year}</h3>
                 </div>
             </div>
 
             {/* Scrollable Models List */}
-            <div className="space-y-[10px] w-full overflow-y-scroll" style={{ maxHeight: '450px' }}>
-                {modelData.models.map((model) => (
+            <div className="space-y-[10px] w-full overflow-y-scroll  min-h-[270px]" style={{ maxHeight: '450px' }}>
+                {loading ? <Loader /> : modelData?.models.map((model) => (
                     <div
                         key={model.name}
                         className={`flex justify-between flex-col items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels.includes(model.name) ? 'select_car_collection_bg border-p_light_blue' : ''}`}
@@ -180,7 +226,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
                                 <Image className='  z-[10] size-[18px]  object-cover' src={isOpen === model.name ? open : close} alt='open' />
                             </div>
                         </div>
-                        {isOpen === model.name && <AccessPoint />}
+                        {isOpen === model.name && <AccessPoint permission={model.endpoints} />}
                     </div>
                 ))}
             </div>

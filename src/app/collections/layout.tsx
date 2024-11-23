@@ -20,7 +20,7 @@ export default function RootLayout({
                 <Image
                     src={start}
                     alt="start with us"
-                    className="absolute inset-0 h-full w-full hidden xl:block"
+                    className="absolute inset-0 object-cover h-full w-full hidden xl:block"
                 />
                 <Image
                     src={Logo}
@@ -28,7 +28,7 @@ export default function RootLayout({
                     className="absolute left-10 top-10 hidden xl:block"
                 />
                 <div className="z-[1000000] flex min-h-screen flex-col sm:items-center sm:justify-center overflow-auto bg-bg_white lg:p-4">
-                    {pathname !== '/collections/submit-details' && <div className="relative z-[2000000] -mb-[5px] flex h-[5px] overflow-hidden w-full max-w-[650px] items-start justify-start sm:rounded-tl-lg sm:rounded-tr-lg  ">
+                    {pathname !== '/collections/submit-details' && <div className="relative z-[2000000] -mb-[5px] flex h-[5px] overflow-hidden w-full max-w-[650px] items-start justify-start sm:rounded-tl-lg sm:rounded-tr-lg">
                         <ProgressBar />
                     </div>}
                     {children}

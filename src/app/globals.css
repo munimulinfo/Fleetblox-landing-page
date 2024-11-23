@@ -76,10 +76,53 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.quill  {
+  font-family: "Inter", "sans-serif";
+  border: 1px solid white
+}
+
+.ql-toolbar.ql-snow {
+  /* margin-bottom: 20px; */
+  border-radius: 10px 10px 0 0; /* Rounded corners for the top */
+  /* background-color: red; */
+ 
+}
+
+.ql-container.ql-snow {
+  min-height: 450px;
+  border-radius: 0 0 10px 10px; /* Rounded corners for the bottom */
+  border: 1px solid rgba(184, 203, 252, 0.3); /* Match the toolbar border */
+  /* border-top: none;  */
+}
+
+/* Ensure no double borders between toolbar and container */
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  border-top: none;
+}
+
+
 @layer base {
   :root {
     --radius: 0.5rem;
   }
+  .ql-header.ql-picker {
+    @apply !w-[118px] !h-[32px] !border rounded-md;
+  }
+  
+  .ql-expanded {
+    @apply !border-transparent;
+  }
+  
+  .ql-picker-label {
+    @apply !p-[6px] !rounded-md !border;
+  }
+  
+  /* styles.css or your relevant CSS file */
+  .custom-inspection-table .ant-table-tbody > tr > td {
+    padding: 12px; /* Add your custom padding */
+  }
+  
 }
 body::-webkit-scrollbar {
   display: none;
@@ -90,6 +133,8 @@ div::-webkit-scrollbar {
 form::-webkit-scrollbar {
   display: none;
 }
+
+
 
 @layer components {
   /* start pre-landing page */
@@ -423,9 +468,9 @@ form::-webkit-scrollbar {
     background: var(--l-website-primary-color-blue, #2d65f2);
     filter: blur(129.6085968017578px);
   }
-  .our_innovative_ai_robot_right_side_structure {
+  /* .our_innovative_ai_robot_right_side_structure {
     /* width: 508.333px; */
-  }
+  /* } */  
   /* end our innovative ai */
 
   /* start style stronger security */
@@ -515,5 +560,5 @@ form::-webkit-scrollbar {
 
   .custom_video_padding {
       @apply px-[13px] xxxs:px-[18px] xxs:px-[20px] xs:px-[40px] sm:px-[60px] lg:px-0
-  }
+  } 
 }

@@ -2,6 +2,7 @@ import { emailTemplate } from "@/lib/Email/template";
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/sendMail";
 import { SendMailOptions } from "nodemailer";
+// import axios from "axios";
 
 // Create new job
 export async function POST(req: Request) {
@@ -11,9 +12,7 @@ export async function POST(req: Request) {
     if (!reqBody) {
       return NextResponse.json({ status: "Data Not Found" }, { status: 400 });
     }
-
     const { selectedCountry, email, fullName, brandName, fleetSize, businessType, teamSize, locations, country, state, city, postalCode, address, contactNumber, brandModels, brands } = reqBody;
-
     const emailData = {
       email,
       fullName,
@@ -26,20 +25,17 @@ export async function POST(req: Request) {
       state,
       city,
       postalCode,
-      address,
       contactNumber,
       brandModels,
       brands,
       selectedCountry,
+      address
     }
-
-    console.log(emailData, 'emailData from backend');
 
     const emailHtml = emailTemplate(emailData);
 
     const emailOptions: SendMailOptions = {
-      to: 'Llamamindtech@gmail.com',
-      // to: 'sarkarsoumik215@gmail.com',
+      to: 'ratulsarkar216@gmail.com',
       subject: "✨ Someone showed early interest 🚗",
       html: emailHtml,
     }

@@ -8,7 +8,7 @@ const Successfull = () => {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             localStorage.removeItem('brands');
-            localStorage.removeItem('brandModels'); 
+            localStorage.removeItem('brandModels');
             localStorage.removeItem('country');
         }
     }, []);
@@ -21,15 +21,15 @@ const Successfull = () => {
                 className="absolute inset-0 h-full w-full hidden lg:block "
             />
 
-            <div className="z-[1000000] flex min-h-screen items-center justify-center overflow-auto bg-bg_white ">
+            <div className="z-[1000000]  min-h-screen items-center justify-center overflow-auto bg-bg_white  flex">
                 <div className="relative flex h-[780px] w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[20px] xs:px-[30px] sm:px-[60px]  py-[20px] md:py-[60px] lg:shadow-lg">
                     <div className="flex flex-shrink-0 flex-col items-center justify-center">
                         <Image alt="failed image" className="mb-[10px]" src={success} />
                         <h2 className="pre_landing_page_title font-inter">
-                            Purchase completed
+                            Submitted successfully!
                         </h2>
                         <p className="pre_landing_page_text">
-                            {`You've successfully subscribed! Check your email to get started and begin building your experience with us.`}
+                            {`Your details have been submitted successfully. We’ll be in touch soon.`}
                         </p>
                     </div>
 
