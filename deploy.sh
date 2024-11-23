@@ -5,7 +5,7 @@ git reset --hard origin/master
 
 
 # Install dependencies
-npm install
+npm install -f
 
 # Build the application (if applicable)
 npm run build
