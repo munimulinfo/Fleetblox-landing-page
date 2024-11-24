@@ -133,7 +133,7 @@ const SelectCountry = () => {
         </div>
 
         {/* Fixed Footer Buttons */}
-        <div className="flex-shrink-0  flex lg:flex-row flex-col-reverse items-center gap-4">
+        <div className="flex-shrink-0 mt-[20px] flex lg:flex-row flex-col-reverse items-center gap-4">
             <button
                 onClick={() => router.push('/result/not-compatible')}
                 className="lg:w-1/2 pre_landing_page_btn w-full font-inter text-ti_grey px-[14px] py-[8px] rounded-md"
