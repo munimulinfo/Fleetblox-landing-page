@@ -107,9 +107,9 @@ const SelectCountry = () => {
 
         {/* Scrollable Country List - Takes remaining space */}
         <div className="flex-1 min-h-0 overflow-hidden">
-            <div className="h-[95%] overflow-y-auto">
+            <div className="h-full overflow-y-auto">
                 <div className="space-y-[10px] font-inter">
-                    {loading ? <Loader/>  : filteredCountries?.map((country) => (
+                    {loading ? <Loader /> : filteredCountries?.map((country) => (
                         <div
                             key={country.country}
                             className={`w-full flex items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedCountry === country.country ? 'select_car_collection_bg border-p_light_blue' : ''
@@ -133,7 +133,7 @@ const SelectCountry = () => {
         </div>
 
         {/* Fixed Footer Buttons */}
-        <div className="flex-shrink-0 mt-[40px] flex lg:flex-row flex-col-reverse items-center gap-4">
+        <div className="flex-shrink-0  flex lg:flex-row flex-col-reverse items-center gap-4">
             <button
                 onClick={() => router.push('/result/not-compatible')}
                 className="lg:w-1/2 pre_landing_page_btn w-full font-inter text-ti_grey px-[14px] py-[8px] rounded-md"
