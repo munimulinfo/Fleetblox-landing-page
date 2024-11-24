@@ -1,40 +1,65 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { Search } from 'lucide-react';
-import { countries } from '@/Static_data/data';
 import Image from 'next/image';
-import { Country } from '@/Interface/interface';
 import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
 
 import { getCode } from 'country-list'
-
+import toast from 'react-hot-toast';
+import Loader from '@/components/Loader'
+export interface Country {
+    country: string;
+    countryCode: string; // Add additional fields as needed
+    countryFlag: string;
+    countryShort: string;
+    phoneCode: string
+}
 
 const SelectCountry = () => {
     const router = useRouter();
     const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
-
+    const [countries, setCountries] = useState<Country[] | null>(null);
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const country = localStorage.getItem('country');
             setSelectedCountry(country);
         }
+        try {
+            setLoading(true)
+            const getCountries = async () => {
+                const countries = await fetch('https://backend.illama360.com/api/utils/all-countries');
+                const response = await countries.json()
+                console.log(response);
+                setCountries(response.data)
+                setLoading(false)
+            }
+            setLoading(false)
+            getCountries()
+        } catch (error) {
+            console.log(error);
+
+            toast.error('Fail to fetch data countrys ')
+            setLoading(false)
+        }
+
     }, []);
 
 
 
-    const filteredCountries = countries.filter(country =>
-        country.name.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredCountries = countries?.filter((country) =>
+        country.country.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     const handleCountrySelect = (country: Country) => {
-        if (selectedCountry === country.name) {
+        if (selectedCountry === country.country) {
             setSelectedCountry(null);
             localStorage.removeItem('country');
         } else {
-            setSelectedCountry(country.name);
-            localStorage.setItem('country', country.name);
+            setSelectedCountry(country.country);
+            localStorage.setItem('country', country.country);
         }
     };
 
@@ -74,7 +99,7 @@ const SelectCountry = () => {
                 placeholder="Search"
                 // className="w-full bg-bg_dusty_white text-ti_grey font-inter text-[12px] leading-[16px] outline-none"
                 className={`w-full bg-bg_dusty_white font-inter text-xs leading-4 outline-none ${searchQuery ? "text-ti_light_black" : "text-ti_grey"
-                }`}
+                    }`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -82,24 +107,24 @@ const SelectCountry = () => {
 
         {/* Scrollable Country List - Takes remaining space */}
         <div className="flex-1 min-h-0 overflow-hidden">
-            <div className="h-full overflow-y-auto">
+            <div className="h-[95%] overflow-y-auto">
                 <div className="space-y-[10px] font-inter">
-                    {filteredCountries?.map((country) => (
+                    {loading ? <Loader/>  : filteredCountries?.map((country) => (
                         <div
-                            key={country.name}
-                            className={`w-full flex items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedCountry === country.name ? 'select_car_collection_bg border-p_light_blue' : ''
+                            key={country.country}
+                            className={`w-full flex items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedCountry === country.country ? 'select_car_collection_bg border-p_light_blue' : ''
                                 }`}
                             onClick={() => handleCountrySelect(country as unknown as Country)}
                         >
                             <Image
-                                src={country.flag.src}
-                                alt={country.name}
+                                src={country.countryFlag}
+                                alt={country.country}
                                 width={28}
                                 height={28}
-                                className="mr-3"
+                                className="mr-3 rounded-full object-cover size-[25px]"
                             />
                             <span className="flex-1 leading-[18px] font-medium text-left text-ti_black font-inter text-[14px]">
-                                {country.name}
+                                {country.country}
                             </span>
                         </div>
                     ))}

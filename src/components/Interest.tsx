@@ -4,10 +4,10 @@ import Image, { StaticImageData } from "next/image";
 import Canada from "@/../public/images/canada.png";
 import toast from 'react-hot-toast'
 import { useEffect, useState } from "react";
-import { countryCodes } from '@/Static_data/data';
 import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
 import axios from 'axios';
+import { Country } from '@/app/collections/select-country/page';
 const SubmitDetails = () => {
     const router = useRouter();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -36,6 +36,7 @@ const SubmitDetails = () => {
     const [brandModels, setBrandModels] = useState('');
     const [brands, setBrands] = useState('');
     const [country, setCountry] = useState('');
+    const [countries, setCountries] = useState<Country[] | null>(null);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -43,6 +44,13 @@ const SubmitDetails = () => {
             setBrands(localStorage.getItem('brands') || '');
             setCountry(localStorage.getItem('country') || '');
         }
+        const getCountries = async () => {
+            const countries = await fetch('https://backend.illama360.com/api/utils/all-countries');
+            const response = await countries.json()
+            console.log(response);
+            setCountries(response.data)
+        }
+        getCountries()
     }, []);
 
     const contactNumber = `${formData.countryCode}${formData.phone}`;
@@ -76,14 +84,16 @@ const SubmitDetails = () => {
         }));
     };
 
-    const selectCountryCode = (code: { code: string; flag: StaticImageData }) => {
-        setFormData(prev => ({
+    const selectCountryCode = (data: Country) => {
+        setFormData((prev) => ({
             ...prev,
-            countryCode: code.code,
-            flag: code.flag
+            countryCode: data.countryCode,
+            flag: data.countryFlag as unknown as StaticImageData
         }));
         setIsDropdownOpen(false);
     };
+
+
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         setLoading(true);
@@ -201,16 +211,16 @@ const SubmitDetails = () => {
                                                 {isDropdownOpen && (
                                                     <div className="absolute z-1000 mt-1 w-56 bg-bg_white rounded-md shadow-lg border border-gray-200">
                                                         <ul className="py-1 max-h-60 overflow-auto">
-                                                            {countryCodes.map((country) => (
+                                                            {countries?.map((country) => (
                                                                 <li
                                                                     key={country.country}
                                                                     className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-[12px] font-inter text-ti_light_black flex items-center gap-[10px] "
                                                                     onClick={() => selectCountryCode(country)}
                                                                 >
-                                                                    <Image src={country.flag} alt={country.country} width={20} height={20} />
+                                                                    <Image src={country.countryFlag} alt={country.country} className=' size-[25px] object-cover rounded-full' width={20} height={20} />
                                                                     <div>
                                                                         <span>{country.country}</span>
-                                                                        <span className="ml-2 text-ti_black">{country.code}</span>
+                                                                        <span className="ml-2 text-ti_black">{country.countryCode}</span>
                                                                     </div>
                                                                 </li>
                                                             ))}
