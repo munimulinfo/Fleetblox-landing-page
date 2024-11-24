@@ -54,7 +54,7 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
 
         // Update progress based on current path
         if (pathname === steps.COMPATIBLE) {
-            setCustomProgress(90);
+            setCustomProgress(100);
         } else if (pathname === steps.SUBMIT_DETAILS) {
             setCustomProgress(progress);
         }

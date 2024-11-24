@@ -3,6 +3,8 @@ import Image from "next/image";
 import success from "@/../public/images/success.svg";
 import start from "@/../public/images/start-with-us.jpg";
 import { useEffect } from "react";
+import Logo from "@/../public/images/Logo.png";
+
 
 const Successfull = () => {
     useEffect(() => {
@@ -19,7 +21,12 @@ const Successfull = () => {
             <Image
                 src={start}
                 alt="start with us"
-                className="absolute inset-0 h-full w-full hidden lg:block"
+                className="absolute object-fill inset-0 h-full w-full hidden lg:block"
+            />
+            <Image
+                src={Logo}
+                alt="start with us"
+                className="absolute left-10 top-10 hidden xl:block"
             />
 
             <div className="z-[1000000] flex min-h-screen items-center justify-center overflow-auto bg-bg_white ">

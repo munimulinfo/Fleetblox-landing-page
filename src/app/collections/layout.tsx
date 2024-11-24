@@ -20,7 +20,7 @@ export default function RootLayout({
                 <Image
                     src={start}
                     alt="start with us"
-                    className="absolute inset-0 object-cover h-full w-full hidden xl:block"
+                    className="absolute inset-0 h-screen w-screen object-cover hidden xl:block"
                 />
                 <Image
                     src={Logo}

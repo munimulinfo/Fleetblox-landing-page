@@ -119,7 +119,7 @@ const MarquryScroller = () => {
                 repeat: Infinity
             }}>
             {images.map((image, index) => (
-                <motion.div key={index} className="w-[100px] h-[100px] mr-5 xl:mr-10 flex items-center justify-center">
+                <motion.div key={index} className=" size-[100px] sm:size-[80px] lg2:size-[100px]  mr-5 xl:mr-10 flex items-center justify-center">
                     <Image src={image} alt="image" className=' ' width={100} height={100} />
                 </motion.div>
             ))}
@@ -133,7 +133,7 @@ const MarquryScroller = () => {
                 repeat: Infinity
             }}>
             {images2.map((image, index) => (
-                <motion.div key={index} className="w-[100px] h-[100px] mr-5 xl:mr-10 flex items-center justify-center">
+                <motion.div key={index} className=" size-[100px] sm:size-[80px] lg2:size-[100px] mr-5 xl:mr-10 flex items-center justify-center">
                     <Image src={image} alt="image" className=' ' width={100} height={100} />
                 </motion.div>
             ))}
