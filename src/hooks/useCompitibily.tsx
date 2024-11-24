@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CarBrandsData } from '@/app/collections/select-brand/page';

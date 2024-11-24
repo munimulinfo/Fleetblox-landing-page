@@ -14,14 +14,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const pathname = usePathname();
-
-    window.addEventListener('beforeunload', () => {
-        localStorage.clear(); // Clears all local storage data
-    });
-
     return (
-        <ProgressProvider>
-            <div className="relative antialiased h-screen w-screen">
+        <div className="relative antialiased h-screen w-screen">
+            <ProgressProvider>
                 <Image
                     src={start}
                     alt="start with us"
@@ -38,7 +33,7 @@ export default function RootLayout({
                     </div>}
                     {children}
                 </div>
-            </div>
-        </ProgressProvider>
+            </ProgressProvider>
+        </div>
     );
 }

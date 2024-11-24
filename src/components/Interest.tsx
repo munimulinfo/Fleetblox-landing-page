@@ -40,16 +40,12 @@ const SubmitDetails = () => {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             setBrandModels(localStorage.getItem('brandModels') || '');
-            setBrands(localStorage.removegetItem('brands') || '');
+            setBrands(localStorage.getItem('brands') || '');
             setCountry(localStorage.getItem('country') || '');
         }
     }, []);
 
     const contactNumber = `${formData.countryCode}${formData.phone}`;
-
-
-
-
 
     const submitData = {
         email: formData.email,
@@ -120,7 +116,7 @@ const SubmitDetails = () => {
                 flag: Canada
             })
             console.log(error);
-            toast.error('Try again')
+            toast.error('')
         }
     };
 
@@ -183,7 +179,7 @@ const SubmitDetails = () => {
                                             className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
                                         />
                                     </div>
-                                    <div className="w-full">
+                                    <div className="sm:w-1/2  w-full sm:flex-shrink-0">
                                         <label
                                             htmlFor="phone"
                                             className="block text-ti_dark_grey mb-[5px] text-[12px] font-semibold font-inter"

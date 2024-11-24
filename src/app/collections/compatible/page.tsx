@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
 import { useCallback } from "react";
 import useBrandCarList from "@/hooks/useCompitibily";
-// import Loader from '@/components/Loader'
+import Loader from '@/components/Loader'
 const Compatible = () => {
   const router = useRouter();
   const { selectedBrands, storedBrandModels, brandCarList, loading } = useBrandCarList(null)
@@ -59,7 +59,7 @@ const Compatible = () => {
       <div className="flex-1 min-h-0 overflow-hidden">
         <div className="h-full overflow-y-auto">
           <div className="space-y-[10px] font-inter">
-            {loading ? <h1>Loading</h1> :
+            {loading ? <Loader /> :
               filteredCompatibleBrands().map((brand) => (
                 <div key={brand.brand} className="flex items-center justify-between border rounded-md px-[16px] py-[12px]">
                   <div className=" flex items-center gap-[10px]">

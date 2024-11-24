@@ -84,7 +84,7 @@ const SelectCountry = () => {
         <div className="flex-1 min-h-0 overflow-hidden">
             <div className="h-full overflow-y-auto">
                 <div className="space-y-[10px] font-inter">
-                    {filteredCountries.map((country) => (
+                    {filteredCountries?.map((country) => (
                         <div
                             key={country.name}
                             className={`w-full flex items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedCountry === country.name ? 'select_car_collection_bg border-p_light_blue' : ''
