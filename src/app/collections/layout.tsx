@@ -14,13 +14,18 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const pathname = usePathname();
+
+    window.addEventListener('beforeunload', () => {
+        localStorage.clear(); // Clears all local storage data
+    });
+
     return (
-        <div className="relative antialiased h-screen w-screen">
-            <ProgressProvider>
+        <ProgressProvider>
+            <div className="relative antialiased h-screen w-screen">
                 <Image
                     src={start}
                     alt="start with us"
-                    className="absolute inset-0 object-cover h-full w-full hidden xl:block"
+                    className="absolute inset-0 h-screen w-screen object-cover hidden xl:block"
                 />
                 <Image
                     src={Logo}
@@ -33,7 +38,7 @@ export default function RootLayout({
                     </div>}
                     {children}
                 </div>
-            </ProgressProvider>
-        </div>
+            </div>
+        </ProgressProvider>
     );
 }

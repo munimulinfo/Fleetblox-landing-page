@@ -4,6 +4,7 @@ import failed from "@/../public/images/feild.svg";
 import start from "@/../public/images/start-with-us.jpg";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Logo from "@/../public/images/Logo.png";
 
 const NotCompatible = () => {
   const router = useRouter();
@@ -41,6 +42,12 @@ const NotCompatible = () => {
         alt="start with us"
         className="absolute inset-0 h-full w-full hidden lg:block"
       />
+      <Image
+        src={Logo}
+        alt="start with us"
+        className="absolute left-10 top-10 hidden xl:block"
+      />
+
 
       <div className="z-[1000000] flex min-h-screen items-center justify-center overflow-auto bg-bg_white ">
         <div className="relative flex h-[780px] w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px] lg:shadow-lg">

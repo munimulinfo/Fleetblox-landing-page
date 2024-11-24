@@ -80,9 +80,11 @@ module.exports = {
 			}
 		},
 		animation: {
-			scroll: 'scroll 15s linear infinite'
+			scroll: 'scroll 15s linear infinite',
+			'spin-slow': 'spin 3s linear infinite',
 		},
-		extend: {
+
+	extend: {
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

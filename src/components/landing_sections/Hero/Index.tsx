@@ -12,7 +12,7 @@ import Tab from "@/../public/images/Tab.png";
 import Logo from "../../../../public/images/NavLogo.svg";
 import Link from "next/link";
 
-const Hero: React.FC = () => {
+const   Hero: React.FC = () => {
   return (
     <div className="mx-auto w-full">
       {/* hero background */}
@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
               text="Show early interest"
               className="w-full"
             />
-            <div className="group min-w-max cursor-pointer font-openSans text-[16px] font-semibold text-p_dark_blue">
+            <div className="group min-w-max   font-openSans text-[16px] font-semibold text-p_dark_blue">
               And Get Up to 15% Discount
             </div>
           </div>
@@ -89,17 +89,17 @@ const Hero: React.FC = () => {
           <Image
             alt="Tab"
             src={Tab}
-            className="absolute top-0 ml-[14px] mt-[3px] xxxs:h-[240.804px] xxs:w-[350px] xs:h-[300px] xs:w-[450px] lg2:ml-[4px] lg2:h-[544px] lg2:min-w-[853px]"
+            className="absolute top-0 ml-[14px] mt-[3px] xxxs:h-[240.804px] xxs:w-[350px] xs:h-[300px] xs:w-[450px] lg2:ml-[4px] md:w-[550px] md:h-[350px] lg2:h-[544px] lg2:min-w-[853px]"
           />
 
-          <div className="absolute top-3 flex h-[200px]  w-[310px] xxxs:w-[345px] xxs:w-[320px] xs:h-[250px] xs:w-[405px] lg2:left-6 lg2:top-4 lg2:h-[468px] lg2:w-[780px]">
+          <div className="absolute top-3 flex h-[200px]  w-[310px] xxxs:w-[345px] xxs:w-[320px] xs:h-[250px] xs:w-[405px] md:-ml-[8px] lg2:ml-[0px] lg2:left-6 lg2:top-4 md:h-[300px] md:w-[500px] lg2:h-[468px] lg2:w-[780px]">
             <video
               autoPlay
               loop
               muted
               playsInline
               preload="auto"
-              className="h-full w-full rounded-xl object-fill lg2:rounded-3xl"
+              className="h-full w-full rounded-xl object-fill md:rounded-2xl lg2:rounded-3xl"
             >
               <source
                 src="/videos/HeroVideo.mp4"
@@ -117,6 +117,9 @@ const Hero: React.FC = () => {
             quality={60}
           />
         </div>
+
+
+
         <div className="custom_padding   sm:mt-[60px] w-full lg2:hidden">
           <h4 className="font-openSans text-[16px] font-semibold text-ti_grey">
             What We Provide

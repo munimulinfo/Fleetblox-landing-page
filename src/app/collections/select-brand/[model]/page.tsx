@@ -10,7 +10,8 @@ import AccessPoint from './access';
 import { getCode } from 'country-list';
 import axios from 'axios';
 import { CarBrandsData } from '../page';
-import { Loader } from '@/components/Loader'
+import Loader from '@/components/Loader';
+
 interface CustomPageProps {
     params: {
         model: string
@@ -175,70 +176,101 @@ const ModelSelector = ({ params }: CustomPageProps) => {
         }
     }
 
-    return (
-        <div className="relative bg-bg_white  justify-between rounded-lg md:shadow-lg w-full max-w-[650px] h-screen md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
 
-            <div>
-                {/* Header Section */}
-                <div onClick={backButton} className='flex items-center gap-[5px] mb-[16px] cursor-pointer'>
-                    <ArrowLeft size={20} className=' text-ti_dark_grey' />
-                    <span className='text-ti_dark_grey font-inter font-semibold text-[14px] leading-[18px]'>{`Back`}</span>
+
+    return (
+        <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] 
+        md:h-[780px] h-screen flex flex-col px-4 xs:px-6 sm:px-12 md-[60px] py-[20px] md:py-[60px]">
+            {/* Header Section - Fixed at top */}
+            <div className="flex-shrink-0 ">
+                <div onClick={backButton} className="flex items-center gap-1.5 mb-4 cursor-pointer">
+                    <ArrowLeft size={20} className="text-ti_dark_grey" />
+                    <span className="text-ti_dark_grey font-inter font-semibold text-sm">Back</span>
                 </div>
 
-                <div className="mb-[40px] flex-shrink-0">
-                    <h2 className="pre_landing_page_title font-inter">Select your car models</h2>
-                    <p className="pre_landing_page_text">
+                <div className="mb-10 flex items-center flex-col">
+                    <h2 className="font-inter text-2xl font-bold text-ti_light_black">Select your car models</h2>
+                    <p className="text-ti_dark_grey text-sm">
                         Choose your car models of each of your selected brands
                     </p>
                 </div>
 
-                {/* Search Section */}
-                <div className='mb-[32px] flex items-center justify-center flex-col'>
-                    {modelData?.brandLogo && <Image className='h-[50px] w-auto object-contain' src={modelData.brandLogo} alt='brand logo' width={100} height={100} />}
-                    <h1 className='text-p_dark_blue font-inter font-semibold text-[32px] mt-[2px]'>{modelData?.brand}</h1>
-                    <h3 className='text-ti_dark_grey font-medium font-inter text-[14px] leading-[18px]'>{modelData?.year}</h3>
+                {/* Brand Info */}
+                <div className="mb-8 flex items-center flex-col">
+                    {modelData?.brandLogo && (
+                        <Image
+                            className="h-[50px] w-auto object-contain"
+                            src={modelData.brandLogo}
+                            alt="brand logo"
+                            width={100}
+                            height={100}
+                        />
+                    )}
+                    <h1 className="text-p_dark_blue font-inter font-semibold text-3xl mt-0.5">
+                        {modelData?.brand.replace(/[-_]/g, ' ')}
+                    </h1>
+                    <h3 className="text-ti_dark_grey font-medium font-inter text-sm">
+                        {modelData?.year}
+                    </h3>
                 </div>
             </div>
 
-            {/* Scrollable Models List */}
-            <div className="space-y-[10px] w-full overflow-y-scroll  min-h-[270px]" style={{ maxHeight: '450px' }}>
-                {loading ? <Loader /> : modelData?.models.map((model) => (
-                    <div
-                        key={model.name}
-                        className={`flex justify-between flex-col items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels.includes(model.name) ? 'select_car_collection_bg border-p_light_blue' : ''}`}
-                        onClick={() => handleModelSelect(model.name)}
-                    >
-                        <div className='flex items-center justify-between w-full'>
-                            <div className="flex items-center z-[1]">
-                                <input
-                                    type="checkbox"
-                                    checked={selectedModels.includes(model.name)}
-                                    onChange={() => handleModelSelect(model.name)}
-                                />
-                                <div className="ml-2 leading-[18px] font-semibold text-left text-ti_black font-inter text-[14px]">
-                                    {model.name}
+            {/* Scrollable Content Area - Takes remaining space */}
+            <div className="flex-1 overflow-y-auto ">
+                <div className="space-y-2.5">
+                    {loading ? (
+                        <Loader />
+                    ) : (
+                        modelData?.models.map((model) => (
+                            <div
+                                key={model.name}
+                                className={`flex justify-between flex-col items-center border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels.includes(model.name)
+                                    ? 'bg-blue-50 border-p_light_blue'
+                                    : 'border-bg_dusty_white'
+                                    }`}
+                                onClick={() => handleModelSelect(model.name)}
+                            >
+                                <div className="flex items-center justify-between w-full">
+                                    <div className="flex items-center">
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedModels.includes(model.name)}
+                                            onChange={() => handleModelSelect(model.name)}
+                                            className="mr-2"
+                                        />
+                                        <span className="font-semibold text-ti_black font-inter text-sm">
+                                            {model.name}
+                                        </span>
+                                    </div>
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            showAccessPoint(model.name);
+                                        }}
+                                        className="w-5 h-5 flex items-center justify-center"
+                                    >
+                                        <Image
+                                            className="size-[18px] object-cover"
+                                            src={isOpen === model.name ? open : close}
+                                            alt="toggle"
+                                        />
+                                    </button>
                                 </div>
+                                {isOpen === model.name && <AccessPoint permission={model.endpoints} />}
                             </div>
-                            <div className='z-[1000] w-[20px]  h-[20px]' onClick={(e) => {
-                                e.stopPropagation(); // Prevent the outer onClick from being triggered
-                                showAccessPoint(model.name);
-                            }}>
-                                <Image className='  z-[10] size-[18px]  object-cover' src={isOpen === model.name ? open : close} alt='open' />
-                            </div>
-                        </div>
-                        {isOpen === model.name && <AccessPoint permission={model.endpoints} />}
-                    </div>
-                ))}
+                        ))
+                    )}
+                </div>
             </div>
 
-
-            {/* Footer Buttons */}
-            <div className="mt-[40px] flex-shrink-0 flex lg:flex-row flex-col-reverse items-center gap-4">
-                <button onClick={handleNotFindModel} className={`w-full lg:w-1/2 pre_landing_page_btn font-inter   text-ti_grey px-[14px] py-[8px]  rounded-md `}>
-                    {`I can't find my car model`}
+            {/* Footer Section - Fixed at bottom */}
+            {/* Fixed Footer */}
+            <div className="flex-shrink-0 mt-6 flex lg:flex-row flex-col-reverse items-center gap-4">
+                <button onClick={handleNotFindModel} className=" lg:w-1/2 pre_landing_page_btn w-full font-inter text-ti_grey px-[14px] py-[8px]   text-[14px] rounded-md">
+                    {`I can't find my car brand`}
                 </button>
                 <button
-                    className={`w-full lg:w-1/2 pre_landing_page_btn text-bg_white px-[14px] py-[9px] rounded-md ${currentBrandModels?.length > 0 ? 'bg-p_blue' : 'bg-p_blue/50'}`}
+                    className={`w-full lg:w-1/2 pre_landing_page_btn text-bg_white px-[14px] py-[10px] font-inter rounded-md ${currentBrandModels?.length > 0 ? 'bg-p_blue' : 'bg-p_blue/50'}`}
                     disabled={!currentBrandModels || currentBrandModels.length <= 0}
                     onClick={handleNext}
                 >
