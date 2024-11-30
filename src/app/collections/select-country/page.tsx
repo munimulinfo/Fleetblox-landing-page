@@ -32,7 +32,6 @@ const SelectCountry = () => {
             const getCountries = async () => {
                 const countries = await fetch('https://backend.illama360.com/api/utils/all-countries');
                 const response = await countries.json()
-                console.log(response);
                 setCountries(response.data)
                 setLoading(false)
             }
@@ -77,7 +76,7 @@ const SelectCountry = () => {
             }
         }
 
-        router.push(`/collections/select-brand?country=${countryCode}`);
+        router.push(`/collections/compatibility?country=${countryCode}`);
         setCustomProgress(progress + 10);
     };
 
@@ -92,7 +91,7 @@ const SelectCountry = () => {
         </div>
 
         {/* Search Bar - Fixed */}
-        <div className="flex-shrink-0 relative mb-[16px] bg-bg_dusty_white py-[10px] px-[10px] flex items-center gap-[8px] rounded-md">
+        <div className="relative mb-[16px] bg-bg_dusty_white py-[10px] px-[10px] flex items-center gap-[8px] rounded-md">
             <Search className="text-ti_grey" size={18} />
             <input
                 type="text"
@@ -106,13 +105,13 @@ const SelectCountry = () => {
         </div>
 
         {/* Scrollable Country List - Takes remaining space */}
-        <div className="flex-1 min-h-0 overflow-hidden">
+        <div className=" flex-1 min-h-0 overflow-hidden">
             <div className="h-full overflow-y-auto">
                 <div className="space-y-[10px] font-inter">
                     {loading ? <Loader /> : filteredCountries?.map((country) => (
                         <div
                             key={country.country}
-                            className={`w-full flex items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedCountry === country.country ? 'select_car_collection_bg border-p_light_blue' : ''
+                            className={`w-full flex flex-1 items-center border border-bg_dusty_white p-[16px] rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedCountry === country.country ? 'select_car_collection_bg border-p_light_blue' : ''
                                 }`}
                             onClick={() => handleCountrySelect(country as unknown as Country)}
                         >
@@ -121,7 +120,7 @@ const SelectCountry = () => {
                                 alt={country.country}
                                 width={28}
                                 height={28}
-                                className="mr-3 rounded-full object-cover size-[25px]"
+                                className="mr-3 w-[40px] h-[28px] rounded-[6px]"
                             />
                             <span className="flex-1 leading-[18px] font-medium text-left text-ti_black font-inter text-[14px]">
                                 {country.country}
@@ -133,7 +132,7 @@ const SelectCountry = () => {
         </div>
 
         {/* Fixed Footer Buttons */}
-        <div className="flex-shrink-0 mt-[40px] flex lg:flex-row flex-col-reverse items-center gap-4">
+        <div className="flex-0 mt-[40px] flex lg:flex-row flex-col-reverse items-center gap-4">
             <button
                 onClick={() => router.push('/result/not-compatible')}
                 className="lg:w-1/2 pre_landing_page_btn w-full font-inter text-ti_grey px-[14px] py-[8px] rounded-md"

@@ -7,25 +7,31 @@ const ProgressContext = createContext<{
     progress: number;
     setProgress: (value: number) => void;
     setCustomProgress: (value: number) => void;
+    apiResponse: unknown[]; // Explicitly type as an array
+    setApiResponse: (response: unknown[]) => void;
+
 }>({
     progress: 0,
     setProgress: () => { },
-    setCustomProgress: () => { }
+    setCustomProgress: () => { },
+    apiResponse: [],
+    setApiResponse: () => { }
 });
 
-// Hook to use the progress context
 export const useProgressUpdater = () => useContext(ProgressContext);
 
-// Example usage:
-// const { progress, setProgress } = useProgress();
-// setProgress(50); // Sets progress to 50%
 
 export const ProgressProvider = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
     const [currentPath, setCurrentPath] = useState('/collections/select-country');
     const [progress, setProgressState] = useState(1);
+    const [apiResponse, setApiResponseState] = useState<unknown[]>([]); // Explicitly type as an array
+    
+    const setApiResponse = (response: unknown[]) => {
+        setApiResponseState(response);
+    };
 
-    // Function to update progress value
+
     const setProgress = (value: number) => {
         setProgressState(prev => prev + value);
     };
@@ -60,12 +66,17 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
         }
     }, [pathname, steps, progress]);
 
+
+
+
     const value = {
         currentPath,
         steps,
         progress,
         setProgress, // Expose setProgress to children
-        setCustomProgress
+        setCustomProgress,
+        apiResponse,
+        setApiResponse, // Expose setApiResponse to children
     };
 
     return (

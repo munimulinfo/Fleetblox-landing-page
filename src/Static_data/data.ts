@@ -9,29 +9,24 @@ import BE from '@/../public/images/belgium.png'
 import CA from '@/../public/images/canada.png'
 import HR from '@/../public/images/croatia.png'
 import CZ from '@/../public/images/czech-republic.png'
-import DK from '@/../public/images/denmark.png'
-import EE from '@/../public/images/estonia.png'
+import DK from '@/../public/images/denmark.png';
+import EE from '@/../public/images/estonia.png';
 
 
 
-import brand1 from '@/../public/images/New folder/1.svg'
-import brand2 from '@/../public/images/New folder/2.svg'
-import brand3 from '@/../public/images/New folder/3.png'
+import brand1 from '@/../public/images/New folder/1.svg';
+import brand2 from '@/../public/images/New folder/2.svg';
+import brand3 from '@/../public/images/New folder/3.png';
 
 
-import Acura from '@/../public/images/Car_brands/Acura.svg'
-import Alfa_romo from '@/../public/images/Car_brands/Alfa_romo.png'
-import Audi from '@/../public/images/Car_brands/Audi.png'
-import BMW from '@/../public/images/Car_brands/Bmw.png'
-import Buick from '@/../public/images/Car_brands/Buick.png'
-import Cadillac from '@/../public/images/Car_brands/Cadillac.png'
+import Acura from '@/../public/images/Car_brands/Acura.svg';
+import Alfa_romo from '@/../public/images/Car_brands/Alfa_romo.png';
+import Audi from '@/../public/images/Car_brands/Audi.png';
+import BMW from '@/../public/images/Car_brands/Bmw.png';
+import Buick from '@/../public/images/Car_brands/Buick.png';
+import Cadillac from '@/../public/images/Car_brands/Cadillac.png';
 
-
-import image1 from '@/../public/images/access_point/first.svg'
-import image2 from '@/../public/images/access_point/second.svg'
-import image3 from '@/../public/images/access_point/last.svg'
-
-import PlanConstant from '@/app/collections/submit-details/constant'
+import { PricingPlan } from '@/app/collections/price-plan/Card';
 
 const HeroSection =
     [
@@ -88,37 +83,38 @@ const countries = [
     { name: 'Estonia', flag: EE },
 ];
 
-const countryCodes = [
-    { flag: US, code: '+1', country: '🇺🇸 United States' },
-    { flag: AT, code: '+43', country: '🇦🇹 Austria' },
-    { flag: BE, code: '+32', country: '🇧🇪 Belgium' },
-    { flag: CA, code: '+1', country: '🇨🇦 Canada' },
-    { flag: HR, code: '+385', country: '🇭🇷 Croatia' },
-    { flag: CZ, code: '+420', country: '🇨🇿 Czech Republic' },
-    { flag: DK, code: '+45', country: '🇩🇰 Denmark' },
-    { flag: DK, code: '+372', country: '🇪🇪 Estonia' },
-    { flag: EE, code: '+358', country: '🇫🇮 Finland' },
-    { flag: EE, code: '+33', country: '🇫🇷 France' },
-    { flag: EE, code: '+49', country: '🇩🇪 Germany' },
-    { flag: EE, code: '+36', country: '🇭🇺 Hungary' },
-    { flag: EE, code: '+353', country: '🇮🇪 Ireland' },
-    { flag: EE, code: '+39', country: '🇮🇹 Italy' },
-    { flag: EE, code: '+371', country: '🇱🇻 Latvia' },
-    { flag: EE, code: '+370', country: '🇱🇹 Lithuania' },
-    { flag: EE, code: '+386', country: '🇸🇮 Slovenia' },
-    { flag: EE, code: '+34', country: '🇪🇸 Spain' },
-    { flag: EE, code: '+46', country: '🇸🇪 Sweden' },
-    { flag: EE, code: '+41', country: '🇨🇭 Switzerland' },
-    { flag: EE, code: '+44', country: '🇬🇧 United Kingdom' },
-    { flag: EE, code: '+352', country: '🇱🇺 Luxembourg' },
-    { flag: EE, code: '+356', country: '🇲🇹 Malta' },
-    { flag: EE, code: '+31', country: '🇳🇱 Netherlands' },
-    { flag: EE, code: '+47', country: '🇳🇴 Norway' },
-    { flag: EE, code: '+48', country: '🇵🇱 Poland' },
-    { flag: EE, code: '+351', country: '🇵🇹 Portugal' },
-    { flag: EE, code: '+40', country: '🇷🇴 Romania' },
-    { flag: EE, code: '+421', country: '🇸🇰 Slovakia' },
-];
+const
+    countryCodes = [
+        { flag: US, code: '+1', country: '🇺🇸 United States' },
+        { flag: AT, code: '+43', country: '🇦🇹 Austria' },
+        { flag: BE, code: '+32', country: '🇧🇪 Belgium' },
+        { flag: CA, code: '+1', country: '🇨🇦 Canada' },
+        { flag: HR, code: '+385', country: '🇭🇷 Croatia' },
+        { flag: CZ, code: '+420', country: '🇨🇿 Czech Republic' },
+        { flag: DK, code: '+45', country: '🇩🇰 Denmark' },
+        { flag: DK, code: '+372', country: '🇪🇪 Estonia' },
+        { flag: EE, code: '+358', country: '🇫🇮 Finland' },
+        { flag: EE, code: '+33', country: '🇫🇷 France' },
+        { flag: EE, code: '+49', country: '🇩🇪 Germany' },
+        { flag: EE, code: '+36', country: '🇭🇺 Hungary' },
+        { flag: EE, code: '+353', country: '🇮🇪 Ireland' },
+        { flag: EE, code: '+39', country: '🇮🇹 Italy' },
+        { flag: EE, code: '+371', country: '🇱🇻 Latvia' },
+        { flag: EE, code: '+370', country: '🇱🇹 Lithuania' },
+        { flag: EE, code: '+386', country: '🇸🇮 Slovenia' },
+        { flag: EE, code: '+34', country: '🇪🇸 Spain' },
+        { flag: EE, code: '+46', country: '🇸🇪 Sweden' },
+        { flag: EE, code: '+41', country: '🇨🇭 Switzerland' },
+        { flag: EE, code: '+44', country: '🇬🇧 United Kingdom' },
+        { flag: EE, code: '+352', country: '🇱🇺 Luxembourg' },
+        { flag: EE, code: '+356', country: '🇲🇹 Malta' },
+        { flag: EE, code: '+31', country: '🇳🇱 Netherlands' },
+        { flag: EE, code: '+47', country: '🇳🇴 Norway' },
+        { flag: EE, code: '+48', country: '🇵🇱 Poland' },
+        { flag: EE, code: '+351', country: '🇵🇹 Portugal' },
+        { flag: EE, code: '+40', country: '🇷🇴 Romania' },
+        { flag: EE, code: '+421', country: '🇸🇰 Slovakia' },
+    ];
 
 const BrandCarList = [
     {
@@ -268,29 +264,97 @@ const BrandCarList = [
     },
 ];
 
-const pricingPlan = [
+const pricingPlan: PricingPlan[] = [
     {
-        image: image1,
-        title: "Smart Fleet",
-        description: "Your digital garage management",
-        price: 499,
-        constant: PlanConstant.PlansConstant.SMART_FLEET
-
+        name: "Smart Fleet",
+        description: "Digital garage essentials",
+        price: 299,
+        features: [
+            "Real-Time Cloud Based Telematics",
+            "360-Degree Vehicle Profiles",
+            "Vehicle Body Condition Diagram",
+            "Limited AI Based Vehicle Body Inspection",
+            "Dynamic Fleet Alerts",
+            "Custom reminders",
+            "Fleet Documents Management",
+            "Daily Task Tracker (Smart Task Manager)",
+            "AI- Powered Fleet Guide"
+        ]
     },
     {
-        image: image2,
-        title: "Dynamic Fleet",
+        name: "Smart Fleet Pro",
         description: "Start your rental business",
-        price: "1,199",
-        constant: PlanConstant.PlansConstant.DYNAMIC_FLEET
-
-    } ,  
+        compliment: "All under Smart Fleet with",
+        price: "5,99",
+        features: [
+            "Fleet Analytics and Insights",
+            "Device-Free Fleet Tracking",
+            "Dynamic Fleet Control",
+            "Comprehensive Maintenance Management",
+            "Automated Expense Management",
+            "Unlimited AI Based Vehicle Body Inspection",
+            "Mileage Based Alerts",
+            "Unlimited Fleet Locations",
+            "AI- Based Fleet Manager",
+        ]
+    },
     {
-        image: image3,
-        title: "Ultimate Fleet",
-        description: "Complete tools for rental success",
-        price: "1,999",
-        constant: PlanConstant.PlansConstant.ULTIMATE_FLEET
-    } ,  
+        name: "Ecosystem Fleet",
+        description: "Start your rental business",
+        compliment: "All under Smart Fleet Pro with",
+        price: "1,099",
+        features: [
+            "Fleet Analytics and Insights",
+            "Device-Free Fleet Tracking",
+            "Dynamic Fleet Control",
+            "Comprehensive Maintenance Management",
+            "Automated Expense Management",
+            "Unlimited AI Based Vehicle Body Inspection",
+            "Mileage Based Alerts",
+            "Unlimited Fleet Locations",
+            "AI- Based Fleet Manager",
+        ]
+    },
+    {
+        name: "Ecosystem Fleet",
+        description: "Ultimate tools for rental success",
+        compliment: "All under Ecosystem Fleet with",
+        price: "1,599",
+        features: [
+            "Fleet Analytics and Insights",
+            "Device-Free Fleet Tracking",
+            "Dynamic Fleet Control",
+            "Comprehensive Maintenance Management",
+            "Automated Expense Management",
+            "Unlimited AI Based Vehicle Body Inspection",
+            "Mileage Based Alerts",
+            "Unlimited Fleet Locations",
+            "AI- Based Fleet Manager",
+        ]
+    },
 ]
-export { HeroSection, cars, countries, compatibleBrands, countryCodes, BrandCarList, pricingPlan }
+
+const Deals = [
+    {
+        title: "Maximize Fleet Performance",
+        description: "Keep your vehicles in optimal condition and reduce downtime with real-time monitoring and proactive maintenance tools – all through our cloud-based platform, with no physical hardware to worry about."
+    },
+    {
+        title: "Boost Revenue Over Time",
+        description: "Leverage FleetBlox’s dynamic catalog, designed to adapt to your business goals, driving growth and maximizing profitability over the long term."
+    },
+    {
+        title: "Simplify Long-Term Operations",
+        description: "Streamline everything from vehicle tracking to billing with an intuitive, all-in-one dashboard. Easily manage long-term, monthly-based rentals and enhance customer satisfaction."
+    },
+    {
+        title: "Enhance Customer Experience",
+        description: "Provide a personalized and branded experience that drives loyalty, with flexible subscription-based solutions for ongoing rentals."
+    },
+    {
+        title: "Secure Fleet with Cloud-Based Protection",
+        description: "With FleetBlox, your fleet is fully secured in the cloud—no hardware can be stolen or tampered with. Our platform offers advanced security features, including real-time vehicle tracking and digital inspections, to ensure the health and safety of your fleet at all times."
+    }
+]
+
+export { HeroSection, cars, countries, compatibleBrands, countryCodes, BrandCarList, pricingPlan, Deals }

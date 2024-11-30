@@ -94,7 +94,6 @@ const BrandSelector = () => {
                         className={`w-full bg-bg_dusty_white font-inter text-xs leading-4 outline-none ${searchQuery ? "text-ti_light_black" : "text-ti_grey"
                             }`}
 
-                        // className="w-full bg-bg_dusty_white text-ti_grey font-inter text-xs  leading-4 outline-none"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />

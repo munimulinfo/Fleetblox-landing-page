@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
 import axios from 'axios';
 import { Country } from '@/app/collections/select-country/page';
+import { AxiosErrorResponse } from '@/Interface/AxiosErrorResponse';
+
 const SubmitDetails = () => {
     const router = useRouter();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -37,18 +39,21 @@ const SubmitDetails = () => {
     const [brands, setBrands] = useState('');
     const [country, setCountry] = useState('');
     const [countries, setCountries] = useState<Country[] | null>(null);
-
+    const [plan, setPlan] = useState('');
+    const [vinsResult, setVinsResult] = useState('')
     useEffect(() => {
         if (typeof window !== 'undefined') {
             setBrandModels(localStorage.getItem('brandModels') || '');
             setBrands(localStorage.getItem('brands') || '');
             setCountry(localStorage.getItem('country') || '');
+            setPlan(localStorage.getItem('price_plan') || '')
+            setVinsResult(localStorage.getItem('VINS_RESULT') || '')
         }
         const getCountries = async () => {
             const countries = await fetch('https://backend.illama360.com/api/utils/all-countries');
             const response = await countries.json()
             console.log(response);
-            setCountries(response.data)
+            setCountries(response.data);
         }
         getCountries()
     }, []);
@@ -73,6 +78,8 @@ const SubmitDetails = () => {
         brands: JSON.parse(brands || '[]'),
         brandCountry: formData.country,
         selectedCountry: country,
+        selectedVin: JSON.parse(vinsResult || '[]'),
+        plan: JSON.parse(plan || '{}'),
         isFromPreLunching: true
     }
 
@@ -104,10 +111,13 @@ const SubmitDetails = () => {
             const { data } = await axios.post('https://backend.illama360.com/api/InterestedUser/create', submitData)
             console.log(data);
             if (data.statusCode === 201) {
+                localStorage.clear()
                 return router.push('/result/submitted-successfully');
             }
             setLoading(false);
         } catch (error) {
+            const axiosError = error as AxiosErrorResponse;
+            setLoading(false);
             setFormData({
                 fullName: '',
                 email: '',
@@ -126,7 +136,10 @@ const SubmitDetails = () => {
                 flag: Canada
             })
             console.log(error);
-            toast.error('')
+
+            const errorMessage = axiosError?.response?.data?.error?.message || 'An unexpected error occurred';
+            console.error(errorMessage);
+            toast.error(errorMessage);
         }
     };
 

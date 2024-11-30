@@ -7,14 +7,27 @@ import trueIcon from '@/../public/images/true.svg'
 import falseIcon from '@/../public/images/false.svg'
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import useBrandCarList from "@/hooks/useCompitibily";
 import Loader from '@/components/Loader'
+import close from '@/../public/images/access_point/down.svg'
+import open from '@/../public/images/access_point/up.svg'
+import AccessPoint from './AccessPoint'
+
 const Compatible = () => {
   const router = useRouter();
-  const { selectedBrands, storedBrandModels, brandCarList, loading } = useBrandCarList(null)
+  const { selectedBrands, storedBrandModels, brandCarList, loading, vins } = useBrandCarList(null)
+  const { setCustomProgress, progress } = useProgressUpdater();
+  const [isOpen, setIsOpen] = useState('');
 
-  const { setCustomProgress, progress, } = useProgressUpdater();
+  const showAccessPoint = (modelName: string) => {
+    if (isOpen === modelName) {
+      setIsOpen('')
+    } else {
+      setIsOpen(modelName)
+    }
+  }
+
 
 
   // Filter and determine compatibility status using `useMemo` for memoization
@@ -39,7 +52,7 @@ const Compatible = () => {
 
   const handleNext = () => {
     setCustomProgress(progress + 10);
-    router.push('/collections/submit-details');
+    router.push('/collections/price-plan');
   }
 
   return (
@@ -59,7 +72,7 @@ const Compatible = () => {
       <div className="flex-1 min-h-0 overflow-hidden">
         <div className="h-full overflow-y-auto">
           <div className="space-y-[10px] font-inter">
-            {loading ? <Loader /> :
+            {loading && !vins ? <Loader /> :
               filteredCompatibleBrands().map((brand) => (
                 <div key={brand.brand} className="flex items-center justify-between border rounded-md px-[16px] py-[12px]">
                   <div className=" flex items-center gap-[10px]">
@@ -82,6 +95,47 @@ const Compatible = () => {
                 </div>
               ))
             }
+
+            {vins && vins.map((vin, idx) => (
+              <div key={idx} className=" border px-[16px] py-[12px]   rounded-md  border-bg_dusty_white">
+                <div className="flex items-center justify-between  ">
+                  <div className=" flex items-center gap-[10px]">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        showAccessPoint(vin.vin);
+                      }}
+                      className="w-5 h-5 flex items-center justify-center"
+                    >
+                      <Image
+                        className="size-[20px] object-cover"
+                        src={isOpen === vin.vin ? open : close}
+                        alt="toggle"
+                      />
+                    </button>
+                    <div className="leading-[18px] font-medium text-left text-ti_black font-inter text-sm">
+                      {`VIN - ${vin.vin}`}
+                    </div>
+                  </div>
+                  <div className="w-[110px]">
+                    {vin.isCompatible ? (
+                      <div className="flex items-center gap-[5px]">
+                        <Image src={trueIcon} width={16} height={16} alt="success" />
+                        <span className="font-inter text-[14px]  text-[#4DB429]">Compatible</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-[5px]">
+                        <Image src={falseIcon} width={16} height={16} alt="failed" />
+                        <span className="font-inter text-[14px]  text-[#F00]">Incompatible</span>
+                      </div>
+                    )}
+                  </div>
+
+                </div>
+                {isOpen === vin.vin && <AccessPoint endpoints={vin.endpoints} />}
+              </div>
+            ))}
+
           </div>
         </div>
       </div>

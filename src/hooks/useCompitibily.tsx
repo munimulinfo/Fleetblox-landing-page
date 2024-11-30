@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CarBrandsData } from '@/app/collections/select-brand/page';
 import { getCode } from 'country-list';
+import { TransformedCarData } from '@/utils/transformCompatibilityData';
 
 
 const useBrandCarList = (initialCountry: string | null) => {
@@ -11,10 +12,18 @@ const useBrandCarList = (initialCountry: string | null) => {
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [storedBrandModels, setStoredBrandModels] = useState<Record<string, string | null>>({});
   const [loading, setLoading] = useState(false)
+  const [vins, setVins] = useState<TransformedCarData[] | null>(null);
+  const [country, setCountry] = useState<string>('')
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const brands = localStorage.getItem('brands');
-      const country = localStorage.getItem('country')
+      const country = localStorage.getItem('country');
+      const VINS = localStorage.getItem('VINS_RESULT');
+
+      if (VINS) {
+        const parsedVins: TransformedCarData[] = JSON.parse(VINS);
+        setVins(parsedVins); // Set parsed data into state
+      }
       setStoredBrandModels(JSON.parse(localStorage.getItem('brandModels') || '{}'));
 
       if (brands) {
@@ -22,6 +31,7 @@ const useBrandCarList = (initialCountry: string | null) => {
       }
       if (country) {
         const code = getCode(country);
+        setCountry(country)
 
         if (code === "US" || code === "CA") {
           setCountrySelect(code);
@@ -52,7 +62,7 @@ const useBrandCarList = (initialCountry: string | null) => {
     }
   }, [countrySelect]);
 
-  return { loading, brandCarList, countrySelect, setCountrySelect, selectedBrands, setSelectedBrands, storedBrandModels };
+  return { vins, loading, brandCarList, countrySelect, setCountrySelect, selectedBrands, setSelectedBrands, storedBrandModels, country };
 };
 
 export default useBrandCarList;
