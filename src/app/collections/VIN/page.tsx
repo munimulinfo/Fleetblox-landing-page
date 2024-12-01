@@ -52,9 +52,33 @@ const VIN = () => {
         }
     }, []);
 
+    const isValidVIN = (vin: string): boolean => {
+        if (vin.length !== 17) {
+            toast.error('Invalid VIN: Must be exactly 17 characters long.');
+            return false;
+        }
+
+        if (/[^A-Z0-9]/.test(vin)) {
+            toast.error(
+                'Invalid VIN: Only uppercase letters (A-Z) and digits (0-9) are allowed. No special characters or lowercase letters.',
+            );
+            return false;
+        }
+
+        // toast.success('Valid VIN.');
+        return true;
+    };
+
     const handleAddVin = () => {
         if (searchQuery) {
             const trimmedVin = searchQuery.trim();
+
+            // Validate VIN using isValidVIN function
+            if (!isValidVIN(trimmedVin)) {
+                // toast.error('Invalid VIN. Please enter a valid 17-character VIN.');
+                return;
+            }
+
             if (!vinList.includes(trimmedVin)) {
                 const updatedVinList = [...vinList, trimmedVin];
                 setVinList(updatedVinList);
@@ -70,7 +94,7 @@ const VIN = () => {
 
     const handleBack = () => {
         setCustomProgress(progress - 10);
-        router.push(`/collections/select-country`);
+        router.push(`/collections/compatibility`);
     }
 
 
@@ -87,19 +111,20 @@ const VIN = () => {
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
             const data = await response.json();
+            console.log(data);
+            
             if (data.statusCode === 200) {
                 setApiResponse(data);
                 router.push(`/collections/compatible`);
                 handleNext()
-                localStorage.setItem('VINS_RESULT', JSON.stringify(transformCompatibilityData(data.data)))
                 setLoading(false)
+                localStorage.setItem('VINS_RESULT', JSON.stringify(transformCompatibilityData(data.data)))
             }
             setCustomProgress(progress + 10);
             setLoading(false)
         } catch (error) {
             setLoading(false)
             console.error('Error fetching compatibility data:', error);
-            alert('Failed to fetch compatibility data. Please try again.');
         }
     }
 

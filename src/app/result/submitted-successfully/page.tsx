@@ -19,7 +19,7 @@ const Successfull = () => {
             <Image
                 src={start}
                 alt="start with us"
-                className="absolute object-fill inset-0  hidden lg:block "
+                className="absolute inset-0 h-screen w-screen object-cover hidden xl:block"
             />
             <Image
                 src={Logo}

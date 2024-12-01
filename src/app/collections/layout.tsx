@@ -7,6 +7,7 @@ import ProgressBar from "@/components/shared/ProgressBar";
 import { ProgressProvider } from "@/hooks/useProgress";
 
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export default function RootLayout({
     children,
@@ -14,6 +15,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const pathname = usePathname();
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            
+        }
+    }, []);
+
     return (
         <div className="relative antialiased h-screen w-screen">
             <ProgressProvider>

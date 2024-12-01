@@ -27,7 +27,7 @@ const transformCompatibilityData = (data: ApiCarResponse[]): TransformedCarData[
     return data.map((car) => ({
         vin: car.vin,
         isCompatible: car.isCompatible,
-        endpoints: car.capabilities.map((capability) => capability.endpoint),
+        endpoints: car.capabilities?.map((capability) => capability.endpoint),
     }));
 };
 

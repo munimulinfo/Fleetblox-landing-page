@@ -52,7 +52,7 @@ const Compatible = () => {
 
   const handleNext = () => {
     setCustomProgress(progress + 10);
-    router.push('/collections/price-plan');
+    router.push('/collections/submit-details-early-interest');
   }
 
   return (
@@ -65,7 +65,7 @@ const Compatible = () => {
           Your fleet is  compatible!
         </h2>
         <p className="pre_landing_page_text">
-          {`The brands and models you selected are compatible with us! If a car isn’t on the list, it’s not supported. Share your details to receive up to 15% off!`}
+          {`The brands and models you selected are compatible with us! If a car isn’t on the list, it’s not supported. Share your details to proceed.`}
         </p>
       </div>
 
@@ -100,7 +100,7 @@ const Compatible = () => {
               <div key={idx} className=" border px-[16px] py-[12px]   rounded-md  border-bg_dusty_white">
                 <div className="flex items-center justify-between  ">
                   <div className=" flex items-center gap-[10px]">
-                    <button
+                    {vin.isCompatible ? <button
                       onClick={(e) => {
                         e.stopPropagation();
                         showAccessPoint(vin.vin);
@@ -112,7 +112,7 @@ const Compatible = () => {
                         src={isOpen === vin.vin ? open : close}
                         alt="toggle"
                       />
-                    </button>
+                    </button> : <div className=" w-5 h-5"></div>}
                     <div className="leading-[18px] font-medium text-left text-ti_black font-inter text-sm">
                       {`VIN - ${vin.vin}`}
                     </div>
@@ -132,7 +132,7 @@ const Compatible = () => {
                   </div>
 
                 </div>
-                {isOpen === vin.vin && <AccessPoint endpoints={vin.endpoints} />}
+                {isOpen === vin.vin && vin.endpoints && <AccessPoint endpoints={vin.endpoints} />}
               </div>
             ))}
 

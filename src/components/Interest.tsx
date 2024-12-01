@@ -39,6 +39,8 @@ const SubmitDetails = () => {
     const [brands, setBrands] = useState('');
     const [country, setCountry] = useState('');
     const [countries, setCountries] = useState<Country[] | null>(null);
+    console.log(countries);
+    
     const [plan, setPlan] = useState('');
     const [vinsResult, setVinsResult] = useState('')
     useEffect(() => {
@@ -214,11 +216,11 @@ const SubmitDetails = () => {
                                                 <button
                                                     type="button"
                                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                                                    className="flex w-[80px] space-x-[5px] items-center h-[42px] px-[10px] bg-bg_dusty_white rounded-l-md border-r border-gray-200 text-[12px] font-inter text-ti_grey hover:bg-gray-100"
+                                                    className="flex w-[95px] items-center h-[42px] px-[10px] bg-bg_dusty_white rounded-l-md border-r border-gray-200 text-[12px] font-inter text-ti_grey hover:bg-gray-100"
                                                 >
-                                                    <Image src={formData.flag} alt="Canada" width={20} height={20} />
+                                                    <Image src={countries?.find(i => i.country === 'Canada')?.countryFlag || ''} alt="Canada" className='mr-3 w-[24px] h-[20px] rounded-[6px]' width={20} height={20} />
                                                     <span className='text-ti_light_black'>{formData.countryCode}</span>
-                                                    <ChevronDown className="ml-1 h-4 w-4 text-ti_light_black" />
+                                                    <ChevronDown className=" ml-1 h-4 w-4 text-ti_light_black" />
                                                 </button>
 
                                                 {isDropdownOpen && (
@@ -230,7 +232,7 @@ const SubmitDetails = () => {
                                                                     className="px-3 py-2 hover:bg-gray-50 cursor-pointer text-[12px] font-inter text-ti_light_black flex items-center gap-[10px] "
                                                                     onClick={() => selectCountryCode(country)}
                                                                 >
-                                                                    <Image src={country.countryFlag} alt={country.country} className=' size-[25px] object-cover rounded-full' width={20} height={20} />
+                                                                    <Image src={country.countryFlag} alt={country.country} className="mr-3 w-[24px] h-[20px] rounded-[6px]" width={20} height={20} />
                                                                     <div>
                                                                         <span>{country.country}</span>
                                                                         <span className="ml-2 text-ti_black">{country.countryCode}</span>

@@ -27,6 +27,7 @@ const BrandSelector = () => {
     const searchParams = useSearchParams()
     const country = searchParams.get('country')
     const [searchQuery, setSearchQuery] = useState('');
+    const [disabled, setDisabled] = useState(false)
 
     const { brandCarList, selectedBrands, setSelectedBrands, loading } = useBrandCarList(country)
 
@@ -58,14 +59,17 @@ const BrandSelector = () => {
     const { setCustomProgress, progress } = useProgressUpdater();
 
     const handleNext = React.useCallback(() => {
-
+        setDisabled(true)
+        if (disabled) {
+            return
+        }
         setCustomProgress(progress + 10);
         router.push(`/collections/select-brand/${selectedBrands.join(',')}`);
     }, [progress, setCustomProgress, router, selectedBrands]);
 
     const handleBack = () => {
         setCustomProgress(progress - 10);
-        router.push(`/collections/select-country`);
+        router.push(`/collections/compatibility`);
     }
 
     return (
@@ -152,7 +156,7 @@ const BrandSelector = () => {
                     onClick={handleNext}
                     className={`w-full lg:w-1/2 pre_landing_page_btn text-bg_white px-[14px] py-[10px] font-inter rounded-md ${selectedBrands.length ? 'bg-p_blue' : 'bg-p_blue/50'
                         }`}
-                    disabled={!selectedBrands.length}
+                    disabled={!selectedBrands.length && disabled}
                 >
                     Next
                 </button>

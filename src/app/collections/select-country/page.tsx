@@ -22,6 +22,7 @@ const SelectCountry = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [countries, setCountries] = useState<Country[] | null>(null);
     const [loading, setLoading] = useState(false)
+    const [disabled, setDisabled] = useState(false)
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const country = localStorage.getItem('country');
@@ -65,6 +66,10 @@ const SelectCountry = () => {
     const { setCustomProgress, progress } = useProgressUpdater();
 
     const handleNext = () => {
+        setDisabled(true)
+        if (disabled) {
+            return
+        }
         let countryCode;
 
         if (selectedCountry) {
@@ -142,7 +147,7 @@ const SelectCountry = () => {
             <button
                 className={`w-full lg:w-1/2 pre_landing_page_btn text-bg_white font-inter px-[14px] py-[10px] rounded-md ${selectedCountry ? 'bg-p_blue' : 'bg-p_blue/50'
                     }`}
-                disabled={!selectedCountry}
+                disabled={!selectedCountry && disabled}
                 onClick={handleNext}
             >
                 Next

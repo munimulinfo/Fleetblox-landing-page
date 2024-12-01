@@ -225,7 +225,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
                             <div
                                 key={model.name}
                                 className={`flex justify-between flex-col items-center border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels.includes(model.name)
-                                    ? 'bg-blue-50 border-p_light_blue'
+                                    ? 'bg-blue-50 border-p_light_blue select_car_collection_bg'
                                     : 'border-bg_dusty_white'
                                     }`}
                                 onClick={() => handleModelSelect(model.name)}

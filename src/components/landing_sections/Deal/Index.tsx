@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from "react";
-import deal from "@/../public/images/deals3.svg";
+import deal from "@/../public/images/deals.png";
 import Image from "next/image";
 import { Deals } from "@/Static_data/data";
 import { motion } from "framer-motion";
@@ -30,7 +30,7 @@ const Deal = () => {
           return 0;
         }
         // Increment progress
-        return prevProgress + (100 / 50); // 5 seconds = 50 * 100ms intervals
+        return prevProgress + (100 / 100); // 5 seconds = 50 * 100ms intervals
       });
     }, 100);
 

@@ -12,6 +12,9 @@ const Successfull = () => {
             localStorage.removeItem('brands');
             localStorage.removeItem('brandModels');
             localStorage.removeItem('country');
+            localStorage.removeItem('VINS');
+            localStorage.removeItem('VINS_RESULT');
+
         }
     }, []);
 
@@ -21,7 +24,7 @@ const Successfull = () => {
             <Image
                 src={start}
                 alt="start with us"
-                className="absolute object-fill inset-0 h-full w-full hidden lg:block"
+                className="absolute inset-0 h-screen w-screen object-cover hidden xl:block"
             />
             <Image
                 src={Logo}

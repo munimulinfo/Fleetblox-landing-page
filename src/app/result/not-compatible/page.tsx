@@ -5,6 +5,8 @@ import start from "@/../public/images/start-with-us.jpg";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Logo from "@/../public/images/Logo.png";
+import { toast } from "react-hot-toast";
+import axios from "axios";
 
 const NotCompatible = () => {
   const router = useRouter();
@@ -23,24 +25,40 @@ const NotCompatible = () => {
 
   const handleSubscribe = async () => {
     setLoading(true);
-    const response = await fetch(`/api?email=${email}`);
-    const data = await response.json();
 
-    if (data.status === 201) {
-      setLoading(false);
-      return router.push('/result/Successfull');
-    } else {
-      alert('Failed to subscribe!');
+    try {
+      const response = await axios.post(`https://backend.illama360.com/api/newsLetter/create`, { email });
+      const data = response.data; // `data` contains the response payload
+
+      if (data.statusCode === 201) {
+        toast.success('Subscription successful!');
+        return router.push('/result/Successfull');
+      } else {
+        toast.error(data.message || 'Failed to subscribe');
+      }
+    } catch (error) {
+      // Check if error is an AxiosError
+      if (axios.isAxiosError(error)) {
+        const errorMessage = error.response?.data?.error?.message || 'An unexpected error occurred';
+        toast.error(errorMessage);
+        console.error('Axios Error:', errorMessage);
+      } else {
+        // Handle other unexpected errors
+        toast.error('An unexpected error occurred');
+        console.error('Unexpected Error:', error);
+      }
+    } finally {
+      setLoading(false); // Ensure loading is false regardless of success or failure
     }
-    setLoading(false);
-  }
+  };
+
 
   return (
     <div className="relative h-screen w-screen">
       <Image
         src={start}
         alt="start with us"
-        className="absolute inset-0 h-full w-full hidden lg:block"
+        className="absolute inset-0 h-screen w-screen object-cover hidden xl:block"
       />
       <Image
         src={Logo}
@@ -56,15 +74,15 @@ const NotCompatible = () => {
             <h2 className="pre_landing_page_title font-inter">
               Your fleet is not compatible!
             </h2>
-            <p className="pre_landing_page_text">
+            <p className="pre_landing_page_text font-inter">
               {` Unfortunately, your fleet isn’t compatible with our platform yet. We’re working to expand compatibility. Stay with us for all kind of future updates.`}
             </p>
           </div>
           <div className=" mt-[32px] md:mt-[60px]">
-            <h1 className="font-inter text-[18px] font-semibold text-ti_dark_grey">
+            <h1 className="font-inter text-[16px] font-semibold text-ti_dark_grey">
               Join our newsletter
             </h1>
-            <div className="mt-[16px] flex flex-col sm:flex-row justify-between gap-[10px]">
+            <div className="mt-[10px] flex flex-col sm:flex-row justify-between gap-[10px]">
               {/* Search Section */}
               <div className="mb-[16px] flex sm:w-2/3 w-full flex-shrink-0 items-center gap-[8px] rounded-md bg-bg_dusty_white px-[10px] py-[12px]">
                 <input

@@ -12,7 +12,7 @@ import Tab from "@/../public/images/Tab.png";
 import Logo from "../../../../public/images/NavLogo.svg";
 import Link from "next/link";
 
-const   Hero: React.FC = () => {
+const Hero: React.FC = () => {
   return (
     <div className="mx-auto w-full">
       {/* hero background */}
@@ -24,7 +24,7 @@ const   Hero: React.FC = () => {
       <div className="absolute -top-[150px] right-0 size-[500px] rounded-full bg-p_blue opacity-60 blur-[160px]"></div>
 
       <div className="relative mx-auto flex max-w-[1980px] flex-col items-start justify-between overflow-hidden lg2:flex-row lg2:gap-[60px]">
-        <div className="absolute left-0 top-0 size-[156px] flex-shrink-0 rounded-full bg-bg_yellow opacity-40 blur-[40px] lg2:-top-[150px] lg2:left-[150px] lg2:size-[500px] lg2:blur-[160px] 2.5xl:left-[200px]"></div>
+        <div className="absolute left-0 top-0 size-[156px] flex-shrink-0 rounded-full bg-bg_yellow opacity-60 blur-[40px] lg2:-top-[150px] lg2:left-[150px] lg2:size-[500px] lg2:blur-[160px] 2.5xl:left-[200px]"></div>
 
         {/* left side content */}
         <div className="custom_padding z-[1] mx-auto mt-[40px] w-full max-w-[1920px] lg2:mt-[130px] lg2:w-3/5 lg2:pl-[80px] lg2:pr-[0px] 3xl:mx-auto 3xl:ml-[30px] 3xl:px-[100px]">
@@ -42,13 +42,12 @@ const   Hero: React.FC = () => {
             Complete Brand Solution
           </h5>
           <h1 className="hero_title pt-[10px] font-montserrat text-[40px] text-ti_royel_blue 2xl:text-[40px] 2.5xl:text-[48px] 3xl:text-[52px]">
-            The First Ever Cloud-Based <br className="hidden lg2:block" />{" "}
-            Platform for Car Rentals
+            Optimize Your Fleet  <br className="hidden lg2:block" />{" "}
+            Operations with FleetBlox
           </h1>
 
           <p className="hero_text mt-[16px] max-w-[800px] text-[16px] text-ti_dark_grey xl:w-[500px] 2xl:w-[800px] 2xl:max-w-[600px] 2.5xl:w-[800px] 2.5xl:max-w-[700px] 3xl:max-w-[900px]">
-            Introducing FleetBlox, the Revolutionary Subscription-Based Rental
-            Platform Designed to Maximize Fleet Revenu nce.
+            Maximize fleet performance and profitability with FleetBlox, the all-in-one cloud-based platform designed to streamline fleet management and rental operations.
           </p>
           <div className="mt-[32px] flex flex-col items-center gap-[20px] md:max-w-max md:flex-row">
             <CustomeButton

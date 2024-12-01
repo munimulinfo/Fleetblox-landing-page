@@ -26,10 +26,12 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
     const [currentPath, setCurrentPath] = useState('/collections/select-country');
     const [progress, setProgressState] = useState(1);
     const [apiResponse, setApiResponseState] = useState<unknown[]>([]); // Explicitly type as an array
-    
+
     const setApiResponse = (response: unknown[]) => {
         setApiResponseState(response);
     };
+
+    console.log(pathname);
 
 
     const setProgress = (value: number) => {
@@ -42,14 +44,20 @@ export const ProgressProvider = ({ children }: { children: React.ReactNode }) =>
         SELECT_BRAND: '/collections/select-brand',
         SELECT_BRAND_MODEL: (model: string) => `/collections/select-brand/${model}`,
         COMPATIBLE: '/collections/compatible',
-        SUBMIT_DETAILS: '/collections/submit-details'
+        SUBMIT_DETAILS: '/collections/submit-details',
+        VIN: '/collections/VIN'
     };
 
     // Function to update progress to a specific value directly
     const setCustomProgress = (value: number) => {
         if (value >= 0 && value <= 100) {
             setProgressState(value);
-        } else {
+        } else if (pathname === steps.VIN) {
+            setCustomProgress(30);
+        } else if (pathname === steps.COMPATIBLE) {
+            setProgressState(100);
+        }
+        else {
             console.warn('Progress value should be between 0 and 100');
         }
     };

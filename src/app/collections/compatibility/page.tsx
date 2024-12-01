@@ -26,7 +26,7 @@ const Compatibility = () => {
     const country = searchParams.get('country')
     const [mode, setMode] = useState('')
     const [compatibility, setCompatibility] = useState<string | null>(null);
-
+    const [disabled, setDisabled] = useState(false)
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const compatibility = localStorage.getItem('compatibility');
@@ -37,10 +37,22 @@ const Compatibility = () => {
 
 
     const handleModeSelect = (mode: string) => {
+
+        if (mode === 'vin') {
+            localStorage.removeItem('brandModels')
+            localStorage.removeItem('brands')
+        }
+
+        if (mode === 'vehicle') {
+            localStorage.removeItem('VINS')
+            localStorage.removeItem('VINS_RESULT')
+        }
+
         if (compatibility === mode) {
             localStorage.removeItem('compatibility');
             setMode('')
             setCompatibility(null)
+            localStorage.removeItem('')
         } else {
             setCompatibility(mode);
             setMode(mode)
@@ -54,12 +66,17 @@ const Compatibility = () => {
     const { setCustomProgress, progress } = useProgressUpdater();
 
     const handleNext = React.useCallback(() => {
+        setDisabled(true)
+        if (disabled) {
+            return
+        }
         if (mode === 'vin') {
             router.push(`/collections/VIN?country=${country}`);
         } else {
             router.push(`/collections/select-brand?country=${country}`);
         }
         setCustomProgress(progress + 10);
+
     }, [mode, setCustomProgress, progress, router, country]);
 
     const handleBack = () => {
@@ -81,8 +98,7 @@ const Compatibility = () => {
                 <div className="mb-8">
                     <h2 className="pre_landing_page_title font-inter">Check your vehicle compatibility</h2>
                     <p className="pre_landing_page_text">
-                        Before proceeding, we need to ensure your vehicles are compatible with our platform. Please select one of the following methods
-                    </p>
+                        The brands and models you selected are compatible with us! If a car isn’t on the list, it’s not supported. Share your details to proceed.  </p>
                 </div>
             </div>
 
@@ -122,7 +138,7 @@ const Compatibility = () => {
                     onClick={handleNext}
                     className={`w-full pre_landing_page_btn text-bg_white px-[14px] py-[10px] font-inter rounded-md ${compatibility ? 'bg-p_blue' : 'bg-p_blue/50'
                         }`}
-                    disabled={!compatibility}
+                    disabled={!compatibility && disabled}
                 >
                     Next
                 </button>
