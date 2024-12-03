@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
 import AddIcon from '@/../public/images/add.svg'
 import { RxCross2 } from "react-icons/rx";
-import Vin from '@/../public/images/vinsvg.svg'
+// import Vin from '@/../public/images/vinsvg.svg'
 import { getCode } from 'country-list';
 import transformCompatibilityData from '@/utils/transformCompatibilityData';
 import toast from 'react-hot-toast';
@@ -239,10 +239,23 @@ export default VIN;
 
 const SearchingVins = () => {
     return (
-
+        // className={`cursor-pointer rounded-lg w-full flex items-center justify-center flex-col p-[20px] mt-[60px]`}>
         <div
-            className={`cursor-pointer rounded-lg w-full flex items-center justify-center flex-col p-[20px] mt-[60px]`}>
-            <Image src={Vin} alt='' />
+            className={`cursor-pointer   w-full flex items-center justify-center flex-col p-[20px]`}>
+            <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="w-[204.092px] h-[140px] object-fill "
+            >
+                <source
+                    src="/videos/sacning.mp4"
+                    className=""
+                    type="video/mp4"
+                />
+            </video>
             <h4 className=' font-inter mt-[32px]  text-[18px] font-semibold text-ti_black text-center'>Scanning VINs</h4>
             <h4 className=' text-ti_dark_grey   text-[14px] font-inter text-center'>{`Please wait while we finish scanning your provides VINs. This won't take long. Thank you for your patience!`}</h4>
         </div>
