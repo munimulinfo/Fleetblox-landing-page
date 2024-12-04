@@ -212,11 +212,12 @@ const SubmitDetails = () => {
                                             Email
                                         </label>
                                         <input
-                                            type="text"
+                                            type="email"
                                             id="email"
                                             required
                                             name="email"
                                             placeholder="Enter email"
+                                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                             value={formData.email}
                                             onChange={handleChange}
                                             className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
