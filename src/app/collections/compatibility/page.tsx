@@ -26,6 +26,7 @@ const Compatibility = () => {
     const country = searchParams.get('country')
     const [mode, setMode] = useState('')
     const [compatibility, setCompatibility] = useState<string | null>(null);
+    
     const [disabled, setDisabled] = useState(false)
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -138,7 +139,7 @@ const Compatibility = () => {
                     onClick={handleNext}
                     className={`w-full pre_landing_page_btn text-bg_white px-[14px] py-[10px] font-inter rounded-md ${compatibility ? 'bg-p_blue' : 'bg-p_blue/50'
                         }`}
-                    disabled={!compatibility && disabled}
+                    disabled={!compatibility || disabled}
                 >
                     Next
                 </button>
