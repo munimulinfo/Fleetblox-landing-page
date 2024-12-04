@@ -38,6 +38,8 @@ const SubmitDetails = () => {
         countryCode: '+1',
         flag: Canada
     });
+    // console.log();
+
 
     const [plan, setPlan] = useState('');
     const [vinsResult, setVinsResult] = useState('')
@@ -56,14 +58,22 @@ const SubmitDetails = () => {
 
             setCountries(response.data);
         }
-        const selectedCountryFetch = countries?.find(c => c.country === country)
-        setFormData((prev) => ({
-            ...prev,
-            countryCode: selectedCountryFetch?.phoneCode.toString() || '+1',
-            flag: selectedCountryFetch?.countryFlag as unknown as StaticImageData
-        }));
+
         getCountries()
     }, []);
+
+    useEffect(() => {
+        if (countries?.length && country) {
+            const selectedCountryFetch = countries.find(c => c.country === country);
+            setFormData((prev) => ({
+                ...prev,
+                countryCode: selectedCountryFetch?.phoneCode.toString() || '+1',
+                flag: selectedCountryFetch?.countryFlag as unknown as StaticImageData,
+            }));
+        }
+    }, [countries, country]);
+
+
 
     const contactNumber = `${formData.countryCode}${formData.phone}`;
 
@@ -253,9 +263,10 @@ const SubmitDetails = () => {
                                             </div>
 
                                             <input
-                                                type="number"
+                                                type="tel"
                                                 id="phone"
                                                 name="phone"
+                                                maxLength={17}
                                                 placeholder="Enter number"
                                                 value={formData.phone}
                                                 onChange={handleChange}

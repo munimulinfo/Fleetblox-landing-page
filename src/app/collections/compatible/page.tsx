@@ -50,6 +50,16 @@ const Compatible = () => {
     }
   }
 
+  if (vins && vins?.length > 0) {
+    const areAllUncompatible = vins?.every(brand => brand.isCompatible === false);
+    if (!areAllUncompatible) {
+      console.log('areAllUncompatible', areAllUncompatible);
+    } else {
+      console.log(areAllUncompatible, 'areAllUncompatible');
+      router.push('/result/not-compatible');
+    }
+  }
+  
   const handleNext = () => {
     setCustomProgress(progress + 10);
     router.push('/collections/submit-details-early-interest');

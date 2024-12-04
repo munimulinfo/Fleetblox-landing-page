@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import Logo from "@/../public/images/Logo.png";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import Link from "next/link";
 
 const NotCompatible = () => {
   const router = useRouter();
@@ -60,11 +61,13 @@ const NotCompatible = () => {
         alt="start with us"
         className="absolute inset-0 h-screen w-screen object-cover hidden xl:block"
       />
-      <Image
-        src={Logo}
-        alt="start with us"
-        className="absolute left-10 top-10 hidden xl:block"
-      />
+      <Link href={'/'}>
+        <Image
+          src={Logo}
+          alt="start with us"
+          className="absolute left-10 top-10 hidden xl:block"
+        />
+      </Link>
 
 
       <div className="z-[1000000] flex min-h-screen items-center justify-center overflow-auto bg-bg_white ">
