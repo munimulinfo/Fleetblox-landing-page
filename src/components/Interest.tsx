@@ -15,6 +15,10 @@ const SubmitDetails = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const { setCustomProgress } = useProgressUpdater();
     const [loading, setLoading] = useState(false);
+    const [brandModels, setBrandModels] = useState('');
+    const [brands, setBrands] = useState('');
+    const [country, setCountry] = useState('');
+    const [countries, setCountries] = useState<Country[] | null>(null);
 
 
     const [formData, setFormData] = useState({
@@ -35,12 +39,6 @@ const SubmitDetails = () => {
         flag: Canada
     });
 
-    const [brandModels, setBrandModels] = useState('');
-    const [brands, setBrands] = useState('');
-    const [country, setCountry] = useState('');
-    const [countries, setCountries] = useState<Country[] | null>(null);
-    console.log(countries);
-    
     const [plan, setPlan] = useState('');
     const [vinsResult, setVinsResult] = useState('')
     useEffect(() => {
@@ -51,12 +49,19 @@ const SubmitDetails = () => {
             setPlan(localStorage.getItem('price_plan') || '')
             setVinsResult(localStorage.getItem('VINS_RESULT') || '')
         }
+
         const getCountries = async () => {
             const countries = await fetch('https://backend.illama360.com/api/utils/all-countries');
             const response = await countries.json()
-            console.log(response);
+
             setCountries(response.data);
         }
+        const selectedCountryFetch = countries?.find(c => c.country === country)
+        setFormData((prev) => ({
+            ...prev,
+            countryCode: selectedCountryFetch?.phoneCode.toString() || '+1',
+            flag: selectedCountryFetch?.countryFlag as unknown as StaticImageData
+        }));
         getCountries()
     }, []);
 
@@ -96,7 +101,7 @@ const SubmitDetails = () => {
     const selectCountryCode = (data: Country) => {
         setFormData((prev) => ({
             ...prev,
-            countryCode: data.countryCode,
+            countryCode: data.phoneCode,
             flag: data.countryFlag as unknown as StaticImageData
         }));
         setIsDropdownOpen(false);
@@ -144,6 +149,9 @@ const SubmitDetails = () => {
             toast.error(errorMessage);
         }
     };
+
+
+
 
     return (
 
@@ -218,7 +226,7 @@ const SubmitDetails = () => {
                                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                                                     className="flex w-[95px] items-center h-[42px] px-[10px] bg-bg_dusty_white rounded-l-md border-r border-gray-200 text-[12px] font-inter text-ti_grey hover:bg-gray-100"
                                                 >
-                                                    <Image src={countries?.find(i => i.country === 'Canada')?.countryFlag || ''} alt="Canada" className='mr-3 w-[24px] h-[20px] rounded-[6px]' width={20} height={20} />
+                                                    <Image src={formData.flag} alt="Canada" className='mr-2 w-[24px] h-[20px] rounded-[6px]' width={20} height={20} />
                                                     <span className='text-ti_light_black'>{formData.countryCode}</span>
                                                     <ChevronDown className=" ml-1 h-4 w-4 text-ti_light_black" />
                                                 </button>
