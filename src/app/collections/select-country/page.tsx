@@ -147,7 +147,7 @@ const SelectCountry = () => {
             <button
                 className={`w-full lg:w-1/2 pre_landing_page_btn text-bg_white font-inter px-[14px] py-[10px] rounded-md ${selectedCountry ? 'bg-p_blue' : 'bg-p_blue/50'
                     }`}
-                disabled={!selectedCountry && disabled}
+                disabled={!selectedCountry || disabled}
                 onClick={handleNext}
             >
                 Next

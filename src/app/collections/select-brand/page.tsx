@@ -149,14 +149,14 @@ const BrandSelector = () => {
 
             {/* Fixed Footer */}
             <div className="flex-shrink-0 mt-6 flex lg:flex-row flex-col-reverse items-center gap-4">
-                <button className=" lg:w-1/2 pre_landing_page_btn w-full font-inter text-ti_grey px-[14px] py-[8px]   text-[14px] rounded-md">
+                <button  onClick={() => router.push('/result/not-compatible')} className=" lg:w-1/2 pre_landing_page_btn w-full font-inter text-ti_grey px-[14px] py-[8px]   text-[14px] rounded-md">
                     {`I can't find my car brand`}
                 </button>
                 <button
                     onClick={handleNext}
                     className={`w-full lg:w-1/2 pre_landing_page_btn text-bg_white px-[14px] py-[10px] font-inter rounded-md ${selectedBrands.length ? 'bg-p_blue' : 'bg-p_blue/50'
                         }`}
-                    disabled={!selectedBrands.length && disabled}
+                    disabled={!selectedBrands.length || disabled}
                 >
                     Next
                 </button>
