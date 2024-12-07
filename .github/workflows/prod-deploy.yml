@@ -42,7 +42,7 @@ jobs:
 
       - name: Deploy to EC2 
         run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/ubuntu@ec2-15-156-8-35.ca-central-1.compute.amazonaws.com '
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/fleetblox_db.pem ubuntu@ec2-15-156-8-35.ca-central-1.compute.amazonaws.com '
             cd /home/ubuntu/Pre-launching-landing-
             sudo chmod +x deploy.sh
             sudo ./deploy.sh
