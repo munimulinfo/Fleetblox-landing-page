@@ -1,7 +1,9 @@
 name: Deploy to Production
 
-on: workflow_dispatch
-
+on:
+  push:
+    branches:
+      - Prod_main
 jobs:
   test:
     runs-on: ubuntu-latest
