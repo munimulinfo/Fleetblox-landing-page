@@ -1,9 +1,9 @@
-name: Deploy to EC2
+name: Deploy to Production
 
 on:
   push:
-    branches:
-      - master
+    
+     
 
 jobs:
   test:
