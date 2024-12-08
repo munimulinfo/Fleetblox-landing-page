@@ -381,7 +381,7 @@ const SubmitDetails = () => {
                                             Team size (if any)
                                         </label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             maxLength={50}
                                             id="teamSize"
                                             name="teamSize"
@@ -460,7 +460,7 @@ const SubmitDetails = () => {
                                             Postal code
                                         </label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             required
                                             maxLength={50}
                                             id="postalCode"
