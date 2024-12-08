@@ -142,7 +142,7 @@ const VIN = () => {
 
     return (
         <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] 
-        md:h-[800px] h-screen flex flex-col px-4 xs:px-6 sm:px-12 py-[20px] md:py-[60px]">
+         h-[92vh] md:h-[80vh] flex flex-col px-4 xs:px-6 sm:px-12 py-[20px] md:py-[60px]">
             {loading ? <SearchingVins /> :
                 <>
                     {/* Fixed Header */}
