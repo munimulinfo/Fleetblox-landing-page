@@ -161,19 +161,19 @@ const SubmitDetails = () => {
         }
     };
 
-     // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    };
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsDropdownOpen(false);
+            }
+        };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
 
 
@@ -211,6 +211,7 @@ const SubmitDetails = () => {
                                         type="text"
                                         id="fullName"
                                         required
+                                        maxLength={50}
                                         name="fullName"
                                         placeholder="Enter name"
                                         value={formData.fullName}
@@ -231,6 +232,7 @@ const SubmitDetails = () => {
                                             id="email"
                                             required
                                             name="email"
+                                            maxLength={50}
                                             placeholder="Enter email"
                                             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                             value={formData.email}
@@ -306,6 +308,7 @@ const SubmitDetails = () => {
                                         id="brandName"
                                         required
                                         name="brandName"
+                                        maxLength={50}
                                         placeholder="Enter name"
                                         value={formData.brandName}
                                         onChange={handleChange}
@@ -325,6 +328,7 @@ const SubmitDetails = () => {
                                             required
                                             id="fleetSize"
                                             name="fleetSize"
+                                            maxLength={50}
                                             placeholder="Enter number"
                                             value={formData.fleetSize}
                                             onChange={handleChange}
@@ -343,6 +347,7 @@ const SubmitDetails = () => {
                                             id="businessType"
                                             name="businessType"
                                             placeholder="Enter type"
+                                            maxLength={50}
                                             value={formData.businessType}
                                             onChange={handleChange}
                                             className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
@@ -359,7 +364,7 @@ const SubmitDetails = () => {
                                         </label>
                                         <input
                                             type="number"
-
+                                            maxLength={50}
                                             id="locations"
                                             name="locations"
                                             placeholder="Enter number"
@@ -377,7 +382,7 @@ const SubmitDetails = () => {
                                         </label>
                                         <input
                                             type="number"
-
+                                            maxLength={50}
                                             id="teamSize"
                                             name="teamSize"
                                             placeholder="Enter type"
@@ -419,7 +424,8 @@ const SubmitDetails = () => {
                                             id="state"
                                             required
                                             name="state"
-                                            placeholder="Enter"
+                                            maxLength={50}
+                                            placeholder="Enter State"
                                             value={formData.state}
                                             onChange={handleChange}
                                             className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
@@ -437,6 +443,7 @@ const SubmitDetails = () => {
                                         <input
                                             type="text"
                                             id="city"
+                                            maxLength={50}
                                             name="city"
                                             required
                                             placeholder="Enter city"
@@ -455,6 +462,7 @@ const SubmitDetails = () => {
                                         <input
                                             type="number"
                                             required
+                                            maxLength={50}
                                             id="postalCode"
                                             name="postalCode"
                                             placeholder="Enter code"
