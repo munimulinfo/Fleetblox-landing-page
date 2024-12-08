@@ -25,6 +25,15 @@ const NotCompatible = () => {
 
 
   const handleSubscribe = async () => {
+    // Regular expression for validating an email address
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      toast.error('Please enter a valid email address');
+      setLoading(false)
+      return; // Prevent further execution if email is invalid
+    }
+
     setLoading(true);
 
     try {
