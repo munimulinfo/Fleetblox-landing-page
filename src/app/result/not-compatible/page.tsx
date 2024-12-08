@@ -90,6 +90,8 @@ const NotCompatible = () => {
               <div className="mb-[16px] flex sm:w-2/3 w-full flex-shrink-0 items-center gap-[8px] rounded-md bg-bg_dusty_white px-[10px] py-[12px]">
                 <input
                   type="email"
+                  pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                  required
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter email"
                   className="sm:w-2/4 w-full bg-bg_dusty_white font-inter text-[12px] leading-[16px] text-ti_black outline-none"
