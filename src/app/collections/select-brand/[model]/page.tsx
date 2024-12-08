@@ -88,14 +88,21 @@ const ModelSelector = ({ params }: CustomPageProps) => {
     }, [brandCarList, modelParam]);
 
     const [currentBrandIndex, setCurrentBrandIndex] = useState(0);
-    const [selectedModels, setSelectedModels] = useState<string[]>(() => {
+    const [selectedModels, setSelectedModels] = useState<string[]>();
+
+
+    useEffect(() => {
         if (typeof window !== 'undefined') {
             const storedBrandModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
             const currentBrand = filteredModels[currentBrandIndex]?.brand;
-            return storedBrandModels[currentBrand] || [];
+            return setSelectedModels(storedBrandModels[currentBrand] || [])
         }
-        return [];
-    });
+        return setSelectedModels([])
+    }, [currentBrandIndex, filteredModels]);
+
+
+    console.log(selectedModels, 'selectedModels');
+
 
     // select the model
     const handleModelSelect = (model: string) => {
@@ -180,7 +187,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
 
     return (
         <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] 
-        md:h-[780px] h-screen flex flex-col px-4 xs:px-6 sm:px-12 md-[60px] py-[20px] md:py-[60px]">
+         h-[92vh] md:h-[80vh] flex flex-col px-4 xs:px-6 sm:px-12 md-[60px] py-[20px] md:py-[60px]">
             {/* Header Section - Fixed at top */}
             <div className="flex-shrink-0 ">
                 <div onClick={backButton} className="flex items-center gap-1.5 mb-4 cursor-pointer">
@@ -224,27 +231,30 @@ const ModelSelector = ({ params }: CustomPageProps) => {
                         modelData?.models.map((model) => (
                             <div
                                 key={model.name}
-                                className={`flex justify-between flex-col items-center border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels.includes(model.name)
+                                className={`flex justify-between flex-col items-center border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels?.includes(model.name)
                                     ? 'bg-blue-50 border-p_light_blue select_car_collection_bg'
                                     : 'border-bg_dusty_white'
                                     }`}
-                                onClick={() => handleModelSelect(model.name)}
+                                onClick={(e) => e.stopPropagation()} // Prevent parent onClick
                             >
                                 <div className="flex items-center justify-between w-full">
-                                    <div className="flex items-center">
+                                    <div className="flex items-center w-full " onClick={() => handleModelSelect(model.name)}>
                                         <input
                                             type="checkbox"
-                                            checked={selectedModels.includes(model.name)}
-                                            onChange={() => handleModelSelect(model.name)}
-                                            className="mr-2"
+                                            checked={selectedModels?.includes(model.name)}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleModelSelect(model.name)
+                                            }}
+                                            className="mr-2 cursor-pointer"
                                         />
-                                        <span className="font-semibold text-ti_black font-inter text-sm">
+                                        <span className="font-semibold w-full text-ti_black font-inter text-sm">
                                             {model.name}
                                         </span>
                                     </div>
                                     <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
+                                        onClick={() => {
+                                            // e.stopPropagation();
                                             showAccessPoint(model.name);
                                         }}
                                         className="w-5 h-5 flex items-center justify-center"

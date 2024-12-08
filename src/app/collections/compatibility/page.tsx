@@ -26,7 +26,7 @@ const Compatibility = () => {
     const country = searchParams.get('country')
     const [mode, setMode] = useState('')
     const [compatibility, setCompatibility] = useState<string | null>(null);
-    
+
     const [disabled, setDisabled] = useState(false)
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -88,7 +88,7 @@ const Compatibility = () => {
     return (
 
         <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] 
-        md:h-[800px] h-screen flex flex-col px-4 xs:px-6 sm:px-12 py-[20px] md:py-[60px]">
+         h-[90vh] md:h-[90vh] flex flex-col px-4 xs:px-6 sm:px-12 py-[20px] md:py-[60px]">
             {/* Fixed Header */}
             <div className="flex-shrink-0">
                 <div onClick={handleBack} className="flex items-center gap-1 mb-4 cursor-pointer">
@@ -134,7 +134,7 @@ const Compatibility = () => {
 
 
             {/* Fixed Footer */}
-            <div className="flex-shrink-0 mt-6 flex lg:flex-row flex-col-reverse items-center gap-4">
+            <div className="flex-shrink-0 mt-[40px] flex lg:flex-row flex-col-reverse items-center gap-4">
                 <button
                     onClick={handleNext}
                     className={`w-full pre_landing_page_btn text-bg_white px-[14px] py-[10px] font-inter rounded-md ${compatibility ? 'bg-p_blue' : 'bg-p_blue/50'

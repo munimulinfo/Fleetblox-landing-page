@@ -125,7 +125,7 @@ const SelectCountry = () => {
                                 alt={country.country}
                                 width={28}
                                 height={28}
-                                className="mr-3 w-[40px]  object-contain h-[28px] rounded-[6px]"
+                                className="mr-3 w-[40px]   h-[28px] rounded-[6px]"
                             />
                             <span className="flex-1 leading-[18px] font-medium text-left text-ti_black font-inter text-[14px]">
                                 {country.country}

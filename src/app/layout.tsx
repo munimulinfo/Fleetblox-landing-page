@@ -12,7 +12,9 @@ export default function RootLayout({
   const pathname = usePathname();
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.clear()
+      if (pathname === '/') {
+        localStorage.clear()
+      }
     }
   }, [pathname]);
   return (

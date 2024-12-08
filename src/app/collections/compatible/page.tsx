@@ -67,7 +67,7 @@ const Compatible = () => {
 
   return (
 
-    <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] h-screen md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
+    <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px]  h-[92vh] md:h-[80vh] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
 
       <div className="  mb-[40px] flex-shrink-0 flex flex-col items-center">
         <Image alt="failed image" className="mb-[10px]" src={success} />

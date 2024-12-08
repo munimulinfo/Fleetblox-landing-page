@@ -75,7 +75,7 @@ const BrandSelector = () => {
     return (
 
         <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px] 
-        md:h-[780px] h-screen flex flex-col px-4 xs:px-6 sm:px-12 py-[20px] md:py-[60px]">
+         h-[92vh] md:h-[80vh] flex flex-col px-4 xs:px-6 sm:px-12 py-[20px] md:py-[60px]">
             {/* Fixed Header */}
             <div className="flex-shrink-0">
                 <div onClick={handleBack} className="flex items-center gap-1 mb-4 cursor-pointer">
@@ -149,7 +149,7 @@ const BrandSelector = () => {
 
             {/* Fixed Footer */}
             <div className="flex-shrink-0 mt-6 flex lg:flex-row flex-col-reverse items-center gap-4">
-                <button  onClick={() => router.push('/result/not-compatible')} className=" lg:w-1/2 pre_landing_page_btn w-full font-inter text-ti_grey px-[14px] py-[8px]   text-[14px] rounded-md">
+                <button onClick={() => router.push('/result/not-compatible')} className=" lg:w-1/2 pre_landing_page_btn w-full font-inter text-ti_grey px-[14px] py-[8px]   text-[14px] rounded-md">
                     {`I can't find my car brand`}
                 </button>
                 <button

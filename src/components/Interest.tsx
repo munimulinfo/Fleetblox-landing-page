@@ -165,8 +165,8 @@ const SubmitDetails = () => {
 
     return (
 
-        <div className="flex md:h-[780px] h-screen w-full items-center justify-center p-4">
-            <div className="relative flex h-full w-full max-w-[650px] flex-col rounded-lg bg-bg_white md:h-[800px] md:shadow-lg">
+        <div className="flex  h-[92vh] md:h-[80vh] w-full items-center justify-center p-4">
+            <div className="relative flex h-full w-full max-w-[650px] flex-col rounded-lg bg-bg_white md:shadow-lg">
                 {/* Header Section - Fixed */}
                 <div className="flex-shrink-0 px-[20px] pt-[20px] xs:px-[30px] sm:px-[60px] md:pt-[60px]">
                     <div className="text-center">
@@ -455,7 +455,7 @@ const SubmitDetails = () => {
                 </div>
 
                 {/* Button Section - Fixed at Bottom */}
-                <div className="flex-shrink-0  p-4 md:p-[60px] md:pb-[60px]">
+                <div className="flex-shrink-0  p-4 md:px-[60px] md:py-[30px] md:pb-[60px]">
                     <button
                         disabled={loading}
                         type="submit"
