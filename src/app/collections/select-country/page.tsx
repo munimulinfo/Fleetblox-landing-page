@@ -86,7 +86,7 @@ const SelectCountry = () => {
     };
 
 
-    return <div className="relative bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px]  h-screen md:h-[780px] flex flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
+    return <div className="relative  bg-bg_white rounded-lg md:shadow-lg w-full max-w-[650px]  h-[92vh] md:h-[80vh] flex justify-between  flex-col px-[20px] xs:px-[30px] sm:px-[60px] py-[20px] md:py-[60px]">
         {/* Fixed Header */}
         <div className="flex-shrink-0 mb-[40px]">
             <h2 className="pre_landing_page_title font-inter">Select your country</h2>
@@ -96,7 +96,7 @@ const SelectCountry = () => {
         </div>
 
         {/* Search Bar - Fixed */}
-        <div className="relative mb-[16px] bg-bg_dusty_white py-[10px] px-[10px] flex items-center gap-[8px] rounded-md">
+        <div className="flex-shrink-0 relative mb-[16px] bg-bg_dusty_white py-[10px] px-[10px] flex items-center gap-[8px] rounded-md">
             <Search className="text-ti_grey" size={18} />
             <input
                 type="text"
@@ -125,7 +125,7 @@ const SelectCountry = () => {
                                 alt={country.country}
                                 width={28}
                                 height={28}
-                                className="mr-3 w-[40px] h-[28px] rounded-[6px]"
+                                className="mr-3 w-[40px]  object-contain h-[28px] rounded-[6px]"
                             />
                             <span className="flex-1 leading-[18px] font-medium text-left text-ti_black font-inter text-[14px]">
                                 {country.country}
@@ -137,7 +137,7 @@ const SelectCountry = () => {
         </div>
 
         {/* Fixed Footer Buttons */}
-        <div className="flex-0 mt-[40px] flex lg:flex-row flex-col-reverse items-center gap-4">
+        <div className="flex-shrink-0 mt-[40px] flex lg:flex-row flex-col-reverse items-center gap-4">
             <button
                 onClick={() => router.push('/result/not-compatible')}
                 className="lg:w-1/2 pre_landing_page_btn w-full font-inter text-ti_grey px-[14px] py-[8px] rounded-md"
