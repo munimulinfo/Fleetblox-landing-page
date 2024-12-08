@@ -83,6 +83,9 @@ const SelectCountry = () => {
 
         router.push(`/collections/compatibility?country=${countryCode}`);
         setCustomProgress(progress + 10);
+        localStorage.removeItem('brands');
+        localStorage.removeItem('brandModels');
+        localStorage.removeItem('VINS');
     };
 
 

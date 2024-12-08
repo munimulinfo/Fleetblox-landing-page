@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import Image, { StaticImageData } from "next/image";
 import Canada from "@/../public/images/canada.png";
 import toast from 'react-hot-toast'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
 import axios from 'axios';
@@ -19,6 +19,7 @@ const SubmitDetails = () => {
     const [brands, setBrands] = useState('');
     const [country, setCountry] = useState('');
     const [countries, setCountries] = useState<Country[] | null>(null);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
 
     const [formData, setFormData] = useState({
@@ -160,6 +161,20 @@ const SubmitDetails = () => {
         }
     };
 
+     // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
 
 
 
@@ -231,7 +246,7 @@ const SubmitDetails = () => {
                                             Phone
                                         </label>
                                         <div className="relative flex">
-                                            <div className="relative">
+                                            <div className="relative" ref={dropdownRef}>
                                                 <button
                                                     type="button"
                                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}

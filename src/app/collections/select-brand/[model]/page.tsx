@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
@@ -19,12 +20,14 @@ interface CustomPageProps {
 }
 
 const ModelSelector = ({ params }: CustomPageProps) => {
-    const { setCustomProgress, progress } = useProgressUpdater();
+    const { setCustomProgress, progress, } = useProgressUpdater();
     const [totalBrands, setTotalBrands] = useState(0);
     const [isOpen, setIsOpen] = useState('');
     const router = useRouter();
     const modelParam = params.model;
     const [loading, setLoading] = useState(false)
+
+
     // remove duplicate function
     const removeDuplicates = (data: CarBrandsData): CarBrandsData => {
         const brandSet = new Set<string>();
@@ -101,7 +104,6 @@ const ModelSelector = ({ params }: CustomPageProps) => {
     }, [currentBrandIndex, filteredModels]);
 
 
-    console.log(selectedModels, 'selectedModels');
 
 
     // select the model
@@ -135,6 +137,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
 
     const calculateProgress = 60 / totalBrands;
 
+
     // handle Next Button
     const handleNext = () => {
         if (currentBrandIndex < filteredModels.length - 1) {
@@ -144,6 +147,11 @@ const ModelSelector = ({ params }: CustomPageProps) => {
             router.push('/collections/compatible');
         }
     };
+
+    function checkAllNull(obj: Record<string, any>): boolean {
+        // Check if all values are null
+        return Object.values(obj).every(value => value === null);
+    }
 
 
     const handleNotFindModel = () => {
@@ -157,7 +165,20 @@ const ModelSelector = ({ params }: CustomPageProps) => {
             const storedModels = JSON.parse(localStorage.getItem('brandModels') || '{}');
             storedModels[modelData.brand] = null;
             localStorage.setItem('brandModels', JSON.stringify(storedModels));
-            router.push('/collections/compatible');
+            const getModels = localStorage.getItem('brandModels');
+            console.log(getModels, 'brandModels checking for ');
+
+            if (getModels) {
+                const status = checkAllNull(JSON.parse(getModels))
+                console.log(status, 'brandModels checking');
+
+                if (status) {
+                    return router.push('/result/not-compatible')
+                } else {
+                    return router.push('/collections/compatible')
+                }
+
+            }
         }
     }
 
