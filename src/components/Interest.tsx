@@ -360,12 +360,13 @@ const SubmitDetails = () => {
                                             htmlFor="fullName"
                                             className="block text-ti_dark_grey mb-[5px] text-[12px] font-semibold font-inter"
                                         >
-                                            Number of locations (if any)
+                                            Number of locations
                                         </label>
                                         <input
                                             type="number"
                                             maxLength={50}
                                             id="locations"
+                                            required
                                             name="locations"
                                             placeholder="Enter number"
                                             value={formData.locations}
@@ -378,11 +379,12 @@ const SubmitDetails = () => {
                                             htmlFor="teamSize"
                                             className="block text-ti_dark_grey mb-[5px] text-[12px] font-semibold font-inter"
                                         >
-                                            Team size (if any)
+                                            Team size
                                         </label>
                                         <input
                                             type="text"
                                             maxLength={50}
+                                            required
                                             id="teamSize"
                                             name="teamSize"
                                             placeholder="Enter type"
