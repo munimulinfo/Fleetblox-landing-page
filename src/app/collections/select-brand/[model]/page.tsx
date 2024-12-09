@@ -27,29 +27,6 @@ const ModelSelector = ({ params }: CustomPageProps) => {
     const modelParam = params.model;
     const [loading, setLoading] = useState(false)
 
-
-    // remove duplicate function
-    const removeDuplicates = (data: CarBrandsData): CarBrandsData => {
-        const brandSet = new Set<string>();
-        return data.reduce<CarBrandsData>((acc, brand) => {
-            if (!brandSet.has(brand.brand)) {
-                brandSet.add(brand.brand);
-
-                // Deduplicate models by name
-                const modelSet = new Set<string>();
-                const uniqueModels = brand.models.filter((model) => {
-                    if (!modelSet.has(model.name)) {
-                        modelSet.add(model.name);
-                        return true;
-                    }
-                    return false;
-                });
-
-                acc.push({ ...brand, models: uniqueModels });
-            }
-            return acc;
-        }, []);
-    };
     const [brandCarList, setBrandCarList] = useState<CarBrandsData>([])
 
 
@@ -68,8 +45,7 @@ const ModelSelector = ({ params }: CustomPageProps) => {
             try {
                 setLoading(true)
                 const { data } = await axios(`https://backend.illama360.com/api/dummy/check-compatibility-matrix?region=${countrySelect}`)
-                const uniqueBrandList = removeDuplicates(data.data);
-                setBrandCarList(uniqueBrandList);
+                setBrandCarList(data.data);
                 setLoading(false)
             } catch (error) {
                 setLoading(false)
@@ -248,48 +224,50 @@ const ModelSelector = ({ params }: CustomPageProps) => {
                 <div className="space-y-2.5">
                     {loading ? (
                         <Loader />
-                    ) : (
-                        modelData?.models.map((model) => (
-                            <div
-                                key={model.name}
-                                className={`flex justify-between flex-col items-center border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels?.includes(model.name)
-                                    ? 'bg-blue-50 border-p_light_blue select_car_collection_bg'
-                                    : 'border-bg_dusty_white'
-                                    }`}
-                                onClick={(e) => e.stopPropagation()} // Prevent parent onClick
-                            >
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="flex items-center w-full " onClick={() => handleModelSelect(model.name)}>
-                                        <input
-                                            type="checkbox"
-                                            checked={selectedModels?.includes(model.name)}
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                handleModelSelect(model.name)
+                    ) : (  
+                        modelData?.models.map((model) => {
+                            return (
+                                <div
+                                    key={model.name}
+                                    className={`flex justify-between flex-col items-center border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${selectedModels?.includes(model.name)
+                                        ? 'bg-blue-50 border-p_light_blue select_car_collection_bg'
+                                        : 'border-bg_dusty_white'
+                                        }`}
+                                    onClick={(e) => e.stopPropagation()} // Prevent parent onClick
+                                >
+                                    <div className="flex items-center justify-between w-full">
+                                        <div className="flex items-center w-full " onClick={() => handleModelSelect(model.name)}>
+                                            <input
+                                                type="checkbox"
+                                                checked={selectedModels?.includes(model.name)}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleModelSelect(model.name)
+                                                }}
+                                                className="mr-2 cursor-pointer"
+                                            />
+                                            <span className="font-semibold w-full text-ti_black font-inter text-sm">
+                                                {model?.name?.replace('(Unknown)', '')?.replace('Electric', 'EV')}
+                                            </span>
+                                        </div>
+                                        <button
+                                            onClick={() => {
+                                                // e.stopPropagation();
+                                                showAccessPoint(model.name);
                                             }}
-                                            className="mr-2 cursor-pointer"
-                                        />
-                                        <span className="font-semibold w-full text-ti_black font-inter text-sm">
-                                            {model.name}
-                                        </span>
+                                            className="w-5 h-5 flex items-center justify-center"
+                                        >
+                                            <Image
+                                                className="size-[18px] object-cover"
+                                                src={isOpen === model.name ? open : close}
+                                                alt="toggle"
+                                            />
+                                        </button>
                                     </div>
-                                    <button
-                                        onClick={() => {
-                                            // e.stopPropagation();
-                                            showAccessPoint(model.name);
-                                        }}
-                                        className="w-5 h-5 flex items-center justify-center"
-                                    >
-                                        <Image
-                                            className="size-[18px] object-cover"
-                                            src={isOpen === model.name ? open : close}
-                                            alt="toggle"
-                                        />
-                                    </button>
+                                    {isOpen === model.name && <AccessPoint permission={model.endpoints} />}
                                 </div>
-                                {isOpen === model.name && <AccessPoint permission={model.endpoints} />}
-                            </div>
-                        ))
+                            )
+                        })
                     )}
                 </div>
             </div>
