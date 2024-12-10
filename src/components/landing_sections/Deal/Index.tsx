@@ -50,7 +50,7 @@ const Deal = () => {
   };
 
   return (
-    <div className="mx-auto max-w-[1920px]  px-[20px] py-[100px] sm:px-6 md:px-8 lg:px-10 xl:px-[110px] 2xl:px-[170px] 3xl:px-[310px]">
+    <div className="mx-auto max-w-[1920px]   py-[100px]  custom_padding custom_padding xl:px-[110px] xl:pb-[70px] 2xl:px-[170px] 2xl:pb-[125px] 3xl:px-[310px]">
       <div className="space-y-[10px]">
         <h5 className="stronger_security_title font-openSans text-p_dark_blue xl:text-[18px] 2.5xl:text-[22px]">
           Dynamic Platform
@@ -101,7 +101,7 @@ const Deal = () => {
                 {/* Answer Section */}
                 {activeIndex === index && (
                   <motion.div
-                    className="text-ti_dark_grey font-openSans mt-[16px] text-[14px] md:text-[16px]"
+                    className="text-website_text_color_dark_grey font-openSans mt-[16px] text-[14px] md:text-[16px]"
                     initial={{ opacity: 0, y: -1 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}

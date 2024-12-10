@@ -336,24 +336,24 @@ const pricingPlan: PricingPlan[] = [
 
 const Deals = [
     {
-        title: "Maximize Fleet Performance",
-        description: "Keep your vehicles in optimal condition and reduce downtime with real-time monitoring and proactive maintenance tools – all through our cloud-based platform, with no physical hardware to worry about."
+        title: "Reduces Overall Operational Expenses",
+        description: "Traditional solutions come with high installation and maintenance costs for hardware like GPS trackers. Cloud Garage, on the other hand, operates through a secure cloud platform, eliminating the need for expensive installations and reducing overall expenses."
     },
     {
-        title: "Boost Revenue Over Time",
-        description: "Leverage FleetBlox’s dynamic catalog, designed to adapt to your business goals, driving growth and maximizing profitability over the long term."
+        title: "Swift Scalability and Flexibility",
+        description: "Cloud Garage enables easy scalability, letting you add or remove vehicles via a secure cloud platform. It ensures quick deployment, seamless integration, and lower expansion costs, unlike costly and cumbersome traditional solutions that require additional hardware and hinder growth."
     },
     {
-        title: "Simplify Long-Term Operations",
-        description: "Streamline everything from vehicle tracking to billing with an intuitive, all-in-one dashboard. Easily manage long-term, monthly-based rentals and enhance customer satisfaction."
+        title: "Enhanced Efficiency and Reliability",
+        description: "AI optimizes scheduling and minimizes downtime, ensuring smooth operations without physical maintenance. Traditional solutions are costly, requiring regular hardware upkeep, leading to inefficiencies and potential data loss."
     },
     {
-        title: "Enhance Customer Experience",
-        description: "Provide a personalized and branded experience that drives loyalty, with flexible subscription-based solutions for ongoing rentals."
+        title: "Optimized Streamlined Operations",
+        description: "Cloud Garage lets you manage everything from one cloud-based platform, ensuring efficient operations. Traditional solutions often require complex setups and disjointed processes, leading to inefficiencies and higher operational burdens"
     },
     {
-        title: "Secure Fleet with Cloud-Based Protection",
-        description: "With FleetBlox, your fleet is fully secured in the cloud—no hardware can be stolen or tampered with. Our platform offers advanced security features, including real-time vehicle tracking and digital inspections, to ensure the health and safety of your fleet at all times."
+        title: "Advanced Encrypted Cloud-Based Protection ",
+        description: "Cloud Garage ensures data protection with advanced encryption. Unlike traditional manual systems without a dedicated platform or robust security measures, Cloud Garage offers a secure, cloud-based solution to safeguard your information."
     }
 ]
 

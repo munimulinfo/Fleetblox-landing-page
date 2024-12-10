@@ -52,6 +52,8 @@ module.exports = {
 			bg_white: '#FFFFFF',
 			ti_royel_blue: '#000E32',
 			ti_dark_grey: '#6F6464',
+			website_text_color_dark_grey : "#333",
+			website_text_color_grey : "#7D7D7D",
 			ti_grey: '#999999',
 			ti_light_grey: '#DFDFDF',
 			ti_light_black: '#303030',
