@@ -267,6 +267,7 @@ const SubmitDetails = () => {
                                                 id="phone"
                                                 name="phone"
                                                 maxLength={17}
+                                                required
                                                 placeholder="Enter number"
                                                 value={formData.phone}
                                                 onChange={handleChange}
@@ -328,6 +329,7 @@ const SubmitDetails = () => {
                                             type="text"
                                             id="businessType"
                                             name="businessType"
+                                            required
                                             placeholder="Enter type"
                                             maxLength={50}
                                             value={formData.businessType}
