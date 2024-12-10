@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import Image, { StaticImageData } from "next/image";
 import Canada from "@/../public/images/canada.png";
 import toast from 'react-hot-toast'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useProgressUpdater } from '@/hooks/useProgress';
 import axios from 'axios';
@@ -19,6 +19,7 @@ const SubmitDetails = () => {
     const [brands, setBrands] = useState('');
     const [country, setCountry] = useState('');
     const [countries, setCountries] = useState<Country[] | null>(null);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
 
     const [formData, setFormData] = useState({
@@ -160,13 +161,27 @@ const SubmitDetails = () => {
         }
     };
 
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
 
 
 
     return (
 
-        <div className="flex md:h-[780px] h-screen w-full items-center justify-center p-4">
-            <div className="relative flex h-full w-full max-w-[650px] flex-col rounded-lg bg-bg_white md:h-[800px] md:shadow-lg">
+        <div className="flex  h-[92vh] md:h-[80vh] w-full items-center justify-center p-4">
+            <div className="relative flex h-full w-full max-w-[650px] flex-col rounded-lg bg-bg_white md:shadow-lg">
                 {/* Header Section - Fixed */}
                 <div className="flex-shrink-0 px-[20px] pt-[20px] xs:px-[30px] sm:px-[60px] md:pt-[60px]">
                     <div className="text-center">
@@ -196,6 +211,7 @@ const SubmitDetails = () => {
                                         type="text"
                                         id="fullName"
                                         required
+                                        maxLength={50}
                                         name="fullName"
                                         placeholder="Enter name"
                                         value={formData.fullName}
@@ -216,6 +232,7 @@ const SubmitDetails = () => {
                                             id="email"
                                             required
                                             name="email"
+                                            maxLength={50}
                                             placeholder="Enter email"
                                             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                             value={formData.email}
@@ -231,7 +248,7 @@ const SubmitDetails = () => {
                                             Phone
                                         </label>
                                         <div className="relative flex">
-                                            <div className="relative">
+                                            <div className="relative" ref={dropdownRef}>
                                                 <button
                                                     type="button"
                                                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -268,6 +285,7 @@ const SubmitDetails = () => {
                                                 id="phone"
                                                 name="phone"
                                                 maxLength={17}
+                                                required
                                                 placeholder="Enter number"
                                                 value={formData.phone}
                                                 onChange={handleChange}
@@ -291,6 +309,7 @@ const SubmitDetails = () => {
                                         id="brandName"
                                         required
                                         name="brandName"
+                                        maxLength={50}
                                         placeholder="Enter name"
                                         value={formData.brandName}
                                         onChange={handleChange}
@@ -310,6 +329,7 @@ const SubmitDetails = () => {
                                             required
                                             id="fleetSize"
                                             name="fleetSize"
+                                            maxLength={50}
                                             placeholder="Enter number"
                                             value={formData.fleetSize}
                                             onChange={handleChange}
@@ -327,7 +347,9 @@ const SubmitDetails = () => {
                                             type="text"
                                             id="businessType"
                                             name="businessType"
+                                            required
                                             placeholder="Enter type"
+                                            maxLength={50}
                                             value={formData.businessType}
                                             onChange={handleChange}
                                             className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
@@ -340,12 +362,13 @@ const SubmitDetails = () => {
                                             htmlFor="fullName"
                                             className="block text-ti_dark_grey mb-[5px] text-[12px] font-semibold font-inter"
                                         >
-                                            Number of locations (if any)
+                                            Number of locations
                                         </label>
                                         <input
                                             type="number"
-
+                                            maxLength={50}
                                             id="locations"
+                                            required
                                             name="locations"
                                             placeholder="Enter number"
                                             value={formData.locations}
@@ -358,11 +381,12 @@ const SubmitDetails = () => {
                                             htmlFor="teamSize"
                                             className="block text-ti_dark_grey mb-[5px] text-[12px] font-semibold font-inter"
                                         >
-                                            Team size (if any)
+                                            Team size
                                         </label>
                                         <input
-                                            type="number"
-
+                                            type="text"
+                                            maxLength={50}
+                                            required
                                             id="teamSize"
                                             name="teamSize"
                                             placeholder="Enter type"
@@ -404,7 +428,8 @@ const SubmitDetails = () => {
                                             id="state"
                                             required
                                             name="state"
-                                            placeholder="Enter"
+                                            maxLength={50}
+                                            placeholder="Enter State"
                                             value={formData.state}
                                             onChange={handleChange}
                                             className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"
@@ -422,6 +447,7 @@ const SubmitDetails = () => {
                                         <input
                                             type="text"
                                             id="city"
+                                            maxLength={50}
                                             name="city"
                                             required
                                             placeholder="Enter city"
@@ -438,8 +464,9 @@ const SubmitDetails = () => {
                                             Postal code
                                         </label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             required
+                                            maxLength={50}
                                             id="postalCode"
                                             name="postalCode"
                                             placeholder="Enter code"
@@ -455,7 +482,7 @@ const SubmitDetails = () => {
                 </div>
 
                 {/* Button Section - Fixed at Bottom */}
-                <div className="flex-shrink-0  p-4 md:p-[60px] md:pb-[60px]">
+                <div className="flex-shrink-0  p-4 md:px-[60px] md:py-[30px] md:pb-[60px]">
                     <button
                         disabled={loading}
                         type="submit"
