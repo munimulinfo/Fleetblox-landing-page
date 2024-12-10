@@ -135,25 +135,7 @@ const SubmitDetails = () => {
             setLoading(false);
         } catch (error) {
             const axiosError = error as AxiosErrorResponse;
-            setLoading(false);
-            setFormData({
-                fullName: '',
-                email: '',
-                brandName: '',
-                fleetSize: '',
-                businessType: '',
-                teamSize: '',
-                locations: '',
-                country: '',
-                state: '',
-                city: '',
-                postalCode: '',
-                address: '',
-                phone: '',
-                countryCode: '+1',
-                flag: Canada
-            })
-            console.log(error);
+            setLoading(false);          
 
             const errorMessage = axiosError?.response?.data?.error?.message || 'An unexpected error occurred';
             console.error(errorMessage);
