@@ -53,10 +53,10 @@ const Deal = () => {
     <div className="mx-auto max-w-[1920px]   py-[100px]  custom_padding custom_padding xl:px-[110px] xl:pb-[70px] 2xl:px-[170px] 2xl:pb-[125px] 3xl:px-[310px]">
       <div className="space-y-[10px]">
         <h5 className="stronger_security_title font-openSans text-p_dark_blue xl:text-[18px] 2.5xl:text-[22px]">
-          Dynamic Platform
+          No More Hardware
         </h5>
         <h1 className="stronger_security_title font-montserrat text-ti_royel_blue text-[40px] 2.5xl:text-[52px]">
-          Cut Costs, Boost Efficiency, and <br /> Elevate Customer Satisfaction
+          FleetBlox Outshines Traditional<br /> Garage Management Systems
         </h1>
       </div>
 

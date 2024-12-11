@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
           </h1>
 
           <p className="hero_text mt-[16px] leading-[24px] max-w-[800px] text-[16px] text-website_text_color_dark_grey xl:w-[500px] 2xl:w-[800px] 2xl:max-w-[600px] 2.5xl:w-[800px] 2.5xl:max-w-[700px] 3xl:max-w-[900px]">
-            Maximize fleet performance and profitability with FleetBlox, the all-in-one cloud-based platform designed to streamline fleet management and rental operations.
+            Boost your fleet performance with FleetBlox, the all-in-one cloud-based AI platform designed to make fleet management simple and efficient.
           </p>
           <div className="mt-[32px] flex flex-col items-center gap-[10px] md:gap-[20px] md:max-w-max md:flex-row">
             <CustomeButton
@@ -127,11 +127,11 @@ const Hero: React.FC = () => {
             {HeroSection.map((item, idx) => (
               <div className="flex items-start gap-[10px] py-[5px]" key={idx}>
                 <Image
-                  className="size-[24px]"
+                  className="size-[28px]"
                   alt={item.title}
                   src={item.icon}
                 />
-                <h1 className="font-openSans text-[16px] font-semibold leading-[24px] text-[#333]">
+                <h1 className="font-openSans text-[16px] font-semibold leading-[24px] text-[#333333]">
                   {item.title}
                 </h1>
               </div>
