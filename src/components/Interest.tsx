@@ -124,6 +124,17 @@ const SubmitDetails = () => {
         setLoading(true);
         e.preventDefault();
         setCustomProgress(100);
+
+        // Regular expression for validating an email address
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(formData.email)) {
+            toast.error('Please enter a valid email address');
+            setLoading(false)
+            return; // Prevent further execution if email is invalid
+        }
+
+
         try {
             setLoading(true);
             const { data } = await axios.post('https://backend.illama360.com/api/InterestedUser/create', submitData)
@@ -136,24 +147,6 @@ const SubmitDetails = () => {
         } catch (error) {
             const axiosError = error as AxiosErrorResponse;
             setLoading(false);
-            setFormData({
-                fullName: '',
-                email: '',
-                brandName: '',
-                fleetSize: '',
-                businessType: '',
-                teamSize: '',
-                locations: '',
-                country: '',
-                state: '',
-                city: '',
-                postalCode: '',
-                address: '',
-                phone: '',
-                countryCode: '+1',
-                flag: Canada
-            })
-            console.log(error);
 
             const errorMessage = axiosError?.response?.data?.error?.message || 'An unexpected error occurred';
             console.error(errorMessage);
@@ -234,7 +227,6 @@ const SubmitDetails = () => {
                                             name="email"
                                             maxLength={50}
                                             placeholder="Enter email"
-                                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                             value={formData.email}
                                             onChange={handleChange}
                                             className=" w-full outline-none bg-bg_dusty_white px-[10px] py-[12px] rounded-md text-[12px] font-inter leading-[16px] text-ti_black"

@@ -19,10 +19,10 @@ const Connecting_Global = () => {
                 key={index}
                 className="flex w-[247px] flex-col items-center justify-between border-r-[3px] border-r-bg_yellow px-[20px] py-[10px] last:border-r-0"
               >
-                <h1 className="connecting_global_title text-[22px] text-p_dark_blue">
+                <h1 className="connecting_global_title text-[22px] text-p_dark_blue font-openSans">
                   {car.value}
                 </h1>
-                <p className="connecting_global_text text-[14px] text-ti_grey">
+                <p className="connecting_global_text text-[14px] text-website_text_color_grey font-openSans">
                   {car.title}
                 </p>
               </div>

@@ -1,7 +1,7 @@
-import star from '../../public/images/1.svg'
-import wifi from '../../public/images/2.svg'
-import chart from '../../public/images/3.svg'
-import circle_chart from '../../public/images/4.svg'
+import hero1 from '../../public/images/hero1.svg'
+import hero2 from '../../public/images/hero2.svg'
+import hero3 from '../../public/images/hero3.svg'
+import hero4 from '../../public/images/hero4.svg'
 
 import US from '@/../public/images/united-states.png'
 import AT from '@/../public/images/austria.png'
@@ -31,20 +31,20 @@ import { PricingPlan } from '@/app/collections/price-plan/Card';
 const HeroSection =
     [
         {
-            "icon": star,
-            "title": "Advanced Sales and Brand Management"
+            "icon": hero1,
+            "title": "AI-Powered Garage Assistant"
         },
         {
-            "icon": wifi,
-            "title": "Secured AI-Driven Fleet Management"
+            "icon": hero2,
+            "title": "Remote Accessibility for Entire Fleet From Anywhere"
         },
         {
-            "icon": chart,
-            "title": "Targeted Marketing, Sales Booster"
+            "icon": hero3,
+            "title": "Safety and Compliance Through Teal-time Monitoring and GPS Tracking"
         },
         {
-            "icon": circle_chart,
-            "title": "Superior Branding, Pro Website Builder"
+            "icon": hero4,
+            "title": "Comprehensive Vehicle Diagnostics"
         }
     ]
 const cars = [
@@ -336,24 +336,24 @@ const pricingPlan: PricingPlan[] = [
 
 const Deals = [
     {
-        title: "Maximize Fleet Performance",
-        description: "Keep your vehicles in optimal condition and reduce downtime with real-time monitoring and proactive maintenance tools – all through our cloud-based platform, with no physical hardware to worry about."
+        title: "Reduces Overall Operational Expenses",
+        description: "Traditional solutions come with high installation and maintenance costs for hardware like GPS trackers. Cloud Garage, on the other hand, operates through a secure cloud platform, eliminating the need for expensive installations and reducing overall expenses."
     },
     {
-        title: "Boost Revenue Over Time",
-        description: "Leverage FleetBlox’s dynamic catalog, designed to adapt to your business goals, driving growth and maximizing profitability over the long term."
+        title: "Swift Scalability and Flexibility",
+        description: "Cloud Garage enables easy scalability, letting you add or remove vehicles via a secure cloud platform. It ensures quick deployment, seamless integration, and lower expansion costs, unlike costly and cumbersome traditional solutions that require additional hardware and hinder growth."
     },
     {
-        title: "Simplify Long-Term Operations",
-        description: "Streamline everything from vehicle tracking to billing with an intuitive, all-in-one dashboard. Easily manage long-term, monthly-based rentals and enhance customer satisfaction."
+        title: "Enhanced Efficiency and Reliability",
+        description: "AI optimizes scheduling and minimizes downtime, ensuring smooth operations without physical maintenance. Traditional solutions are costly, requiring regular hardware upkeep, leading to inefficiencies and potential data loss."
     },
     {
-        title: "Enhance Customer Experience",
-        description: "Provide a personalized and branded experience that drives loyalty, with flexible subscription-based solutions for ongoing rentals."
+        title: "Optimized Streamlined Operations",
+        description: "Cloud Garage lets you manage everything from one cloud-based platform, ensuring efficient operations. Traditional solutions often require complex setups and disjointed processes, leading to inefficiencies and higher operational burdens"
     },
     {
-        title: "Secure Fleet with Cloud-Based Protection",
-        description: "With FleetBlox, your fleet is fully secured in the cloud—no hardware can be stolen or tampered with. Our platform offers advanced security features, including real-time vehicle tracking and digital inspections, to ensure the health and safety of your fleet at all times."
+        title: "Advanced Encrypted Cloud-Based Protection ",
+        description: "Cloud Garage ensures data protection with advanced encryption. Unlike traditional manual systems without a dedicated platform or robust security measures, Cloud Garage offers a secure, cloud-based solution to safeguard your information."
     }
 ]
 
