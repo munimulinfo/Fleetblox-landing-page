@@ -1,7 +1,7 @@
-import star from '../../public/images/1.svg'
-import wifi from '../../public/images/2.svg'
-import chart from '../../public/images/3.svg'
-import circle_chart from '../../public/images/4.svg'
+import hero1 from '../../public/images/hero1.svg'
+import hero2 from '../../public/images/hero2.svg'
+import hero3 from '../../public/images/hero3.svg'
+import hero4 from '../../public/images/hero4.svg'
 
 import US from '@/../public/images/united-states.png'
 import AT from '@/../public/images/austria.png'
@@ -31,20 +31,20 @@ import { PricingPlan } from '@/app/collections/price-plan/Card';
 const HeroSection =
     [
         {
-            "icon": star,
-            "title": "Advanced Sales and Brand Management"
+            "icon": hero1,
+            "title": "AI-Powered Garage Assistant"
         },
         {
-            "icon": wifi,
-            "title": "Secured AI-Driven Fleet Management"
+            "icon": hero2,
+            "title": "Remote Accessibility for Entire Fleet From Anywhere"
         },
         {
-            "icon": chart,
-            "title": "Targeted Marketing, Sales Booster"
+            "icon": hero3,
+            "title": "Safety and Compliance Through Teal-time Monitoring and GPS Tracking"
         },
         {
-            "icon": circle_chart,
-            "title": "Superior Branding, Pro Website Builder"
+            "icon": hero4,
+            "title": "Comprehensive Vehicle Diagnostics"
         }
     ]
 const cars = [
