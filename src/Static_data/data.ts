@@ -40,7 +40,7 @@ const HeroSection =
         },
         {
             "icon": hero3,
-            "title": "Safety and Compliance Through Teal-time Monitoring and GPS Tracking"
+            "title": "Safety and Compliance Through Real-time Monitoring and GPS Tracking"
         },
         {
             "icon": hero4,
