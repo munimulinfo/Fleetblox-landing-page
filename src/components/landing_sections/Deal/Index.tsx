@@ -56,7 +56,7 @@ const Deal = () => {
           No More Hardware
         </h5>
         <h1 className="stronger_security_title font-montserrat text-ti_royel_blue text-[40px] 2.5xl:text-[52px]">
-          FleetBlox Outshines Traditional<br /> Garage Management Systems
+          FleetBlox Outshines Traditional<br /> Fleet  Management Systems
         </h1>
       </div>
 
