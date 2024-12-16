@@ -1,4 +1,4 @@
-import CustomeButton from "@/components/shared/CustomButton"; 
+import CustomeButton from "@/components/shared/CustomButton";
 import linkdin from '@/../public/images/Footer/Linkedin.svg'
 import Discord from '@/../public/images/Footer/Discord.svg'
 import Instagram from '@/../public/images/Footer/Instagram.svg'
@@ -24,13 +24,18 @@ const Index: React.FC = () => {
               <div className="absolute lg2:-top-[50px] z-[90] lg2:size-[450px] size-[300px] xxxs:size-[340px] rounded-full bg-p_light_blue opacity-20 lg2:blur-[210px] blur-[123px] 2xl:size-[600px]"></div>
             </div>
 
-            <div className="flex items-center  justify-center flex-col gap-[10px]">
-              <div className="flex cursor-pointer items-center gap-[10px] text-bg_white">
-                <Image className=" size-[24px]" src={linkdin} alt="linkdin"/>
-                <Image className=" size-[24px]" src={Instagram} alt="Instagram"/>
-                <Image className=" size-[24px]" src={X} alt="X"/>
-                <Image className=" size-[24px]" src={Youtube} alt="Youtube"/>
-                <Image className=" size-[24px]" src={Discord} alt="Discord"/>
+            <div className=" z-[300] flex items-center  justify-center flex-col gap-[10px]">
+              <div className="flex z-[300] cursor-pointer items-center gap-[10px] text-bg_white">
+                <a href="https://www.linkedin.com/company/105785475">
+                  <Image className  =" size-[24px]" src={linkdin} alt="linkdin" /></a>
+                <a href="https://www.instagram.com/fleetbloxmeta">
+                  <Image className=" size-[24px]" src={Instagram} alt="Instagram" /></a>
+                <a href="https://x.com/Fleetblox">
+                  <Image className=" size-[24px]" src={X} alt="X" /></a>
+                <a href="">
+                  <Image className=" size-[24px]" src={Youtube} alt="Youtube" /></a>
+                <a href="https://discord.com/channels/1317351238198890556">
+                  <Image className=" size-[24px]" src={Discord} alt="Discord" /></a>
               </div>
               <h5 className="footer_text font-semibold">©2024 Fleetblox</h5>
             </div>
