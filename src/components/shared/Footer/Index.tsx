@@ -1,7 +1,10 @@
-import { MdFacebook } from "react-icons/md";
-import { RiInstagramFill } from "react-icons/ri";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import CustomeButton from "@/components/shared/CustomButton";
+import CustomeButton from "@/components/shared/CustomButton"; 
+import linkdin from '@/../public/images/Footer/Linkedin.svg'
+import Discord from '@/../public/images/Footer/Discord.svg'
+import Instagram from '@/../public/images/Footer/Instagram.svg'
+import X from '@/../public/images/Footer/X.com.svg'
+import Youtube from '@/../public/images/Footer/Youtube.svg'
+import Image from "next/image";
 
 const Index: React.FC = () => {
   return (
@@ -23,11 +26,13 @@ const Index: React.FC = () => {
 
             <div className="flex items-center  justify-center flex-col gap-[10px]">
               <div className="flex cursor-pointer items-center gap-[10px] text-bg_white">
-                <MdFacebook size={25} />
-                <RiInstagramFill size={24} />
-                <FaSquareXTwitter size={24} />
+                <Image className=" size-[24px]" src={linkdin} alt="linkdin"/>
+                <Image className=" size-[24px]" src={Instagram} alt="Instagram"/>
+                <Image className=" size-[24px]" src={X} alt="X"/>
+                <Image className=" size-[24px]" src={Youtube} alt="Youtube"/>
+                <Image className=" size-[24px]" src={Discord} alt="Discord"/>
               </div>
-              <h5 className="footer_text font-semibold">©2024 Llama Mind</h5>
+              <h5 className="footer_text font-semibold">©2024 Fleetblox</h5>
             </div>
           </div>
         </div>
