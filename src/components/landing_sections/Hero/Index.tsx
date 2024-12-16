@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
           </div>
 
           <h5 className="hero_title font-openSans text-[18px] text-[#7D7D7D] lg:text-[20px] 2xl:text-[22px]">
-            Complete Brand Solution
+            Cloud Based Fleet Management
           </h5>
           <h1 className="hero_title pt-[10px] font-montserrat text-[40px] text-ti_royel_blue 2xl:text-[40px] 2.5xl:text-[48px] 3xl:text-[52px]">
             Optimize Your Fleet  <br className="hidden lg2:block" />{" "}
