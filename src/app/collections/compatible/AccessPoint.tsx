@@ -16,10 +16,16 @@ const permissions = [
     { key: '/security', icon: lock, label: 'Lock & unlock' },
 ];
 
-export default function Access({ endpoints }: { endpoints: string[] }) {
-    // Filter permissions based on the provided endpoints
+interface EndpointStatus {
+    endpoint: string;
+    capable: boolean;
+}
+
+export default function Access({ endpoints }: { endpoints: EndpointStatus[], }) {
+
+    // Filter permissions based on the provided endpoints and ensure they are capable
     const allowedPermissions = permissions.filter(permission =>
-        endpoints.includes(permission.key)
+        endpoints.some(endpoint => endpoint.endpoint === permission.key && endpoint.capable)
     );
 
     return (

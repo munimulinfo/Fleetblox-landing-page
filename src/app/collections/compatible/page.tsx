@@ -59,7 +59,7 @@ const Compatible = () => {
       router.push('/result/not-compatible');
     }
   }
-  
+
   const handleNext = () => {
     setCustomProgress(progress + 10);
     router.push('/collections/submit-details-early-interest');
@@ -75,7 +75,7 @@ const Compatible = () => {
           Your fleet is  compatible!
         </h2>
         <p className="pre_landing_page_text">
-          {`The brands and models you selected are compatible with us! If a car isn’t on the list, it’s not supported. Share your details to proceed.`}
+          {`The VINs you shared are compatible with us! Proceed to checkout.`}
         </p>
       </div>
 
@@ -107,7 +107,7 @@ const Compatible = () => {
             }
 
             {vins && vins.map((vin, idx) => (
-              <div key={idx} className=" border px-[16px] py-[12px]   rounded-md  border-bg_dusty_white">
+              <div key={idx} className="border px-[16px] py-[12px] rounded-md  border-bg_dusty_white">
                 <div className="flex items-center justify-between  ">
                   <div className=" flex items-center gap-[10px]">
                     {vin.isCompatible ? <button
@@ -142,7 +142,9 @@ const Compatible = () => {
                   </div>
 
                 </div>
-                {isOpen === vin.vin && vin.endpoints && <AccessPoint endpoints={vin.endpoints} />}
+                {isOpen === vin.vin && vin.endpoints && <AccessPoint endpoints={vin.endpoints} />
+
+                }
               </div>
             ))}
 
