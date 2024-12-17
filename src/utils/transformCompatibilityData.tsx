@@ -19,16 +19,28 @@ interface ApiCarResponse {
 export interface TransformedCarData {
     vin: string;
     isCompatible: boolean;
-    endpoints: string[];
+    endpoints: EndpointStatus[];
 }
 
+interface EndpointStatus {
+    endpoint: string;
+    capable: boolean;
+}
 
+// Function to transform API response data
 const transformCompatibilityData = (data: ApiCarResponse[]): TransformedCarData[] => {
-    return data.map((car) => ({
-        vin: car.vin,
-        isCompatible: car.isCompatible,
-        endpoints: car.capabilities?.map((capability) => capability.endpoint),
-    }));
+    return data.map((car) => {
+        const endpoints = car.capabilities.map((capability) => ({
+            endpoint: capability.endpoint,
+            capable: capability.capable,
+        }));
+
+        return {
+            vin: car.vin,
+            isCompatible: car.isCompatible,
+            endpoints,
+        };
+    });
 };
 
 export default transformCompatibilityData;
