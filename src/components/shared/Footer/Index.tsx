@@ -32,9 +32,9 @@ const Index: React.FC = () => {
                   <Image className=" size-[24px]" src={Instagram} alt="Instagram" /></a>
                 <a target="_blank" href="https://x.com/Fleetblox">
                   <Image className=" size-[24px]" src={X} alt="X" /></a>
-                <a target="_blank" href="">
+                <a target="_blank" href="https://youtube.com/@fleetblox-y6e?si=xn6xFeKpKaJLz697">
                   <Image className=" size-[24px]" src={Youtube} alt="Youtube" /></a>
-                <a target="_blank" href="https://discord.com/channels/1317351238198890556">
+                <a target="_blank" href="https://discord.gg/Wf3qMuyQ">
                   <Image className=" size-[24px]" src={Discord} alt="Discord" /></a>
               </div>
               <h5 className="footer_text font-semibold">©2024 Fleetblox</h5>
