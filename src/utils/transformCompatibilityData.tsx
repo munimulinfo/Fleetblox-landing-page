@@ -10,7 +10,7 @@ interface Capability {
 interface ApiCarResponse {
     vin: string;
     compatible: boolean;
-    capabilities: Capability[];
+    capabilities?: Capability[];
     isCompatible: boolean;
     message: string;
 }
@@ -28,9 +28,9 @@ interface EndpointStatus {
 }
 
 // Function to transform API response data
-const transformCompatibilityData = (data: ApiCarResponse[]): TransformedCarData[] => {
+const transformCompatibilityData = (data: ApiCarResponse[]) => {
     return data.map((car) => {
-        const endpoints = car.capabilities.map((capability) => ({
+        const endpoints = car.capabilities?.map((capability) => ({
             endpoint: capability.endpoint,
             capable: capability.capable,
         }));
