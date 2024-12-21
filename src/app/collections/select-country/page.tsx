@@ -81,8 +81,14 @@ const SelectCountry = () => {
             }
         }
 
-        router.push(`/collections/compatibility?country=${countryCode}`);
         setCustomProgress(progress + 10);
+
+        if (countryCode === 'US') {
+            router.push(`/collections/compatibility?country=${countryCode}`);
+        } else {
+            router.push(`/collections/select-brand?country=${countryCode}`);
+        }
+
         localStorage.removeItem('brands');
         localStorage.removeItem('brandModels');
         localStorage.removeItem('VINS');

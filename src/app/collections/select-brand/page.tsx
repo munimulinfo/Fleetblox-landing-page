@@ -69,7 +69,7 @@ const BrandSelector = () => {
 
     const handleBack = () => {
         setCustomProgress(progress - 10);
-        router.push(`/collections/compatibility`);
+        router.back()
     }
 
     return (

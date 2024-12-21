@@ -30,7 +30,7 @@ const VIN = () => {
     const router = useRouter()
     const [searchQuery, setSearchQuery] = useState('');
     const [vinList, setVinList] = useState<string[]>([]); // Initialize vinList as an empty array
-    const { setCustomProgress, progress, setApiResponse, } = useProgressUpdater();
+    const { setCustomProgress, progress, setApiResponse } = useProgressUpdater();
     const [loading, setLoading] = useState(false)
     const [selectedCountry, SetSelectedCountry] = useState('')
 
@@ -111,14 +111,21 @@ const VIN = () => {
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
             const data = await response.json();
-            console.log(data);
-            
+
+
             if (data.statusCode === 200) {
                 setApiResponse(data);
-                router.push(`/collections/compatible`);
-                handleNext()
-                setLoading(false)
+                const areAllUncompatible = data.data?.every((brand: { isCompatible: boolean }) => brand.isCompatible === false);
+                console.log(areAllUncompatible, 'uncompatible');
+                console.log(data.data, 'data is not compatible');
+                
+                if (areAllUncompatible) {
+                    return router.push('/result/not-compatible');
+                }
                 localStorage.setItem('VINS_RESULT', JSON.stringify(transformCompatibilityData(data.data)))
+                setLoading(false)
+                handleNext()
+                router.push(`/collections/compatible`);
             }
             setCustomProgress(progress + 10);
             setLoading(false)
