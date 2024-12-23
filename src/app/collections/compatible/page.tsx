@@ -142,7 +142,7 @@ const Compatible = () => {
                   </div>
 
                 </div>
-                {isOpen === vin.vin && vin.endpoints && <AccessPoint endpoints={vin.endpoints} />
+                {isOpen === vin.vin && vin.endpoints && <AccessPoint endpoints={vin.endpoints.map(endpoint => ({endpoint: endpoint.endpoint, capable: endpoint.capable}))} />
 
                 }
               </div>

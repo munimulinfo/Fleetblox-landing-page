@@ -71,24 +71,23 @@ const VIN = () => {
 
     const handleAddVin = () => {
         if (searchQuery) {
-            const trimmedVin = searchQuery.trim();
+            const vins = searchQuery.split(/\s+/).filter(Boolean); // Split by whitespace and filter out empty strings
 
-            // Validate VIN using isValidVIN function
-            if (!isValidVIN(trimmedVin)) {
-                // toast.error('Invalid VIN. Please enter a valid 17-character VIN.');
-                return;
-            }
+            const newVins = vins.filter(vin => {
+                const trimmedVin = vin.trim();
+                return isValidVIN(trimmedVin) && !vinList.includes(trimmedVin);
+            });
 
-            if (!vinList.includes(trimmedVin)) {
-                const updatedVinList = [...vinList, trimmedVin];
+            if (newVins.length > 0) {
+                const updatedVinList = [...vinList, ...newVins];
                 setVinList(updatedVinList);
-                setSearchQuery('')
+                setSearchQuery('');
                 localStorage.setItem('VINS', JSON.stringify(updatedVinList));
             } else {
-                toast.error('This VIN is already in the list.');
+                toast.error('All VINs are either invalid or already in the list.');
             }
         } else {
-            toast.error('This VIN is already in the list.');
+            toast.error('Please enter at least one VIN.');
         }
     }
 
