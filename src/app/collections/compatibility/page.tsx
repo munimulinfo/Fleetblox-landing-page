@@ -99,7 +99,7 @@ const Compatibility = () => {
                 <div className="mb-8">
                     <h2 className="pre_landing_page_title font-inter">Check your vehicle compatibility</h2>
                     <p className="pre_landing_page_text">
-                        The brands and models you selected are compatible with us! If a car isn’t on the list, it’s not supported. Share your details to proceed.  </p>
+                        Before proceeding, we need to ensure your vehicles are compatible with our platform. Please select one of the following methods</p>
                 </div>
             </div>
 
