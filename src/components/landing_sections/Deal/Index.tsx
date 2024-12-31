@@ -5,8 +5,16 @@ import deal from "@/../public/images/deals.png";
 import Image from "next/image";
 import { Deals } from "@/Static_data/data";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 const Deal = () => {
-
+  const pathname = usePathname();
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (pathname === '/') {
+        localStorage.clear()
+      }
+    }
+  }, [pathname]);
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [progress, setProgress] = useState<number>(0);
   const progressIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
