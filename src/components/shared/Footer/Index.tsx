@@ -1,9 +1,9 @@
 import CustomeButton from "@/components/shared/CustomButton";
 import linkdin from '@/../public/images/Footer/Linkedin.svg'
-import Discord from '@/../public/images/Footer/Discord.svg'
-import Instagram from '@/../public/images/Footer/Instagram.svg'
-import X from '@/../public/images/Footer/X.com.svg'
-import Youtube from '@/../public/images/Footer/Youtube.svg'
+// import Discord from '@/../public/images/Footer/Discord.svg'
+// import Instagram from '@/../public/images/Footer/Instagram.svg'
+// import X from '@/../public/images/Footer/X.com.svg'
+// import Youtube from '@/../public/images/Footer/Youtube.svg'
 import Image from "next/image";
 
 const Index: React.FC = () => {
@@ -28,7 +28,6 @@ const Index: React.FC = () => {
               <div className="flex z-[300] cursor-pointer items-center gap-[10px] text-bg_white">
                 <a target="_blank" href="https://www.linkedin.com/company/105785475">
                   <Image className  =" size-[24px]" src={linkdin} alt="linkdin" /></a>
-                
               </div>
               <h5 className="footer_text font-semibold">©2024 Fleetblox</h5>
             </div>
