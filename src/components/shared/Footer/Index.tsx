@@ -1,9 +1,9 @@
 import CustomeButton from "@/components/shared/CustomButton";
 import linkdin from '@/../public/images/Footer/Linkedin.svg'
-import Discord from '@/../public/images/Footer/Discord.svg'
-import Instagram from '@/../public/images/Footer/Instagram.svg'
-import X from '@/../public/images/Footer/X.com.svg'
-import Youtube from '@/../public/images/Footer/Youtube.svg'
+// import Discord from '@/../public/images/Footer/Discord.svg'
+// import Instagram from '@/../public/images/Footer/Instagram.svg'
+// import X from '@/../public/images/Footer/X.com.svg'
+// import Youtube from '@/../public/images/Footer/Youtube.svg'
 import Image from "next/image";
 
 const Index: React.FC = () => {
@@ -27,15 +27,15 @@ const Index: React.FC = () => {
             <div className=" z-[300] flex items-center  justify-center flex-col gap-[10px]">
               <div className="flex z-[300] cursor-pointer items-center gap-[10px] text-bg_white">
                 <a target="_blank" href="https://www.linkedin.com/company/105785475">
-                  <Image className  =" size-[24px]" src={linkdin} alt="linkdin" /></a>
-                <a target="_blank" href="https://www.instagram.com/fleetbloxmeta">
+                  <Image className=" size-[24px]" src={linkdin} alt="linkdin" /></a>
+                {/* <a target="_blank" href="https://www.instagram.com/fleetbloxmeta">
                   <Image className=" size-[24px]" src={Instagram} alt="Instagram" /></a>
                 <a target="_blank" href="https://x.com/Fleetblox">
                   <Image className=" size-[24px]" src={X} alt="X" /></a>
                 <a target="_blank" href="">
                   <Image className=" size-[24px]" src={Youtube} alt="Youtube" /></a>
                 <a target="_blank" href="https://discord.com/channels/1317351238198890556">
-                  <Image className=" size-[24px]" src={Discord} alt="Discord" /></a>
+                  <Image className=" size-[24px]" src={Discord} alt="Discord" /></a> */}
               </div>
               <h5 className="footer_text font-semibold">©2024 Fleetblox</h5>
             </div>
