@@ -1,9 +1,11 @@
 import Image from "next/image";
 import main_image from "../../../assets/blog_main_img.png";
-import { blogs_data } from "@/static_data/data";
+import { blogs_data } from "@/Static_data/data";
 import Container from "@/components/ui/Container";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 const BlogSection = () => {
+  // updated something
+  // updated something
   // updated something
   return (
     <div className="bg-[#FAFAFF]">

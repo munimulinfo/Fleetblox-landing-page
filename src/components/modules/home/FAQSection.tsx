@@ -1,6 +1,6 @@
 "use client";
 import Container from "@/components/ui/Container";
-import { faqData } from "@/static_data/data";
+import { faqData } from "@/Static_data/data";
 
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
