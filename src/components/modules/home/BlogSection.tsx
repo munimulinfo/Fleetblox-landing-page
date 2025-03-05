@@ -6,7 +6,6 @@ import RightArrowIcon from "@/components/icons/RightArrowIcon";
 const BlogSection = () => {
   // updated something
   // updated something
-  // updated something
   return (
     <div className="bg-[#FAFAFF]">
       <Container>
