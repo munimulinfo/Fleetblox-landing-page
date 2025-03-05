@@ -1,16 +1,30 @@
-import Hero from "@/components/landing_sections/Hero/Index";
-import Glob from "@/components/landing_sections/Connecting_Global/Index"
-import Navbar from "@/components/shared/Navbar/Index";
-import Footer from "@/components/shared/Footer/Index";
-import Deal from "@/components/landing_sections/Deal/Index";
+import AiSupportSection from "@/components/modules/home/AiSupportSection";
+import BlogSection from "@/components/modules/home/BlogSection";
+import ConnectRemotelySection from "@/components/modules/home/ConnectRemotelySection";
+import WorkforceManageSection from "@/components/modules/home/WorkforceManageSection";
+import FAQSection from "@/components/modules/home/FAQSection";
+import FleetSolution from "@/components/modules/home/FleetSolution";
+import GlobalCoverageAndCompatibility from "@/components/modules/home/GlobalCoverageAndCompatibility";
+import HeroSection from "@/components/modules/home/HeroSection";
+import SlideShowSection from "@/components/modules/home/SlideShowSection";
+import VirtualSlot from "@/components/modules/home/withVirtualSlot/VirtualSlot";
+import FleetBloxVerseSection from "@/components/modules/home/fleetBloxVersus/FleetBloxVerseSection";
+// import FleetBloxVerseSection from "@/components/modules/home/FleetBloxVerseSection";
+
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <Hero />
-      <Glob />
-      <Deal />
-      <Footer />
+      <HeroSection />
+      <FleetSolution />
+      <VirtualSlot />
+      <FleetBloxVerseSection />
+      <ConnectRemotelySection />
+      <WorkforceManageSection />
+      <AiSupportSection />
+      <GlobalCoverageAndCompatibility />
+      <SlideShowSection />
+      <BlogSection />
+      <FAQSection />
     </div>
   );
 }

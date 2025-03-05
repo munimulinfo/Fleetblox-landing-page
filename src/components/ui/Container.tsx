@@ -1,0 +1,11 @@
+import { ReactNode } from "react";
+
+const Container = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className="container mx-auto w-full px-4 py-16 sm:px-6 sm:py-10 md:py-12 lg:py-[60px] lg:max-w-7xl">
+      {children}
+    </div>
+  );
+};
+
+export default Container;
