@@ -4,6 +4,7 @@ import { blogs_data } from "@/static_data/data";
 import Container from "@/components/ui/Container";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 const BlogSection = () => {
+  // updated something
   return (
     <div className="bg-[#FAFAFF]">
       <Container>
