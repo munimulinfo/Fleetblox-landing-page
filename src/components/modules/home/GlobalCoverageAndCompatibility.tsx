@@ -32,7 +32,7 @@ import image30 from "../../../../public/brand/Frame 1707481678.svg";
 import image31 from "../../../../public/brand/Frame 1707481679.svg";
 import image32 from "../../../../public/brand/Frame 1707481680.svg";
 import image33 from "../../../../public/brand/Frame 1707481661.svg";
-import { cars } from "@/static_data/data";
+import { cars } from "@/Static_data/data";
 import Container from "@/components/ui/Container";
 
 const GlobalCoverageAndCompatibility = () => {

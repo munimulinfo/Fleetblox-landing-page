@@ -59,7 +59,7 @@ const Footer = () => {
               <h5 className=" font-openSans">Privacy Policy</h5>
             </div> */}
             <div className="cursor-pointer space-y-[10px]">
-              <h5 className=" font-openSans text-[#fff]">+1 (647) 877-6445</h5>
+              <h5 className=" font-openSans text-[#fff]">+1 (888) 870 2004</h5>
               <h5 className=" font-openSans">info@fleetblox.com</h5>
             </div>
           </div>
@@ -71,7 +71,7 @@ const Footer = () => {
             {/* <InstagramIcon />
             <XIcon /> */}
           </div>
-          <h5 className="font-semibold font-openSans">©2024 Llama Mind</h5>
+          <h5 className="font-semibold font-openSans">©2024 Fleetblox</h5>
         </div>
       </div>
     </div>

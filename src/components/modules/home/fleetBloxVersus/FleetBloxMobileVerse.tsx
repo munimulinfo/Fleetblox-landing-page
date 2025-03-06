@@ -2,7 +2,7 @@ import CheckIcon from "@/components/icons/CheckIcon";
 import CrossIcon from "@/components/icons/CrossIcon";
 import FleetbloxIcon2 from "@/components/icons/FleetbloxIcon2";
 
-import { cards } from "@/static_data/data";
+import { cards } from "@/Static_data/data";
 
 const FleetBloxMobileVerse = () => {
   return (

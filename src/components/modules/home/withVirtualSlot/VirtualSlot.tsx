@@ -1,5 +1,5 @@
 "use client";
-import { full_control_with_virtual_slot_data } from "@/static_data/data";
+import { full_control_with_virtual_slot_data } from "@/Static_data/data";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import VirtualCard from "./VirtualCard";

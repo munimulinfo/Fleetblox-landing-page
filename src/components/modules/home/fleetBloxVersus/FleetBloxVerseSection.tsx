@@ -2,7 +2,7 @@
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useRef, useState } from "react";
 import Container from "@/components/ui/Container";
-import { cards } from "@/static_data/data";
+import { cards } from "@/Static_data/data";
 import useScrollAnimations from "@/hooks/useScrollAnimations";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import VersusCard from "./VersusCard";
