@@ -23,6 +23,7 @@ export default {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
         openSans: ["Open Sans", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
     },
   },

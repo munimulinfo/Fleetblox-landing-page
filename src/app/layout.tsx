@@ -1,8 +1,6 @@
 "use client";
-import Navbar from "@/components/ui/shared/Navbar";
 import "../styles/globals.css";
 import { useEffect } from "react";
-import Footer from "@/components/ui/shared/Footer";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,9 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased bg-white`}>
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
