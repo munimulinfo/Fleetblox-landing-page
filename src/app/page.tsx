@@ -22,7 +22,7 @@ export default function Home() {
         </p>
 
         <footer className="absolute bottom-6 w-full text-center">
-          <p className="text-base opacity-85">© 2024 llamamind</p>
+          <p className="text-base opacity-85">© 2024 Fleetblox</p>
         </footer>
       </div>
     </div>
