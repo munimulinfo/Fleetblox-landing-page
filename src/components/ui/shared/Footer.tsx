@@ -30,7 +30,9 @@ const Footer = () => {
               </div>
             </div>
             <div className="max-h-[520px] h-[400px] lg:h-[520px] md:h-[400px] filter blur-[210px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50  rounded-[520px] w-[400px] lg:w-[520px] bg-[#B8CBFC] absolute opacity-50 "></div>
+
             <div className="absolute z-[100] mix-blend-multiply border -top-14">
+
               <video
                 autoPlay
                 loop
@@ -38,6 +40,7 @@ const Footer = () => {
                 playsInline
                 preload="auto"
                 className="z-30 h-[663px] object-scale-down opacity-55 mix-blend-multiply"
+
               >
                 <source src="/videos/Footer.mp4" type="video/mp4" />
               </video>
