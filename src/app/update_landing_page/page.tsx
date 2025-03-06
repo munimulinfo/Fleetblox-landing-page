@@ -17,9 +17,9 @@ const page = () => {
   return (
     <div>
       <Navbar />
-      <HeroSection />
+      {/* <HeroSection /> */}
       <FleetSolution />
-      <VirtualSlot />
+      {/* <VirtualSlot />
       <FleetBloxVerseSection />
       <ConnectRemotelySection />
       <WorkforceManageSection />
@@ -28,7 +28,7 @@ const page = () => {
       <SlideShowSection />
       <BlogSection />
       <FAQSection />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 };
