@@ -25,7 +25,7 @@ const FAQSection = () => {
                   <ChevronDownIcon className="w-5 h-5 transition-transform duration-200 AccordionChevron" />
                 </Accordion.Trigger>
               </Accordion.Header>
-              <Accordion.Content className="p-4 text-gray-600">
+              <Accordion.Content className="p-4 text-gray-600 font-openSans">
                 {faq.answer}
               </Accordion.Content>
             </Accordion.Item>

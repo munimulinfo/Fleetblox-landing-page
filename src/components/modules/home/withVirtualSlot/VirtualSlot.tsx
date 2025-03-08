@@ -22,14 +22,14 @@ const VirtualSlot = () => {
         {/* heading start */}
         <motion.div
           style={{ opacity: headerOpacity }}
-          className={`sticky -top-[200px] z-10 flex md:h-[80vh] flex-col items-center justify-center gap-[10px] pb-[10px]`}
+          className={`sticky -top-[170px] z-10 flex md:h-[80vh] flex-col items-center justify-center gap-[10px] pb-[10px]`}
         >
           {/* Centered Soft Blurred Ellipse */}
           <div className="hidden md:block absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#ffe1bf] opacity-30 blur-[100px] rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
 
           {/* Content */}
           <div className=" hidden md:block  relative text-center">
-            <h1 className="text-[28px] z-10 md:text-[52px] lg:text-[52px] text-[#000E32] font-bold">
+            <h1 className="text-[28px] z-10 lg:text-[52px] text-[#000E32] font-bold">
               Take <span className="text-[#0336BC]">Full Control</span> with
               Virtual <br className="hidden md:block " />
               Parking Slot Technology

@@ -19,8 +19,8 @@ const page = () => {
       <Navbar />
       {/* <HeroSection /> */}
       <FleetSolution />
-      {/* <VirtualSlot />
-      <FleetBloxVerseSection />
+      <VirtualSlot />
+      {/* <FleetBloxVerseSection /> */}
       <ConnectRemotelySection />
       <WorkforceManageSection />
       <AiSupportSection />
@@ -28,7 +28,7 @@ const page = () => {
       <SlideShowSection />
       <BlogSection />
       <FAQSection />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 };

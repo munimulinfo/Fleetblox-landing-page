@@ -2,18 +2,15 @@ import Image from "next/image";
 import main_image from "../../../assets/blog_main_img.png";
 import { blogs_data } from "@/Static_data/data";
 import Container from "@/components/ui/Container";
-import RightArrowIcon from "@/components/icons/RightArrowIcon";
 const BlogSection = () => {
-  // updated something
-  // updated something
   return (
     <div className="bg-[#FAFAFF]">
       <Container>
         <section>
-          <h2 className="md:hidden font-montserrat text-[28px] text-center font-bold text-[#04082C]">
+          <h2 className="lg:hidden font-montserrat text-[28px] text-center font-bold text-[#04082C]">
             Latest Blogs
           </h2>
-          <div className="hidden md:block w-1/2">
+          <div className="hidden lg:block w-1/2">
             <h1 className="font-openSans text-[22px] font-bold text-[#0336BC]">
               Latest Blogs
             </h1>
@@ -25,7 +22,7 @@ const BlogSection = () => {
               12 May 2024
             </h5>
           </div>
-          <div className="hidden md:flex  flex-col items-center lg:items-start lg:flex-row justify-between gap-x-[40px]">
+          <div className="hidden lg:flex  flex-col items-center lg:items-start lg:flex-row justify-between gap-x-[40px]">
             <div className="w-1/2 overflow-hidden rounded-md">
               <Image
                 src={main_image}
@@ -62,7 +59,7 @@ const BlogSection = () => {
 
           {/* Mobile view */}
 
-          <div className="block md:hidden mt-6">
+          <div className="block lg:hidden mt-6">
             <div
               className="overflow-x-scroll pb-4 scrollbar-hide -mx-4"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
@@ -114,7 +111,7 @@ const BlogSection = () => {
                 ))}
               </div>
             </div>
-            <div className="flex justify-center my-5">
+            {/* <div className=" flex justify-center my-5">
               <button className="transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-[95%] hover:w-[100%] md:hover:w-[144.16px] md:w-[122.16px] lg:hover:w-[144.16px] lg:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
                 <div className="z-20 whitespace-nowrap font-openSans font-bold">
                   Start Today
@@ -123,7 +120,7 @@ const BlogSection = () => {
                   <RightArrowIcon />
                 </div>
               </button>
-            </div>
+            </div> */}
           </div>
         </section>
       </Container>
