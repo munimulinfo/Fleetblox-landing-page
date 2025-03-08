@@ -17,7 +17,7 @@ const page = () => {
   return (
     <div>
       <Navbar />
-      {/* <HeroSection /> */}
+      <HeroSection />
       <FleetSolution />
       <VirtualSlot />
       {/* <FleetBloxVerseSection /> */}
