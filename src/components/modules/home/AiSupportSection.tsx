@@ -6,7 +6,7 @@ const AiSupportSection = () => {
   return (
     <div className="bg-[#0A2540]">
       <Container>
-        <section className="py-[60px] flex flex-col md:flex-row justify-between items-center gap-[40px]">
+        <section className="py-[60px] flex flex-col lg:flex-row justify-between items-center gap-[40px]">
           <div className="text-white max-w-[570px]">
             <h1 className="text-[36px] font-bold mb-[10px] font-montserrat leading-[1.1]">
               AI Support to Elevate Fleet Management
@@ -24,15 +24,15 @@ const AiSupportSection = () => {
               </div>
             </button>
           </div>
-          <div className="relative md:py-[0px] py-[100px]">
+          <div className="relative lg:py-[0px] py-[100px]">
             <Image
               src={aiSupportImg}
               className="relative z-[200]"
               alt="ai support img"
             />
             {/* Blue blur effect below */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[410px] md:w-[350px] lg:w-[410px] max-h-[237px] md:h-[150px] lg:h-[237px] opacity-50 rounded-[410px] bg-[#2D65F2] blur-[106px] z-[10]"></div>
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[550px] w-full md:w-full md:h-full lg:w-[550px] mx-auto max-h-[310px] h-full lg:h-[310px]  bg-[#0A2540] ">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[410px]  lg:w-[410px] max-h-[237px]  lg:h-[237px] opacity-50 rounded-[410px] bg-[#2D65F2] blur-[106px] z-[10]"></div>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[550px] w-full mx-auto max-h-[310px] h-full lg:h-[310px]  bg-[#0A2540] ">
               <video
                 autoPlay
                 loop
@@ -45,7 +45,7 @@ const AiSupportSection = () => {
               </video>
             </div>
           </div>
-          <button className="md:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
+          <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
             Learn More
           </button>
         </section>

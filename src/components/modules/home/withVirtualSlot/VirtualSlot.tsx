@@ -14,33 +14,32 @@ const VirtualSlot = () => {
     target: container,
     offset: ["start start", "end end"],
   });
+  const headerOpacity = useTransform(scrollYProgress, [0.0, 0.15], [1, 0]);
 
-  const headerOpacity = useTransform(scrollYProgress, [0.0, 0.09], [1, 0]);
   return (
     <div className="bg-[#FAFAFF]">
       <Container>
-        {/* heading start */}
-        <motion.div
-          style={{ opacity: headerOpacity }}
-          className={`sticky -top-[200px] z-10 flex md:h-[80vh] flex-col items-center justify-center gap-[10px] pb-[10px]`}
-        >
-          {/* Centered Soft Blurred Ellipse */}
-          <div className="hidden md:block absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#ffe1bf] opacity-30 blur-[100px] rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
-
-          {/* Content */}
-          <div className=" hidden md:block  relative text-center">
-            <h1 className="text-[28px] z-10 md:text-[52px] lg:text-[52px] text-[#000E32] font-bold">
-              Take <span className="text-[#0336BC]">Full Control</span> with
-              Virtual <br className="hidden md:block " />
-              Parking Slot Technology
-            </h1>
-          </div>
-        </motion.div>
         {/* heading end */}
         <div
           ref={container}
-          className=" hidden md:block lg:block relative mt-[20px]  w-full"
+          className=" hidden md:block lg:block relative w-full"
         >
+          <motion.div
+            style={{ opacity: headerOpacity }}
+            className={`sticky -top-[180px] z-10 flex md:h-[80vh] flex-col items-center justify-center gap-[10px] pb-[10px]`}
+          >
+            {/* Centered Soft Blurred Ellipse */}
+            <div className="hidden md:block absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-[#ffe1bf] opacity-30 blur-[100px] rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+
+            {/* Content */}
+            <div className=" hidden md:block  relative text-center">
+              <h1 className="text-[28px] z-10 lg:text-[52px] text-[#000E32] font-bold leading-[1.1]">
+                Take <span className="text-[#0336BC]">Full Control</span> with
+                Virtual <br className="hidden md:block " />
+                Parking Slot Technology
+              </h1>
+            </div>
+          </motion.div>
           {full_control_with_virtual_slot_data.map((item, index) => {
             const targetScale =
               1 - (full_control_with_virtual_slot_data.length - index) * 0.05;

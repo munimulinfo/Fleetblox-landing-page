@@ -19,7 +19,7 @@ const VersusCard: React.FC<CardProps> = ({
   return (
     <motion.div
       style={style}
-      transition={{ type: "spring" }}
+      transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
       className="w-[500px] h-[500px] bg-[#fff] z-50 rounded-[16px] shadow-md p-8 flex flex-col gap-[10px] absolute top-0 left-0"
     >
       {/* Card Header */}

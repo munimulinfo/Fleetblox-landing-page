@@ -1,10 +1,11 @@
 import { MotionValue } from "framer-motion";
+import { StaticImageData } from "next/image";
 
 export interface CardProps {
   icon: string;
   title: string;
   description: string;
-  image: string;
+  image: StaticImageData;
   index: number;
   targetScale: number;
   range: number[];

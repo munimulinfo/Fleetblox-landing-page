@@ -89,7 +89,7 @@ export default function HorizontalStackSlideshow() {
         </h2>
 
         {/* Desktop view */}
-        <div className="container hidden md:block mx-auto px-4 relative">
+        <div className="container hidden lg:block mx-auto px-4 relative">
           {/* Slider Container */}
           <div
             className="relative flex items-center justify-center max-w-full h-[450px] md:h-[500px]"
@@ -273,7 +273,7 @@ export default function HorizontalStackSlideshow() {
         </div>
 
         {/* Mobile View */}
-        <div className="md:hidden flex flex-col items-center justify-center w-full px-4">
+        <div className="lg:hidden flex flex-col items-center justify-center w-full px-4">
           {slides.slice(0, 2).map((slide, index) => (
             <div
               key={index}
