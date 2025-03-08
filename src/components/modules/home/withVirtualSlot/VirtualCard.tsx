@@ -17,7 +17,7 @@ const VirtualCard: React.FC<CardProps> = ({
   return (
     <div
       key={index}
-      className="sticky top-[0vh] flex h-[100vh] flex-col items-center justify-center xl:top-[13vh] 2xl:top-[12vh] 2.5xl:top-[15vh] 3xl:top-[8vh] "
+      className="sticky z-50 top-[0vh] flex h-[100vh] flex-col items-center justify-center xl:top-[13vh] 2xl:top-[12vh] 2.5xl:top-[15vh] 3xl:top-[8vh] "
     >
       <motion.div
         className={`relative z-[200] top-[0px] mx-auto transform flex-col gap-x-[30px] max-h-[560px] h-full lg:h-[560px] max-w-[900px] w-full lg:w-[900px]`}
@@ -28,7 +28,7 @@ const VirtualCard: React.FC<CardProps> = ({
             className={`absolute left-1/2 top-1/2 mt-[90px] size-[664px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ffe1bf] opacity-40 blur-[200px]`}
           ></div>
         )}
-        <div className="absolute top-[14vh] lg:top-[18vh] xl:top-[5vh] z-[200] flex rounded-[24px] bg-white p-[10px] w-full justify-between h-full">
+        <div className="absolute -top-[5vh] z-[200] flex rounded-[24px] bg-white p-[10px] w-full justify-between h-full">
           {/* left side */}
           <div className="flex flex-col items-start bg-white px-[20px] pb-[20px] pt-[70px] font-openSans">
             <Image className="" src={icon} alt="icon" />
@@ -50,8 +50,14 @@ const VirtualCard: React.FC<CardProps> = ({
           />
         </div>
 
-        <div className="absolute top-[14vh] lg:top-[18vh] xl:top-[5vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[7px] xl:h-[200px] xl:w-[550px] 2xl:h-[400px] 2xl:w-[650px] 2.5xl:w-[720px]"></div>
-        <div className="absolute bottom-[10px] left-[60px] z-[20] rounded-[15px] bg-black opacity-[0.07] blur-[20px] xl:h-[200px] xl:w-[550px] 2xl:h-[400px] 2xl:w-[650px] 2.5xl:w-[760px]"></div>
+        <div
+          className="absolute -top-[5vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[7px] h-full"
+          style={{ width: "calc(100% - 30px)" }}
+        ></div>
+        <div
+          className="absolute bottom-[10px] left-[60px] z-[20] rounded-[15px] bg-black opacity-[0.07] blur-[20px] h-full"
+          style={{ width: "calc(100% - 30px)" }}
+        ></div>
       </motion.div>
     </div>
   );

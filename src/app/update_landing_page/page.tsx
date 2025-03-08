@@ -11,7 +11,7 @@ import BlogSection from "@/components/modules/home/BlogSection";
 import FAQSection from "@/components/modules/home/FAQSection";
 import Navbar from "@/components/ui/shared/Navbar";
 import Footer from "@/components/ui/shared/Footer";
-import FleetBloxVerseSection from "@/components/modules/home/fleetBloxVersus/FleetBloxVerseSection";
+// import FleetBloxVerseSection from "@/components/modules/home/fleetBloxVersus/FleetBloxVerseSection";
 
 const page = () => {
   return (
