@@ -8,7 +8,7 @@ import NavigationIcon from "@/components/icons/NavigationIcon";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 const StatsSection = () => {
   return (
-    <section className="py-[60px] flex flex-col items-center justify-center">
+    <section className="py-[60px] flex flex-col items-center justify-center mx-auto max-w-[1200px] px-4">
       {/* counter component */}
       <div className="flex flex-col lg:flex-row justify-center gap-20 py-[30px] mb-[60px]">
         <div className="text-center flex flex-col items-center">
@@ -41,9 +41,9 @@ const StatsSection = () => {
       </div>
 
       {/* Laptop View */}
-      <div className="hidden md:flex lg:flex p-10 border mx-auto max-w-7xl border-[#DFDFDF] rounded-[24px]  flex-col md:flex-row lg:flex-row">
-        <div>
-          <h1 className="text-[#04082C] text-[36px] font-bold mb-5 font-montserrat leading-[1.1]">
+      <div className="hidden md:flex lg:flex border mx-auto max-w-[1200px] border-[#DFDFDF] rounded-[24px] flex-col lg:flex-row">
+        <div className="flex flex-col items-center lg:items-start w-full lg:w-1/2 p-10 mx-auto">
+          <h1 className="text-[#04082C] text-[36px] text-center lg:text-left font-bold mb-5 font-montserrat leading-[1.1]">
             Experience a Smarter Way to Manage Your Fleet
           </h1>
           <button className="md:flex transition-all font-openSans bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
@@ -103,7 +103,7 @@ const StatsSection = () => {
             </div>
           </div>
         </div>
-        <div className="w-full">
+        <div className="lg:w-1/2 w-full mx-auto pt-10 pr-10">
           <Image src={fleetSolutionImg} alt="logo" className="w-full h-full" />
         </div>
       </div>

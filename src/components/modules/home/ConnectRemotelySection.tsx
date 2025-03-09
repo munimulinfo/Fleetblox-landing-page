@@ -114,7 +114,7 @@ const ConnectRemotelySection = () => {
             </div>
           </section>
         </div>
-        <div className="border-b  border-[#DFDFDF] px-6 mt-5"></div>
+        <div className="border-b block lg:hidden border-[#DFDFDF] px-6 mt-5"></div>
       </Container>
     </main>
   );
