@@ -9,17 +9,20 @@ const FleetBloxMobileVerse = () => {
     <>
       {/* mobile slider */}
       <div className="">
-        <div className="flex-1 block md:hidden mt-10 w-full">
+        <div className="flex-1 block lg:hidden mt-10 w-full">
           <div
             className="overflow-x-scroll pb-4 scrollbar-hide -mx-4"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <div
-              className="flex flex-nowrap gap-4 px-4"
+              className="flex flex-nowrap gap-4 px-10"
               style={{ width: "max-content" }}
             >
               {cards.map((card, index) => (
-                <div key={index} className="flex-shrink-0 w-[330px]">
+                <div
+                  key={index}
+                  className="flex-shrink-0 max-w-[430px] w-[330px] md:w-full"
+                >
                   <div className="bg-white rounded-[16px] h-[450px] shadow-[0_4px_12px_0px_#00000024] p-6 flex flex-col gap-[10px]">
                     {/* Card Header */}
                     <div className="flex flex-col items-center mb-6">
