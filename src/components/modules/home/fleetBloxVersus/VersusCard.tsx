@@ -26,9 +26,7 @@ const VirtualCard: React.FC<TVersesCard> = ({
         style={{ top: `calc(-5vh + ${index * 15}px)`, scale: scale }}
       >
         {index === 0 && (
-          <div
-            className={`absolute left-1/2 top-1/2 mt-[90px] size-[664px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ffe1bf] opacity-40 blur-[200px]`}
-          ></div>
+          <div className="absolute left-1/2 top-1/2 mt-[90px] w-[50vw] h-[50vw] max-w-[664px] max-h-[664px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ffe1bf] opacity-40 blur-[200px]"></div>
         )}
         <div className="hidden md:block lg:ml-10 xl:ml-20 absolute top-[0vh] xl:-top-[8vh] z-[200] w-full h-full">
           {/* <div className="w-[500px] h-[500px] bg-[#FFE1BF] opacity-30 blur-[100px] rounded-full"></div>
@@ -48,7 +46,7 @@ const VirtualCard: React.FC<TVersesCard> = ({
               </div>
               <div>
                 <FleetbloxIcon />
-                <p className="text-[16px] font-openSans text-[#4A4A4A]">
+                <p className="text-[16px] font-openSans text-[#4A4A4A] mt-1">
                   {fleetBloxDes}
                 </p>
               </div>
