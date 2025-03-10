@@ -10,7 +10,7 @@ import { FaCircleCheck } from "react-icons/fa6";
 const FeaturesComparison = () => {
   return (
     <div className="mt-10 flex w-full items-center justify-center">
-      <div className="max-w-[1200px] w-full h-[600px] overflow-y-auto scroll-smooth hide-scroll">
+      <div className="max-w-[1200px] w-full h-[500px] overflow-y-auto scroll-smooth hide-scroll">
         {/* Sticky Header within the scrollable container */}
         <div className="sticky top-0 grid grid-cols-3 p-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm">
           <h1 className="text-[14px] font-[600] ml-5 text-[#999]">Usage</h1>

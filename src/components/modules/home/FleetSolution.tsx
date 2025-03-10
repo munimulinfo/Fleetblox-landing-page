@@ -127,7 +127,7 @@ const StatsSection = () => {
           <div className="pt-10">
             <div className="flex gap-[16px] mb-[30px]">
               <NavigationIcon />
-              <div className=" text-[14px]  leading-5 ">
+              <div className=" text-[14px] leading-5 ">
                 <h2 className="font-bold text-[#333] font-openSans">
                   Lower Costs
                 </h2>

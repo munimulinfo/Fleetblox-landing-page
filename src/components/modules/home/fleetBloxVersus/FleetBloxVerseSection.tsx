@@ -41,7 +41,7 @@ const FleetBloxVerseSection = () => {
               className={`sticky top-[100px] h-screen flex flex-col items-start justify-center gap-[10px] pb-[10px]`}
             >
               <div className="-mt-[240px]">
-                <h1 className="text-[28px] md:text-[36px] text-center md:text-left text-[#000E32] font-bold">
+                <h1 className="text-[28px] md:text-[36px] text-center md:text-left text-[#000E32] font-bold leading-[1.1]">
                   Fleetblox <span className="text-[#0336BC]">Versus</span>{" "}
                   <br /> Traditional Solutions
                 </h1>
@@ -52,7 +52,7 @@ const FleetBloxVerseSection = () => {
                 </p>
                 <button className="hidden md:flex mt-8 transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[110%] max-w-[250px]  items-center px-4 py-3 text-[16px] font-bold rounded-md group ">
                   <div className="z-20 whitespace-nowrap">
-                    Calculate your savings
+                    Calculate Your Savings
                   </div>
                   <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
                     <RightArrowIcon />

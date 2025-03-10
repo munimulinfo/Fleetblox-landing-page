@@ -11,7 +11,7 @@ const AiSupportSection = () => {
             <h1 className="text-[36px] font-bold mb-[10px] font-montserrat leading-[1.1]">
               AI Support to Elevate Fleet Management
             </h1>
-            <p className="text-[16px] leading-6 font-openSans mb-[30px]">
+            <p className="text-[16px] leading-6 font-openSans mb-[30px] font-normal">
               Your AI Garage Assistant works 24/7, providing real-time insights
               and proactive support. From scheduling maintenance to optimizing
               vehicle performance, ensure uninterrupted operations with smarter
