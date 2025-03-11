@@ -103,8 +103,12 @@ const StatsSection = () => {
             </div>
           </div>
         </div>
-        <div className="lg:w-1/2 w-full mx-auto pt-10 pr-10">
-          <Image src={fleetSolutionImg} alt="logo" className="w-full h-full" />
+        <div className="lg:w-1/2 w-full mx-auto lg:mt-10 xl:mt-20 flex justify-center items-center relative">
+          <Image
+            src={fleetSolutionImg}
+            alt="logo"
+            className="w-full h-auto object-contain"
+          />
         </div>
       </div>
 

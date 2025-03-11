@@ -20,7 +20,7 @@ const page = () => {
       <HeroSection />
       <FleetSolution />
       <VirtualSlot />
-      <FleetBloxVerseSection />
+      {/* <FleetBloxVerseSection /> */}
       <ConnectRemotelySection />
       <WorkforceManageSection />
       <AiSupportSection />

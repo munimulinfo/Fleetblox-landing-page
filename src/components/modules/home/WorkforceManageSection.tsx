@@ -27,8 +27,8 @@ const WorkforceManageSection = () => {
       <Container>
         <section className="flex flex-col items-center justify-center">
           {/* header */}
-          <div className="flex flex-col items-center justify-center">
-            <h1 className="text-[28px] md:text-[36px] font-bold text-[#04082C] leading-[1.1] text-left lg:text-center font-montserrat ">
+          <div className="flex flex-col items-start justify-center">
+            <h1 className="text-[28px] md:text-[36px] font-bold text-[#04082C] leading-[1.1] text-left  lg:text-center font-montserrat ">
               Complete Workforce Management - <br /> Seamlessly Connected
             </h1>
             <p className="my-5 text-[#333] font-openSans leading-6 text-[14px] md:text-[16px] mt-[10px] text-left lg:text-center">

@@ -38,7 +38,7 @@ const FleetBloxVerseSection = () => {
             {/* left card */}
             <motion.div
               // style={{ opacity: headerOpacity }}
-              className={`sticky top-[100px] h-screen flex flex-col items-start justify-center gap-[10px] pb-[10px]`}
+              className={`sticky top-[100px] w-3/4 h-screen flex flex-col items-start justify-center pb-[10px]`}
             >
               <div className="-mt-[240px]">
                 <h1 className="text-[28px] md:text-[36px] text-center md:text-left text-[#000E32] font-bold leading-[1.1]">
@@ -97,10 +97,7 @@ const FleetBloxVerseSection = () => {
             </motion.div>
             {/* left card end*/}
             {/* right card start */}
-            <div
-              ref={container}
-              className=" hidden md:block lg:block relative w-full"
-            >
+            <div ref={container} className=" hidden lg:block relative w-full">
               {cards.map((item, index) => {
                 const targetScale = 1 - (cards.length - index) * 0.01;
                 return (
@@ -123,7 +120,6 @@ const FleetBloxVerseSection = () => {
         </Container>
       </div>
       {/* Mobile */}
-
       <FleetBloxMobileVerse />
     </>
   );

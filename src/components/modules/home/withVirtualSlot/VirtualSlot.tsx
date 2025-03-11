@@ -33,7 +33,7 @@ const VirtualSlot = () => {
 
             {/* Content */}
             <div className=" hidden md:block  relative text-center">
-              <h1 className="text-[28px] z-10 lg:text-[52px] text-[#000E32] font-bold leading-[1.1]">
+              <h1 className="z-10 text-[52px] text-[#000E32] font-bold leading-[1.1]">
                 Take <span className="text-[#0336BC]">Full Control</span> with
                 Virtual <br className="hidden md:block " />
                 Parking Slot Technology
