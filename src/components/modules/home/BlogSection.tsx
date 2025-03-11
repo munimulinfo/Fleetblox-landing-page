@@ -56,62 +56,65 @@ const BlogSection = () => {
               </button> */}
             </div>
           </div>
-
-          {/* Mobile view */}
-
-          <div className="block lg:hidden mt-6">
-            <div
-              className="overflow-x-scroll pb-4 scrollbar-hide -mx-4"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            >
-              <div
-                className="flex flex-nowrap gap-4 px-4"
-                style={{ width: "max-content" }}
-              >
-                <div className="flex-shrink-0 w-[330px]">
-                  <div className="bg-white rounded-[16px] shadow-[0_4px_12px_0px_#00000024] overflow-hidden h-[450px] flex flex-col">
-                    <div className="h-[300px] w-full">
-                      <Image
-                        src={main_image}
-                        alt="blog"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="p-4 flex flex-col justify-between flex-1">
-                      <h3 className="font-openSans text-[18px] font-bold text-[#333] line-clamp-2 h-[54px]">
-                        How to Build Your Perfect Fleet in 2025 (10-Step Guide)
-                      </h3>
-                      <p className="font-openSans text-[14px] font-semibold text-[#7D7D7D] mt-2">
-                        12 May 2024
-                      </p>
-                    </div>
-                  </div>
+        </section>
+      </Container>
+      {/* Mobile view */}
+      <div className="block lg:hidden mt-6 px-5">
+        <div
+          className="overflow-x-scroll pb-4 scrollbar-hide -mx-4"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <div
+            className="flex flex-nowrap gap-4 px-4"
+            style={{ width: "max-content" }}
+          >
+            <div className="flex-shrink-0 w-[330px]">
+              <div className="bg-white rounded-[16px] shadow-[0_4px_12px_0px_#00000024] overflow-hidden h-[450px] flex flex-col">
+                <div className="h-[300px] w-full">
+                  <Image
+                    src={main_image}
+                    alt="blog"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-
-                {blogs_data.map((blog, index) => (
-                  <div key={index} className="flex-shrink-0 w-[400px]">
-                    <div className="bg-white rounded-[16px] shadow-[0_4px_12px_0px_#00000024] overflow-hidden h-[450px] flex flex-col">
-                      <div className="h-[300px] w-full">
-                        <Image
-                          src={blog.image}
-                          alt={blog.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="p-4 flex flex-col justify-between flex-1">
-                        <h3 className="font-openSans text-[18px] font-bold text-[#333] line-clamp-2 h-[54px]">
-                          {blog.title}
-                        </h3>
-                        <p className="font-openSans text-[14px] font-semibold text-[#7D7D7D] mt-2">
-                          {blog.date}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                <div className="p-4 flex flex-col justify-between flex-1">
+                  <h3 className="font-openSans text-[18px] font-bold text-[#333] line-clamp-2 h-[54px]">
+                    How to Build Your Perfect Fleet in 2025 (10-Step Guide)
+                  </h3>
+                  <p className="font-openSans text-[14px] font-semibold text-[#7D7D7D] mt-2">
+                    12 May 2024
+                  </p>
+                </div>
               </div>
             </div>
-            {/* <div className=" flex justify-center my-5">
+
+            {blogs_data.map((blog, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 max-w-[430px] w-[330px] md:w-full"
+              >
+                <div className="bg-white rounded-[16px] shadow-[0_4px_12px_0px_#00000024] overflow-hidden h-[450px] flex flex-col">
+                  <div className="h-[300px] w-full">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4 flex flex-col justify-between flex-1">
+                    <h3 className="font-openSans text-[18px] font-bold text-[#333] line-clamp-2 h-[54px]">
+                      {blog.title}
+                    </h3>
+                    <p className="font-openSans text-[14px] font-semibold text-[#7D7D7D] mt-2">
+                      {blog.date}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* <div className=" flex justify-center my-5">
               <button className="transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-[95%] hover:w-[100%] md:hover:w-[144.16px] md:w-[122.16px] lg:hover:w-[144.16px] lg:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
                 <div className="z-20 whitespace-nowrap font-openSans font-bold">
                   Start Today
@@ -121,9 +124,7 @@ const BlogSection = () => {
                 </div>
               </button>
             </div> */}
-          </div>
-        </section>
-      </Container>
+      </div>
     </div>
   );
 };

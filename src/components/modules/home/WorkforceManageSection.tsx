@@ -27,8 +27,8 @@ const WorkforceManageSection = () => {
       <Container>
         <section className="flex flex-col items-center justify-center">
           {/* header */}
-          <div className="flex flex-col items-center justify-center">
-            <h1 className="text-[28px] md:text-[36px] font-bold text-[#04082C] leading-[1.1] text-left lg:text-center font-montserrat ">
+          <div className="flex flex-col items-start justify-center">
+            <h1 className="text-[28px] md:text-[36px] font-bold text-[#04082C] leading-[1.1] text-left  lg:text-center font-montserrat ">
               Complete Workforce Management - <br /> Seamlessly Connected
             </h1>
             <p className="my-5 text-[#333] font-openSans leading-6 text-[14px] md:text-[16px] mt-[10px] text-left lg:text-center">
@@ -38,14 +38,14 @@ const WorkforceManageSection = () => {
               are
             </p>
 
-            <button className=" hidden md:flex lg:flex transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] items-center px-4 py-3 text-[16px] font-bold rounded-md group ">
+            {/* <button className=" hidden md:flex lg:flex transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] items-center px-4 py-3 text-[16px] font-bold rounded-md group ">
               <div className="z-20 whitespace-nowrap font-openSans font-bold">
                 Learn More
               </div>
               <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
                 <RightArrowIcon />
               </div>
-            </button>
+            </button> */}
           </div>
           {/* */}
           <div className="flex flex-col items-center lg:items-start lg:flex-row md:justify-between mt-20">
