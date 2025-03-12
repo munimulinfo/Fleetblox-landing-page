@@ -1,11 +1,17 @@
-"use client";
 import React, { Suspense } from "react";
 import Compatibility from "../../components/compatibility";
+import Loader from "../../components/Loader";
 
 const page = () => {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div>
+            <Loader />
+          </div>
+        }
+      >
         <Compatibility />
       </Suspense>
     </>
