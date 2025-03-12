@@ -13,13 +13,7 @@ import axios from "axios";
 import { CarBrandsData } from "@/app/(gettingStarted)/components/compatibility";
 import Loader from "@/app/(gettingStarted)/components/Loader";
 
-interface CustomPageProps {
-  params: {
-    model: string;
-  };
-}
-
-const ModelSelector = ({ params }: CustomPageProps) => {
+const ModelSelector = ({ params }: any) => {
   const { setCustomProgress, progress } = useProgressUpdater();
   const [totalBrands, setTotalBrands] = useState(0);
   const [isOpen, setIsOpen] = useState("");

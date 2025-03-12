@@ -1,10 +1,13 @@
-import React from "react";
+"use client";
+import React, { Suspense } from "react";
 import Compatibility from "../../components/compatibility";
 
 const page = () => {
   return (
     <>
-      <Compatibility />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Compatibility />
+      </Suspense>
     </>
   );
 };

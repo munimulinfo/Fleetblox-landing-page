@@ -4,12 +4,13 @@ import { Menu, X } from "lucide-react"; // You can use any icon library
 import FleetBloxIconWhite from "@/components/icons/FleetBloxIconWhite";
 
 import { Stepper } from "@/components/ui/stepper";
-import { Button } from "@/components/ui/button";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+
+  console.log(isMobile, setCurrentStep, currentStep);
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -42,17 +43,17 @@ const Sidebar = () => {
     },
   ];
 
-  const handleNext = () => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
+  // const handleNext = () => {
+  //   if (currentStep < steps.length - 1) {
+  //     setCurrentStep(currentStep + 1);
+  //   }
+  // };
 
-  const handlePrevious = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
+  // const handlePrevious = () => {
+  //   if (currentStep > 0) {
+  //     setCurrentStep(currentStep - 1);
+  //   }
+  // };
 
   return (
     <>
