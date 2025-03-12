@@ -25,7 +25,7 @@ const WorkforceManageSection = () => {
   return (
     <main className="bg-white h-full -mt-10 md:mt-0">
       <Container>
-        <section className="flex flex-col items-center justify-center px-5">
+        <section className="flex flex-col items-center justify-center">
           {/* header */}
           <div className="flex flex-col items-start justify-center">
             <h1 className="text-[28px] md:text-[36px] font-bold text-[#04082C] leading-[1.1] text-left  lg:text-center font-montserrat ">
@@ -50,7 +50,7 @@ const WorkforceManageSection = () => {
           {/* */}
           <div className="flex flex-col items-center lg:items-start lg:flex-row md:justify-between mt-20">
             {/* Image Section */}
-            <div className="hidden md:block lg:block max-w-[800px] w-full">
+            <div className="hidden md:block lg:block w-full">
               <Image
                 src="/images/workforce.png"
                 alt="image"
@@ -72,7 +72,7 @@ const WorkforceManageSection = () => {
             </div>
 
             {/* Benefit section */}
-            <div className="flex flex-col w-[350px] md:ml-10 pt-10 gap-5">
+            <div className="flex flex-col w-[350px] md:w-[600px] mx-auto md:ml-10 pt-10 gap-5">
               {items.map((item) => (
                 <div key={item.id} className="flex items-center w-full gap-x-4">
                   {/* Consistent icon container */}
