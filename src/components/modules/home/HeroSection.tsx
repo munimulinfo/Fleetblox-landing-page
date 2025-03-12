@@ -7,23 +7,23 @@ import RightArrowIcon from "@/components/icons/RightArrowIcon";
 
 const HeroSection = () => {
   return (
-    <section className="bg-[#FAFAFF] flex flex-col justify-center items-center z-50">
+    <section className="bg-[#FAFAFF] flex flex-col justify-center items-center z-50 overflow-hidden">
       <Container>
         <div className="lg:mt-[60px] mt-10 md:mt-12 pb-3 flex flex-col items-center justify-center">
-          <div className="max-w-[840px] w-full mx-auto text-center flex flex-col items-center">
-            <p className="text-[18px] md:text-[28px] lg:text-[28px] text-center font-bold text-[#0336BC]">
+          <div className="max-w-[840px] w-full mx-auto  md:text-center flex flex-col items-center">
+            <p className="text-[18px] md:text-[28px] lg:text-[28px]  text-left md:text-center font-bold text-[#0336BC]">
               Instant Fleet Connectivity
             </p>
-            <h1 className="text-[36px] md:text-[52px] lg:text-[52px] text-center font-bold text-[#04082C] leading-[1.1] font-montserrat">
+            <h1 className="text-[36px] md:text-[52px] lg:text-[52px]  text-left md:text-center font-bold text-[#04082C] leading-[1.1] font-montserrat">
               Manage and Scale Without Boundaries
             </h1>
-            <p className="text-center font-openSans text-[#333] leading-6 text-[16px] mt-[10px]">
+            <p className=" text-left md:text-center font-openSans text-[#333] leading-6 text-[16px] mt-[10px]">
               Say goodbye to traditional hardware hassles! Fleetblox&apos;s
               AI-powered, cloud based fleet connectivity solution cuts costs,
               reduces downtime, and transforms the way you manage your fleet
             </p>
             <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center gap-4 mt-5 pb-[30px] font-openSans">
-              <div className="flex gap-[5px] text-[16px] font-openSans leading-6 font-semibold text-[#7D7D7D] text-center">
+              <div className="flex gap-[5px] text-[16px] font-openSans leading-6 font-semibold text-[#7D7D7D]  text-left md:text-center">
                 <CheckboxIcon />
                 <p>No Hardware</p>
               </div>

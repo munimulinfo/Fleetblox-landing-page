@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useEffect, useState } from "react";
-import { ArrowLeft } from "lucide-react";
+
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
 import Vin from "@/../public/images/vinsvg.svg";
 import vehicle from "@/../public/images/vehicle.svg";
+import { ChevronLeft } from "lucide-react";
 interface CarModel {
   name: string;
   endpoints: string[]; // Array of endpoint names like 'Fuel tank', 'Location', etc.
@@ -76,72 +77,70 @@ const Compatibility = () => {
 
   const handleBack = () => {
     setCustomProgress(progress - 10);
-    router.push(`/collections/select-country`);
+    router.push(`/getting-started`);
   };
 
   return (
-    <div className="relative flex h-[90vh] w-full max-w-[650px] flex-col rounded-lg bg-bg_white px-4 py-[20px] xs:px-6 sm:px-12 md:h-[90vh] md:py-[60px] md:shadow-lg">
+    <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
       {/* Fixed Header */}
       <div className="flex-shrink-0">
         <div
           onClick={handleBack}
           className="mb-4 flex cursor-pointer items-center gap-1"
         >
-          <ArrowLeft size={20} className="text-ti_dark_grey" />
-          <span className="font-inter text-sm font-semibold leading-[18px] text-ti_dark_grey">
+          <ChevronLeft size={16} className="text-[#999]" />
+          <span className="font-openSans text-sm font-semibold leading-[18px] text-[#999]">
             Back
           </span>
         </div>
 
-        <div className="mb-8">
-          <h2 className="pre_landing_page_title font-inter">
-            Check your vehicle compatibility
+        <div className="mb-8 text-center">
+          <h2 className="font-bold text-[24px] sm:text-[28px] font-openSans text-[#04082C] ">
+            Choose Compatibility Check Method
           </h2>
-          <p className="pre_landing_page_text">
-            Before proceeding, we need to ensure your vehicles are compatible
-            with our platform. Please select one of the following methods
+          <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
+            Please select one of the following methods to check your fleet’s
+            compatibility
           </p>
         </div>
       </div>
 
       {/* Scrollable Content */}
       <div className="min-h-0 flex-1 overflow-y-auto">
-        <div className="">
-          <div className="mb-4 flex items-center gap-1 font-inter text-[14px] font-bold leading-[18px] text-ti_dark_grey">
+        {/* <div className="">
+          <div className="mb-4 flex items-center gap-1 font-openSans text-[14px] font-bold leading-[18px] text-ti_dark_grey">
             <span>Select your method</span>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-[10px]">
           <div
             onClick={() => handleModeSelect("vin")}
-            className={`flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border border-bg_dusty_white p-[20px] ${
-              compatibility === "vin"
-                ? "select_car_collection_bg border-p_light_blue"
-                : ""
+            className={`flex w-full cursor-pointer h-[380px] flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${
+              compatibility === "vin" ? "bg-[#2D65F20F] border-[#B8CBFC]" : ""
             }`}
           >
             <Image src={Vin} alt="" />
-            <h4 className="mt-[32px] text-center font-inter text-[18px] font-semibold text-ti_black">
+            <h4 className="mt-[32px] text-center font-openSans text-[18px] font-semibold text-ti_black">
               Test by VIN
             </h4>
-            <h4 className="text-center font-inter text-[14px] text-ti_dark_grey">
+            <h4 className="text-center font-openSans text-[14px] leading-[155%] text-[#7D7D7D]">
               Use your vehicles’ VIN
             </h4>
           </div>
           <div
             onClick={() => handleModeSelect("vehicle")}
-            className={`flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border border-bg_dusty_white p-[20px] ${
+            className={`flex w-full h-[380px] cursor-pointer flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${
               compatibility === "vehicle"
-                ? "select_car_collection_bg border-p_light_blue"
+                ? "bg-[#2D65F20F] border-[#B8CBFC]"
                 : ""
             }`}
           >
             <Image src={vehicle} alt="" />
-            <h4 className="mt-[32px] text-center font-inter text-[18px] font-semibold text-ti_black">
+            <h4 className="mt-[32px] text-center font-openSans text-[18px] font-semibold text-ti_black">
               Test by vehicle models
             </h4>
-            <h4 className="text-center font-inter text-[14px] text-ti_dark_grey">
+            <h4 className="text-center font-openSans text-[14px] leading-[155%] text-[#7D7D7D]">
               Go through our compatible list
             </h4>
           </div>
@@ -152,15 +151,15 @@ const Compatibility = () => {
       <div className="mt-[40px] flex flex-shrink-0 flex-col-reverse items-center gap-4 lg:flex-row">
         <button
           onClick={handleNext}
-          className={`pre_landing_page_btn w-full rounded-md px-[14px] py-[10px] font-inter text-bg_white ${
-            compatibility ? "bg-p_blue" : "bg-p_blue/50"
+          className={`w-full rounded-md px-[14px] py-[10px] font-openSans text-white ${
+            compatibility ? "bg-[#2D65F2]" : "bg-[#2D65F2]/50"
           }`}
           disabled={!compatibility || disabled}
         >
           Next
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 
