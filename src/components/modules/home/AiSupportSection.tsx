@@ -24,7 +24,7 @@ const AiSupportSection = () => {
               </div>
             </button>
           </div>
-          <div className="relative lg:py-[0px] py-[100px] ">
+          <div className="relative lg:py-[0px] py-[40px] ">
             <Image
               src={aiSupportImg}
               className="relative z-[200]"

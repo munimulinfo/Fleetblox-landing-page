@@ -65,7 +65,7 @@ const ConnectRemotelySection = () => {
             </button>
           </div>
           {/* Optimize section */}
-          <section className="mx-4 md:mx-0 flex flex-col md:flex-row p-5 rounded-[24px] md:p-10 items-center gap-6 md:gap-x-4 mt-5 md:border border-[#DFDFDF] h-auto md:h-[500px] md:rounded-[24px] bg-white">
+          <section className="md:mx-0 flex flex-col md:flex-row p-5 rounded-[24px] md:p-10 items-center gap-6 md:gap-x-4 mt-5 md:border border-[#DFDFDF] h-auto md:h-[500px] md:rounded-[24px] bg-white">
             <div className="flex-1">
               <h1 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold text-[#04082C] leading-tight font-montserrat">
                 Optimize Fleet Safety

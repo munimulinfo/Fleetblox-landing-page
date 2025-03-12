@@ -21,7 +21,7 @@ const FleetBloxMobileVerse = () => {
             performance across every key metric
           </p>
         </div>
-        <div className="flex-1 block lg:hidden mt-10 w-full border">
+        <div className="flex-1 block lg:hidden mt-10 w-full">
           <div
             className="overflow-x-scroll pb-4 scrollbar-hide -mx-4 hide-scroll"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}

@@ -81,13 +81,12 @@ export default function HorizontalStackSlideshow() {
   };
 
   return (
-    <section className="w-full min-h-[750px] py-14 mb-12 bg-white">
+    <section className="w-full min-h-[750px] pt-14 mb-12 bg-white">
       <Container>
         {/* Title for all devices */}
         <h2 className="text-[28px] md:text-[52px] font-bold text-center mb-8 text-[#000E32]">
           Success Stories
         </h2>
-
         {/* Desktop view */}
         <div className="container hidden lg:block mx-auto px-4 relative">
           {/* Slider Container */}
