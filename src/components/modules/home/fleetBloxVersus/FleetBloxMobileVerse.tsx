@@ -8,10 +8,22 @@ const FleetBloxMobileVerse = () => {
   return (
     <>
       {/* mobile slider */}
-      <div className="">
+      <div className="relative">
+        {/* <div className="max-h-[200px] lg:h-[300px] md:h-[400px] filter blur-[200px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20  rounded-[520px] w-[200px] bg-[#FBEECA]  absolute "></div> */}
+        <div className="px-5 pt-[80px] block lg:hidden">
+          <h1 className="text-[28px] text-center md:text-left text-[#000E32] font-bold leading-[1.1]">
+            Fleetblox <span className="text-[#0336BC]">Versus </span> <br />{" "}
+            Traditional Solutions
+          </h1>
+          <p className="text-center text-[#333] text-[14px] leading-5 font-openSans mt-[10px] mb-10">
+            Discover how Fleetblox revolutionizes fleet management,
+            outperforming traditional solutions in efficiency, innovation, and
+            performance across every key metric
+          </p>
+        </div>
         <div className="flex-1 block lg:hidden mt-10 w-full">
           <div
-            className="overflow-x-scroll pb-4 scrollbar-hide -mx-4"
+            className="overflow-x-scroll pb-4 scrollbar-hide -mx-4 hide-scroll"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <div
@@ -72,7 +84,6 @@ const FleetBloxMobileVerse = () => {
           </div>
         </div>
       </div>
-      ;
     </>
   );
 };

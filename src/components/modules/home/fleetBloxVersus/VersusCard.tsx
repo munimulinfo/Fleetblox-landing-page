@@ -22,13 +22,13 @@ const VirtualCard: React.FC<TVersesCard> = ({
       className="sticky z-50 top-[0vh] flex h-[100vh] flex-col items-center justify-center xl:top-[13vh] 2xl:top-[12vh] 2.5xl:top-[15vh] 3xl:top-[8vh] "
     >
       <motion.div
-        className={`relative z-[200] top-[0px] mx-auto transform flex-col gap-x-[30px] max-h-[500px] h-full lg:h-[500px] max-w-[500px] w-full lg:w-[500px]`}
+        className={`relative z-[200] top-[0px] mx-auto transform flex-col gap-x-[30px] max-h-[500px] h-full xl:h-[500px] max-w-[500px] w-full xl:w-[500px]`}
         style={{ top: `calc(-5vh + ${index * 15}px)`, scale: scale }}
       >
         {index === 0 && (
           <div className="absolute left-1/2 top-1/2 mt-[90px] w-[50vw] h-[50vw] max-w-[664px] max-h-[664px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ffe1bf] opacity-40 blur-[200px]"></div>
         )}
-        <div className="hidden md:block lg:ml-10 xl:ml-20 absolute top-[0vh] xl:-top-[8vh] z-[200] w-full h-full">
+        <div className="hidden md:block ml-0 lg:ml-10 xl:ml-20 absolute top-[0vh] xl:-top-[8vh] z-[200] w-full h-full">
           {/* <div className="w-[500px] h-[500px] bg-[#FFE1BF] opacity-30 blur-[100px] rounded-full"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div> */}
           <div className="w-[500px] h-[500px] bg-white rounded-[24px] pt-8 px-4 pb-4 flex flex-col gap-[10px]">
@@ -37,7 +37,9 @@ const VirtualCard: React.FC<TVersesCard> = ({
               <div className="w-8 h-8 rounded-full border-2 border-[#0336BC] flex items-center justify-center mb-3">
                 <span className="text-[#0336BC] font-semibold">{number}</span>
               </div>
-              <h3 className="text-[#0336BC] text-xl font-bold">{title}</h3>
+              <h3 className="text-[#0336BC] text-xl font-bold font-openSans">
+                {title}
+              </h3>
             </div>
             {/* Fleetblox Advantage */}
             <div className="bg-[#FEFAF0] p-5 rounded-xl flex items-center gap-4">
@@ -58,7 +60,7 @@ const VirtualCard: React.FC<TVersesCard> = ({
                 <CrossIcon />
               </div>
               <div>
-                <div className="text-[#333333] font-semibold mb-1">
+                <div className="text-[#333] font-bold mb-1 font-openSans">
                   Traditional Solutions
                 </div>
                 <p className="text-[16px] text-[#4A4A4A] font-openSans">

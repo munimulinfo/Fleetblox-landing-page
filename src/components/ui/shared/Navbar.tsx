@@ -40,18 +40,19 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed left-0 right-0 top-0 z-[9999] transition-all duration-200 ease-in-out  ${
+      className={`fixed left-0 right-0 top-0 z-[9999] transition-all duration-200 ease-in-out py-[18px] ${
         isScrolled || mobileMenuOpen
           ? "bg-white shadow-md shadow-black/10"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex w-full max-w-[1440px] items-center px-4 py-[25px]">
+      <div className="mx-auto flex w-full max-w-[1440px] items-center px-4">
         <div className="flex justify-between items-center w-full">
-          <Link href="/">
-            <Image src={Logo} alt="logo" className="h-[26px] w-[150px]" />
-          </Link>
-
+          <div className="py-[10px]">
+            <Link href="/">
+              <Image src={Logo} alt="logo" className="h-[26px] w-[150px] " />
+            </Link>
+          </div>
           {/* Desktop Menu */}
           <div className="hidden md:flex text-[#04082C] text-[14px] font-semibold items-center gap-[20px]">
             {/* <div className="flex cursor-pointer items-center gap-[5px] text-[16px] font-openSans transition-all duration-300 ease-in-out hover:text-ti_grey">

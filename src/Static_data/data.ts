@@ -100,7 +100,7 @@ const full_control_with_virtual_slot_data = [
 
 const cars = [
   { value: "25+", title: "Car Brands" },
-  { value: "500+", title: "Car models" },
+  { value: "500+", title: "Car Models" },
   { value: "20+", title: "Countries" },
 ];
 

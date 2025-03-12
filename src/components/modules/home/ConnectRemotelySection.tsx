@@ -1,11 +1,10 @@
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
-import Container from "@/components/ui/Container";
 import Image from "next/image";
 
 const ConnectRemotelySection = () => {
   return (
-    <main className="py-10 md:py-16 bg-white">
-      <Container>
+    <main className="pt-10 md:py-16 bg-white">
+      <div className="container mx-auto w-full px-4 py-16 sm:px-6 sm:py-10 md:py-10 lg:max-w-7xl">
         <div className="flex flex-col z-50">
           {/* Connect Remotely Section */}
           <section className="px-4 md:px-0">
@@ -65,15 +64,13 @@ const ConnectRemotelySection = () => {
               </div>
             </button>
           </div>
-
           {/* Optimize section */}
-          <section className="mx-4 md:mx-0 flex flex-col md:flex-row p-5 pb-10 md:p-10 items-center gap-6 md:gap-x-4 mb-10 md:mb-20 mt-5  md:border border-[#DFDFDF] h-auto md:h-[500px] md:rounded-[24px] bg-white">
+          <section className="md:mx-0 flex flex-col md:flex-row p-5 rounded-[24px] md:p-10 items-center gap-6 md:gap-x-4 mt-5 md:border border-[#DFDFDF] h-auto md:h-[500px] md:rounded-[24px] bg-white">
             <div className="flex-1">
               <h1 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold text-[#04082C] leading-tight font-montserrat">
                 Optimize Fleet Safety
                 <span className="md:block">and Stay Compliant</span>
               </h1>
-
               <p className="my-4 md:my-5 text-[#333] leading-6 text-[15px] font-openSans md:text-[16px]">
                 Stay ahead with dynamic reminders for registrations and
                 insurance renewals, ensuring your fleet&apos;s compliance.
@@ -114,8 +111,8 @@ const ConnectRemotelySection = () => {
             </div>
           </section>
         </div>
-        <div className="border-b block lg:hidden border-[#DFDFDF] px-6 mt-5"></div>
-      </Container>
+        <div className="border-b block md:hidden border-[#DFDFDF] px-6 mt-5"></div>
+      </div>
     </main>
   );
 };
