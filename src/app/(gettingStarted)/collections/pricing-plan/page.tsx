@@ -24,9 +24,9 @@ import {
 } from "@/lib/constant";
 import FAQSection from "@/components/modules/home/FAQSection";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import AccurateSlider from "./AccurateSlider";
-import FeaturesComparison from "./FeaturesComparison";
+
 import Link from "next/link";
+import AccurateSlider from "@/app/pricings/components/AccurateSlider";
 
 type TSelectedPlan = {
   price: number;
@@ -145,25 +145,21 @@ const PricingPlan = () => {
     setShowUpdatePlanModal(true);
   };
 
-  // console.log(handleBillingMonthly, calculateDiscount);
+  console.log(handleBillingMonthly, calculateDiscount);
 
   const TotalForModal = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
 
   return (
-    <main className="h-full">
-      <section className="w-full bg-[#FAFAFF] py-10 md:h-[400px] flex flex-col justify-center items-center">
-        <Container>
-          <h1 className="text-center text-[32px] md:text-[52px] text-[#04082C] font-bold">
-            Best Pricing for Businesses
-          </h1>
-          <p className="text-center font-[400] text-[14px] md:text-[16px] text-[#333] my-3 font-openSans">
-            Slide the bar to explore prices for different slot ranges. Enjoy
-            clear, transparent pricing with no hidden fees!
-          </p>
-        </Container>
-      </section>
+    <main className="h-full mb-10">
       <section className="container mx-auto  flex flex-col justify-center items-center">
         <Container>
+          <h1 className="text-center text-[22px] md:text-[22px] text-[#04082C] font-bold">
+            Set Fleet Size & Choose a Plan
+          </h1>
+          <p className="text-center font-[400] text-[14px] md:text-[16px] text-[#7d7d7d] my-3 font-openSans">
+            Slide the bar to see prices for different vehicle slot ranges. Enjoy
+            transparent pricing with no hidden fees
+          </p>
           {/* ****************Accurate Slider**************** */}
           <AccurateSlider value={slotCount} setValue={setSlotCount} />
         </Container>
@@ -245,29 +241,25 @@ const PricingPlan = () => {
                 </ul>
                 <div className="flex items-center justify-center">
                   {plan.name === "Eagle eye fleet" && (
-                    <Link href="/getting-started">
-                      <Button
-                        variant="outline"
-                        className="mt-8 w-full bg-[#2D65F2] text-[14px]  font-semibold text-[#FFF] hover:bg-[#2D65f2]/60 hover:text-bg_white"
-                        // onClick={() =>
-                        // {
-                        //   // handlePriceAndModal({
-                        //   //   price: calculateDiscount(
-                        //   //     slotCount,
-                        //   //     plan?.price,
-                        //   //     billAnnually
-                        //   //   ),
-                        //   //   fleet: plan?.name,
-                        //   //   slot: slotCount,
-                        //   //   annually: billAnnually,
-                        //   // });
-
-                        // }
-                        // }
-                      >
-                        Choose Plan
-                      </Button>
-                    </Link>
+                    <Button
+                      variant="outline"
+                      className="mt-8 w-full bg-[#2D65F2] text-[14px]  font-semibold text-[#FFF] hover:bg-[#2D65f2]/60 hover:text-bg_white"
+                      onClick={() => {
+                        handlePriceAndModal({
+                          price: calculateDiscount(
+                            slotCount,
+                            plan?.price,
+                            billAnnually
+                          ),
+                          fleet: plan?.name,
+                          slot: slotCount,
+                          annually: billAnnually,
+                        });
+                        handleSubscriptionPlan();
+                      }}
+                    >
+                      Choose Plan
+                    </Button>
                   )}
                 </div>
               </CardContent>
@@ -293,9 +285,6 @@ const PricingPlan = () => {
           *A one-time platform setup fee of $99 applies.
         </div>
       </section>
-      {/* ***************Full features comparison************ */}
-      <FeaturesComparison />
-      <FAQSection />
     </main>
   );
 };

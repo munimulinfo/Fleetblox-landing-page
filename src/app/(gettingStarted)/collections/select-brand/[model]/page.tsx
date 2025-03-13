@@ -14,6 +14,7 @@ import { CarBrandsData } from "@/app/(gettingStarted)/components/compatibility";
 import Loader from "@/app/(gettingStarted)/components/Loader";
 
 const ModelSelector = ({ params }: any) => {
+  console.log(params);
   const { setCustomProgress, progress } = useProgressUpdater();
   const [totalBrands, setTotalBrands] = useState(0);
   const [isOpen, setIsOpen] = useState("");
