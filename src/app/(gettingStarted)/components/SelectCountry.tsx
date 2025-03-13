@@ -27,7 +27,7 @@ const SelectCountry = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedCountry = localStorage.getItem("selectedCountry");
+      const savedCountry = localStorage.getItem("country");
       if (savedCountry) {
         setSelectedCountry(savedCountry);
       }
@@ -60,10 +60,11 @@ const SelectCountry = () => {
     // If the country is already selected, deselect it; otherwise select the new country
     if (selectedCountry === country.country) {
       setSelectedCountry(null);
+      localStorage.removeItem("country");
       localStorage.removeItem("selectedCountry");
     } else {
       setSelectedCountry(country.country);
-      localStorage.setItem("selectedCountry", country.country);
+      localStorage.setItem("country", country.country);
     }
   };
 
@@ -78,6 +79,7 @@ const SelectCountry = () => {
     // Handle routing based on selected country
     let countryCode;
     if (selectedCountry) {
+      localStorage.setItem("selectedCountry", selectedCountry);
       countryCode = getCode(selectedCountry);
       if (countryCode === "US" || countryCode === "CA") {
         // countryCode remains same
@@ -97,6 +99,9 @@ const SelectCountry = () => {
     localStorage.removeItem("brands");
     localStorage.removeItem("brandModels");
     localStorage.removeItem("VINS");
+    localStorage.removeItem("VINS_RESULT");
+    localStorage.removeItem("compatibility");
+    localStorage.removeItem("selectedPlan");
   };
 
   return (
