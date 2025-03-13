@@ -135,7 +135,7 @@ const Compatible = () => {
                           height={16}
                           alt="success"
                         />
-                        <span className="font-openSans text-[12px] text-[#4DB429]">
+                        <span className="font-openSans text-[12px] text-[#2D65F2]">
                           Compatible
                         </span>
                       </div>

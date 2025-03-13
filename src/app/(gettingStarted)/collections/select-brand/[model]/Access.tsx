@@ -53,21 +53,21 @@ export default function Access({ permission }: { permission: string[] }) {
 
   return (
     <div className="w-full">
-      <h3 className=" mt-[20px] w-full font-inter font-semibold text-[12px] text-ti_dark_grey ">
+      <h3 className=" mt-[20px] w-full font-openSans font-semibold text-[14px] text-[#7D7D7D] ">
         Access permissions
       </h3>
       <div className="grid grid-cols-2 mt-[10px]">
         {allowedPermissions.map((permission, index) => (
           <div
             key={index}
-            className={`flex gap-[10px]  px-[10px] py-[8px] border border-bg_powerd_blue`}
+            className={`flex gap-[10px]  px-[10px] py-[12px] border-b border-[#F7F7F7]`}
           >
             <Image
               className="size-[18px]"
               src={permission.icon}
               alt={permission.label}
             />
-            <span className="text-[12px] font-inter text-ti_light_black font-medium">
+            <span className="text-[12px] font-openSans text-ti_light_black font-medium">
               {permission.label}
             </span>
           </div>

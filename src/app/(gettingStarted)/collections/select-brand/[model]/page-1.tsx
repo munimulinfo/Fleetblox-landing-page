@@ -13,6 +13,15 @@ import axios from "axios";
 import { CarBrandsData } from "@/app/(gettingStarted)/components/compatibility";
 import Loader from "@/app/(gettingStarted)/components/Loader";
 
+// Define Country interface (since country-list doesn't export it)
+interface CountryObject {
+  country: string;
+  countryCode: string;
+  countryFlag: string;
+  countryShort: string;
+  phoneCode: string;
+}
+
 const ModelSelector = ({ params }: any) => {
   const { setCustomProgress, progress } = useProgressUpdater();
   const [totalBrands, setTotalBrands] = useState(0);
@@ -23,13 +32,15 @@ const ModelSelector = ({ params }: any) => {
   const [loading, setLoading] = useState(false);
 
   const [brandCarList, setBrandCarList] = useState<CarBrandsData>([]);
-  const country = localStorage.getItem("country");
+  const [selectedCountryObj, setSelectedCountryObj] =
+    useState<CountryObject | null>(null);
 
   useEffect(() => {
     let countrySelect: string;
+    const countryName = localStorage.getItem("country");
 
-    if (country) {
-      const code = getCode(country);
+    if (countryName) {
+      const code = getCode(countryName);
       if (code === "US" || code === "CA") {
         countrySelect = code;
       } else {
@@ -40,17 +51,36 @@ const ModelSelector = ({ params }: any) => {
     const fetchCountry = async () => {
       try {
         setLoading(true);
-        const { data } = await axios(
-          `https://backend.illama360.com/api/dummy/check-compatibility-matrix?region=${countrySelect}`
+
+        // First fetch all countries to get the flag info
+        const countriesResponse = await axios.get(
+          "https://backend.illama360.com/api/utils/all-countries"
+        );
+
+        // Find the selected country in the list
+        if (countryName && countriesResponse.data?.data) {
+          const foundCountry = countriesResponse.data.data.find(
+            (c: CountryObject) => c.country === countryName
+          );
+          if (foundCountry) {
+            setSelectedCountryObj(foundCountry);
+          }
+        }
+
+        // Now fetch the brand data
+        const { data } = await axios.get(
+          `https://backend.illama360.com/api/dummy/check-compatibility-matrix?region=${
+            countrySelect || "US"
+          }`
         );
         setBrandCarList(data.data);
-        console.log(data.data, "data checking");
-        setLoading(false);
       } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
         setLoading(false);
-        console.log(error);
       }
     };
+
     fetchCountry();
   }, []);
 
@@ -227,21 +257,24 @@ const ModelSelector = ({ params }: any) => {
       </div>
 
       {/* Scrollable Content Area - Takes remaining space */}
-      <div className="flex-1 overflow-y-auto border border-[#DFDFDF] rounded-[16px] p-5">
-        {/* <div className="">
-          <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-4 border border-gray-300">
-            <Image
-              src={country.countryFlag}
-              alt={country.country}
-              width={28}
-              height={28}
-              className="w-full h-full object-cover"
-            />
+      <div className="flex-1 min-h-[300px] overflow-y-auto border border-[#DFDFDF] rounded-[16px] p-5">
+        {selectedCountryObj && (
+          <div className="flex items-center mb-4">
+            <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-4 border border-gray-300">
+              <Image
+                src={selectedCountryObj.countryFlag}
+                alt={selectedCountryObj.country}
+                width={28}
+                height={28}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <span className="font-[600] text-[14px] font-openSans sm:text-[16px] text-[#04082C]">
+              {selectedCountryObj.country}
+            </span>
           </div>
-          <span className="font-[600] text-[14px] font-openSans sm:text-[16px] text-[#04082C]">
-            {country.country}
-          </span>
-        </div> */}
+        )}
+
         <div className="space-y-2.5">
           {loading ? (
             <Loader />
@@ -250,11 +283,8 @@ const ModelSelector = ({ params }: any) => {
               return (
                 <div
                   key={model.name}
-                  className={`flex justify-between flex-col items-center border p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer ${
-                    selectedModels?.includes(model.name)
-                      ? "bg-blue-50 border-p_light_blue select_car_collection_bg"
-                      : "border-bg_dusty_white"
-                  }`}
+                  className={`flex justify-between flex-col items-center border-b border-[#F7F7F7] p-4   transition-colors cursor-pointer 
+`}
                   onClick={(e) => e.stopPropagation()} // Prevent parent onClick
                 >
                   <div className="flex items-center justify-between w-full">
@@ -271,7 +301,7 @@ const ModelSelector = ({ params }: any) => {
                         }}
                         className="mr-2 cursor-pointer"
                       />
-                      <span className="font-semibold w-full text-ti_black font-openSans text-sm">
+                      <span className="font-semibold w-full text-[#333] font-openSans leading-relaxed text-sm">
                         {model?.name
                           ?.replace("(Unknown)", "")
                           ?.replace("Electric", "EV")}
@@ -303,21 +333,21 @@ const ModelSelector = ({ params }: any) => {
 
       {/* Footer Section - Fixed at bottom */}
       {/* Fixed Footer */}
-      <div className="flex-shrink-0 mt-6 flex lg:flex-row flex-col-reverse items-center gap-4">
+      <div className="flex-shrink-0 mt-6 flex flex-col-reverse items-center gap-4">
         <button
           onClick={handleNotFindModel}
-          className=" lg:w-1/2 pre_landing_page_btn w-full font-openSans text-ti_grey px-[14px] py-[8px]   text-[14px] rounded-md"
+          className="  w-full font-openSans text-[#7D7D7D] px-[14px] py-[8px]   text-[14px] rounded-md"
         >
           {`I can't find my car brand`}
         </button>
         <button
-          className={`w-full lg:w-1/2 pre_landing_page_btn text-bg_white px-[14px] py-[10px] font-openSans rounded-md ${
-            currentBrandModels?.length > 0 ? "bg-p_blue" : "bg-p_blue/50"
+          className={`w-full   text-white px-[14px] py-[10px] font-openSans rounded-md ${
+            currentBrandModels?.length > 0 ? "bg-[#2D65F2]" : "bg-[#2D65F2]/50"
           }`}
           disabled={!currentBrandModels || currentBrandModels.length <= 0}
           onClick={handleNext}
         >
-          Next
+          Next Step
         </button>
       </div>
     </main>
