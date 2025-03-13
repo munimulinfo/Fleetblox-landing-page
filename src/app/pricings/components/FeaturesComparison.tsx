@@ -33,7 +33,7 @@ const FeaturesComparison = () => {
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 1, y: 0 },
           }}
-          className="sticky top-10 grid grid-cols-2 md:grid-cols-3 p-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm overflow-hidden"
+          className="sticky top-[120px] grid grid-cols-2 md:grid-cols-3 p-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm overflow-hidden"
         >
           <h1 className="text-[14px] hidden md:block font-[600] ml-5 text-[#999]">
             Usage
@@ -55,7 +55,7 @@ const FeaturesComparison = () => {
             Dynamic
           </h1>
         </motion.div>
-        <div className="sticky -top-2 left-0 w-full h-[60px] bg-white z-0"></div>
+        <div className="sticky top-[70px] left-0 w-full h-[50px] bg-white z-0"></div>
         {/* Scrollable content section */}
         <div ref={ref}>
           <div className="rounded-md px-5 py-5 md:py-4 text-center md:text-left">

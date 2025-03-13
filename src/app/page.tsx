@@ -9,9 +9,12 @@ import GlobalCoverageAndCompatibility from "@/components/modules/home/GlobalCove
 import SlideShowSection from "@/components/modules/home/SlideShowSection";
 import BlogSection from "@/components/modules/home/BlogSection";
 import FAQSection from "@/components/modules/home/FAQSection";
+import Navbar from "@/components/ui/shared/Navbar";
+import Footer from "@/components/ui/shared/Footer";
 export default function Home() {
   return (
     <div>
+      <Navbar />
       <HeroSection />
       <FleetSolution />
       <VirtualSlot />
@@ -23,6 +26,7 @@ export default function Home() {
       <SlideShowSection />
       <BlogSection />
       <FAQSection />
+      <Footer />
     </div>
   );
 }
