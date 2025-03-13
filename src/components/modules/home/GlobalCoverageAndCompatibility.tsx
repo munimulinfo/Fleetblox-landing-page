@@ -110,7 +110,7 @@ const GlobalCoverageAndCompatibility = () => {
           </div>
         </div>
         {/* brand logo animate */}
-        <div className=" connecting_global_image mx-auto relative -mt-[81px] lg:-mt-[110px] 2xl:-mt-[120px] w-full lg:w-[1000px] 2xl:w-[1300px] overflow-hidden whitespace-nowrap">
+        <div className="mx-auto relative -mt-[81px] lg:-mt-[110px] 2xl:-mt-[120px] w-full lg:w-[1000px] 2xl:w-[1300px] overflow-hidden whitespace-nowrap">
           <div className="flex animate-scroll items-center space-x-3 md:space-x-8">
             {images.map((image, index) => (
               <div key={index} className="z-[1000] flex-shrink-0">
