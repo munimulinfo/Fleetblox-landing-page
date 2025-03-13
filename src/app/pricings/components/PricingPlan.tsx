@@ -246,13 +246,13 @@ const PricingPlan = () => {
                 <div className="w-full mt-8">
                   {plan.name === "Eagle eye fleet" && (
                     <div className="w-full">
-                      <Link href="/upcoming-page">
+                      <Link href="/getting-started">
                         <button className="bg-[#2D65F2] px-4 py-3 rounded-md text-white text-[16px] w-full font-openSans font-bold">
                           Get Started
                         </button>
                       </Link>
                     </div>
-                    // <Link href="/upcoming-page">
+                    // <Link href="/getting-started">
                     //   <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
                     //     Switch Today
                     //   </button>

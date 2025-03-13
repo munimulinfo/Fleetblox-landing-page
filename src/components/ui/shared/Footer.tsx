@@ -19,7 +19,7 @@ const Footer = () => {
               </h1>
 
               <div className="md:flex hidden justify-center z-[100] lg:mt-8">
-                <Link href="/upcoming-page">
+                <Link href="/getting-started">
                   <button className="transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[165.39px] w-[143.39px] flex items-center px-4 py-3 text-base font-bold rounded-md group">
                     <div className="z-20 whitespace-nowrap font-openSans">
                       Switch Today
@@ -32,7 +32,7 @@ const Footer = () => {
                   </button>
                 </Link>
               </div>
-              <Link href="/upcoming-page">
+              <Link href="/getting-started">
                 <button className="md:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
                   Switch Today
                 </button>
