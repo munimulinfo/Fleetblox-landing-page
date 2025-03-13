@@ -8,10 +8,6 @@
 body::-webkit-scrollbar {
   display: none;
 }
-html,
-body {
-  overflow: auto !important;
-}
 body {
   @apply font-montserrat;
 }
