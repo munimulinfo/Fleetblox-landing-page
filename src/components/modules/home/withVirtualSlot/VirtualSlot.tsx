@@ -71,10 +71,10 @@ const VirtualSlot = () => {
                 key={item?.id}
                 className="relative bg-white max-h-[630px] my-5 w-full flex flex-col rounded-[16px] items-center justify-center gap-5 "
               >
-                <div className="flex-1 overflow-hidden  w-full h-full rounded-t-[16px]">
+                <div className="flex-1 overflow-hidden w-full h-full rounded-t-[16px]">
                   <Image
                     src={item.mobile}
-                    className="object-fill w-full h-full "
+                    className="object-cover w-full h-full border "
                     alt="image"
                   />
                 </div>

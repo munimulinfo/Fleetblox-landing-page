@@ -1,5 +1,6 @@
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import Image from "next/image";
+import Link from "next/link";
 
 const ConnectRemotelySection = () => {
   return (
@@ -26,15 +27,16 @@ const ConnectRemotelySection = () => {
               </span>{" "}
               you remain in control, no matter where you are.
             </p>
-
-            <button className="hidden md:flex lg:flex transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white duration-300 hover:w-[144.16px] w-[122.16px] items-center px-4 py-3 text-[16px] font-bold rounded-md group">
-              <div className="z-20 whitespace-nowrap font-openSans font-bold">
-                Start Today
-              </div>
-              <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                <RightArrowIcon />
-              </div>
-            </button>
+            <Link href="/getting-started">
+              <button className="hidden md:flex lg:flex transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white duration-300 hover:w-[144.16px] w-[122.16px] items-center px-4 py-3 text-[16px] font-bold rounded-md group">
+                <div className="z-20 whitespace-nowrap font-openSans font-bold">
+                  Start Today
+                </div>
+                <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
+                  <RightArrowIcon />
+                </div>
+              </button>
+            </Link>
           </section>
 
           {/* Video Section */}
@@ -54,16 +56,13 @@ const ConnectRemotelySection = () => {
             </div>
           </section>
 
-          <div className=" flex md:hidden lg:hidden justify-center">
-            <button className="transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-[95%] hover:w-[100%] md:hover:w-[144.16px] md:w-[122.16px] lg:hover:w-[144.16px] lg:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
-              <div className="z-20 whitespace-nowrap font-openSans font-bold">
-                Start Today
-              </div>
-              <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                <RightArrowIcon />
-              </div>
+          {/* <div className=" flex md:hidden lg:hidden justify-center w-full"> */}
+          <Link href="/getting-started">
+            <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
+              Start Today
             </button>
-          </div>
+          </Link>
+          {/* </div> */}
           {/* Optimize section */}
           <section className="md:mx-0 flex flex-col md:flex-row p-5 rounded-[24px] md:p-10 items-center gap-6 md:gap-x-4 mt-5 md:border border-[#DFDFDF] h-auto md:h-[500px] md:rounded-[24px] bg-white">
             <div className="flex-1">
@@ -79,13 +78,14 @@ const ConnectRemotelySection = () => {
                 trips, and review detailed vehicle condition reports, including
                 diagnostic diagrams, all from a single platform.
               </p>
-
-              <button className="hidden md:flex font-openSans transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
-                <div className="z-20 whitespace-nowrap"> Start Today</div>
-                <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                  <RightArrowIcon />
-                </div>
-              </button>
+              <Link href="/getting-started">
+                <button className="hidden md:flex font-openSans transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
+                  <div className="z-20 whitespace-nowrap"> Start Today</div>
+                  <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
+                    <RightArrowIcon />
+                  </div>
+                </button>
+              </Link>
             </div>
 
             <div className="flex-1 flex justify-center">
@@ -99,15 +99,17 @@ const ConnectRemotelySection = () => {
               />
             </div>
 
-            <div className="flex md:hidden lg:hidden justify-center w-full">
-              <button className="transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-full hover:w-full md:hover:w-[144.16px] md:w-[122.16px] lg:hover:w-[144.16px] lg:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
-                <div className="z-20 whitespace-nowrap font-openSans font-bold">
-                  Start Today
-                </div>
-                <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                  <RightArrowIcon />
-                </div>
-              </button>
+            <div className="md:hidden lg:hidden block w-full">
+              <Link href="/getting-started">
+                <button className="transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-full hover:w-full md:hover:w-[144.16px] md:w-[122.16px] lg:hover:w-[144.16px] lg:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
+                  <div className="z-20 whitespace-nowrap font-openSans font-bold">
+                    Start Today
+                  </div>
+                  <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
+                    <RightArrowIcon />
+                  </div>
+                </button>
+              </Link>
             </div>
           </section>
         </div>
