@@ -245,8 +245,9 @@ const PricingPlan = () => {
                     <Button
                       variant="outline"
                       className="mt-8 w-full bg-[#2D65F2] text-[14px]  font-semibold text-[#FFF] hover:bg-[#2D65f2]/60 hover:text-bg_white"
-                      onClick={async () => {
-                        await handlePriceAndModal({
+                      onClick={() => {
+                        // Create plan data directly instead of using state
+                        const planData = {
                           price: calculateDiscount(
                             slotCount,
                             plan?.price,
@@ -255,8 +256,23 @@ const PricingPlan = () => {
                           fleet: plan?.name,
                           slot: slotCount,
                           annually: billAnnually,
-                        });
-                        await handleSubscriptionPlan();
+                        };
+
+                        // Set it in localStorage directly
+                        try {
+                          localStorage.setItem(
+                            "selectedPlan",
+                            JSON.stringify(planData)
+                          );
+                          console.log("Plan saved to localStorage:", planData);
+                          router.push("/collections/checkout");
+                        } catch (error) {
+                          console.error(
+                            "Failed to save plan to localStorage:",
+                            error
+                          );
+                          // Optionally show an error message to the user
+                        }
                       }}
                     >
                       Choose Plan
