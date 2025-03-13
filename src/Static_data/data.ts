@@ -127,32 +127,37 @@ const faqData = {
     {
       question: "What is FleetBlox?",
       answer:
-        "Effortlessly integrate and oversee your entire fleet. Stay connected with your vehicle's health status in real-time. Digitally manage your vehicle to prevent fraud and receive automated alerts for seamless management.",
+        "FleetBlox is an advanced AI-powered, cloud-based fleet connectivity solution that eliminates the need for traditional hardware. It seamlessly integrates with your fleet, reducing operational costs, minimizing downtime, and optimizing performance. By leveraging real-time data and intelligent automation, FleetBlox transforms fleet management, enhancing efficiency, reliability, and overall business productivity.",
     },
     {
-      question: "How does FleetBlox work?",
+      question: "How does FleetBlox works?",
       answer:
-        "Effortlessly integrate and oversee your entire fleet. Stay connected with your vehicle's health status in real-time. Digitally manage your vehicle to prevent fraud and receive automated alerts for seamless management.",
+        "FleetBlox integrates vehicles with the cloud, enabling seamless access to real-time data and leveraging advanced AI-driven technology to deliver comprehensive fleet management solutions. By continuously collecting and analyzing key vehicle metrics, FleetBlox optimizes fleet performance, enhances operational efficiency, and reduces downtime. This cloud-based approach eliminates the need for traditional hardware, streamlining operations and lowering costs. For fleet businesses, FleetBlox offers a scalable, intelligent solution that improves decision-making, drives cost savings, and enhances overall productivity, helping businesses stay ahead in a competitive landscape.",
     },
     {
       question: "What are the benefits of using FleetBlox?",
       answer:
-        "Effortlessly integrate and oversee your entire fleet. Stay connected with your vehicle's health status in real-time. Digitally manage your vehicle to prevent fraud and receive automated alerts for seamless management.",
+        "Fleetblox offers several benefits, including cost efficiency through its subscription-based model, which reduces upfront and maintenance costs. Its quick setup allows businesses to get started in minutes, avoiding the long installation processes of traditional systems. Scalability is a major advantage, enabling businesses to adjust fleet size without added costs. Fleetblox also provides real-time data access, empowering businesses to make informed decisions. It supports seamless EV fleet management and integrates with over 500 vehicle models, offering global compatibility. Additionally, Fleetblox eliminates the complexity of hardware installations, simplifying fleet management and reducing the need for on-site IT support.",
     },
     {
-      question: "What kind of support does FleetBlox provide?",
+      question: "Will I need any extra hardware if I choose FleetBlox?",
       answer:
-        "Effortlessly integrate and oversee your entire fleet. Stay connected with your vehicle's health status in real-time. Digitally manage your vehicle to prevent fraud and receive automated alerts for seamless management.",
+        "No, you will not need any extra hardware if you choose FleetBlox. It is a fully cloud-based platform, meaning it requires no costly hardware installations or setup. Everything is managed through the cloud, allowing for an intuitive, hassle-free setup with no additional hardware requirements.",
     },
     {
       question: "Is FleetBlox suitable for both small and large businesses?",
       answer:
-        "Effortlessly integrate and oversee your entire fleet. Stay connected with your vehicle's health status in real-time. Digitally manage your vehicle to prevent fraud and receive automated alerts for seamless management.",
+        "Yes, FleetBlox is suitable for both small and large businesses. Its cloud-based platform offers unlimited scalability, allowing businesses of any size to easily adjust and grow without incurring additional costs. Whether you're managing a small fleet or a large, diverse operation, FleetBlox can meet your needs with its flexible, efficient, and cost-effective solutions.",
+    },
+    {
+      question: "How can I confirm if my fleet is compatible with FleetBlox?",
+      answer:
+        "You can confirm if your fleet is compatible with FleetBlox by checking our extensive list of supported makes and models, which includes over 500 vehicles, including electric vehicles, across 20+ countries. You can verify compatibility from our website, when getting started and directly from the platform, which will also help as you expand your fleet in the future.",
     },
     {
       question: "Does FleetBlox offer a trial period or demo?",
       answer:
-        "Yes, FleetBlox offers a free trial period along with a demo to help you understand the platform's features and capabilities.",
+        "While we don't offer a trial period at the moment, you can check your fleet's compatibility with FleetBlox. We support over 500 vehicle models, including EVs, and operate in 20+ countries, so you can verify if your fleet is fully supported before making a decision. A demo will also be available soon to explore the platform in more detail.",
     },
   ],
 };

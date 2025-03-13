@@ -122,8 +122,8 @@ const GlobalCoverageAndCompatibility = () => {
               </div>
             ))}
           </div>
-          <div className="to-transparent absolute left-0 top-0 z-[1001] h-full w-32 bg-gradient-to-r from-white"></div>
-          <div className="to-transparent absolute right-0 top-0 z-[1001] h-full w-32 bg-gradient-to-l from-white"></div>
+          <div className="to-transparent absolute hidden md:block left-0 top-0 z-[1001] h-full w-32 bg-gradient-to-r from-white"></div>
+          <div className="to-transparent absolute hidden md:block right-0 top-0 z-[1001] h-full w-32 bg-gradient-to-l from-white"></div>
         </div>
         {/* Diverse and compatibility section */}
         <div className="mt-[60px] flex flex-col md:flex-row justify-items-center items-center gap-5 max-w-[1200px] w-full mx-auto">

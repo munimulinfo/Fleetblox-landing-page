@@ -50,7 +50,7 @@ const WorkforceManageSection = () => {
           {/* */}
           <div className="flex flex-col items-center lg:items-start lg:flex-row md:justify-between mt-20">
             {/* Image Section */}
-            <div className="hidden md:block lg:block max-w-[800px] w-full">
+            <div className="hidden md:block lg:block w-full">
               <Image
                 src="/images/workforce.png"
                 alt="image"
@@ -72,7 +72,7 @@ const WorkforceManageSection = () => {
             </div>
 
             {/* Benefit section */}
-            <div className="flex flex-col w-[350px] ml-10 pt-10 gap-5">
+            <div className="flex flex-col w-[350px] md:w-[600px] mx-auto md:ml-10 pt-10 gap-5">
               {items.map((item) => (
                 <div key={item.id} className="flex items-center w-full gap-x-4">
                   {/* Consistent icon container */}

@@ -5,6 +5,7 @@ import FacebookIcon from "@/components/icons/FacebookIcon";
 // import XIcon from "@/components/icons/XIcon";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import LinkdinIcon from "@/components/icons/LinkdinIcon";
+import Link from "next/link";
 const Footer = () => {
   return (
     <div className="bg-[#0A2540]">
@@ -16,18 +17,26 @@ const Footer = () => {
               <h1 className="z-50 font-montserrat text-[28px] lg:text-[52px] font-bold mb-[32px] lg:mb-0 leading-[1.1]">
                 Fleet Management Has Never Been This Easy
               </h1>
-              <div className="flex justify-center z-[100] lg:mt-8">
-                <button className="transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[165.39px] w-[143.39px] flex items-center px-4 py-3 text-base font-bold rounded-md group">
-                  <div className="z-20 whitespace-nowrap font-openSans">
-                    Switch Today
-                  </div>
-                  {/* 143.39 */}
-                  {/* hover:w-[165.39px]  */}
-                  <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                    <RightArrowIcon />
-                  </div>
-                </button>
+
+              <div className="md:flex hidden justify-center z-[100] lg:mt-8">
+                <Link href="/getting-started">
+                  <button className="transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[165.39px] w-[143.39px] flex items-center px-4 py-3 text-base font-bold rounded-md group">
+                    <div className="z-20 whitespace-nowrap font-openSans">
+                      Switch Today
+                    </div>
+                    {/* 143.39 */}
+                    {/* hover:w-[165.39px]  */}
+                    <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
+                      <RightArrowIcon />
+                    </div>
+                  </button>
+                </Link>
               </div>
+              <Link href="/getting-started">
+                <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
+                  Switch Today
+                </button>
+              </Link>
             </div>
             <div className="max-h-[520px] h-[400px] lg:h-[520px] md:h-[400px] filter blur-[210px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50  rounded-[520px] w-[400px] lg:w-[520px] bg-[#B8CBFC] absolute opacity-50 "></div>
             <div className="absolute z-[100] mix-blend-multiply -top-14 h-[500px] lg:h-[660px]">
@@ -74,7 +83,7 @@ const Footer = () => {
               {/* <InstagramIcon />
             <XIcon /> */}
             </div>
-            <h5 className="font-semibold font-openSans">©2024 Fleetblox</h5>
+            <h5 className="font-semibold font-openSans">©2025 Fleetblox</h5>
           </div>
         </div>
       </div>

@@ -45,7 +45,7 @@ const VirtualCard: React.FC<CardProps> = ({
           {/* right side */}
           <Image
             src={image}
-            className="object-scale-down rounded-[16px]"
+            className="object-fill w-full rounded-r-[24px]"
             alt="image"
           />
         </div>

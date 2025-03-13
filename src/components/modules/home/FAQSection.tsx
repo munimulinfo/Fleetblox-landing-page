@@ -31,14 +31,14 @@ const FAQSection = () => {
             </Accordion.Item>
           ))}
         </Accordion.Root>
-        <div className="mt-4 ml-[18px]">
+        {/* <div className="mt-4 ml-[18px]">
           <a
             href="#"
             className="text-[#2D65F2] font-openSans text-[16px] font-bold"
           >
             Have More Questions?
           </a>
-        </div>
+        </div> */}
       </div>
     </Container>
   );

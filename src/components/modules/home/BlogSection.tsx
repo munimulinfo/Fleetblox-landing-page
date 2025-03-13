@@ -7,7 +7,7 @@ const BlogSection = () => {
     <div className="bg-[#FAFAFF]">
       <Container>
         <section>
-          <h2 className="lg:hidden font-montserrat text-[28px] text-center font-bold text-[#04082C]">
+          <h2 className="lg:hidden -mb-[20px] font-montserrat text-[28px] text-center font-bold text-[#04082C]">
             Latest Blogs
           </h2>
           <div className="hidden lg:block w-1/2">
