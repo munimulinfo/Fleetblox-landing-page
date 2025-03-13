@@ -47,7 +47,7 @@ const StatsSection = () => {
           <h1 className="text-[#04082C] text-[36px] text-center lg:text-left font-bold mb-5 font-montserrat leading-[1.1]">
             Experience a Smarter Way to Manage Your Fleet
           </h1>
-          <Link href="/getting-started">
+          <Link href="/upcoming-page">
             <button className="md:flex transition-all font-openSans bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
               <div className="z-20 whitespace-nowrap"> Start Today</div>
               <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
@@ -188,7 +188,7 @@ const StatsSection = () => {
                 </p>
               </div>
             </div>
-            <Link href="/getting-started">
+            <Link href="/upcoming-page">
               <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
                 Get Started
               </button>
