@@ -69,7 +69,7 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <aside
-        className={`min-w-[350px] bg-[#2D65F2] overflow-y-auto transition-all duration-300 ${
+        className={`min-w-[350px] bg-[#2D65F2] overflow-y-auto transition-all duration-300  ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 fixed md:static h-full z-40`}
       >
