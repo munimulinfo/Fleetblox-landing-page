@@ -1,5 +1,4 @@
 import Container from "@/components/ui/Container";
-import aiSupportImg from "../../../assets/aiSupportImg.png";
 import Image from "next/image";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 const AiSupportSection = () => {
@@ -26,9 +25,11 @@ const AiSupportSection = () => {
           </div>
           <div className="relative lg:py-[0px] py-[40px] ">
             <Image
-              src={aiSupportImg}
+              src="/images/aiSupportImg.png"
               className="relative z-[200]"
               alt="ai support img"
+              width={540}
+              height={300}
             />
             {/* Blue blur effect for large devices */}
             <div className="absolute left-1/2 top-1/2 hidden lg:block -translate-x-1/2 -translate-y-1/2 max-w-[410px]  lg:w-[410px] max-h-[237px]  lg:h-[237px] opacity-50 rounded-[410px] bg-[#2D65F2] blur-[106px] z-[10]"></div>

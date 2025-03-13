@@ -18,15 +18,7 @@ body {
 .AccordionChevron[data-state="open"] {
   transform: rotate(180deg);
 }
-.connecting_global_image {
-  background: linear-gradient(
-    90deg,
-    #fff 0%,
-    rgba(255, 255, 255, 0) 10%,
-    rgba(255, 255, 255, 0) 90%,
-    #fff 100.01%
-  );
-}
+
 .hide-scroll {
   scrollbar-width: none;
   /* Firefox */
@@ -38,12 +30,6 @@ body {
   display: none;
   border-radius: 4px !important;
 }
-
-/* body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-} */
 
 @layer base {
   :root {
@@ -125,9 +111,4 @@ body {
 /* In your global CSS or Tailwind config */
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
-}
-
-/* Hide scrollbar for Firefox */
-.scrollbar-hidden {
-  scrollbar-width: none;
 }
