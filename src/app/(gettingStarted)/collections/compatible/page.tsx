@@ -31,6 +31,11 @@ const Compatible = () => {
     }
   };
 
+  const handleBack = () => {
+    setCustomProgress(progress - 10);
+    router.push(`/collections/compatibility`);
+  };
+
   // Filter and determine compatibility status using `useMemo` for memoization
   const filteredCompatibleBrands = useCallback(() => {
     return brandCarList
@@ -68,14 +73,14 @@ const Compatible = () => {
 
   const handleNext = () => {
     setCustomProgress(progress + 10);
-    router.push("/collections/submit-details-early-interest");
+    router.push("/collections/pricing-plan");
   };
 
   return (
     <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
       <div className="flex-shrink-0">
         <div
-          //   onClick={handleBack}
+          onClick={handleBack}
           className="mb-4 flex cursor-pointer items-center gap-1"
         >
           <ChevronLeft size={16} className="text-[#999]" />

@@ -270,7 +270,7 @@ const SearchingVins = () => {
   return (
     // className={`cursor-pointer rounded-lg w-full flex items-center justify-center flex-col p-[20px] mt-[60px]`}>
     <div
-      className={`flex w-full cursor-pointer flex-col items-center justify-center p-[20px]`}
+      className={`flex w-[600px] h-[400px] cursor-pointer flex-col mx-auto my-auto shadow-2xl items-center justify-center rounded-xl px-[40px] py-[60px]`}
     >
       <video
         autoPlay
@@ -282,10 +282,10 @@ const SearchingVins = () => {
       >
         <source src="/videos/sacning.mp4" className="" type="video/mp4" />
       </video>
-      <h4 className="mt-[32px] text-center font-openSans text-[18px] font-semibold text-ti_black">
+      <h4 className="mt-[32px] text-center font-openSans text-[22px] font-bold text-[#04082C]">
         Scanning VINs
       </h4>
-      <h4 className="text-center font-openSans text-[14px] text-ti_dark_grey">{`Please wait while we finish scanning your provides VINs. This won't take long. Thank you for your patience!`}</h4>
+      <h4 className="text-center font-openSans text-[14px] text-[#7d7d7d] leading-relaxed">{`Please wait while we finish scanning your provides VINs. This won't take long. Thank you for your patience!`}</h4>
     </div>
   );
 };
