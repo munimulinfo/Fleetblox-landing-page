@@ -19,7 +19,7 @@ export interface Country {
 
 const SelectCountry = () => {
   const router = useRouter();
-  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [countries, setCountries] = useState<Country[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -27,9 +27,9 @@ const SelectCountry = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedCountries = localStorage.getItem("countries");
-      if (savedCountries) {
-        setSelectedCountries(JSON.parse(savedCountries));
+      const savedCountry = localStorage.getItem("selectedCountry");
+      if (savedCountry) {
+        setSelectedCountry(savedCountry);
       }
     }
 
@@ -57,17 +57,14 @@ const SelectCountry = () => {
   );
 
   const handleCountrySelect = (country: Country) => {
-    setSelectedCountries((prev) => {
-      const isSelected = prev.includes(country.country);
-      let newSelectedCountries;
-      if (isSelected) {
-        newSelectedCountries = prev.filter((c) => c !== country.country);
-      } else {
-        newSelectedCountries = [...prev, country.country];
-      }
-      localStorage.setItem("countries", JSON.stringify(newSelectedCountries));
-      return newSelectedCountries;
-    });
+    // If the country is already selected, deselect it; otherwise select the new country
+    if (selectedCountry === country.country) {
+      setSelectedCountry(null);
+      localStorage.removeItem("selectedCountry");
+    } else {
+      setSelectedCountry(country.country);
+      localStorage.setItem("selectedCountry", country.country);
+    }
   };
 
   const { setCustomProgress, progress } = useProgressUpdater();
@@ -78,12 +75,10 @@ const SelectCountry = () => {
       return;
     }
 
-    // If multiple countries selected, you might want to handle logic differently
-    // For now, let's use the first selected country for routing
+    // Handle routing based on selected country
     let countryCode;
-    if (selectedCountries.length > 0) {
-      const primaryCountry = selectedCountries[0];
-      countryCode = getCode(primaryCountry);
+    if (selectedCountry) {
+      countryCode = getCode(selectedCountry);
       if (countryCode === "US" || countryCode === "CA") {
         // countryCode remains same
       } else {
@@ -96,9 +91,7 @@ const SelectCountry = () => {
     if (countryCode === "US") {
       router.push(`/collections/compatibility?country=${countryCode}`);
     } else {
-      router.push(
-        `/collections/compatibility/select-brand?country=${countryCode}`
-      );
+      router.push(`/collections/select-brand?country=${countryCode}`);
     }
 
     localStorage.removeItem("brands");
@@ -111,10 +104,10 @@ const SelectCountry = () => {
       {/* Header */}
       <div className="mb-8 text-center">
         <h2 className="font-bold text-[24px] sm:text-[28px] font-openSans text-[#04082C] mb-2">
-          Select Registered Countries
+          Select Registered Country
         </h2>
         <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
-          Choose all the countries where your fleet vehicles were originally
+          Choose the country where your fleet vehicles were originally
           registered.
         </p>
       </div>
@@ -133,12 +126,10 @@ const SelectCountry = () => {
         </div>
       </div>
 
-      {/* Selected Countries */}
-      {selectedCountries.length > 0 && (
+      {/* Selected Country */}
+      {selectedCountry && (
         <div className="my-3 mx-1">
-          <p className="font-openSans text-sm font-[600]">
-            {selectedCountries.length} country selected
-          </p>
+          <p className="font-openSans text-sm font-[600]">1 country selected</p>
         </div>
       )}
 
@@ -155,7 +146,7 @@ const SelectCountry = () => {
                 <div
                   key={country.country}
                   className={`flex items-center p-4 rounded-[12px] cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
-                    selectedCountries.includes(country.country)
+                    selectedCountry === country.country
                       ? "border-[#B8CBFC] bg-[#2D65F20F]"
                       : "border-[#F7F7F7]"
                   }`}
@@ -188,21 +179,15 @@ const SelectCountry = () => {
       <div className="pt-4 flex flex-col justify-center items-center gap-4">
         <button
           className={`order-1 w-full sm:order-2 py-3 px-4 rounded-md font-medium text-[14px] text-white transition-colors ${
-            selectedCountries.length > 0
+            selectedCountry
               ? "bg-[#2D65F2] hover:bg-[#2D65F2]/90"
               : "bg-[#2D65F2]/50 cursor-not-allowed"
           }`}
-          disabled={selectedCountries.length === 0 || disabled}
+          disabled={!selectedCountry || disabled}
           onClick={handleNext}
         >
           Next
         </button>
-        {/* <button
-          onClick={() => router.push("/result/not-compatible")}
-          className="order-2 sm:order-1 py-3 px-4 rounded-md font-medium text-[14px] text-[#6F6464] border border-[#E5E5E5] hover:bg-[#F7F7F7] transition-colors"
-        >
-          I can&apos;t find my country
-        </button> */}
       </div>
     </main>
   );

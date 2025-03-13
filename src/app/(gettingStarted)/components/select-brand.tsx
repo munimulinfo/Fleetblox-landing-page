@@ -101,7 +101,7 @@ const BrandSelector = () => {
       </div>
 
       {/* Scrollable Brand List */}
-      <div className="flex-grow">
+      <div className="flex-grow min-h-0">
         <div className="h-[50vh] overflow-y-auto pb-2 ">
           <div className="space-y-3">
             {loading ? (
