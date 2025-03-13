@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logo from "../../../public/images/Logo.png";
+import Link from "next/link";
 const page = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -20,6 +21,11 @@ const page = () => {
           updates! <br />
           Thank you for your understanding
         </p>
+        <Link href={"/"}>
+          <button className="mt-5 border px-4 py-3 rounded-md font-bold">
+            Back To Home
+          </button>
+        </Link>
         <footer className="absolute bottom-6 w-full text-center">
           <p className="text-base opacity-85">© 2024 Fleetblox</p>
         </footer>
