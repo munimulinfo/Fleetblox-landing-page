@@ -68,7 +68,7 @@ const BlogSection = () => {
             className="flex flex-nowrap gap-4 px-4"
             style={{ width: "max-content" }}
           >
-            <div className="flex-shrink-0 w-[330px]">
+            <div className="flex-shrink-0 max-w-[430px] w-[330px] md:w-full">
               <div className="bg-white rounded-[16px] shadow-[0_4px_12px_0px_#00000024] overflow-hidden h-[450px] flex flex-col">
                 <div className="h-[300px] w-full">
                   <Image
