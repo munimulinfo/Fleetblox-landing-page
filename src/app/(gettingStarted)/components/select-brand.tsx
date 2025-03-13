@@ -51,8 +51,10 @@ const BrandSelector = () => {
     router.back();
   };
 
+  document.addEventListener("wheel", (e) => console.log(e.defaultPrevented));
+
   return (
-    <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
       {/* Header */}
       <div className="mb-8">
         <div
@@ -101,51 +103,49 @@ const BrandSelector = () => {
       </div>
 
       {/* Scrollable Brand List */}
-      <div className="flex-grow min-h-0">
-        <div className="h-[50vh] overflow-y-auto pb-2 ">
-          <div className="space-y-3">
-            {loading ? (
-              <div className="flex justify-center items-center h-[200px]">
-                <Loader />
-              </div>
-            ) : filteredBrands.length > 0 ? (
-              filteredBrands.map((brand: CarBrand) => (
-                <div
-                  key={brand.brand}
-                  className={`flex items-center p-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
-                    selectedBrands.includes(brand.brand)
-                      ? "border-[#B8CBFC] bg-[#2D65F20F]"
-                      : "border-[#F7F7F7]"
-                  }`}
-                  onClick={() => handleBrandSelect(brand.brand)}
-                >
-                  {brand.brandLogo && (
-                    <div className="flex-shrink-0 w-16 h-12 mr-4">
-                      <Image
-                        src={brand.brandLogo}
-                        alt={brand.brand}
-                        width={64}
-                        height={48}
-                        className="w-full h-full object-contain mix-blend-multiply"
-                      />
-                    </div>
-                  )}
-                  <div className="flex-1">
-                    <h3 className="font-openSans text-base font-semibold text-[#04082C]">
-                      {brand.brand.replace(/[-_]/g, " ")}
-                    </h3>
-                    <p className="font-openSans text-sm text-[#7D7D7D]">
-                      Year: {brand.year}
-                    </p>
+      <div className=" min-h-0 overflow-y-auto pb-2">
+        <div className="space-y-3">
+          {loading ? (
+            <div className="flex justify-center items-center h-[200px]">
+              <Loader />
+            </div>
+          ) : filteredBrands.length > 0 ? (
+            filteredBrands.map((brand: CarBrand) => (
+              <div
+                key={brand.brand}
+                className={`flex items-center p-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
+                  selectedBrands.includes(brand.brand)
+                    ? "border-[#B8CBFC] bg-[#2D65F20F]"
+                    : "border-[#F7F7F7]"
+                }`}
+                onClick={() => handleBrandSelect(brand.brand)}
+              >
+                {brand.brandLogo && (
+                  <div className="flex-shrink-0 w-16 h-12 mr-4">
+                    <Image
+                      src={brand.brandLogo}
+                      alt={brand.brand}
+                      width={64}
+                      height={48}
+                      className="w-full h-full object-contain mix-blend-multiply"
+                    />
                   </div>
+                )}
+                <div className="flex-1">
+                  <h3 className="font-openSans text-base font-semibold text-[#04082C]">
+                    {brand.brand.replace(/[-_]/g, " ")}
+                  </h3>
+                  <p className="font-openSans text-sm text-[#7D7D7D]">
+                    Year: {brand.year}
+                  </p>
                 </div>
-              ))
-            ) : (
-              <div className="flex justify-center items-center h-[200px] text-[#6F6464]">
-                No brands found matching your search
               </div>
-            )}
-          </div>
+            ))
+          ) : (
+            <div className="flex justify-center items-center h-[200px] text-[#6F6464]">
+              No brands found matching your search
+            </div>
+          )}
         </div>
       </div>
 

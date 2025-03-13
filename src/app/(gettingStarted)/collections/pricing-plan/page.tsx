@@ -97,6 +97,7 @@ const PricingPlan = () => {
     setBillingMonthly(!billMonthly);
   };
 
+  console.log(selectedPlan, "checking selected plan");
   const handleSubscriptionPlan = async () => {
     // try {
     //   const subscriptionInfo = {
@@ -128,7 +129,7 @@ const PricingPlan = () => {
 
     // For now, just close the modal
 
-    localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
+    await localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
 
     // toast.success("Subscription plan updated successfully");
 
@@ -244,8 +245,8 @@ const PricingPlan = () => {
                     <Button
                       variant="outline"
                       className="mt-8 w-full bg-[#2D65F2] text-[14px]  font-semibold text-[#FFF] hover:bg-[#2D65f2]/60 hover:text-bg_white"
-                      onClick={() => {
-                        handlePriceAndModal({
+                      onClick={async () => {
+                        await handlePriceAndModal({
                           price: calculateDiscount(
                             slotCount,
                             plan?.price,
@@ -255,7 +256,7 @@ const PricingPlan = () => {
                           slot: slotCount,
                           annually: billAnnually,
                         });
-                        handleSubscriptionPlan();
+                        await handleSubscriptionPlan();
                       }}
                     >
                       Choose Plan
