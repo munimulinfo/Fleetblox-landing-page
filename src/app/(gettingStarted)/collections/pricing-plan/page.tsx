@@ -69,27 +69,53 @@ const PricingPlan = () => {
     fetchPlans();
   }, []);
 
+  // const calculateDiscount = (
+  //   slotCount: number,
+  //   basePrice: number,
+  //   isAnnual: boolean = false
+  // ): number => {
+  //   let discountPercentage = 0;
+  //   if (slotCount >= 200) {
+  //     discountPercentage = 30;
+  //   } else if (slotCount >= 150) {
+  //     discountPercentage = 18;
+  //   } else if (slotCount >= 100) {
+  //     discountPercentage = 10;
+  //   } else if (slotCount >= 50) {
+  //     discountPercentage = 0;
+  //   }
+  //   let discountedPrice = basePrice - (basePrice * discountPercentage) / 100;
+
+  //   if (isAnnual) {
+  //     discountedPrice = discountedPrice - (discountedPrice * 15) / 100;
+  //   }
+  //   return discountedPrice;
+  // };
+
   const calculateDiscount = (
-    slotCount: number,
-    basePrice: number,
-    isAnnual: boolean = false
+    totalSlot: number,
+    isAnnual: boolean,
+    planPrice: number
   ): number => {
     let discountPercentage = 0;
-    if (slotCount >= 200) {
+    // Apply slot-based discount
+    if (totalSlot >= 200) {
       discountPercentage = 30;
-    } else if (slotCount >= 150) {
+    } else if (totalSlot >= 150) {
       discountPercentage = 18;
-    } else if (slotCount >= 100) {
+    } else if (totalSlot >= 100) {
       discountPercentage = 10;
-    } else if (slotCount >= 50) {
+    } else if (totalSlot >= 50) {
       discountPercentage = 5;
     }
-    let discountedPrice = basePrice - (basePrice * discountPercentage) / 100;
+    // Calculate price after slot discount
+    let discountedPrice = planPrice! * (1 - discountPercentage / 100);
 
+    // Apply 15% annual discount if applicable
     if (isAnnual) {
-      discountedPrice = discountedPrice - (discountedPrice * 15) / 100;
+      discountedPrice *= 0.85; // Equivalent to 15% off
     }
-    return discountedPrice;
+    return parseFloat(discountedPrice.toFixed(2)); // Keep two decimal places
   };
 
   const handleBillingMonthly = () => {
@@ -200,36 +226,62 @@ const PricingPlan = () => {
                   </div>
                 ) : (
                   <div>
-                    <div className=" text-[36px] font-montserrat font-bold text-[#04082C]">
+                    <div className="text-[36px] font-montserrat font-bold text-[#04082C]">
                       $
                       {Math.floor(
-                        calculateDiscount(slotCount, plan?.price, billAnnually)
+                        calculateDiscount(slotCount, billAnnually, plan?.price)
                       )}
-                      <span className="text-[12px] font-montserrat font-medium text-[#04082C]">
+                      <span className="text-[18px] font-montserrat font-medium text-[#04082C]">
                         .
                         {
                           calculateDiscount(
                             slotCount,
-                            plan?.price,
-                            billAnnually
+                            billAnnually,
+                            plan?.price
                           )
-                            ?.toFixed(2)
-                            ?.split(".")[1]
+                            .toFixed(2)
+                            .split(".")[1]
                         }
                       </span>
                       <span className="ml-[1px] text-[12px] font-medium text-[#999]">
                         /month per slot
                       </span>
                     </div>
-                    {billAnnually && (
-                      <p className="text-[#04082C] font-openSans text-[14px] font-semibold">
-                        5% discount + 15% annual discount
-                      </p>
+
+                    {/* Dynamic discount message based on slot count */}
+                    <div className="mt-1 space-y-1">
+                      {slotCount >= 50 && (
+                        <p className="text-[#2D65F2] font-openSans text-[13px] font-semibold flex items-center">
+                          <span className="w-2 h-2 rounded-full bg-[#2D65F2] mr-1.5 inline-block"></span>
+                          {slotCount >= 200
+                            ? "30%"
+                            : slotCount >= 150
+                            ? "18%"
+                            : slotCount >= 100
+                            ? "10%"
+                            : "5%"}{" "}
+                          volume discount
+                        </p>
+                      )}
+
+                      {billAnnually && (
+                        <p className="text-[#2D65F2] font-openSans text-[13px] font-semibold flex items-center">
+                          <span className="w-2 h-2 rounded-full bg-[#2D65F2] mr-1.5 inline-block"></span>
+                          15% annual billing discount
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Show original price for comparison */}
+                    {(slotCount >= 50 || billAnnually) && (
+                      <div className="mt-2">
+                        <p className="text-[#999] text-[12px] font-openSans line-through">
+                          ${plan?.price.toFixed(2)}/month per slot
+                        </p>
+                      </div>
                     )}
                   </div>
                 )}
-
-                {/* <p className="text-sm text-[#999]">{plan.discount}</p> */}
                 <ul className="mt-6 space-y-2">
                   {plan?.description.map((feature: any, i: number) => (
                     <li key={i} className="flex items-start gap-[10px]">
@@ -250,8 +302,8 @@ const PricingPlan = () => {
                         const planData = {
                           price: calculateDiscount(
                             slotCount,
-                            plan?.price,
-                            billAnnually
+                            billAnnually,
+                            plan?.price
                           ),
                           fleet: plan?.name,
                           slot: slotCount,

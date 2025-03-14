@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
@@ -40,13 +41,38 @@ const Page = () => {
   const [country, setCountry] = useState("");
   const [countries, setCountries] = useState<Country[] | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [selectedPlan, setSelectedPlan] = useState<any>(null);
 
   const [isOpen, setIsOpen] = useState("");
 
-  const selectedPlan = JSON.parse(localStorage.getItem("selectedPlan") || "{}");
-  const interestedUser = JSON.parse(
-    localStorage.getItem("interestedUser") || "{}"
-  );
+  // const interestedUser = JSON.parse(
+  //   localStorage.getItem("interestedUser") || "{}"
+  // );
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setBrandModels(localStorage.getItem("brandModels") || "");
+      setBrands(localStorage.getItem("brands") || "");
+      setCountry(localStorage.getItem("country") || "");
+      setSelectedPlan(JSON.parse(localStorage.getItem("selectedPlan") || "{}"));
+      const interestedUser = JSON.parse(
+        localStorage.getItem("interestedUser") || "{}"
+      );
+      //   setPlan(localStorage.getItem("price_plan") || "");
+      //   setVinsResult(localStorage.getItem("VINS_RESULT") || "");
+    }
+
+    const getCountries = async () => {
+      const countries = await fetch(
+        "https://backend.illama360.com/api/utils/all-countries"
+      );
+      const response = await countries.json();
+
+      setCountries(response.data);
+    };
+
+    getCountries();
+  }, []);
 
   const TotalForModal = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
   const oneTimeSet = 100;
@@ -65,27 +91,6 @@ const Page = () => {
 
   //   const [plan, setPlan] = useState("");
   //   const [vinsResult, setVinsResult] = useState("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setBrandModels(localStorage.getItem("brandModels") || "");
-      setBrands(localStorage.getItem("brands") || "");
-      setCountry(localStorage.getItem("country") || "");
-      //   setPlan(localStorage.getItem("price_plan") || "");
-      //   setVinsResult(localStorage.getItem("VINS_RESULT") || "");
-    }
-
-    const getCountries = async () => {
-      const countries = await fetch(
-        "https://backend.illama360.com/api/utils/all-countries"
-      );
-      const response = await countries.json();
-
-      setCountries(response.data);
-    };
-
-    getCountries();
-  }, []);
 
   const showAccessPoint = (modelName: string) => {
     if (isOpen === modelName) {
