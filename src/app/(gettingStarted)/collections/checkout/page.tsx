@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
@@ -41,38 +40,13 @@ const Page = () => {
   const [country, setCountry] = useState("");
   const [countries, setCountries] = useState<Country[] | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const [selectedPlan, setSelectedPlan] = useState<any>(null);
 
   const [isOpen, setIsOpen] = useState("");
 
-  // const interestedUser = JSON.parse(
-  //   localStorage.getItem("interestedUser") || "{}"
-  // );
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setBrandModels(localStorage.getItem("brandModels") || "");
-      setBrands(localStorage.getItem("brands") || "");
-      setCountry(localStorage.getItem("country") || "");
-      setSelectedPlan(JSON.parse(localStorage.getItem("selectedPlan") || "{}"));
-      const interestedUser = JSON.parse(
-        localStorage.getItem("interestedUser") || "{}"
-      );
-      //   setPlan(localStorage.getItem("price_plan") || "");
-      //   setVinsResult(localStorage.getItem("VINS_RESULT") || "");
-    }
-
-    const getCountries = async () => {
-      const countries = await fetch(
-        "https://backend.illama360.com/api/utils/all-countries"
-      );
-      const response = await countries.json();
-
-      setCountries(response.data);
-    };
-
-    getCountries();
-  }, []);
+  const selectedPlan = JSON.parse(localStorage.getItem("selectedPlan") || "{}");
+  const interestedUser = JSON.parse(
+    localStorage.getItem("interestedUser") || "{}"
+  );
 
   const TotalForModal = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
   const oneTimeSet = 100;
@@ -91,6 +65,27 @@ const Page = () => {
 
   //   const [plan, setPlan] = useState("");
   //   const [vinsResult, setVinsResult] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setBrandModels(localStorage.getItem("brandModels") || "");
+      setBrands(localStorage.getItem("brands") || "");
+      setCountry(localStorage.getItem("country") || "");
+      //   setPlan(localStorage.getItem("price_plan") || "");
+      //   setVinsResult(localStorage.getItem("VINS_RESULT") || "");
+    }
+
+    const getCountries = async () => {
+      const countries = await fetch(
+        "https://backend.illama360.com/api/utils/all-countries"
+      );
+      const response = await countries.json();
+
+      setCountries(response.data);
+    };
+
+    getCountries();
+  }, []);
 
   const showAccessPoint = (modelName: string) => {
     if (isOpen === modelName) {
@@ -237,7 +232,7 @@ const Page = () => {
 
   console.log(vins, "vins");
   return (
-    <main className="flex flex-col min-h-screen w-full mx-auto px-6 sm:px-6 py-6 sm:py-8 scrollbar-hidden">
+    <main className="flex flex-col min-h-screen w-full mx-auto px-5 xl:px-6 py-6 sm:py-8 scrollbar-hidden">
       <div className="flex flex-shrink-0 flex-col items-center">
         <div className="mb-8 text-center">
           <h2 className="font-bold text-[22px] sm:text-[22px] font-openSans text-[#04082C] ">
@@ -250,10 +245,10 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="flex justify-between gap-x-[40px]">
+      <div className="flex flex-col lg:flex-row justify-between md:gap-x-[20px] xl:gap-x-[40px]">
         <div className="basis-2/3">
           {/* Summary Section */}
-          <div className=" rounded-lg">
+          <div className="rounded-lg">
             <div className="flex items-center justify-between">
               <div className="my-2 font-openSans text-[14px] font-[700] text-[#6F6464]">
                 Subscription Summary
@@ -264,7 +259,8 @@ const Page = () => {
                 </button>
               </div>
             </div>
-            <div className="flex justify-between rounded-[12px] border border-[#f7f7f7] p-4">
+            {/* monthly  */}
+            <div className="flex flex-col md:flex-row md:justify-between rounded-[12px] border border-[#f7f7f7] p-3 md:p-4">
               <div className="flex items-center gap-x-[10px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -278,7 +274,7 @@ const Page = () => {
                     fill="#2D65F2"
                   />
                 </svg>
-                <div>
+                <div className="">
                   <h1 className="text-[#04082C] font-openSans text-[16px] font-[600] leading-[160%]">
                     {selectedPlan?.fleet} (
                     {selectedPlan?.annually ? "Annually" : "Monthly"})
@@ -298,7 +294,8 @@ const Page = () => {
                 </span>
               </h1>
             </div>
-            <div className="mt-[10px] flex justify-between rounded-md border border-[#F6F6F6] p-4">
+            {/* vehicle slots */}
+            <div className="mt-[10px] flex-col md:flex-row flex md:justify-between rounded-md border border-[#F6F6F6] p-3 md:p-4">
               <div className="flex items-start justify-start gap-x-[10px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -334,10 +331,8 @@ const Page = () => {
             </div>
           </div>
 
-          {/* Selected VINs */}
-          {/* MAKE THIS PART SCROLL ABLE */}
-
-          <div className="max-h-[500px] overflow-y-auto pr-2 scrollbar-hidden">
+          {/* Selected Vehicle and VINs */}
+          <div className="max-h-[500px] hidden lg:block overflow-y-auto pr-2 scrollbar-hidden">
             <h3 className="mb-2 mt-5 text-[14px] font-openSans font-[700] text-[#7d7d7d]">
               {!vins ? "Selected Vehicles" : "Selected Vins"}{" "}
             </h3>
@@ -376,7 +371,7 @@ const Page = () => {
                             height={16}
                             alt="success"
                           />
-                          <span className="font-openSans text-[14px] text-[#4DB429]">
+                          <span className="font-openSans text-[14px] text-[#2D65F2]">
                             Compatible
                           </span>
                         </div>
@@ -463,18 +458,17 @@ const Page = () => {
         </div>
 
         {/* Contact Info & Payment */}
-        <div className="mt-10 basis-1/3 rounded-[16px] p-5 shadow-[0px_4px_12px_0px_rgba(0,0,0,0.14)] border border-[#f7f7f7] flex flex-col h-full">
+        <div className="mt-10 basis-1/3 rounded-[16px] lg:p-5 lg:shadow-[0px_4px_12px_0px_rgba(0,0,0,0.14)] lg:border border-[#f7f7f7] flex flex-col h-full">
           <form
             onSubmit={handleSubmit}
             id="submitForm"
             className="flex flex-col justify-between h-full gap-4"
           >
             {/* Contact Info Section */}
-            <div className="flex-grow min-h-[400px] max-h-[1200px] h-[500px]">
+            <div className="flex-grow lg:min-h-[400px] max-h-[1200px] lg:h-[500px]">
               <h1 className="mb-4 font-openSans text-[14px] font-bold text-[#7d7d7d]">
                 Contact Info
               </h1>
-
               <div className="space-y-4">
                 {/* Full Name Input */}
                 <div>
@@ -572,38 +566,52 @@ const Page = () => {
             </div>
 
             {/* Payment Summary Section */}
-            <div className="mt-auto pt-4 border-t border-[#f7f7f7]">
+            <div className="lg:mt-auto mt-5 lg:pt-4 lg:border-t border-[#f7f7f7]">
               <div className="flex flex-col gap-3">
                 <div className="flex justify-between">
-                  <span className="text-[14px] font-openSans font-semibold text-[#7D7D7D]">
+                  <span className="text-[14px] hidden lg:block font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
                     Subscription fee (
                     {selectedPlan?.annually ? "Yearly" : "Monthly"})
                   </span>
+                  <p className="text-[14px] block lg:hidden font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
+                    Subscription fee <br />
+                    <span className="text-[#7D7D7D]">
+                      {selectedPlan?.annually ? "Yearly" : "Monthly"}
+                    </span>
+                  </p>
                   <span className="text-[14px] font-openSans text-[#04082C] font-bold">
                     ${TotalForModal.toFixed(2)}
                   </span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span className="text-[14px] font-openSans font-semibold text-[#7D7D7D]">
+                  <span className="text-[14px] hidden lg:block font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
                     Platform setup
                   </span>
+                  <p className="text-[14px] block lg:hidden font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
+                    Platform setup <br />
+                    <span className="text-[#7D7D7D]">One time</span>
+                  </p>
                   <span className="text-[14px] font-openSans text-[#04082C] font-bold">
                     ${oneTimeSet.toFixed(2)}
                   </span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span className="text-[14px] font-openSans font-semibold text-[#7D7D7D]">
+                  <span className="text-[14px] font-openSans hidden lg:block lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
                     HST (10%)
                   </span>
+                  <p className="text-[14px] block lg:hidden font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
+                    HST <br />
+                    <span className="text-[#7D7D7D]">10%</span>
+                  </p>
                   <span className="text-[14px] font-openSans text-[#04082C] font-bold">
                     ${hts.toFixed(2)}
                   </span>
                 </div>
 
                 {/* Total Amount */}
-                <div className="flex justify-between mt-3 pt-2 border-t border-[#f7f7f7]">
+                <div className="flex justify-between mt-3 pt-2 lg:border-t border-[#f7f7f7]">
                   <span className="text-[16px] text-[#04082C] font-openSans font-semibold">
                     Total
                   </span>
@@ -615,14 +623,147 @@ const Page = () => {
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  className="w-full h-12 mt-6 rounded-lg bg-[#2D65F2] hover:bg-[#2D65F2]/90 text-white font-semibold font-openSans text-[16px]"
+                  className="w-full h-12 mt-6 hidden lg:block rounded-lg bg-[#2D65F2] hover:bg-[#2D65F2]/90 text-white font-semibold font-openSans text-[16px]"
                 >
                   {loading ? "Processing..." : "Proceed to Payment"}
                 </Button>
+                {/* Submit button for mobile view */}
+                <Button
+                  type="submit"
+                  className="w-full h-12 mt-6 block lg:hidden rounded-lg bg-[#2D65F2] hover:bg-[#2D65F2]/90 text-white font-semibold font-openSans text-[16px]"
+                >
+                  {loading ? "Processing..." : "Checkout"}
+                </Button>
+                <div className="border-b block lg:hidden border-[#f7f7f7] my-8"></div>
               </div>
             </div>
           </form>
         </div>
+
+        {/* selected vehicle and VINS for mobile view*/}
+        <div className="max-h-[500px] lg:hidden block overflow-y-auto pr-2 scrollbar-hidden">
+          <h3 className="mb-2 mt-5 text-[14px] font-openSans font-[700] text-[#7d7d7d]">
+            {!vins ? "Selected Vehicles" : "Selected Vins"}{" "}
+          </h3>
+          <div className="space-y-[10px] font-openSans">
+            {loading && !vins ? (
+              <Loader />
+            ) : (
+              filteredCompatibleBrands().map((brand) => (
+                <div
+                  key={brand.brand}
+                  className="flex items-center justify-between rounded-md border px-[10px] py-[10px]"
+                >
+                  <div className="flex items-center gap-[10px]">
+                    <Image
+                      src={brand.brandLogo}
+                      alt={brand.brand}
+                      width={100}
+                      height={100}
+                      className="flex h-[40px] w-[50px] items-center justify-center object-contain mix-blend-multiply"
+                    />
+                    <div className="flex flex-col gap-2">
+                      <h4 className="font-openSans text-[14px] leading-[160%] font-semibold text-[#04082C]">
+                        {brand.brand}
+                      </h4>
+                      <p className="font-openSans text-[10px] font-[500] text-[#6F6464]">
+                        {brand?.brandModels}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="w-[110px]">
+                    {brand.compatible ? (
+                      <div className="flex justify-end">
+                        <Image
+                          src={trueIcon}
+                          width={16}
+                          height={16}
+                          alt="success"
+                        />
+                        {/* <span className="font-openSans text-[14px] text-[#2D65F2]">
+                          Compatible
+                        </span> */}
+                      </div>
+                    ) : (
+                      <div className="flex justify-end">
+                        <Image
+                          src={falseIcon}
+                          width={16}
+                          height={16}
+                          alt="failed"
+                        />
+                        {/* <span className="font-openSans text-[14px] text-[#F00]">
+                          Incompatible
+                        </span> */}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))
+            )}
+
+            {vins &&
+              vins?.map((vin, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-[12px] border border-[#f7f7f7] p-4"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-[10px]">
+                      {/* {vin.isCompatible ? (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              showAccessPoint(vin.vin);
+                            }}
+                            className="flex h-5 w-5 items-center justify-center"
+                          >
+                            <Image
+                              className="size-[20px] object-cover"
+                              src={isOpen === vin.vin ? open : close}
+                              alt="toggle"
+                            />
+                          </button>
+                        ) : (
+                          <div className="h-5 w-5"></div>
+                        )} */}
+                      <div className="text-left font-openSans font-semibold text-[14px] leading-[160%] text-[#04082C]">
+                        {`VIN - ${vin.vin}`}
+                      </div>
+                    </div>
+                    <div className="w-[110px]">
+                      {vin.isCompatible ? (
+                        <div className="flex items-center gap-[5px]">
+                          <Image
+                            src={trueIcon}
+                            width={16}
+                            height={16}
+                            alt="success"
+                          />
+                          <span className="font-openSans text-[14px] text-[#2D65F2]">
+                            Compatible
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-[5px]">
+                          <Image
+                            src={falseIcon}
+                            width={16}
+                            height={16}
+                            alt="failed"
+                          />
+                          <span className="font-openSans text-[14px] text-[#F00]">
+                            Incompatible
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+        {/* selected vehicle and VINS for mobile view ends*/}
       </div>
     </main>
   );
