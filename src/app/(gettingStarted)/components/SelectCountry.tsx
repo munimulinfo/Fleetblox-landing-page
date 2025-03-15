@@ -69,8 +69,7 @@ const SelectCountry = () => {
     }
   };
 
-  const { setCustomProgress, progress, currentStep, setCurrentStep } =
-    useProgressUpdater();
+  const { setCustomProgress, progress, setCurrentStep } = useProgressUpdater();
 
   const handleNext = () => {
     setDisabled(true);
@@ -104,11 +103,14 @@ const SelectCountry = () => {
     localStorage.removeItem("VINS_RESULT");
     localStorage.removeItem("compatibility");
     localStorage.removeItem("selectedPlan");
-    setCurrentStep(currentStep + 1);
   };
 
+  useEffect(() => {
+    setCurrentStep(0);
+  }, []);
+
   return (
-    <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
       {/* Header */}
       <div className="mb-8 text-center">
         <h2 className="font-bold text-[24px] sm:text-[28px] font-openSans text-[#04082C] mb-2">
@@ -142,8 +144,8 @@ const SelectCountry = () => {
       )}
 
       {/* Scrollable Country List */}
-      <div className="flex-grow">
-        <div className="h-[50vh] overflow-y-auto pb-2 scrollbar-hidden">
+      <div className="">
+        <div className=" h-[50vh] overflow-y-auto pb-2 scrollbar-hidden">
           <div className="space-y-3">
             {loading ? (
               <div className="flex justify-center items-center h-[200px]">

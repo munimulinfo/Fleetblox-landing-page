@@ -7,14 +7,11 @@ import Canada from "@/../public/images/canada.png";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import close from "@/../public/images/access_point/down.svg";
-import open from "@/../public/images/access_point/up.svg";
+
 import axios from "axios";
 
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
-
-import AccessPoint from "./../compatible/AccessPoint";
 
 import trueIcon from "@/../public/images/true.svg";
 import falseIcon from "@/../public/images/false.svg";
@@ -22,6 +19,13 @@ import useBrandCarList from "@/hooks/useCompatibility";
 import { Country } from "../../components/SelectCountry";
 import Loader from "../../components/Loader";
 import { AxiosErrorResponse } from "@/interface/AxiosErrorResponse";
+
+interface PlanType {
+  price?: number;
+  slot?: number;
+  fleet?: string;
+  annually?: boolean;
+}
 
 const Page = () => {
   const router = useRouter();
@@ -39,17 +43,40 @@ const Page = () => {
   const [brands, setBrands] = useState("");
   const [country, setCountry] = useState("");
   const [countries, setCountries] = useState<Country[] | null>(null);
+
+  const [selectedPlan, setSelectedPlan] = useState<PlanType>({});
+  const [interestedUser, setInterestedUser] = useState({});
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState("");
 
-  const selectedPlan = JSON.parse(localStorage.getItem("selectedPlan") || "{}");
-  const interestedUser = JSON.parse(
-    localStorage.getItem("interestedUser") || "{}"
-  );
+  useEffect(() => {
+    // Client-side initialization
+    const storedSelectedPlan = localStorage.getItem("selectedPlan");
+    const storedInterestedUser = localStorage.getItem("interestedUser");
+    if (storedSelectedPlan) setSelectedPlan(JSON.parse(storedSelectedPlan));
+    if (storedInterestedUser)
+      setInterestedUser(JSON.parse(storedInterestedUser));
+  }, []);
 
-  const TotalForModal = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
+  // Update these calculations for proper display
+  const calculateDisplayTotal = () => {
+    // Base price calculation
+    let basePrice = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
+
+    // If annually selected, multiply by 12 for yearly display
+    if (selectedPlan?.annually) {
+      basePrice = basePrice * 12;
+    }
+
+    return basePrice;
+  };
+
+  // Fixed setup fee
   const oneTimeSet = 100;
+
+  // Update where TotalForModal is defined
+  const TotalForModal = calculateDisplayTotal();
   const hts = (TotalForModal + oneTimeSet) * 0.1; // 10% of (TotalForModal + oneTimeSet)
   const totalAmount = TotalForModal + oneTimeSet + hts;
 
@@ -277,7 +304,7 @@ const Page = () => {
                 <div className="">
                   <h1 className="text-[#04082C] font-openSans text-[16px] font-[600] leading-[160%]">
                     {selectedPlan?.fleet} (
-                    {selectedPlan?.annually ? "Annually" : "Monthly"})
+                    {selectedPlan?.annually ? "Annual" : "Monthly"})
                   </h1>
                   <p className="text-[12px] font-openSans font-normal text-[#7d7d7d]">
                     Pricing plan
@@ -289,8 +316,8 @@ const Page = () => {
                   ${Math.floor(selectedPlan?.price ?? 0)}
                 </span>
                 <span className="text-[14px] font-[400] leading-[155%] text-[#7d7d7d]">
-                  .{selectedPlan?.price?.toFixed(2).split(".")[1]} / month per
-                  slot
+                  .{selectedPlan?.price?.toFixed(2).split(".")[1]} /
+                  {selectedPlan?.annually ? "month" : "month"} per slot
                 </span>
               </h1>
             </div>
@@ -571,12 +598,12 @@ const Page = () => {
                 <div className="flex justify-between">
                   <span className="text-[14px] hidden lg:block font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
                     Subscription fee (
-                    {selectedPlan?.annually ? "Yearly" : "Monthly"})
+                    {selectedPlan?.annually ? "Annual" : "Monthly"})
                   </span>
                   <p className="text-[14px] block lg:hidden font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
                     Subscription fee <br />
                     <span className="text-[#7D7D7D]">
-                      {selectedPlan?.annually ? "Yearly" : "Monthly"}
+                      {selectedPlan?.annually ? "Annual" : "Monthly"}
                     </span>
                   </p>
                   <span className="text-[14px] font-openSans text-[#04082C] font-bold">
@@ -586,7 +613,7 @@ const Page = () => {
 
                 <div className="flex justify-between">
                   <span className="text-[14px] hidden lg:block font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
-                    Platform setup
+                    Platform setup fee
                   </span>
                   <p className="text-[14px] block lg:hidden font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
                     Platform setup <br />
