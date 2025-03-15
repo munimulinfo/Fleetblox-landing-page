@@ -11,13 +11,13 @@ const GettingLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   return (
-    <main className="flex h-screen">
-      {/* Sidebar Component */}
-      <Sidebar />
+    <ContextProvider>
+      <main className="flex h-screen">
+        {/* Sidebar Component */}
+        <Sidebar />
 
-      {/* Main content */}
-      <div className="flex-1 overflow-y-auto p-4">
-        <ContextProvider>
+        {/* Main content */}
+        <div className="flex-1 overflow-y-auto p-4">
           {/* Progress Bar - Add conditional rendering based on path */}
           {pathname !== "/collections/submit-details-early-interest" &&
             pathname !== "/collections/submit-details" &&
@@ -29,9 +29,9 @@ const GettingLayout = ({ children }: { children: React.ReactNode }) => {
             )}
 
           {children}
-        </ContextProvider>
-      </div>
-    </main>
+        </div>
+      </main>
+    </ContextProvider>
   );
 };
 

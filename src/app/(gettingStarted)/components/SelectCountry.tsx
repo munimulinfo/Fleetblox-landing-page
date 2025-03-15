@@ -68,7 +68,8 @@ const SelectCountry = () => {
     }
   };
 
-  const { setCustomProgress, progress } = useProgressUpdater();
+  const { setCustomProgress, progress, currentStep, setCurrentStep } =
+    useProgressUpdater();
 
   const handleNext = () => {
     setDisabled(true);
@@ -102,6 +103,7 @@ const SelectCountry = () => {
     localStorage.removeItem("VINS_RESULT");
     localStorage.removeItem("compatibility");
     localStorage.removeItem("selectedPlan");
+    setCurrentStep(currentStep + 1);
   };
 
   return (
@@ -191,7 +193,7 @@ const SelectCountry = () => {
           disabled={!selectedCountry || disabled}
           onClick={handleNext}
         >
-          Next
+          Next Step
         </button>
       </div>
     </main>

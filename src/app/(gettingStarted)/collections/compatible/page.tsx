@@ -7,7 +7,7 @@ import trueIcon from "@/../public/images/true.svg";
 import falseIcon from "@/../public/images/false.svg";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import close from "@/../public/images/access_point/down.svg";
 import open from "@/../public/images/access_point/up.svg";
@@ -20,7 +20,8 @@ const Compatible = () => {
   const router = useRouter();
   const { selectedBrands, storedBrandModels, brandCarList, loading, vins } =
     useBrandCarList(null);
-  const { setCustomProgress, progress } = useProgressUpdater();
+  const { setCustomProgress, progress, currentStep, setCurrentStep } =
+    useProgressUpdater();
   const [isOpen, setIsOpen] = useState("");
 
   const showAccessPoint = (modelName: string) => {
@@ -75,6 +76,10 @@ const Compatible = () => {
     setCustomProgress(progress + 10);
     router.push("/collections/pricing-plan");
   };
+
+  useEffect(() => {
+    setCurrentStep(currentStep + 1);
+  }, []);
 
   return (
     <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
