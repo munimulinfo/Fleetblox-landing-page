@@ -8,6 +8,7 @@ import { useProgressUpdater } from "@/hooks/useProgress";
 import { getCode } from "country-list";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
+import NotCompatibilityDialog from "./NotCompatibilityDialog";
 
 export interface Country {
   country: string;
@@ -196,6 +197,7 @@ const SelectCountry = () => {
           Next Step
         </button>
       </div>
+      <NotCompatibilityDialog title="can’t find my country" />
     </main>
   );
 };

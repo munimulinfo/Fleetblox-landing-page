@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
 import useBrandCarList from "@/hooks/useCompatibility";
 import Loader from "./Loader";
+import NotCompatibilityDialog from "./NotCompatibilityDialog";
 
 interface CarBrand {
   brand: string;
@@ -167,6 +168,7 @@ const BrandSelector = () => {
           Next Step
         </button>
       </div>
+      <NotCompatibilityDialog title="can’t find my Make" />
     </main>
   );
 };
