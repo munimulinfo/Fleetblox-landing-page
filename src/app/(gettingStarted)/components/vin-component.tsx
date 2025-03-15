@@ -154,7 +154,7 @@ const VIN = () => {
   };
 
   return (
-    <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
       {loading ? (
         <SearchingVins />
       ) : (
@@ -211,7 +211,7 @@ const VIN = () => {
           </div>
 
           {/* Scrollable Content */}
-          <div className="min-h-0 flex-1 overflow-y-auto">
+          <div className="min-h-0 flex-1 overflow-y-auto scrollbar-hidden">
             <div className="space-y-2.5">
               {vinList.length === 0 ? (
                 <div className="mt-[60px] flex flex-col items-center">

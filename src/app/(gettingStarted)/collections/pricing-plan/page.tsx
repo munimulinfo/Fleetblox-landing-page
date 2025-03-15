@@ -331,7 +331,7 @@ const PricingPlan = () => {
                         }
                       }}
                     >
-                      Choose Plan
+                      Select Plan
                     </Button>
                   )}
                 </div>

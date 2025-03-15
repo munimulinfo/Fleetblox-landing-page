@@ -59,7 +59,7 @@ const Page = () => {
       setInterestedUser(JSON.parse(storedInterestedUser));
   }, []);
 
-  // Update these calculations for proper display
+  // Update these calculations to remove HST
   const calculateDisplayTotal = () => {
     // Base price calculation
     let basePrice = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
@@ -75,10 +75,10 @@ const Page = () => {
   // Fixed setup fee
   const oneTimeSet = 100;
 
-  // Update where TotalForModal is defined
+  // Update where TotalForModal is defined - REMOVE HST
   const TotalForModal = calculateDisplayTotal();
-  const hts = (TotalForModal + oneTimeSet) * 0.1; // 10% of (TotalForModal + oneTimeSet)
-  const totalAmount = TotalForModal + oneTimeSet + hts;
+  // Remove this line: const hts = (TotalForModal + oneTimeSet) * 0.1;
+  const totalAmount = TotalForModal + oneTimeSet; // Remove hts from total
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -621,19 +621,6 @@ const Page = () => {
                   </p>
                   <span className="text-[14px] font-openSans text-[#04082C] font-bold">
                     ${oneTimeSet.toFixed(2)}
-                  </span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span className="text-[14px] font-openSans hidden lg:block lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
-                    HST (10%)
-                  </span>
-                  <p className="text-[14px] block lg:hidden font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
-                    HST <br />
-                    <span className="text-[#7D7D7D]">10%</span>
-                  </p>
-                  <span className="text-[14px] font-openSans text-[#04082C] font-bold">
-                    ${hts.toFixed(2)}
                   </span>
                 </div>
 

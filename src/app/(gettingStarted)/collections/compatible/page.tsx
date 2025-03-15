@@ -79,7 +79,7 @@ const Compatible = () => {
   };
 
   return (
-    <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
       <div className="flex-shrink-0">
         <div
           onClick={handleBack}
@@ -106,7 +106,7 @@ const Compatible = () => {
       </div>
 
       <div className="min-h-0 flex-1 overflow-hidden">
-        <div className="h-full overflow-y-auto">
+        <div className="h-full overflow-y-auto scrollbar-hidden">
           <div className="space-y-[10px] font-openSans">
             {loading && !vins ? (
               <Loader />
