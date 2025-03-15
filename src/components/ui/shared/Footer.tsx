@@ -8,6 +8,7 @@ import LinkdinIcon from "@/components/icons/LinkdinIcon";
 import Link from "next/link";
 import AppleStore from "@/components/icons/AppleStore";
 import GoogleStore from "@/components/icons/GoogleStore";
+import GoogleStoreMobile from "@/components/icons/GoogleStoreMobile";
 const Footer = () => {
   return (
     <div className="bg-[#0A2540]">
@@ -54,19 +55,19 @@ const Footer = () => {
               </video>
             </div>
           </div>
-          <div className="flex items-start space-y-[30px] lg:space-y-0 gap-[100px] flex-col lg:flex-row justify-between mb-10 mt-[100px]">
+          <div className="flex items-center lg:items-start space-y-[30px] lg:space-y-0 lg:gap-[100px] gap-10 flex-col lg:flex-row justify-between mb-10 mt-[20px] lg:mt-[100px]">
             {/* logo section */}
-            <div className="max-w-[400px] w-full flex flex-col h-[400px] justify-between">
+            <div className="max-w-[400px] w-full flex flex-col lg:h-[400px] justify-between">
               <div className="cursor-pointer text-left space-y-[10px] ">
                 <div className="flex justify-center lg:justify-start">
                   <Image src={FooterLogo} alt="footer_logo" />
                 </div>
-                <p className="mt-5 leading-6 text-[16px] font-openSans">
+                <p className="mt-5 leading-6 text-[16px] font-openSans lg:block hidden">
                   Empowering Your Fleet With Artificial Intelligence. Cut Costs.
                   Minimize Downtime. Maximize Performance.
                 </p>
               </div>
-              <div className="">
+              <div className="hidden lg:block">
                 <h2 className="mb-[10px] text-[14px] leading-5 text-[#DFDFDF] font-openSans">
                   Download Fleetblox Crew
                 </h2>
@@ -77,7 +78,7 @@ const Footer = () => {
               </div>
             </div>
             {/* pages section */}
-            <div className="flex justify-between w-full flex-col lg:flex-row text-[16px] font-openSans font-normal text-white leading-6 font-opensans gap-[60px]">
+            <div className=" grid grid-cols-2 lg:grid-cols-4 w-full  text-[16px] font-openSans font-normal text-white leading-6 gap-10 xl:gap-[60px]">
               {/* product section */}
               <div className="cursor-pointer text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
@@ -175,48 +176,60 @@ const Footer = () => {
               </div>
             </div>
           </div>
+          <div className="lg:hidden block text-center">
+            <h2 className="mb-[10px] text-[14px] leading-5 text-[#DFDFDF] font-openSans">
+              Download Fleetblox Crew
+            </h2>
+            <div className="flex gap-[10px] justify-center">
+              <AppleStore />
+              <GoogleStoreMobile />
+            </div>
+          </div>
           <div className="flex items-center flex-col lg:flex-row justify-between pb-[40px] mt-10">
-            <div className="flex space-x-[20px] items-center">
+            <div className="flex md:space-x-[20px] space-y-[10px] md:space-y-0 items-center justify-center flex-col md:flex-row">
               <div className="flex cursor-pointer items-center gap-[10px]">
                 <FacebookIcon />
                 <LinkdinIcon />
                 {/* <InstagramIcon />
             <XIcon /> */}
               </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="2"
-                height="18"
-                viewBox="0 0 2 18"
-                fill="none"
-              >
-                <path
-                  d="M1 0.683594V16.6836"
-                  stroke="#7D7D7D"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <p className="text-[14px] font-openSans leading-5 font-normal text-white">
-                Terms of Service
-              </p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="2"
-                height="18"
-                viewBox="0 0 2 18"
-                fill="none"
-              >
-                <path
-                  d="M1 0.683594V16.6836"
-                  stroke="#7D7D7D"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <p className="text-[14px] font-openSans leading-5 font-normal text-white">
-                Privacy Policy
-              </p>
+              <div className="flex items-center space-x-[20px] -ml-[40px] md:ml-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="2"
+                  height="18"
+                  viewBox="0 0 2 18"
+                  fill="none"
+                  className="hidden md:block"
+                >
+                  <path
+                    d="M1 0.683594V16.6836"
+                    stroke="#7D7D7D"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <p className="text-[14px] font-openSans leading-5 font-normal text-white">
+                  Terms of Service
+                </p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="2"
+                  height="18"
+                  viewBox="0 0 2 18"
+                  fill="none"
+                >
+                  <path
+                    d="M1 0.683594V16.6836"
+                    stroke="#7D7D7D"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <p className="text-[14px] font-openSans leading-5 font-normal text-white">
+                  Privacy Policy
+                </p>
+              </div>
             </div>
-            <h5 className="font-openSans text-[16px] leading-6">
+            <h5 className="font-openSans text-[16px] leading-6 mt-[10px] mt:mt-0">
               ©2025 Fleetblox. All Rights Reserved
             </h5>
           </div>
