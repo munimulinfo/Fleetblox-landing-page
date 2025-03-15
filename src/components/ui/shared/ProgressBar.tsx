@@ -12,7 +12,7 @@ const ProgressBar = () => {
 
   return (
     <div
-      className={`absolute left-0 top-0 h-full bg-p_blue transition-all duration-300 `}
+      className="absolute left-0 top-0 h-full bg-[#0336BC] transition-all duration-300"
       style={{ width: `${progress}%` }}
     ></div>
   );

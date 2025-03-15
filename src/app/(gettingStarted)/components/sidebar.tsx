@@ -4,13 +4,14 @@ import { Menu, X } from "lucide-react"; // You can use any icon library
 import FleetBloxIconWhite from "@/components/icons/FleetBloxIconWhite";
 
 import { Stepper } from "@/components/ui/stepper";
+import { useProgressUpdater } from "@/hooks/useProgress";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [currentStep, setCurrentStep] = useState(0);
 
-  console.log(isMobile, setCurrentStep, currentStep);
+  const { currentStep } = useProgressUpdater();
+  console.log(isMobile, currentStep);
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -28,7 +29,7 @@ const Sidebar = () => {
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
-  const steps = [
+  const sidebarSteps = [
     {
       title: "Check Compatibility",
       description: "Verify Your Device's Compatibility",
@@ -42,18 +43,6 @@ const Sidebar = () => {
       description: "Review and Process Your Order",
     },
   ];
-
-  // const handleNext = () => {
-  //   if (currentStep < steps.length - 1) {
-  //     setCurrentStep(currentStep + 1);
-  //   }
-  // };
-
-  // const handlePrevious = () => {
-  //   if (currentStep > 0) {
-  //     setCurrentStep(currentStep - 1);
-  //   }
-  // };
 
   return (
     <>
@@ -69,9 +58,9 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <aside
-        className={`min-w-[350px] bg-[#2D65F2] overflow-y-auto transition-all duration-300  ${
+        className={`min-w-[350px] bg-[#2D65F2] overflow-y-hidden transition-all duration-300  ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 fixed md:static h-full z-40`}
+        } md:translate-x-0 fixed md:static h-screen z-40`}
       >
         <div className="p-4">
           {/* <h2 className="text-xl font-bold">Sidebar</h2> */}
@@ -80,11 +69,11 @@ const Sidebar = () => {
           </div>
           <nav className="mt-6 flex justify-center">
             {/* Add your sidebar navigation here */}
-            <Stepper steps={steps} currentStep={currentStep} />
+            <Stepper steps={sidebarSteps} currentStep={currentStep} />
           </nav>
         </div>
-        {/* <div className="mt-8 flex justify-between">
-          <Button
+        <div className="mt-8 flex justify-between">
+          {/* <Button
             variant="outline"
             onClick={handlePrevious}
             disabled={currentStep === 0}
@@ -93,11 +82,11 @@ const Sidebar = () => {
           </Button>
           <Button
             onClick={handleNext}
-            disabled={currentStep === steps.length - 1}
+            disabled={currentStep === sidebarSteps.length - 1}
           >
             Next
-          </Button>
-        </div> */}
+          </Button> */}
+        </div>
       </aside>
 
       {/* Overlay for mobile when sidebar is open */}

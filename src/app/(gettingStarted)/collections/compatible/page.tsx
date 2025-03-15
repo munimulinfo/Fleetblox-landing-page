@@ -20,7 +20,8 @@ const Compatible = () => {
   const router = useRouter();
   const { selectedBrands, storedBrandModels, brandCarList, loading, vins } =
     useBrandCarList(null);
-  const { setCustomProgress, progress } = useProgressUpdater();
+  const { setCustomProgress, progress, currentStep, setCurrentStep } =
+    useProgressUpdater();
   const [isOpen, setIsOpen] = useState("");
 
   const showAccessPoint = (modelName: string) => {
@@ -74,6 +75,7 @@ const Compatible = () => {
   const handleNext = () => {
     setCustomProgress(progress + 10);
     router.push("/collections/pricing-plan");
+    setCurrentStep(currentStep + 1);
   };
 
   return (

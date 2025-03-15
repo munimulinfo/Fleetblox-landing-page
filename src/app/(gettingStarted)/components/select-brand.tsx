@@ -49,7 +49,7 @@ const BrandSelector = () => {
 
   const handleBack = () => {
     setCustomProgress(progress - 10);
-    router.back();
+    router.push("/getting-started");
   };
 
   document.addEventListener("wheel", (e) => console.log(e.defaultPrevented));

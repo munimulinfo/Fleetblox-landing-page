@@ -1,4 +1,14 @@
+"use client";
+
+import { useProgressUpdater } from "@/hooks/useProgress";
+import { useEffect } from "react";
+
 const Page = () => {
+  const { currentStep, setCurrentStep } = useProgressUpdater();
+  useEffect(() => {
+    setCurrentStep(currentStep + 1);
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-start pt-10 md:pt-0 md:justify-center maw-w-[560px] max-h-[680px] w-full h-full mx-auto">
       <div

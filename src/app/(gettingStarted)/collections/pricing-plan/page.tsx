@@ -27,6 +27,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import Link from "next/link";
 import AccurateSlider from "@/app/pricings/components/AccurateSlider";
+import { useProgressUpdater } from "@/hooks/useProgress";
 
 type TSelectedPlan = {
   price: number;
@@ -44,6 +45,7 @@ const PricingPlan = () => {
   const [currentPlans, setCurrentPlans] = useState<{ data: any[] } | null>(
     null
   );
+  const { currentStep, setCurrentStep } = useProgressUpdater();
 
   const [showUpdatePlanModal, setShowUpdatePlanModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<TSelectedPlan | null>(null);
@@ -124,53 +126,54 @@ const PricingPlan = () => {
   };
 
   console.log(selectedPlan, "checking selected plan");
-  const handleSubscriptionPlan = async () => {
-    // try {
-    //   const subscriptionInfo = {
-    //     userId: "sarkarsoumik215@gmail.com",
-    //     customerId: "cus_RgQvMiKISS0OAX",
-    //     newPlanId: "cm4vhz3pu0001oniuypx7p2uh",
-    //     totalSlot: slotCount,
-    //     price: Number(selectedPlan?.price?.toFixed(2)),
-    //     interval: billAnnually ? "year" : "month",
-    //   };
+  // const handleSubscriptionPlan = async () => {
+  // try {
+  //   const subscriptionInfo = {
+  //     userId: "sarkarsoumik215@gmail.com",
+  //     customerId: "cus_RgQvMiKISS0OAX",
+  //     newPlanId: "cm4vhz3pu0001oniuypx7p2uh",
+  //     totalSlot: slotCount,
+  //     price: Number(selectedPlan?.price?.toFixed(2)),
+  //     interval: billAnnually ? "year" : "month",
+  //   };
 
-    //   const response = await fetch("/payment/subscription/upgrade", {
-    //     method: "PUT",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(subscriptionInfo),
-    //   });
+  //   const response = await fetch("/payment/subscription/upgrade", {
+  //     method: "PUT",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(subscriptionInfo),
+  //   });
 
-    //   if (!response.ok) throw new Error("Update failed");
+  //   if (!response.ok) throw new Error("Update failed");
 
-    //   const res = await response.json();
-    //   if (res?.success) {
-    //     toast.success("Subscription plan updated successfully");
-    //     setShowUpdatePlanModal(false);
-    //   }
-    // } catch (error: any) {
-    //   console.log(error);
-    //   toast.error("Failed to update subscription plan");
-    // }
+  //   const res = await response.json();
+  //   if (res?.success) {
+  //     toast.success("Subscription plan updated successfully");
+  //     setShowUpdatePlanModal(false);
+  //   }
+  // } catch (error: any) {
+  //   console.log(error);
+  //   toast.error("Failed to update subscription plan");
+  // }
 
-    // For now, just close the modal
+  // For now, just close the modal
 
-    await localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
+  // await localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
 
-    // toast.success("Subscription plan updated successfully");
+  // toast.success("Subscription plan updated successfully");
 
-    router.push("/collections/checkout");
-  };
+  // router.push("/collections/checkout");
+  // };
 
-  const handlePriceAndModal = ({ fleet, slot, annually, price }: any) => {
-    setSelectedPlan({
-      price: price,
-      fleet: fleet,
-      slot: slot,
-      annually: annually,
-    });
-    setShowUpdatePlanModal(true);
-  };
+  // const handlePriceAndModal = ({ fleet, slot, annually, price }: any) => {
+  //   setSelectedPlan({
+  //     price: price,
+  //     fleet: fleet,
+  //     slot: slot,
+  //     annually: annually,
+  //   });
+  //   setShowUpdatePlanModal(true);
+  //   setCurrentStep(currentStep + 1);
+  // };
 
   console.log(handleBillingMonthly, calculateDiscount);
 
@@ -317,6 +320,7 @@ const PricingPlan = () => {
                             JSON.stringify(planData)
                           );
                           console.log("Plan saved to localStorage:", planData);
+                          setCurrentStep(currentStep + 1);
                           router.push("/collections/checkout");
                         } catch (error) {
                           console.error(
