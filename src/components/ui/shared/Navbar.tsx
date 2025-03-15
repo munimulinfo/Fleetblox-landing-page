@@ -78,7 +78,7 @@ const Navbar = () => {
               Contact
             </Link> */}
             {isScrolled && (
-              <Link href="/upcoming-page">
+              <Link href="/getting-started">
                 <button className="py-[10px] px-4 rounded-lg font-openSans bg-[#2D65F2] text-[#fff]">
                   Get Started
                 </button>

@@ -77,7 +77,7 @@ const Compatibility = () => {
 
   const handleBack = () => {
     setCustomProgress(progress - 10);
-    router.push(`/upcoming-page`);
+    router.push(`/getting-started`);
   };
 
   return (

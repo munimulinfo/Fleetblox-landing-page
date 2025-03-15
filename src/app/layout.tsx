@@ -1,6 +1,19 @@
 "use client";
 import "../styles/globals.css";
 import { useEffect } from "react";
+
+// Metadata for the website
+// export const metadata = {
+//   title: "FleetBlox",
+//   description: "FleetBlox - Fleet Management Solution",
+//   keywords: "fleet management, fleet tracking, vehicle management",
+//   authors: [{ name: "FleetBlox Team" }],
+//   viewport: "width=device-width, initial-scale=1",
+//   icons: {
+//     icon: "/favicon.ico",
+//   },
+// };
+
 export default function RootLayout({
   children,
 }: Readonly<{

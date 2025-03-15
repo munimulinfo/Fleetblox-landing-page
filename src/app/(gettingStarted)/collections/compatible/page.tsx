@@ -20,7 +20,8 @@ const Compatible = () => {
   const router = useRouter();
   const { selectedBrands, storedBrandModels, brandCarList, loading, vins } =
     useBrandCarList(null);
-  const { setCustomProgress, progress } = useProgressUpdater();
+  const { setCustomProgress, progress, currentStep, setCurrentStep } =
+    useProgressUpdater();
   const [isOpen, setIsOpen] = useState("");
 
   const showAccessPoint = (modelName: string) => {
@@ -29,6 +30,11 @@ const Compatible = () => {
     } else {
       setIsOpen(modelName);
     }
+  };
+
+  const handleBack = () => {
+    setCustomProgress(progress - 10);
+    router.push(`/collections/compatibility`);
   };
 
   // Filter and determine compatibility status using `useMemo` for memoization
@@ -68,14 +74,15 @@ const Compatible = () => {
 
   const handleNext = () => {
     setCustomProgress(progress + 10);
-    router.push("/collections/submit-details-early-interest");
+    router.push("/collections/pricing-plan");
+    setCurrentStep(currentStep + 1);
   };
 
   return (
-    <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
       <div className="flex-shrink-0">
         <div
-          //   onClick={handleBack}
+          onClick={handleBack}
           className="mb-4 flex cursor-pointer items-center gap-1"
         >
           <ChevronLeft size={16} className="text-[#999]" />
@@ -99,7 +106,7 @@ const Compatible = () => {
       </div>
 
       <div className="min-h-0 flex-1 overflow-hidden">
-        <div className="h-full overflow-y-auto">
+        <div className="h-full overflow-y-auto scrollbar-hidden">
           <div className="space-y-[10px] font-openSans">
             {loading && !vins ? (
               <Loader />
@@ -130,7 +137,7 @@ const Compatible = () => {
                           height={16}
                           alt="success"
                         />
-                        <span className="font-openSans text-[12px] text-[#4DB429]">
+                        <span className="font-openSans text-[12px] text-[#2D65F2]">
                           Compatible
                         </span>
                       </div>

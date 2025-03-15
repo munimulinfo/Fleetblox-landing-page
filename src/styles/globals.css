@@ -8,6 +8,7 @@
 body::-webkit-scrollbar {
   display: none;
 }
+
 body {
   @apply font-montserrat;
 }
@@ -107,9 +108,4 @@ body {
 /* In your global CSS or Tailwind config */
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
-}
-
-/* Hide scrollbar for Firefox */
-.scrollbar-hidden {
-  scrollbar-width: none;
 }
