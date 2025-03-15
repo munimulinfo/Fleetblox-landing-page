@@ -5,6 +5,7 @@ import FleetBloxIconWhite from "@/components/icons/FleetBloxIconWhite";
 
 import { Stepper } from "@/components/ui/stepper";
 import { useProgressUpdater } from "@/hooks/useProgress";
+import Link from "next/link";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -64,9 +65,11 @@ const Sidebar = () => {
       >
         <div className="p-4">
           {/* <h2 className="text-xl font-bold">Sidebar</h2> */}
-          <div className="flex items-center justify-center mt-10 ">
-            <FleetBloxIconWhite />
-          </div>
+          <Link href="/">
+            <div className="flex items-center justify-center mt-10 ">
+              <FleetBloxIconWhite />
+            </div>
+          </Link>
           <nav className="mt-6 flex justify-center">
             {/* Add your sidebar navigation here */}
             <Stepper steps={sidebarSteps} currentStep={currentStep} />
