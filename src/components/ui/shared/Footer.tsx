@@ -60,7 +60,9 @@ const Footer = () => {
             <div className="max-w-[400px] w-full flex flex-col lg:h-[400px] justify-between">
               <div className="cursor-pointer text-left space-y-[10px] ">
                 <div className="flex justify-center lg:justify-start">
-                  <Image src={FooterLogo} alt="footer_logo" />
+                  <Link href="/">
+                    <Image src={FooterLogo} alt="footer_logo" />
+                  </Link>
                 </div>
                 <p className="mt-5 leading-6 text-[16px] font-openSans lg:block hidden">
                   Empowering Your Fleet With Artificial Intelligence. Cut Costs.
@@ -84,95 +86,167 @@ const Footer = () => {
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Products
                 </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Platform Overview
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Connectivity
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">AI</h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">Monitoring</h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Scalability
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">Efficiency</h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Fleetblox Crew
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">Compliance</h5>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px] cursor-pointer">
+                    Platform Overview
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Connectivity
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">AI</h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Monitoring
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Scalability
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Efficiency
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Fleetblox Crew
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Compliance
+                  </h5>
+                </Link>
               </div>
               {/* solutions */}
               <div className="cursor-pointer text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Solutions
                 </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Cloud Garage
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Remote Access
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Remote Scale
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Cost Optimization
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Maintenance and Diagnostics
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  EV Fleet Integration
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Compliance and Safety
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Workforce Connectivity
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  AI Fleet Coordinator
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  AI Inspection
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Trip Management
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">Geofencing</h5>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Cloud Garage
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Remote Access
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Remote Scale
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Cost Optimization
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Maintenance and Diagnostics
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    EV Fleet Integration
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Compliance and Safety
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Workforce Connectivity
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    AI Fleet Coordinator
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    AI Inspection
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Trip Management
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Geofencing
+                  </h5>
+                </Link>
               </div>
               {/* resources section */}
               <div className="cursor-pointer text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Resources
                 </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">Blogs</h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Customer Stories
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">Events </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Next Updates
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">What’s New</h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Help Center
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Knowledge Base
-                </h5>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">Blogs</h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Customer Stories
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">Events </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Next Updates
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    What’s New
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Help Center
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Knowledge Base
+                  </h5>
+                </Link>
               </div>
               {/* company section */}
               <div className="cursor-pointer text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Company
                 </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">Pricings</h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">
-                  Request Demo
-                </h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">About</h5>
-                <h5 className=" font-openSans py-[2px] mb-[5px]">Contact</h5>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">Pricings</h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Request Demo
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">About</h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">Contact</h5>
+                </Link>
               </div>
             </div>
           </div>
@@ -208,9 +282,11 @@ const Footer = () => {
                     strokeLinecap="round"
                   />
                 </svg>
-                <p className="text-[14px] font-openSans leading-5 font-normal text-white">
-                  Terms of Service
-                </p>
+                <Link href="/under-development">
+                  <p className="text-[14px] font-openSans leading-5 font-normal text-white">
+                    Terms of Service
+                  </p>
+                </Link>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="2"
@@ -224,9 +300,11 @@ const Footer = () => {
                     strokeLinecap="round"
                   />
                 </svg>
-                <p className="text-[14px] font-openSans leading-5 font-normal text-white">
-                  Privacy Policy
-                </p>
+                <Link href="/under-development">
+                  <p className="text-[14px] font-openSans leading-5 font-normal text-white">
+                    Privacy Policy
+                  </p>
+                </Link>
               </div>
             </div>
             <h5 className="font-openSans text-[16px] leading-6 mt-[10px] mt:mt-0">
