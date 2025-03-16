@@ -30,7 +30,7 @@ const VirtualCard: React.FC<CardProps> = ({
         )}
         <div className="absolute -top-[5vh] z-[200] flex rounded-[24px] bg-white p-[10px] w-full justify-between h-full">
           {/* left side */}
-          <div className="flex flex-col items-start bg-white px-[20px] pb-[20px] max-w-[340px] w-full pt-[70px] font-openSans">
+          <div className="flex flex-col items-start bg-white px-[20px] pb-[20px] max-w-[380px] w-full pt-[70px] font-openSans">
             <Image className="" src={icon} alt="icon" />
             <h1 className="text-[28px] font-bold text-[#04082C] font-montserrat leading-[1.1] mb-4 mt-[10px]">
               {title}

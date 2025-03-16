@@ -51,7 +51,7 @@ const AiSupportSection = () => {
               </div>
             </div>
           </div>
-          <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
+          <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
             Learn More
           </button>
         </section>

@@ -8,7 +8,7 @@ const ConnectRemotelySection = () => {
       <div className="container mx-auto w-full px-4 py-16 sm:px-6 sm:py-10 md:py-10 lg:max-w-7xl">
         <div className="flex flex-col z-50">
           {/* Connect Remotely Section */}
-          <section className="px-4 md:px-0">
+          <section className="">
             <h1 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold text-[#04082C] leading-tight font-montserrat">
               Connect Your Fleet Remotely -{" "}
               <span className="md:block">Anytime, Anywhere</span>
@@ -40,7 +40,7 @@ const ConnectRemotelySection = () => {
           </section>
 
           {/* Video Section */}
-          <section className="mx-4 md:mx-0 my-8 md:my-10 border border-[#DFDFDF] h-[250px] xs:h-[280px] sm:h-[350px] md:h-[425px] rounded-[24px] bg-white overflow-hidden">
+          <section className=" my-8 md:my-10 border border-[#DFDFDF] h-[250px] xs:h-[280px] sm:h-[350px] md:h-[425px] rounded-[24px] bg-white overflow-hidden">
             <div className="relative w-full h-full">
               <video
                 autoPlay
@@ -63,8 +63,9 @@ const ConnectRemotelySection = () => {
             </button>
           </Link>
           {/* </div> */}
+          <div className="border-b block md:hidden mt-[80px]  mb-[60px] border-[#DFDFDF]"></div>
           {/* Optimize section */}
-          <section className="md:mx-0 flex flex-col md:flex-row p-5 rounded-[24px] md:p-10 items-center gap-6 md:gap-x-4 mt-5 md:border border-[#DFDFDF] h-auto md:h-[500px] md:rounded-[24px] bg-white">
+          <section className="md:mx-0 flex flex-col md:flex-row p-0 rounded-[24px] md:p-10 items-center gap-6 md:gap-x-4 mt-5 md:border border-[#DFDFDF] h-auto md:h-[500px] md:rounded-[24px] bg-white">
             <div className="flex-1">
               <h1 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold text-[#04082C] leading-tight font-montserrat">
                 Optimize Fleet Safety
@@ -113,7 +114,7 @@ const ConnectRemotelySection = () => {
             </div>
           </section>
         </div>
-        <div className="border-b block md:hidden border-[#DFDFDF] px-6 mt-5"></div>
+        <div className="border-b block md:hidden border-[#DFDFDF] px-6 mt-[80px] mb-[50px]"></div>
       </div>
     </main>
   );
