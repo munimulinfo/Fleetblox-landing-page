@@ -181,7 +181,7 @@ const ModelSelector = ({ params }: any) => {
         console.log(status, "brandModels checking");
 
         if (status) {
-          return router.push("/result/not-compatible");
+          return router.push("/collections/compatible");
         } else {
           return router.push("/collections/compatible");
         }
@@ -216,9 +216,9 @@ const ModelSelector = ({ params }: any) => {
   console.log(modelData, "modelData checking");
 
   return (
-    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
       {/* Header Section - Fixed at top */}
-      <div className="mb-8">
+      <div className="flex-none">
         <div
           onClick={backButton}
           className="mb-4 flex cursor-pointer items-center gap-1"
@@ -233,7 +233,7 @@ const ModelSelector = ({ params }: any) => {
           <h2 className="font-bold text-2xl sm:text-[28px] font-openSans text-[#04082C] mb-2">
             Select Your Vehicle Models
           </h2>
-          <p className="font-openSans text-base text-[#7D7D7D] mx-auto max-w-[500px]">
+          <p className="font-openSans text-base text-[#7D7D7D] mx-auto ">
             Select vehicle models for each chosen make based on their registered
             countries
           </p>
@@ -257,7 +257,7 @@ const ModelSelector = ({ params }: any) => {
       </div>
 
       {/* Scrollable Content Area - Takes remaining space */}
-      <div className="flex-1 h-[40vh] overflow-y-auto border border-[#DFDFDF] scrollbar-hidden rounded-[16px] p-5">
+      <div className="flex-grow h-[40vh] overflow-y-auto border border-[#DFDFDF] scrollbar-hidden rounded-[16px] p-5">
         {selectedCountryObj && (
           <div className="flex items-center mb-4">
             <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-4 border border-gray-300">
@@ -333,10 +333,10 @@ const ModelSelector = ({ params }: any) => {
 
       {/* Footer Section - Fixed at bottom */}
       {/* Fixed Footer */}
-      <div className="flex-shrink-0 mt-6 flex flex-col-reverse items-center gap-4">
+      <div className="flex-none mt-6 flex flex-col-reverse items-center gap-4">
         <button
           onClick={handleNotFindModel}
-          className="  w-full font-openSans text-[#7D7D7D] px-[14px] py-[8px]   text-[14px] rounded-md"
+          className="  w-full font-openSans text-[#7D7D7D] px-[14px] py-[8px] font-bold  text-[14px] rounded-md"
         >
           {`I can't find my car brand`}
         </button>

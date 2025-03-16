@@ -252,10 +252,9 @@ const PricingPlan = () => {
                     </div>
 
                     {/* Dynamic discount message based on slot count */}
-                    <div className="mt-1 space-y-1">
+                    <div className="flex ">
                       {slotCount >= 50 && (
-                        <p className="text-[#2D65F2] font-openSans text-[13px] font-semibold flex items-center">
-                          <span className="w-2 h-2 rounded-full bg-[#2D65F2] mr-1.5 inline-block"></span>
+                        <p className="text-[#04082C] font-openSans text-[14px] leading-[155%]  font-semibold flex items-center">
                           {slotCount >= 200
                             ? "30%"
                             : slotCount >= 150
@@ -263,14 +262,13 @@ const PricingPlan = () => {
                             : slotCount >= 100
                             ? "10%"
                             : "5%"}{" "}
-                          volume discount
+                          discount +
                         </p>
                       )}
 
                       {billAnnually && (
-                        <p className="text-[#2D65F2] font-openSans text-[13px] font-semibold flex items-center">
-                          <span className="w-2 h-2 rounded-full bg-[#2D65F2] mr-1.5 inline-block"></span>
-                          15% annual billing discount
+                        <p className="text-[#04082C] font-openSans text-[14px] leading-[155%] font-semibold flex items-center">
+                          {""} 15% annual discount
                         </p>
                       )}
                     </div>

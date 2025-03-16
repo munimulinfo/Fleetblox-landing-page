@@ -34,7 +34,7 @@ const Compatible = () => {
 
   const handleBack = () => {
     setCustomProgress(progress - 10);
-    router.push(`/collections/compatibility`);
+    router.back();
   };
 
   // Filter and determine compatibility status using `useMemo` for memoization
@@ -56,7 +56,7 @@ const Compatible = () => {
       console.log("areAllUncompatible", areAllUncompatible);
     } else {
       console.log(areAllUncompatible, "areAllUncompatible");
-      router.push("/result/not-compatible");
+      // router.push("/result/not-compatible");
     }
   }
 

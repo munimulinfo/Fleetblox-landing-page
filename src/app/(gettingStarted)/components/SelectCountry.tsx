@@ -9,6 +9,7 @@ import { getCode } from "country-list";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
 import NotCompatibilityDialog from "./NotCompatibilityDialog";
+import NextStepButton from "@/components/ui/shared/NextStepButton";
 
 export interface Country {
   country: string;
@@ -107,13 +108,15 @@ const SelectCountry = () => {
 
   useEffect(() => {
     setCurrentStep(0);
+    localStorage.removeItem("country");
+    localStorage.removeItem("selectedCountry");
   }, []);
 
   return (
-    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
-      {/* Header */}
-      <div className="mb-8 text-center">
-        <h2 className="font-bold text-[24px] sm:text-[28px] font-openSans text-[#04082C] mb-2">
+    <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
+      {/* Header - Fixed at the Top */}
+      <div className="my-4 text-center flex-none">
+        <h2 className="font-bold text-[20px] sm:text-[28px] font-openSans text-[#04082C] ">
           Select Registered Country
         </h2>
         <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
@@ -122,30 +125,33 @@ const SelectCountry = () => {
         </p>
       </div>
 
-      {/* Search Bar */}
-      <div className="relative mb-4 w-full">
-        <div className="flex items-center w-full bg-[#F7F7F7] rounded-md px-4 py-4">
-          <Search className="text-[#7D7D7D] mr-3" size={20} />
-          <input
-            type="text"
-            placeholder="Search country"
-            className="w-full bg-[#F7F7F7] font-openSans text-[14px] text-[#333] outline-none"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+      {/* Main Content - Scrollable */}
+      <div className="flex-grow overflow-y-auto scrollbar-hidden pb-4">
+        {/* Search Bar */}
+        <div className="relative mb-4 w-full">
+          <div className="flex items-center w-full bg-[#F7F7F7] rounded-md px-4 py-4">
+            <Search className="text-[#7D7D7D] mr-3" size={20} />
+            <input
+              type="text"
+              placeholder="Search country"
+              className="w-full bg-[#F7F7F7] font-openSans text-[14px] text-[#333] outline-none"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
         </div>
-      </div>
 
-      {/* Selected Country */}
-      {selectedCountry && (
-        <div className="my-3 mx-1">
-          <p className="font-openSans text-sm font-[600]">1 country selected</p>
-        </div>
-      )}
+        {/* Selected Country */}
+        {selectedCountry && (
+          <div className="my-3 mx-1">
+            <p className="font-openSans text-sm font-[600]">
+              1 country selected
+            </p>
+          </div>
+        )}
 
-      {/* Scrollable Country List */}
-      <div className="">
-        <div className=" h-[50vh] overflow-y-auto pb-2 scrollbar-hidden">
+        {/* Scrollable Country List */}
+        <div className="h-full overflow-y-auto scrollbar-hidden">
           <div className="space-y-3">
             {loading ? (
               <div className="flex justify-center items-center h-[200px]">
@@ -185,21 +191,15 @@ const SelectCountry = () => {
         </div>
       </div>
 
-      {/* Footer Buttons */}
-      <div className="pt-4 flex flex-col justify-center items-center gap-4">
-        <button
-          className={`order-1 w-full sm:order-2 py-3 px-4 rounded-md font-medium text-[14px] text-white transition-colors ${
-            selectedCountry
-              ? "bg-[#2D65F2] hover:bg-[#2D65F2]/90"
-              : "bg-[#2D65F2]/50 cursor-not-allowed"
-          }`}
-          disabled={!selectedCountry || disabled}
+      {/* Footer - Fixed at the Bottom */}
+      <div className=" flex flex-col  justify-center items-center gap-4 flex-none">
+        <NextStepButton
           onClick={handleNext}
-        >
-          Next Step
-        </button>
+          disabled={!selectedCountry || disabled}
+        />
       </div>
-      <NotCompatibilityDialog title="can’t find my country" />
+
+      <NotCompatibilityDialog title="Can’t Find My Country" />
     </main>
   );
 };

@@ -35,19 +35,19 @@ export const AccurateSlider = ({
       {/* Slider */}
       <div className="mx-auto mt-5 w-full max-w-full sm:max-w-[610px]">
         {/* Top Labels */}
-        <div className="flex justify-between text-sm">
-          <span className="text-[10px] sm:text-[12px] font-medium text-black">
+        <div className="flex w-full relative">
+          <span className="absolute -left-3 transform -translate-x-1/2 text-[10px] sm:text-[12px] font-medium text-black">
             10
           </span>
           <span
-            className={`text-[10px] sm:text-[12px] font-medium ${
+            className={`absolute left-[50%] transform -translate-x-1/2 text-[10px] sm:text-[12px] font-medium ${
               value >= 100 ? "text-black" : "text-[#999]"
             }`}
           >
             100
           </span>
           <span
-            className={`text-[10px] sm:text-[12px] font-medium ${
+            className={`absolute -right-5 transform translate-x-1/2 text-[10px] sm:text-[12px] font-medium ${
               value >= 200 ? "text-black" : "text-[#999]"
             }`}
           >
@@ -56,22 +56,35 @@ export const AccurateSlider = ({
         </div>
 
         {/* Slider Container */}
-        <div className="relative h-[32px] my-2">
+        <div className="relative h-[32px] my-6">
           {/* Track */}
           <div className="absolute top-1/2 z-10 h-[12px] w-full -translate-y-1/2 transform rounded-full bg-[#F6F6F6]"></div>
 
           {/* Dots */}
-          {[50, 100, 150, 200].map((dotValue) => (
-            <div
-              key={dotValue}
-              className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
-              style={{ left: `${((dotValue - 10) / 190) * 100}%` }}
-            ></div>
-          ))}
+          <div
+            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            style={{ left: "0%" }}
+          ></div>
+          <div
+            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            style={{ left: "25%" }}
+          ></div>
+          <div
+            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            style={{ left: "50%" }}
+          ></div>
+          <div
+            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            style={{ left: "75%" }}
+          ></div>
+          <div
+            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            style={{ left: "100%" }}
+          ></div>
 
           {/* Progress (filled with #0336BC) */}
           <div
-            className="absolute top-1/2 z-30 h-3 -translate-y-1/2 rounded-full"
+            className="absolute top-1/2 z-30 h-3 left-0 -translate-y-1/2 rounded-full"
             style={{
               width: `${getPercentage(value)}%`,
               backgroundColor: "#0336BC",
@@ -111,40 +124,26 @@ export const AccurateSlider = ({
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Discount Labels (without the gradient) */}
-      {/* <div className="flex w-full relative mt-[2px] text-sm text-gray-500">
-        <span className="text-[12px] font-medium text-black">Price</span>
-        <span
-          className={`text-[12px] font-medium ml-[67px] ${
-            value >= 50 ? "text-black" : "text-[#999]"
-          }`}
-        >
-          -5%
-        </span>
-        <span
-          className={`text-[12px] font-medium ml-[67px] ${
-            value >= 100 ? "text-black" : "text-[#999]"
-          }`}
-        >
-          -10%
-        </span>
-        <span
-          className={`text-[12px] font-medium ml-[67px] ${
-            value >= 150 ? "text-black" : "text-[#999]"
-          }`}
-        >
-          -18%
-        </span>
-        <span
-          className={`text-[12px] font-medium ml-[67px] ${
-            value >= 200 ? "text-black" : "text-[#999]"
-          }`}
-        >
-          -30%
-        </span>
-      </div> */}
+        {/* Discount Levels */}
+        <div className="flex w-full relative mt-1 mb-3">
+          <span className="absolute left-0 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
+            0%
+          </span>
+          <span className="absolute left-[21%] transform -translate-x-1/2 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
+            5%
+          </span>
+          <span className="absolute left-[50%] transform -translate-x-1/2 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
+            10%
+          </span>
+          <span className="absolute left-[76%] transform -translate-x-1/2 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
+            18%
+          </span>
+          <span className="absolute right-0 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
+            30%
+          </span>
+        </div>
+      </div>
 
       {/* Cross-browser slider styling */}
       <style jsx global>{`
