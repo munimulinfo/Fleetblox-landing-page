@@ -32,9 +32,15 @@ const VirtualCard: React.FC<CardProps> = ({
           {/* left side */}
           <div className="flex flex-col items-start bg-white px-[20px] pb-[20px] max-w-[380px] w-full pt-[70px] font-openSans">
             <Image className="" src={icon} alt="icon" />
-            <h1 className="text-[28px] font-bold text-[#04082C] font-montserrat leading-[1.1] mb-4 mt-[10px]">
-              {title}
-            </h1>
+            {title === "Remote Management" ? (
+              <h1 className="text-[28px] font-bold text-[#04082C] font-montserrat leading-[1.1] mb-4 mt-[10px]">
+                Remote <br /> Management
+              </h1>
+            ) : (
+              <h1 className="text-[28px] font-bold text-[#04082C] font-montserrat leading-[1.1] mb-4 mt-[10px]">
+                {title}
+              </h1>
+            )}
             <p className="text-[14px] font-openSans font-normal leading-[20px] text-[#333] mb-[30px]">
               {description}
             </p>
