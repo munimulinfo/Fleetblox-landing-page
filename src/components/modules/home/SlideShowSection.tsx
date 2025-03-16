@@ -279,7 +279,7 @@ export default function HorizontalStackSlideshow() {
         </div>
 
         {/* Mobile View */}
-        <div className="lg:hidden flex flex-col items-center justify-center w-full px-4">
+        <div className="lg:hidden flex flex-col items-center justify-center w-full">
           {slides.slice(0, 2).map((slide, index) => (
             <div
               key={index}

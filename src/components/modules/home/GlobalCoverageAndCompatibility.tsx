@@ -76,8 +76,8 @@ const GlobalCoverageAndCompatibility = () => {
       {/* <Container> */}
       <section>
         <div className="z-[100] mx-auto max-w-[1300px] lg:w-[1000px] 2xl:w-[1300px] space-y-[20px] overflow-hidden">
-          <div className="relative z-[1000] space-y-[20px]">
-            <h1 className="font-montserrat text-[#04082C] text-[36px] md:text-[36px] font-bold max-w-[800px] w-full mx-auto text-center">
+          <div className="relative z-[1000] space-y-[20px] px-5">
+            <h1 className="font-montserrat text-[#04082C] text-[28px] md:text-[36px] font-bold max-w-[800px] w-full mx-auto text-center">
               Global Coverage and Compatibility- Expands Your Fleet’s Reach
             </h1>
             <div className="z-[100] flex items-center justify-center">

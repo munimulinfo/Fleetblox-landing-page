@@ -56,6 +56,7 @@ const WorkforceManageSection = () => {
                 alt="image"
                 width={720}
                 height={500}
+                quality={100}
                 className="object-cover w-full h-auto"
               />
             </div>

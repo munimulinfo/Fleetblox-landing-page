@@ -9,7 +9,7 @@ import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import Link from "next/link";
 const StatsSection = () => {
   return (
-    <section className="py-[60px] flex flex-col items-center justify-center mx-auto max-w-[1200px] px-4">
+    <section className="py-[60px] flex flex-col items-center justify-center mx-auto max-w-[1200px] px-5">
       {/* counter component */}
       <div className="flex flex-col lg:flex-row justify-center gap-20 py-[30px] mb-[60px]">
         <div className="text-center flex flex-col items-center">
@@ -116,7 +116,7 @@ const StatsSection = () => {
       </div>
 
       {/* Mobile View */}
-      <div className="flex md:hidden lg:hidden  p-4  mx-auto max-w-7xl    flex-col md:flex-row lg:flex-row">
+      <div className="flex md:hidden lg:hidden mx-auto max-w-7xl  flex-col md:flex-row lg:flex-row">
         <div>
           <div className="flex flex-col items-center justify-center">
             <h1 className="text-[#04082C] text-[28px] text-center font-bold mb-5 font-montserrat leading-[1.1]">
@@ -130,8 +130,7 @@ const StatsSection = () => {
               />
             </div>
           </div>
-
-          <div className="pt-10">
+          <div className="pt-10 ">
             <div className="flex gap-[16px] mb-[30px]">
               <NavigationIcon />
               <div className=" text-[14px] leading-5 ">
