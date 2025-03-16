@@ -75,30 +75,8 @@ const Sidebar = () => {
             <Stepper steps={sidebarSteps} currentStep={currentStep} />
           </nav>
         </div>
-        <div className="mt-8 flex justify-between">
-          {/* <Button
-            variant="outline"
-            onClick={handlePrevious}
-            disabled={currentStep === 0}
-          >
-            Previous
-          </Button>
-          <Button
-            onClick={handleNext}
-            disabled={currentStep === sidebarSteps.length - 1}
-          >
-            Next
-          </Button> */}
-        </div>
+        <div className="mt-8 flex justify-between"></div>
       </aside>
-
-      {/* Overlay for mobile when sidebar is open */}
-      {/* {isSidebarOpen && isMobile && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
-          onClick={() => setIsSidebarOpen(false)}
-        />
-      )} */}
     </>
   );
 };

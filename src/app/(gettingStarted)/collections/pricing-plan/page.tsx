@@ -57,7 +57,7 @@ const PricingPlan = () => {
     const fetchPlans = async () => {
       try {
         const response = await fetch(
-          "https://backend.illama360.com/api/subscription/plans"
+          "https://api.fleetblox.com/api/subscription/plans"
         );
         if (!response.ok) throw new Error("Failed to fetch plans");
         const data = await response.json();
@@ -252,10 +252,9 @@ const PricingPlan = () => {
                     </div>
 
                     {/* Dynamic discount message based on slot count */}
-                    <div className="mt-1 space-y-1">
+                    <div className="flex ">
                       {slotCount >= 50 && (
-                        <p className="text-[#2D65F2] font-openSans text-[13px] font-semibold flex items-center">
-                          <span className="w-2 h-2 rounded-full bg-[#2D65F2] mr-1.5 inline-block"></span>
+                        <p className="text-[#04082C] font-openSans text-[14px] leading-[155%]  font-semibold flex items-center">
                           {slotCount >= 200
                             ? "30%"
                             : slotCount >= 150
@@ -263,26 +262,25 @@ const PricingPlan = () => {
                             : slotCount >= 100
                             ? "10%"
                             : "5%"}{" "}
-                          volume discount
+                          discount {billAnnually && "+"}
                         </p>
                       )}
 
                       {billAnnually && (
-                        <p className="text-[#2D65F2] font-openSans text-[13px] font-semibold flex items-center">
-                          <span className="w-2 h-2 rounded-full bg-[#2D65F2] mr-1.5 inline-block"></span>
-                          15% annual billing discount
+                        <p className="text-[#04082C] font-openSans text-[14px] leading-[155%] font-semibold flex items-center">
+                          {""} 15% annual discount
                         </p>
                       )}
                     </div>
 
                     {/* Show original price for comparison */}
-                    {(slotCount >= 50 || billAnnually) && (
+                    {/* {(slotCount >= 50 || billAnnually) && (
                       <div className="mt-2">
                         <p className="text-[#999] text-[12px] font-openSans line-through">
                           ${plan?.price.toFixed(2)}/month per slot
                         </p>
                       </div>
-                    )}
+                    )} */}
                   </div>
                 )}
                 <ul className="mt-6 space-y-2">
@@ -320,7 +318,7 @@ const PricingPlan = () => {
                             JSON.stringify(planData)
                           );
                           console.log("Plan saved to localStorage:", planData);
-                          setCurrentStep(currentStep + 1);
+                          setCurrentStep(2);
                           router.push("/collections/checkout");
                         } catch (error) {
                           console.error(

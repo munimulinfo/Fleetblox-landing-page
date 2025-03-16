@@ -20,7 +20,7 @@ const NotCompatibilityDialog = ({ title }: { title: string }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="py-3 w-full text-[14px] font-semibold text-[#7D7D7D]">
+        <button className="py-3 w-full font-openSans text-[14px] font-bold text-[#7D7D7D]">
           {title}
         </button>
       </DialogTrigger>

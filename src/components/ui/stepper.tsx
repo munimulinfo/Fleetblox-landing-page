@@ -51,7 +51,11 @@ export function Stepper({ steps, currentStep }: StepperProps) {
                   <p
                     className={cn(
                       "text-sm font-bold leading-none",
-                      isDisabled ? "text-[#FFFFFF] opacity-50" : "text-white"
+                      isCompleted
+                        ? "text-white/60"
+                        : isDisabled
+                        ? "text-white opacity-50"
+                        : "text-white"
                     )}
                   >
                     {step.title}
@@ -59,7 +63,11 @@ export function Stepper({ steps, currentStep }: StepperProps) {
                   <p
                     className={cn(
                       "text-xs leading-none mt-2",
-                      isDisabled ? "text-white opacity-50" : "text-white"
+                      isCompleted
+                        ? "text-white/60"
+                        : isDisabled
+                        ? "text-white opacity-50"
+                        : "text-white"
                     )}
                   >
                     {step.description}
