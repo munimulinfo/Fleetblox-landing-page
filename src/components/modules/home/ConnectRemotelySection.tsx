@@ -40,20 +40,17 @@ const ConnectRemotelySection = () => {
           </section>
 
           {/* Video Section */}
-          <section className=" my-8 md:my-10 border border-[#DFDFDF] h-[250px] xs:h-[280px] sm:h-[350px] md:h-[425px] rounded-[24px] bg-white overflow-hidden">
-            <div className="relative w-full h-full">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src="/videos/connect-remotely.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+          <section className=" border-[#DFDFDF] border relative my-8 md:my-10 h-[290px] lg:h-[416px] w-full rounded-[24px] bg-white overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="absolute inset-0 w-full h-full object-cover lg:object-fill"
+            >
+              <source src="/videos/connect-remotely.mp4" type="video/mp4" />
+            </video>
           </section>
 
           {/* <div className=" flex md:hidden lg:hidden justify-center w-full"> */}
