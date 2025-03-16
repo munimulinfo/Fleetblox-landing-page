@@ -105,7 +105,7 @@ const VIN = () => {
 
     try {
       const response = await fetch(
-        `https://backend.illama360.com/api/dummy/compatibility-bulk?vin=${vinList.join(
+        `https://api.fleetblox.com/api/dummy/compatibility-bulk?vin=${vinList.join(
           ","
         )}&country=${selectedCountry}`
       );

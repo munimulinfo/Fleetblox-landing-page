@@ -36,7 +36,7 @@ export const AccurateSlider = ({
       <div className="mx-auto mt-5 w-full max-w-full sm:max-w-[610px]">
         {/* Top Labels */}
         <div className="flex w-full relative">
-          <span className="absolute -left-3 transform -translate-x-1/2 text-[10px] sm:text-[12px] font-medium text-black">
+          <span className="absolute -left-2 transform -translate-x-1/2 text-[10px] sm:text-[12px] font-medium text-black">
             10
           </span>
           <span
@@ -47,7 +47,7 @@ export const AccurateSlider = ({
             100
           </span>
           <span
-            className={`absolute -right-5 transform translate-x-1/2 text-[10px] sm:text-[12px] font-medium ${
+            className={`absolute -right-1 transform translate-x-1/2 text-[10px] sm:text-[12px] font-medium ${
               value >= 200 ? "text-black" : "text-[#999]"
             }`}
           >
@@ -109,7 +109,7 @@ export const AccurateSlider = ({
 
           {/* Custom Handle (using #2D65F2) */}
           <div
-            className="pointer-events-none absolute top-1/2 z-40 h-[20px] w-[24px] sm:h-[24px] sm:w-[32px] -translate-y-1/2 transform rounded-md border-2 border-white shadow-md"
+            className="pointer-events-none absolute top-1/2 z-40 h-[24px] w-[30px] sm:h-[24px] sm:w-[32px] -translate-y-1/2 transform rounded-md border-2 border-white shadow-md"
             style={{
               left: `${getPercentage(value)}%`,
               transform: "translate(-50%, -50%)",
@@ -118,9 +118,9 @@ export const AccurateSlider = ({
             }}
           >
             {/* Double Chevron Icon */}
-            <div className="flex h-full w-full items-center justify-center p-1 text-white">
-              <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" />
-              <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
+            <div className="flex h-full w-full items-center justify-center px-0.5 text-white">
+              <ChevronLeft className="w-5 h-5 sm:w-4 sm:h-4" />
+              <ChevronRight className="w-5 h-5 sm:w-4 sm:h-4" />
             </div>
           </div>
         </div>

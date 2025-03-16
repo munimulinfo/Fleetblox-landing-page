@@ -54,7 +54,7 @@ const ModelSelector = ({ params }: any) => {
 
         // First fetch all countries to get the flag info
         const countriesResponse = await axios.get(
-          "https://backend.illama360.com/api/utils/all-countries"
+          "https://api.fleetblox.com/api/utils/all-countries"
         );
 
         // Find the selected country in the list
@@ -69,7 +69,7 @@ const ModelSelector = ({ params }: any) => {
 
         // Now fetch the brand data
         const { data } = await axios.get(
-          `https://backend.illama360.com/api/dummy/check-compatibility-matrix?region=${
+          `https://api.fleetblox.com/api/dummy/check-compatibility-matrix?region=${
             countrySelect || "US"
           }`
         );
@@ -230,7 +230,7 @@ const ModelSelector = ({ params }: any) => {
         </div>
 
         <div className="text-center mb-6">
-          <h2 className="font-bold text-2xl sm:text-[28px] font-openSans text-[#04082C] mb-2">
+          <h2 className="font-bold text-[20px] sm:text-[28px] font-openSans text-[#04082C] ">
             Select Your Vehicle Models
           </h2>
           <p className="font-openSans text-base text-[#7D7D7D] mx-auto ">

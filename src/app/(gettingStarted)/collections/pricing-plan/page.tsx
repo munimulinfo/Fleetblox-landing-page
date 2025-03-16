@@ -57,7 +57,7 @@ const PricingPlan = () => {
     const fetchPlans = async () => {
       try {
         const response = await fetch(
-          "https://backend.illama360.com/api/subscription/plans"
+          "https://api.fleetblox.com/api/subscription/plans"
         );
         if (!response.ok) throw new Error("Failed to fetch plans");
         const data = await response.json();
@@ -262,7 +262,7 @@ const PricingPlan = () => {
                             : slotCount >= 100
                             ? "10%"
                             : "5%"}{" "}
-                          discount +
+                          discount {billAnnually && "+"}
                         </p>
                       )}
 
@@ -274,13 +274,13 @@ const PricingPlan = () => {
                     </div>
 
                     {/* Show original price for comparison */}
-                    {(slotCount >= 50 || billAnnually) && (
+                    {/* {(slotCount >= 50 || billAnnually) && (
                       <div className="mt-2">
                         <p className="text-[#999] text-[12px] font-openSans line-through">
                           ${plan?.price.toFixed(2)}/month per slot
                         </p>
                       </div>
-                    )}
+                    )} */}
                   </div>
                 )}
                 <ul className="mt-6 space-y-2">
@@ -318,7 +318,7 @@ const PricingPlan = () => {
                             JSON.stringify(planData)
                           );
                           console.log("Plan saved to localStorage:", planData);
-                          setCurrentStep(currentStep + 1);
+                          setCurrentStep(2);
                           router.push("/collections/checkout");
                         } catch (error) {
                           console.error(

@@ -39,7 +39,7 @@ const SelectCountry = () => {
       try {
         setLoading(true);
         const countries = await fetch(
-          "https://backend.illama360.com/api/utils/all-countries"
+          "https://api.fleetblox.com/api/utils/all-countries"
         );
         const response = await countries.json();
         setCountries(response.data);
