@@ -126,7 +126,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* solutions */}
-              <div className="cursor-pointer text-[14px] leading-5">
+              <div className="cursor-pointer text-[14px] leading-5 max-w-[240px] lg:w-[240px] w-full">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Solutions
                 </h5>
