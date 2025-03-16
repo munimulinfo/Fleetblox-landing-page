@@ -30,6 +30,7 @@ const AiSupportSection = () => {
               alt="ai support img"
               width={540}
               height={300}
+              quality={100}
             />
             {/* Blue blur effect for large devices */}
             <div className="absolute left-1/2 top-1/2 hidden lg:block -translate-x-1/2 -translate-y-1/2 max-w-[410px]  lg:w-[410px] max-h-[237px]  lg:h-[237px] opacity-50 rounded-[410px] bg-[#2D65F2] blur-[106px] z-[10]"></div>
@@ -51,7 +52,7 @@ const AiSupportSection = () => {
               </div>
             </div>
           </div>
-          <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
+          <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
             Learn More
           </button>
         </section>
