@@ -40,50 +40,63 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed left-0 right-0 top-0 z-[9999] transition-all duration-200 ease-in-out py-[18px] ${
+      className={`fixed left-0 right-0 top-0 z-[9999] mt-5 transition-all duration-200 ease-in-out py-[16px] px-[20px] rounded-[10px] mx-auto  w-full max-w-[1440px] ${
         isScrolled || mobileMenuOpen
-          ? "bg-white shadow-md shadow-black/10"
+          ? "bg-white shadow-md shadow-black/10 "
           : "bg-transparent"
       }`}
+      style={
+        isScrolled ? { boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.14)" } : {}
+      }
     >
-      <div className="mx-auto flex w-full max-w-[1440px] items-center px-4">
+      <div className="flex items-center">
         <div className="flex justify-between items-center w-full">
-          <div className="py-[10px]">
+          <div className="flex items-center gap-10">
             <Link href="/">
               <Image src={Logo} alt="logo" className="h-[26px] w-[150px] " />
             </Link>
+            <div className="flex items-center gap-[5px] text-[#04082C]">
+              <div className="flex cursor-pointer items-center py-[10px] px-3 gap-[2px] text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
+                <h1>Products</h1>
+                <div className="mt-[3px] flex items-center justify-center">
+                  <ChevronDown size={18} />
+                </div>
+              </div>
+              <div className="flex cursor-pointer items-center py-[10px] px-3 gap-[2px] text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
+                <h1>Solutions</h1>
+                <div className="mt-[3px] flex items-center justify-center">
+                  <ChevronDown size={18} />
+                </div>
+              </div>
+              <div className="flex cursor-pointer items-center gap-[2px] py-[10px] px-3 text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
+                <h1>Resources</h1>
+                <div className="mt-[3px] flex items-center justify-center">
+                  <ChevronDown size={18} />
+                </div>
+              </div>
+              <Link
+                href="/pricings"
+                className={`cursor-pointer text-[16px] font-semibold py-[10px] px-3 transition-all duration-300 ease-in-out text-[#04082C] hover:text-[#7D7D7D]  font-openSans  ${
+                  pathname === "/pricings" ? "text-ti_grey" : ""
+                }`}
+              >
+                Pricings
+              </Link>
+            </div>
           </div>
           {/* Desktop Menu */}
           <div className="hidden md:flex text-[#04082C] text-[14px] font-semibold items-center gap-[20px]">
-            {/* <div className="flex cursor-pointer items-center gap-[5px] text-[16px] font-openSans transition-all duration-300 ease-in-out hover:text-ti_grey">
-              <h1>Solutions</h1>
-              <div className="mt-[3px] flex items-center justify-center p-[5px]">
-                <ChevronDown size={16} />
-              </div>
-            </div> */}
             <Link
-              href="/pricings"
-              className={`cursor-pointer text-[16px] transition-all duration-300 ease-in-out hover:text-ti_grey  font-openSans  ${
-                pathname === "/pricings" ? "text-ti_grey" : ""
-              }`}
+              href="#"
+              className={`cursor-pointer text-[16px] transition-all duration-300 ease-in-out hover:text-[#7D7D7D0] py-[10px] px-5 text-[#04082C]  font-openSans`}
             >
-              Pricings
+              Request Demo
             </Link>
-            {/* <Link
-              href="/contact"
-              className={`cursor-pointer text-[16px] transition-all  font-openSans  duration-300 ease-in-out hover:text-ti_grey ${
-                pathname === "/contact" ? "text-ti_grey" : ""
-              }`}
-            >
-              Contact
-            </Link> */}
-            {isScrolled && (
-              <Link href="/getting-started">
-                <button className="py-[10px] px-4 rounded-lg font-openSans bg-[#2D65F2] text-[#fff]">
-                  Get Started
-                </button>
-              </Link>
-            )}
+            <Link href="/getting-started">
+              <button className="py-[10px] px-4 rounded-lg font-openSans bg-[#2D65F2] text-[#fff]">
+                Get Started
+              </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
