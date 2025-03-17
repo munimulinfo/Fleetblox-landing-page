@@ -21,6 +21,7 @@ import Loader from "../../components/Loader";
 import { AxiosErrorResponse } from "@/interface/AxiosErrorResponse";
 
 interface PlanType {
+  id?: string;
   price?: number;
   slot?: number;
   fleet?: string;
@@ -122,6 +123,8 @@ const Page = () => {
     }
   };
 
+  console.log(selectedPlan, "selectedPlan");
+
   useEffect(() => {
     if (countries?.length && country) {
       const selectedCountryFetch = countries.find((c) => c.country === country);
@@ -138,7 +141,7 @@ const Page = () => {
   const submitData = {
     email: formData.email,
     fullName: formData.fullName,
-    planId: "cm4vhz3pu0001oniuypx7p2uh",
+    planId: selectedPlan?.id,
     phone: contactNumber,
     isFromPreLunching: true,
     successUrl: "https://fleetblox.com/result/paymentSuccess",

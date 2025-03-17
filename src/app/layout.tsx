@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import "../styles/globals.css";
 import ClientSideInitialization from "./ClientSideInitialization";
 
+import { Toaster } from "react-hot-toast";
+
 export const metadata: Metadata = {
   title: {
     template: "FleetBlox",
@@ -74,7 +76,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased bg-white`}>
-        <ClientSideInitialization>{children}</ClientSideInitialization>
+        <ClientSideInitialization>
+          {children}
+          <Toaster />
+        </ClientSideInitialization>
       </body>
     </html>
   );
