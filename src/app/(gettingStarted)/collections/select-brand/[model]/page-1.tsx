@@ -257,7 +257,9 @@ const ModelSelector = ({ params }: any) => {
       </div>
 
       {/* Scrollable Content Area - Takes remaining space */}
+
       <div className="flex-grow h-[40vh] overflow-y-auto border border-[#DFDFDF] scrollbar-hidden rounded-[16px] p-5">
+
         {selectedCountryObj && (
           <div className="flex items-center mb-4">
             <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-4 border border-gray-300">
