@@ -14,6 +14,7 @@ import {
 import Logo from "../../../../public/images/logo.svg";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { Product } from "@/components/modules/navbar/Product";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -56,12 +57,8 @@ const Navbar = () => {
               <Image src={Logo} alt="logo" className="h-[26px] w-[150px] " />
             </Link>
             <div className="flex items-center gap-[5px] text-[#04082C]">
-              <div className="flex cursor-pointer items-center py-[10px] px-3 gap-[2px] text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
-                <h1>Products</h1>
-                <div className="mt-[3px] flex items-center justify-center">
-                  <ChevronDown size={18} />
-                </div>
-              </div>
+              {/* product subpage */}
+              <Product />
               <div className="flex cursor-pointer items-center py-[10px] px-3 gap-[2px] text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
                 <h1>Solutions</h1>
                 <div className="mt-[3px] flex items-center justify-center">
