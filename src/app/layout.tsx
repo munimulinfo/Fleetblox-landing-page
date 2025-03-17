@@ -75,6 +75,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/*  */}
+      <head>
+        <meta
+          name="google-site-verification"
+          content="google169616886a9e10d5"
+        />
+      </head>
       <body className={`antialiased bg-white`}>
         <ClientSideInitialization>
           {children}
