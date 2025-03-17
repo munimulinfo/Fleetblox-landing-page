@@ -1,14 +1,16 @@
 import { Metadata } from "next";
 import "../styles/globals.css";
 import ClientSideInitialization from "./ClientSideInitialization";
-
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.fleetblox.com"),
   title: {
-    template: "FleetBlox",
+    template: `&s | FleetBlox`,
     default: "FleetBlox", // Default title
   },
+
   description:
     "🚗 Fleetblox Cloud Garage is compatible with 43 car makes, seamlessly connecting to over 177 million vehicles through a single platform. 🌍 With global coverage across North America and Europe, our advanced AI-driven solution 🤖 optimizes fleet management, ensuring maximum operational efficiency ⚙️ and streamlined performance—all in one powerful platform.",
   keywords: [
@@ -61,6 +63,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  verification: {
+    google: "G-google169616886a9e10d5",
+    yandex: "1234567890123456",
+  },
   twitter: {
     title: "AI-POWERED FLEET MANAGEMENT",
     description:
@@ -76,16 +82,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/*  */}
-      <head>
-        <meta
-          name="google-site-verification"
-          content="google169616886a9e10d5"
-        />
-      </head>
+
       <body className={`antialiased bg-white`}>
         <ClientSideInitialization>
           {children}
           <Toaster />
+          <GoogleAnalytics gaId="G-85PZXPJ466" />
+          <GoogleTagManager gtmId="GTM-PQR3ZRTJ" />
         </ClientSideInitialization>
       </body>
     </html>
