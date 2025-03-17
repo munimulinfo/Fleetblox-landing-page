@@ -2,20 +2,14 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ChevronDown,
-  Menu,
-  X,
-  Home,
-  DollarSign,
-  PhoneCall,
-  Layers,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Logo from "../../../../public/images/logo.svg";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Product } from "@/components/modules/navbar/Product";
 import { Solutions } from "@/components/modules/navbar/Solutions";
+import { Resources } from "@/components/modules/navbar/Resources";
+import NavbarMobileView from "@/components/modules/navbar/NavbarMobileView";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -42,39 +36,31 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed left-0 right-0 top-0 z-[9999] mt-5 transition-all duration-200 ease-in-out py-[16px] px-[20px] rounded-[10px] mx-auto  w-full max-w-[1440px] ${
-        isScrolled || mobileMenuOpen
-          ? "bg-white shadow-md shadow-black/10 "
-          : "bg-transparent"
+      className={`fixed left-0 right-0 top-0 z-[9999] md:mt-5 mt-0 transition-all duration-200 ease-in-out py-[18px] md:py-[16px] px-[20px] md:rounded-[10px] mx-auto w-full max-w-[1440px] ${
+        isScrolled || mobileMenuOpen ? "bg-white" : "bg-transparent"
       }`}
       style={
-        isScrolled ? { boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.14)" } : {}
+        isScrolled
+          ? { boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.14)" }
+          : mobileMenuOpen
+          ? { boxShadow: "0px 2px 5px 0px rgba(0, 0, 0, 0.05)" }
+          : {}
       }
     >
       <div className="flex items-center">
         <div className="flex justify-between items-center w-full">
+          {/* Desktop Menu */}
           <div className="flex items-center gap-10">
             <Link href="/">
               <Image src={Logo} alt="logo" className="h-[26px] w-[150px] " />
             </Link>
-            <div className="flex items-center gap-[5px] text-[#04082C]">
+            <div className="hidden lg:flex items-center gap-[5px] text-[#04082C]">
               {/* product subpage */}
               <Product />
               {/* Solutions subpage */}
               <Solutions />
-
-              {/* <div className="flex cursor-pointer items-center py-[10px] px-3 gap-[2px] text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
-                <h1>Solutions</h1>
-                <div className="mt-[3px] flex items-center justify-center">
-                  <ChevronDown size={18} />
-                </div>
-              </div> */}
-              <div className="flex cursor-pointer items-center gap-[2px] py-[10px] px-3 text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
-                <h1>Resources</h1>
-                <div className="mt-[3px] flex items-center justify-center">
-                  <ChevronDown size={18} />
-                </div>
-              </div>
+              {/* Resources subpage */}
+              <Resources />
               <Link
                 href="/pricings"
                 className={`cursor-pointer text-[16px] font-semibold py-[10px] px-3 transition-all duration-300 ease-in-out text-[#04082C] hover:text-[#7D7D7D]  font-openSans  ${
@@ -85,7 +71,7 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          {/* Desktop Menu */}
+
           <div className="hidden md:flex text-[#04082C] text-[14px] font-semibold items-center gap-[20px]">
             <Link
               href="#"
@@ -99,6 +85,7 @@ const Navbar = () => {
               </button>
             </Link>
           </div>
+          {/* Desktop Menu end */}
 
           {/* Mobile Menu Button */}
           <button
@@ -134,89 +121,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden absolute top-[62px] left-0 right-0 bg-white z-[1000] shadow-lg"
-          >
-            <div className="flex flex-col px-4 py-3">
-              <Link
-                href="/"
-                className={`flex items-center gap-2 py-3 px-2 rounded-md ${
-                  pathname === "/"
-                    ? "bg-blue-50 text-blue-600"
-                    : "text-[#04082C]"
-                }`}
-              >
-                <Home size={18} />
-                <span className="text-[16px] font-medium">Home</span>
-              </Link>
-
-              <motion.div
-                className="relative"
-                initial={false}
-                animate={{ height: "auto" }}
-              >
-                <div
-                  className={`flex items-center justify-between gap-2 py-3 px-2 rounded-md cursor-pointer text-[#04082C]`}
-                >
-                  <div className="flex items-center gap-2">
-                    <Layers size={18} />
-                    <span className="text-[16px] font-medium">Solutions</span>
-                  </div>
-                  <ChevronDown size={16} />
-                </div>
-                <div className="ml-8 pl-2 border-l border-gray-200">
-                  <Link
-                    href="/solution-1"
-                    className="block py-2 text-[14px] text-gray-600 hover:text-blue-600"
-                  >
-                    Fleet Management
-                  </Link>
-                  <Link
-                    href="/solution-2"
-                    className="block py-2 text-[14px] text-gray-600 hover:text-blue-600"
-                  >
-                    EV Management
-                  </Link>
-                  <Link
-                    href="/solution-3"
-                    className="block py-2 text-[14px] text-gray-600 hover:text-blue-600"
-                  >
-                    Maintenance Tracking
-                  </Link>
-                </div>
-              </motion.div>
-
-              <Link
-                href="/pricings"
-                className={`flex items-center gap-2 py-3 px-2 rounded-md ${
-                  pathname === "/pricings"
-                    ? "bg-blue-50 text-blue-600"
-                    : "text-[#04082C]"
-                }`}
-              >
-                <DollarSign size={18} />
-                <span className="text-[16px] font-medium">Pricings</span>
-              </Link>
-
-              <Link
-                href="/contact"
-                className={`flex items-center gap-2 py-3 px-2 rounded-md ${
-                  pathname === "/contact"
-                    ? "bg-blue-50 text-blue-600"
-                    : "text-[#04082C]"
-                }`}
-              >
-                <PhoneCall size={18} />
-                <span className="text-[16px] font-medium">Contact</span>
-              </Link>
-            </div>
-          </motion.div>
-        )}
+        {mobileMenuOpen && <NavbarMobileView />}
       </AnimatePresence>
     </div>
   );
