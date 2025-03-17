@@ -172,7 +172,7 @@ const VIN = () => {
             </div>
 
             <div className="mb-8 text-center">
-              <h2 className="font-bold text-[24px] sm:text-[28px] font-openSans text-[#04082C] ">
+              <h2 className="font-bold text-[20px] sm:text-[28px] font-openSans text-[#04082C] ">
                 Enter Your Vehicles’ VIN
               </h2>
               <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
