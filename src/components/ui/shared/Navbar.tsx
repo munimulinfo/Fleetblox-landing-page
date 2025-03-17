@@ -15,6 +15,7 @@ import Logo from "../../../../public/images/logo.svg";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Product } from "@/components/modules/navbar/Product";
+import { Solutions } from "@/components/modules/navbar/Solutions";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -59,12 +60,15 @@ const Navbar = () => {
             <div className="flex items-center gap-[5px] text-[#04082C]">
               {/* product subpage */}
               <Product />
-              <div className="flex cursor-pointer items-center py-[10px] px-3 gap-[2px] text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
+              {/* Solutions subpage */}
+              <Solutions />
+
+              {/* <div className="flex cursor-pointer items-center py-[10px] px-3 gap-[2px] text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
                 <h1>Solutions</h1>
                 <div className="mt-[3px] flex items-center justify-center">
                   <ChevronDown size={18} />
                 </div>
-              </div>
+              </div> */}
               <div className="flex cursor-pointer items-center gap-[2px] py-[10px] px-3 text-[16px] font-openSans font-semibold leading-6 transition-all duration-300 ease-in-out hover:text-[#7D7D7D]">
                 <h1>Resources</h1>
                 <div className="mt-[3px] flex items-center justify-center">
