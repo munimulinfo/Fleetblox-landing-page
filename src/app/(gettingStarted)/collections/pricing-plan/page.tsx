@@ -45,6 +45,8 @@ const PricingPlan = () => {
   const [currentPlans, setCurrentPlans] = useState<{ data: any[] } | null>(
     null
   );
+
+  console.log(currentPlans, "checking current plans");
   const { currentStep, setCurrentStep } = useProgressUpdater();
 
   const [showUpdatePlanModal, setShowUpdatePlanModal] = useState(false);
@@ -61,6 +63,7 @@ const PricingPlan = () => {
         );
         if (!response.ok) throw new Error("Failed to fetch plans");
         const data = await response.json();
+        console.log(data, "checking data");
         setCurrentPlans(data);
       } catch (err: any) {
         setError(err.message);
@@ -207,7 +210,7 @@ const PricingPlan = () => {
               {/* Ribbon */}
               {plan && plan?.name !== "Eagle eye fleet" && (
                 <div className="absolute -top-2  -right-2 bg-[#0A2540] rounded-[4px] z-50 text-[#000] p-2">
-                  <p className="text-[12px] font-normal text-white">
+                  <p className="text-[12px] font-normal font-openSans text-white">
                     Launching Soon
                   </p>
                 </div>
@@ -309,6 +312,7 @@ const PricingPlan = () => {
                           fleet: plan?.name,
                           slot: slotCount,
                           annually: billAnnually,
+                          id: plan?.id,
                         };
 
                         // Set it in localStorage directly
