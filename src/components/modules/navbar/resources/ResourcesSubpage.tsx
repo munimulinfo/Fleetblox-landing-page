@@ -6,27 +6,27 @@ const ResourcesSubpage = () => {
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5 border-b lg:border-none">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Learn</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Blogs
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Customer Stories
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Events
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Next Updates
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               What’s New
             </h1>
@@ -37,12 +37,12 @@ const ResourcesSubpage = () => {
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5 border-b lg:border-none">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Company</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               About
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Contact
             </h1>
@@ -53,12 +53,12 @@ const ResourcesSubpage = () => {
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Support</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Help Center
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Knowledge Base
             </h1>

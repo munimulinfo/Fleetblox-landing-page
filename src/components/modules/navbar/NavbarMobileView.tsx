@@ -5,6 +5,7 @@ import { useState } from "react";
 import ProductSubpage from "./product/ProductSubpage";
 import SolutionsSubpage from "./solutions/SolutionsSubpage";
 import ResourcesSubpage from "./resources/ResourcesSubpage";
+import TopArrow from "@/components/icons/TopArrow";
 const NavbarMobileView = () => {
   const [isProduct, setIsProduct] = useState(false);
   const [isSolutions, setIsSolutions] = useState(false);
@@ -15,7 +16,7 @@ const NavbarMobileView = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="md:hidden absolute top-[63px] left-0 right-0 bg-white z-[0] flex flex-col"
+      className="lg:hidden absolute top-[63px] left-0 right-0 bg-white z-[0] flex flex-col"
     >
       {/* Pages div - Takes up remaining space */}
       <div className="flex flex-col pb-[100px] h-[calc(100vh-170px)] overflow-y-auto bg-[#FAFAFF] scrollbar-hidden">
@@ -26,7 +27,7 @@ const NavbarMobileView = () => {
             className="flex justify-between items-center py-5  text-[#04082C] text-[18px] font-bold font-openSans px-5"
           >
             <h1>Product</h1>
-            <DownArrowNav />
+            {isProduct ? <TopArrow /> : <DownArrowNav />}
           </div>
           {isProduct && <ProductSubpage />}
         </div>
@@ -37,7 +38,7 @@ const NavbarMobileView = () => {
             className="flex justify-between items-center py-5  text-[#04082C] text-[18px] font-bold font-openSans px-5"
           >
             <h1>Solutions</h1>
-            <DownArrowNav />
+            {isSolutions ? <TopArrow /> : <DownArrowNav />}
           </div>
           {isSolutions && <SolutionsSubpage />}
         </div>
@@ -48,7 +49,7 @@ const NavbarMobileView = () => {
             className="flex justify-between items-center py-5  text-[#04082C] text-[18px] font-bold font-openSans px-5"
           >
             <h1>Resources</h1>
-            <DownArrowNav />
+            {isResources ? <TopArrow /> : <DownArrowNav />}
           </div>
           {isResources && <ResourcesSubpage />}
         </div>

@@ -3,47 +3,47 @@ import RightArrowIcon from "@/components/icons/RightArrowIcon";
 
 const ProductSubpage = () => {
   return (
-    <div className="lg:pt-[30px] pr-[30px] pl-5 lg:pl-[30px] bg-white lg:pb-[60px] grid grid-cols-1 lg:grid-cols-3 lg:gap-[60px]">
+    <div className="xl:pt-[30px] xl:pr-[30px] pl-5 xl:pl-[30px] bg-white lg:pb-[60px] grid grid-cols-1 lg:grid-cols-3 lg:gap-[60px]">
       {/* platform page */}
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5 border-b lg:border-none">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Platform</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Overview
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Connectivity
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               AI
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Monitoring
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Scalability
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Efficiency
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Fleetblox Crew
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Compliance and Safety
             </h1>
@@ -54,62 +54,62 @@ const ProductSubpage = () => {
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5 border-b lg:border-none">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Features</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Vehicle Compatibility
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Real-time Telematics
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               AI-powered Inspection
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Predictive Maintenance
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Dynamic Expense Management
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Vehicle Profiles
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               GPS Fleet Tracking
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Remote Digital Key
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Dynamic Fleet Alerts
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Advanced Team Management
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Multi-fleet Management
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               BEE - AI Chat Bot
             </h1>
@@ -131,12 +131,12 @@ const ProductSubpage = () => {
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5 ">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Subscription</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Eagle Eye Fleet
             </h1>
           </Link>
-          <Link href={"/#"}>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Dynamic Fleet
             </h1>

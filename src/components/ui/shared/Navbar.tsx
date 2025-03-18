@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed left-0 right-0 top-0 z-[9999] md:mt-5 mt-0 transition-all duration-200 ease-in-out py-[18px] md:py-[16px] px-[20px] md:rounded-[10px] mx-auto w-full max-w-[1440px] ${
+      className={`fixed left-0 right-0 top-0 z-[9999] lg:mt-5 mt-0 transition-all duration-200 ease-in-out py-[18px] md:py-[16px] px-[20px] lg:rounded-[10px] mx-auto w-full max-w-[1440px] ${
         isScrolled || mobileMenuOpen ? "bg-white" : "bg-transparent"
       }`}
       style={
@@ -72,7 +72,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="hidden md:flex text-[#04082C] text-[14px] font-semibold items-center gap-[20px]">
+          <div className="hidden lg:flex text-[#04082C] text-[14px] font-semibold items-center gap-[20px]">
             <Link
               href="#"
               className={`cursor-pointer text-[16px] transition-all duration-300 ease-in-out hover:text-[#7D7D7D0] py-[10px] px-5 text-[#04082C]  font-openSans`}
@@ -89,7 +89,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden flex items-center justify-center z-[1001]"
+            className="lg:hidden flex items-center justify-center z-[1001]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <AnimatePresence mode="wait">
