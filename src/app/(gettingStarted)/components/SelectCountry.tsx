@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
@@ -21,7 +21,7 @@ export interface Country {
 
 const SelectCountry = () => {
   const router = useRouter();
-  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [countries, setCountries] = useState<Country[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -29,9 +29,14 @@ const SelectCountry = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedCountry = localStorage.getItem("country");
-      if (savedCountry) {
-        setSelectedCountry(savedCountry);
+      const savedCountries = localStorage.getItem("countries");
+      if (savedCountries) {
+        try {
+          setSelectedCountries(JSON.parse(savedCountries));
+        } catch (e) {
+          // Handle invalid JSON
+          setSelectedCountries([]);
+        }
       }
     }
 
@@ -59,16 +64,24 @@ const SelectCountry = () => {
   );
 
   const handleCountrySelect = (country: Country) => {
-    // If the country is already selected, deselect it; otherwise select the new country
-    if (selectedCountry === country.country) {
-      setSelectedCountry(null);
-      localStorage.removeItem("country");
-      localStorage.removeItem("selectedCountry");
-    } else {
-      setSelectedCountry(country.country);
-      localStorage.setItem("country", country.country);
-    }
+    // Toggle selection: if already selected, remove it; otherwise add it
+    setSelectedCountries((prev) => {
+      if (prev.includes(country.country)) {
+        return prev.filter((c) => c !== country.country);
+      } else {
+        return [...prev, country.country];
+      }
+    });
   };
+
+  // Save selected countries to localStorage whenever the selection changes
+  useEffect(() => {
+    if (selectedCountries.length > 0) {
+      localStorage.setItem("countries", JSON.stringify(selectedCountries));
+    } else {
+      localStorage.removeItem("countries");
+    }
+  }, [selectedCountries]);
 
   const { setCustomProgress, progress, setCurrentStep } = useProgressUpdater();
 
@@ -78,26 +91,34 @@ const SelectCountry = () => {
       return;
     }
 
-    // Handle routing based on selected country
-    let countryCode;
-    if (selectedCountry) {
-      localStorage.setItem("selectedCountry", selectedCountry);
-      countryCode = getCode(selectedCountry);
-      if (countryCode === "US" || countryCode === "CA") {
-        // countryCode remains same
-      } else {
-        countryCode = "EUROPE";
-      }
+    // Store selected countries in localStorage
+    localStorage.setItem(
+      "selectedCountries",
+      JSON.stringify(selectedCountries)
+    );
+
+    // Determine routing based on countries
+    // For simplicity, we'll prioritize countries in a specific order: US, CA, then others
+    let routeCountryCode = "EUROPE"; // Default
+
+    // Check if US is selected
+    if (selectedCountries.some((country) => getCode(country) === "US")) {
+      routeCountryCode = "US";
+    }
+    // If not US but CA is selected
+    else if (selectedCountries.some((country) => getCode(country) === "CA")) {
+      routeCountryCode = "CA";
     }
 
     setCustomProgress(progress + 10);
 
-    if (countryCode === "US") {
-      router.push(`/collections/compatibility?country=${countryCode}`);
+    if (routeCountryCode === "US") {
+      router.push(`/collections/compatibility?country=${routeCountryCode}`);
     } else {
-      router.push(`/collections/select-brand?country=${countryCode}`);
+      router.push(`/collections/select-brand?country=${routeCountryCode}`);
     }
 
+    // Clear other storage items when moving forward
     localStorage.removeItem("brands");
     localStorage.removeItem("brandModels");
     localStorage.removeItem("VINS");
@@ -108,19 +129,23 @@ const SelectCountry = () => {
 
   useEffect(() => {
     setCurrentStep(0);
-    localStorage.removeItem("country");
-    localStorage.removeItem("selectedCountry");
-  }, []);
+    localStorage.removeItem("country"); // Remove the old single country format
+  }, [setCurrentStep]);
+
+  // Function to remove a country from selection
+  const removeCountry = (country: string) => {
+    setSelectedCountries((prev) => prev.filter((c) => c !== country));
+  };
 
   return (
     <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
       {/* Header - Fixed at the Top */}
       <div className="my-4 text-center flex-none">
         <h2 className="font-bold text-[20px] sm:text-[28px] font-openSans text-[#04082C] ">
-          Select Registered Country
+          Select Registered Countries
         </h2>
         <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
-          Choose the country where your fleet vehicles were originally
+          Choose the countries where your fleet vehicles were originally
           registered.
         </p>
       </div>
@@ -141,12 +166,32 @@ const SelectCountry = () => {
           </div>
         </div>
 
-        {/* Selected Country */}
-        {selectedCountry && (
+        {/* Selected Countries Chips */}
+        {selectedCountries.length > 0 && (
           <div className="my-3 mx-1">
-            <p className="font-openSans text-sm font-[600]">
-              1 country selected
+            <p className="font-openSans text-sm font-[600] mb-2">
+              {selectedCountries.length}{" "}
+              {selectedCountries.length === 1 ? "country" : "countries"}{" "}
+              selected
             </p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {selectedCountries.map((country) => (
+                <div
+                  key={country}
+                  className="px-3 py-1.5 bg-[#EEF3FD] rounded-full flex items-center gap-1.5 border border-[#B8CBFC]"
+                >
+                  <span className="text-sm font-medium text-[#2D65F2]">
+                    {country}
+                  </span>
+                  <button
+                    onClick={() => removeCountry(country)}
+                    className="text-[#2D65F2] hover:bg-[#2D65F20F] rounded-full p-0.5"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
@@ -162,7 +207,7 @@ const SelectCountry = () => {
                 <div
                   key={country.country}
                   className={`flex items-center p-4 rounded-[12px] cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
-                    selectedCountry === country.country
+                    selectedCountries.includes(country.country)
                       ? "border-[#B8CBFC] bg-[#2D65F20F]"
                       : "border-[#F7F7F7]"
                   }`}
@@ -192,14 +237,14 @@ const SelectCountry = () => {
       </div>
 
       {/* Footer - Fixed at the Bottom */}
-      <div className=" flex flex-col  justify-center items-center gap-4 flex-none">
+      <div className="flex flex-col justify-center items-center gap-4 flex-none">
         <NextStepButton
           onClick={handleNext}
-          disabled={!selectedCountry || disabled}
+          disabled={selectedCountries.length === 0 || disabled}
         />
       </div>
 
-      <NotCompatibilityDialog title="Can’t Find My Country" />
+      <NotCompatibilityDialog title="Can't Find My Country" />
     </main>
   );
 };

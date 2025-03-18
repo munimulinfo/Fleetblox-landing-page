@@ -86,10 +86,10 @@ export default function RootLayout({
         <ClientSideInitialization>
           {children}
           <Toaster />
-          <GoogleAnalytics gaId="G-85PZXPJ466" />
-          <GoogleTagManager gtmId="GTM-PQR3ZRTJ" />
         </ClientSideInitialization>
       </body>
+      <GoogleTagManager gtmId="GTM-KCWN5D9X" />
+      <GoogleAnalytics gaId="G-16BPKJV2ZY" />
     </html>
   );
 }
