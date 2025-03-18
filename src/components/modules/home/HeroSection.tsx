@@ -9,7 +9,7 @@ const HeroSection = () => {
   return (
     <section className="bg-[#FAFAFF] flex flex-col justify-center items-center z-50 overflow-hidden">
       {/* <Container> */}
-      <div className="mt-[110px] pb-3 flex flex-col items-center justify-center">
+      <div className="mt-[120px] pb-3 flex flex-col items-center justify-center">
         <div className="max-w-[840px] w-full mx-auto text-center flex flex-col items-start md:items-center px-5">
           <p className="text-[18px] md:text-[28px] lg:text-[28px] text-left md:text-center font-bold text-[#0336BC] mb-[5px]">
             Instant Fleet Connectivity

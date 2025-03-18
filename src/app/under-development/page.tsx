@@ -5,8 +5,8 @@ const page = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-[#FAFAFF] md:bg-white border">
-        <div className="h-[80vh] mt-[80px] flex flex-col items-center justify-center bg-[#FAFAFF] md:bg-white">
+      <div className="bg-[#FAFAFF] border">
+        <div className="h-[80vh] mt-[80px] flex flex-col items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="248"
