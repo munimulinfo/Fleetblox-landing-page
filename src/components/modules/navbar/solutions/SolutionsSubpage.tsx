@@ -1,7 +1,7 @@
 import Link from "next/link";
 const SolutionsSubpage = () => {
   return (
-    <div className="lg:pt-[30px] pr-5 xl:pr-[30px] pl-5 xl:pl-[30px] lg:pb-[60px] grid grid-cols-1 lg:grid-cols-4 lg:gap-[20px] xl:gap-[50px]">
+    <div className="lg:pt-[30px] pr-5 xl:pr-[30px] pl-5 xl:pl-[30px] bg-white lg:pb-[60px] grid grid-cols-1 lg:grid-cols-4 lg:gap-[20px] xl:gap-[50px]">
       {/* Solutions page */}
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5 border-b lg:border-none">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Solutions</p>
