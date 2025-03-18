@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useEffect, useState } from "react";
 import { Search, X } from "lucide-react";
@@ -33,8 +34,9 @@ const SelectCountry = () => {
       if (savedCountries) {
         try {
           setSelectedCountries(JSON.parse(savedCountries));
-        } catch (e) {
+        } catch (e: any) {
           // Handle invalid JSON
+          console.log(e);
           setSelectedCountries([]);
         }
       }
