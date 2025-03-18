@@ -152,6 +152,16 @@ const SelectCountry = () => {
           Choose the countries where your fleet vehicles were originally
           registered.
         </p>
+        <Button
+          onClick={() => {
+            sendGTMEvent({
+              event: "buttonClicked",
+              value: "test",
+            });
+          }}
+        >
+          test
+        </Button>
       </div>
 
       {/* Main Content - Scrollable */}
@@ -246,16 +256,6 @@ const SelectCountry = () => {
           onClick={handleNext}
           disabled={selectedCountries.length === 0 || disabled}
         />
-        <Button
-          onClick={() => {
-            sendGTMEvent({
-              event: "buttonClicked",
-              value: "test",
-            });
-          }}
-        >
-          test
-        </Button>
       </div>
 
       <NotCompatibilityDialog title="Can't Find My Country" />
