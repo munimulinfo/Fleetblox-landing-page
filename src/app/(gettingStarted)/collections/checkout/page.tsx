@@ -21,6 +21,7 @@ import Loader from "../../components/Loader";
 import { AxiosErrorResponse } from "@/interface/AxiosErrorResponse";
 
 interface PlanType {
+  id?: string;
   price?: number;
   slot?: number;
   fleet?: string;
@@ -59,7 +60,7 @@ const Page = () => {
       setInterestedUser(JSON.parse(storedInterestedUser));
   }, []);
 
-  // Update these calculations for proper display
+  // Update these calculations to remove HST
   const calculateDisplayTotal = () => {
     // Base price calculation
     let basePrice = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
@@ -75,10 +76,10 @@ const Page = () => {
   // Fixed setup fee
   const oneTimeSet = 100;
 
-  // Update where TotalForModal is defined
+  // Update where TotalForModal is defined - REMOVE HST
   const TotalForModal = calculateDisplayTotal();
-  const hts = (TotalForModal + oneTimeSet) * 0.1; // 10% of (TotalForModal + oneTimeSet)
-  const totalAmount = TotalForModal + oneTimeSet + hts;
+  // Remove this line: const hts = (TotalForModal + oneTimeSet) * 0.1;
+  const totalAmount = TotalForModal + oneTimeSet; // Remove hts from total
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -104,7 +105,7 @@ const Page = () => {
 
     const getCountries = async () => {
       const countries = await fetch(
-        "https://backend.illama360.com/api/utils/all-countries"
+        "https://api.fleetblox.com/api/utils/all-countries"
       );
       const response = await countries.json();
 
@@ -122,6 +123,8 @@ const Page = () => {
     }
   };
 
+  console.log(selectedPlan, "selectedPlan");
+
   useEffect(() => {
     if (countries?.length && country) {
       const selectedCountryFetch = countries.find((c) => c.country === country);
@@ -138,11 +141,11 @@ const Page = () => {
   const submitData = {
     email: formData.email,
     fullName: formData.fullName,
-    planId: "cm4vhz3pu0001oniuypx7p2uh",
+    planId: selectedPlan?.id,
     phone: contactNumber,
     isFromPreLunching: true,
-    successUrl: "http://localhost:3000/result/paymentSuccess",
-    cancelUrl: "http://localhost:3000/result/paymentFaild",
+    successUrl: "https://fleetblox.com/result/paymentSuccess",
+    cancelUrl: "https://fleetblox.com/result/paymentFaild",
     slot: selectedPlan?.slot,
     price: selectedPlan?.price,
     interval: selectedPlan?.annually ? "year" : "month",
@@ -183,10 +186,10 @@ const Page = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        "https://backend.illama360.com/api/payment/create-session",
+        "https://api.fleetblox.com/api/payment/create-session",
         submitData
       );
-      console.log(data);
+      console.log(data, "data");
       if (data.statusCode === 200) {
         // localStorage.clear();
         return router.push(data?.data.sessionUrl);
@@ -199,7 +202,7 @@ const Page = () => {
       const errorMessage =
         axiosError?.response?.data?.error?.message ||
         "An unexpected error occurred";
-      console.error(errorMessage);
+      console.error(errorMessage, "test");
       toast.error(errorMessage);
     }
   };
@@ -257,9 +260,14 @@ const Page = () => {
     };
   }, []);
 
+  const handleChangePlan = () => {
+    router.back();
+    localStorage.removeItem("selectedPlan");
+  };
+
   console.log(vins, "vins");
   return (
-    <main className="flex flex-col min-h-screen w-full mx-auto px-5 xl:px-6 py-6 sm:py-8 scrollbar-hidden">
+    <main className="flex flex-col h-[94vh] w-full mx-auto px-5 xl:px-6 py-6 sm:py-8 scrollbar-hidden">
       <div className="flex flex-shrink-0 flex-col items-center">
         <div className="mb-8 text-center">
           <h2 className="font-bold text-[22px] sm:text-[22px] font-openSans text-[#04082C] ">
@@ -281,7 +289,10 @@ const Page = () => {
                 Subscription Summary
               </div>
               <div className="">
-                <button className="text-[#2D65F2] font-openSans font-bold text-[14px]">
+                <button
+                  onClick={handleChangePlan}
+                  className="text-[#2D65F2] font-openSans font-bold text-[14px]"
+                >
                   Change Plan
                 </button>
               </div>
@@ -492,7 +503,7 @@ const Page = () => {
             className="flex flex-col justify-between h-full gap-4"
           >
             {/* Contact Info Section */}
-            <div className="flex-grow lg:min-h-[400px] max-h-[1200px] lg:h-[500px]">
+            <div className="flex-none lg:min-h-[35vh] max-h-[50vh] lg:h-[36vh]">
               <h1 className="mb-4 font-openSans text-[14px] font-bold text-[#7d7d7d]">
                 Contact Info
               </h1>
@@ -621,19 +632,6 @@ const Page = () => {
                   </p>
                   <span className="text-[14px] font-openSans text-[#04082C] font-bold">
                     ${oneTimeSet.toFixed(2)}
-                  </span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span className="text-[14px] font-openSans hidden lg:block lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
-                    HST (10%)
-                  </span>
-                  <p className="text-[14px] block lg:hidden font-openSans lg:font-semibold lg:text-[#7D7D7D] text-[#04082C]">
-                    HST <br />
-                    <span className="text-[#7D7D7D]">10%</span>
-                  </p>
-                  <span className="text-[14px] font-openSans text-[#04082C] font-bold">
-                    ${hts.toFixed(2)}
                   </span>
                 </div>
 

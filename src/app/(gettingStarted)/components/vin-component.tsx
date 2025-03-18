@@ -105,7 +105,7 @@ const VIN = () => {
 
     try {
       const response = await fetch(
-        `https://backend.illama360.com/api/dummy/compatibility-bulk?vin=${vinList.join(
+        `https://api.fleetblox.com/api/dummy/compatibility-bulk?vin=${vinList.join(
           ","
         )}&country=${selectedCountry}`
       );
@@ -154,7 +154,7 @@ const VIN = () => {
   };
 
   return (
-    <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
       {loading ? (
         <SearchingVins />
       ) : (
@@ -172,7 +172,7 @@ const VIN = () => {
             </div>
 
             <div className="mb-8 text-center">
-              <h2 className="font-bold text-[24px] sm:text-[28px] font-openSans text-[#04082C] ">
+              <h2 className="font-bold text-[20px] sm:text-[28px] font-openSans text-[#04082C] ">
                 Enter Your Vehicles’ VIN
               </h2>
               <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
@@ -211,7 +211,7 @@ const VIN = () => {
           </div>
 
           {/* Scrollable Content */}
-          <div className="min-h-0 flex-1 overflow-y-auto">
+          <div className="min-h-0 flex-1 overflow-y-auto scrollbar-hidden">
             <div className="space-y-2.5">
               {vinList.length === 0 ? (
                 <div className="mt-[60px] flex flex-col items-center">

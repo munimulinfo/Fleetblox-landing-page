@@ -81,9 +81,9 @@ const Compatibility = () => {
   };
 
   return (
-    <main className="flex flex-col min-h-screen w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
       {/* Fixed Header */}
-      <div className="flex-shrink-0">
+      <div className="flex-none">
         <div
           onClick={handleBack}
           className="mb-4 flex cursor-pointer items-center gap-1"
@@ -106,7 +106,7 @@ const Compatibility = () => {
       </div>
 
       {/* Scrollable Content */}
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div className="min-h-0 flex-grow overflow-y-auto scrollbar-hidden">
         {/* <div className="">
           <div className="mb-4 flex items-center gap-1 font-openSans text-[14px] font-bold leading-[18px] text-ti_dark_grey">
             <span>Select your method</span>
@@ -148,7 +148,7 @@ const Compatibility = () => {
       </div>
 
       {/* Fixed Footer */}
-      <div className="mt-[40px] flex flex-shrink-0 flex-col-reverse items-center gap-4 lg:flex-row">
+      <div className="mt-[40px] flex flex-none flex-col-reverse items-center gap-4 lg:flex-row">
         <button
           onClick={handleNext}
           className={`w-full rounded-md px-[14px] py-[10px] font-openSans text-white ${

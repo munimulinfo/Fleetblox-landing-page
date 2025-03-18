@@ -7,6 +7,7 @@ import { useProgressUpdater } from "@/hooks/useProgress";
 import useBrandCarList from "@/hooks/useCompatibility";
 import Loader from "./Loader";
 import NotCompatibilityDialog from "./NotCompatibilityDialog";
+import NextStepButton from "@/components/ui/shared/NextStepButton";
 
 interface CarBrand {
   brand: string;
@@ -55,9 +56,9 @@ const BrandSelector = () => {
   document.addEventListener("wheel", (e) => console.log(e.defaultPrevented));
 
   return (
-    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6">
       {/* Header */}
-      <div className="mb-8">
+      <div className="flex-none">
         <div
           onClick={handleBack}
           className="mb-4 flex cursor-pointer items-center gap-1"
@@ -68,11 +69,11 @@ const BrandSelector = () => {
           </span>
         </div>
 
-        <div className="text-center mb-6">
-          <h2 className="font-bold text-2xl sm:text-[28px] font-openSans text-[#04082C] mb-2">
+        <div className="text-center mb-8">
+          <h2 className="font-bold text-[20px] sm:text-[28px] font-openSans text-[#04082C] ">
             Select Your Vehicle Makes
           </h2>
-          <p className="font-openSans text-base text-[#7D7D7D] mx-auto max-w-[500px]">
+          <p className="font-openSans text-base text-[#7D7D7D] mx-auto ">
             Choose your vehicle makes currently in your fleet or those you wish
             to add
           </p>
@@ -93,18 +94,26 @@ const BrandSelector = () => {
         </div>
 
         {/* Selected Count */}
-        {selectedBrands.length > 0 && (
+        {selectedBrands.length > 0 ? (
           <div className="my-3">
             <p className="font-openSans text-sm font-[600] text-[#04082C]">
               {selectedBrands.length} brand{selectedBrands.length > 1 && "s"}{" "}
-              selected
+              make selected
+            </p>
+          </div>
+        ) : (
+          <div className="my-3">
+            <p className="font-openSans text-sm font-semibold text-[#333333]">
+              0 make selected
             </p>
           </div>
         )}
       </div>
 
       {/* Scrollable Brand List */}
-      <div className=" min-h-0 overflow-y-auto pb-2">
+
+      <div className=" min-h-0 overflow-y-auto flex-grow pb-2 scrollbar-hidden">
+
         <div className="space-y-3">
           {loading ? (
             <div className="flex justify-center items-center h-[200px]">
@@ -114,7 +123,7 @@ const BrandSelector = () => {
             filteredBrands.map((brand: CarBrand) => (
               <div
                 key={brand.brand}
-                className={`flex items-center p-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
+                className={`flex items-center px-4 py-3 h-[64px] rounded-xl cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
                   selectedBrands.includes(brand.brand)
                     ? "border-[#B8CBFC] bg-[#2D65F20F]"
                     : "border-[#F7F7F7]"
@@ -151,24 +160,13 @@ const BrandSelector = () => {
       </div>
 
       {/* Footer Buttons */}
-      <div className="mt-6 flex flex-shrink-0 w-full  justify-center items-center gap-4 lg:flex-row">
-        {/* <button
-          onClick={() => router.push("/result/not-compatible")}
-          className="pre_landing_page_btn w-full rounded-md px-[14px] py-[8px] font-openSans text-[14px] text-ti_grey lg:w-1/2"
-        >
-          {`I can't find my car brand`}
-        </button> */}
-        <button
+      <div className="mt-6 flex flex-none w-full  justify-center items-center gap-4 lg:flex-row">
+        <NextStepButton
           onClick={handleNext}
-          className={`w-full rounded-md px-[14px] py-[10px] font-openSans text-white lg:w-1/2 ${
-            selectedBrands.length ? "bg-[#2D65F2]" : "bg-[#2D65F2]/50"
-          }`}
           disabled={!selectedBrands.length || disabled}
-        >
-          Next Step
-        </button>
+        />
       </div>
-      <NotCompatibilityDialog title="can’t find my Make" />
+      <NotCompatibilityDialog title="Can’t Find My Make" />
     </main>
   );
 };

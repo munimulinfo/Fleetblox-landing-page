@@ -53,7 +53,7 @@ const useBrandCarList = (initialCountry: string | null) => {
       try {
         setLoading(true);
         const { data } = await axios(
-          `https://backend.illama360.com/api/dummy/check-compatibility-matrix?region=${countrySelect}`
+          `https://api.fleetblox.com/api/dummy/check-compatibility-matrix?region=${countrySelect}`
         );
         setBrandCarList(data.data);
         setLoading(false);

@@ -5,6 +5,7 @@ import FleetBloxIconWhite from "@/components/icons/FleetBloxIconWhite";
 
 import { Stepper } from "@/components/ui/stepper";
 import { useProgressUpdater } from "@/hooks/useProgress";
+import Link from "next/link";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -64,38 +65,18 @@ const Sidebar = () => {
       >
         <div className="p-4">
           {/* <h2 className="text-xl font-bold">Sidebar</h2> */}
-          <div className="flex items-center justify-center mt-10 ">
-            <FleetBloxIconWhite />
-          </div>
+          <Link href="/">
+            <div className="flex items-center justify-center mt-10 ">
+              <FleetBloxIconWhite />
+            </div>
+          </Link>
           <nav className="mt-6 flex justify-center">
             {/* Add your sidebar navigation here */}
             <Stepper steps={sidebarSteps} currentStep={currentStep} />
           </nav>
         </div>
-        <div className="mt-8 flex justify-between">
-          {/* <Button
-            variant="outline"
-            onClick={handlePrevious}
-            disabled={currentStep === 0}
-          >
-            Previous
-          </Button>
-          <Button
-            onClick={handleNext}
-            disabled={currentStep === sidebarSteps.length - 1}
-          >
-            Next
-          </Button> */}
-        </div>
+        <div className="mt-8 flex justify-between"></div>
       </aside>
-
-      {/* Overlay for mobile when sidebar is open */}
-      {/* {isSidebarOpen && isMobile && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
-          onClick={() => setIsSidebarOpen(false)}
-        />
-      )} */}
     </>
   );
 };

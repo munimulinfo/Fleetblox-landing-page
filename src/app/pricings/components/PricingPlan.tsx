@@ -55,7 +55,7 @@ const PricingPlan = () => {
     const fetchPlans = async () => {
       try {
         const response = await fetch(
-          "https://backend.illama360.com/api/subscription/plans"
+          "https://api.fleetblox.com/api/subscription/plans"
         );
         if (!response.ok) throw new Error("Failed to fetch plans");
         const data = await response.json();
@@ -252,7 +252,7 @@ const PricingPlan = () => {
                         </button>
                       </Link>
                     </div>
-                
+
                     // <Dialog>
                     //   <DialogTrigger asChild>
                     //     <Button
