@@ -11,6 +11,8 @@ import toast from "react-hot-toast";
 import Loader from "./Loader";
 import NotCompatibilityDialog from "./NotCompatibilityDialog";
 import NextStepButton from "@/components/ui/shared/NextStepButton";
+import { Button } from "@/components/ui/button";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 export interface Country {
   country: string;
@@ -244,6 +246,16 @@ const SelectCountry = () => {
           onClick={handleNext}
           disabled={selectedCountries.length === 0 || disabled}
         />
+        <Button
+          onClick={() => {
+            sendGTMEvent({
+              event: "buttonClicked",
+              value: "test",
+            });
+          }}
+        >
+          test
+        </Button>
       </div>
 
       <NotCompatibilityDialog title="Can't Find My Country" />
