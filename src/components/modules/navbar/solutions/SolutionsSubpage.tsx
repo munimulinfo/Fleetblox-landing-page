@@ -137,7 +137,7 @@ const SolutionsSubpage = () => {
         </div>
       </div>
       {/* Use cases page */}
-      <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5 border-b lg:border-none">
+      <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Use cases</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href={"/#"}>

@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Product } from "@/components/modules/navbar/product/Product";
 import { Solutions } from "@/components/modules/navbar/solutions/Solutions";
-import { Resources } from "@/components/modules/navbar/Resources";
+import { Resources } from "@/components/modules/navbar/resources/Resources";
 import NavbarMobileView from "@/components/modules/navbar/NavbarMobileView";
 
 const Navbar = () => {

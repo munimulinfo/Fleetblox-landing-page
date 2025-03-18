@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import ProductSubpage from "./product/ProductSubpage";
 import SolutionsSubpage from "./solutions/SolutionsSubpage";
+import ResourcesSubpage from "./resources/ResourcesSubpage";
 const NavbarMobileView = () => {
   const [isProduct, setIsProduct] = useState(false);
   const [isSolutions, setIsSolutions] = useState(false);
+  const [isResources, setIsResources] = useState(false);
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -39,11 +41,18 @@ const NavbarMobileView = () => {
           </div>
           {isSolutions && <SolutionsSubpage />}
         </div>
-        <div className="flex justify-between items-center py-5 border-b text-[#04082C] text-[18px] font-bold font-openSans">
-          <h1>Resources</h1>
-          <DownArrowNav />
+        {/* Resources */}
+        <div className="border-b">
+          <div
+            onClick={() => setIsResources(!isResources)}
+            className="flex justify-between items-center py-5  text-[#04082C] text-[18px] font-bold font-openSans px-5"
+          >
+            <h1>Resources</h1>
+            <DownArrowNav />
+          </div>
+          {isResources && <ResourcesSubpage />}
         </div>
-        <div className="flex justify-between items-center py-5 border-b text-[#04082C] text-[18px] font-bold font-openSans">
+        <div className="flex justify-between items-center py-5 border-b text-[#04082C] text-[18px] font-bold font-openSans px-5">
           <h1>Pricings</h1>
         </div>
       </div>
