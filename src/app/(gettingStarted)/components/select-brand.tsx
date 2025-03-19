@@ -53,8 +53,6 @@ const BrandSelector = () => {
     router.push("/getting-started");
   };
 
-  document.addEventListener("wheel", (e) => console.log(e.defaultPrevented));
-
   return (
     <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6">
       {/* Header */}
@@ -113,7 +111,6 @@ const BrandSelector = () => {
       {/* Scrollable Brand List */}
 
       <div className=" min-h-0 overflow-y-auto flex-grow pb-2 scrollbar-hidden">
-
         <div className="space-y-3">
           {loading ? (
             <div className="flex justify-center items-center h-[200px]">
