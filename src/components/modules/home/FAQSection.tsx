@@ -4,6 +4,7 @@ import { faqData } from "@/Static_data/data";
 
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 const FAQSection = () => {
   return (
@@ -31,14 +32,13 @@ const FAQSection = () => {
             </Accordion.Item>
           ))}
         </Accordion.Root>
-        {/* <div className="mt-4 ml-[18px]">
-          <a
-            href="#"
-            className="text-[#2D65F2] font-openSans text-[16px] font-bold"
-          >
-            Have More Questions?
-          </a>
-        </div> */}
+        <div className="mt-4 ml-[18px]">
+          <Link href="/under-development">
+            <h1 className="text-[#2D65F2] font-openSans text-[16px] font-bold">
+              Have More Questions?
+            </h1>
+          </Link>
+        </div>
       </div>
     </Container>
   );

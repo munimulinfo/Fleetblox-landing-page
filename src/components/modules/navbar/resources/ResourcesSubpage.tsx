@@ -3,7 +3,7 @@ const ResourcesSubpage = () => {
   return (
     <div className="lg:pt-[30px] pr-[30px] pl-5 lg:pl-[30px] bg-white lg:pb-[60px] grid grid-cols-1 lg:grid-cols-3 lg:gap-[60px]">
       {/* Learn page */}
-      <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5 border-b lg:border-none">
+      <div className="flex flex-col lg:space-y-[10px] space-y-[16px] pb-5 border-b lg:border-none">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Learn</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href="/under-development">
@@ -34,7 +34,7 @@ const ResourcesSubpage = () => {
         </div>
       </div>
       {/* Company page */}
-      <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5 border-b lg:border-none">
+      <div className="flex flex-col lg:space-y-[10px] space-y-[16px] pb-5 border-b lg:border-none">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Company</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href="/under-development">
@@ -50,7 +50,7 @@ const ResourcesSubpage = () => {
         </div>
       </div>
       {/* Support page */}
-      <div className="flex flex-col lg:space-y-[10px] space-y-[16px] py-5">
+      <div className="flex flex-col lg:space-y-[10px] space-y-[16px] pb-5">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Support</p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href="/under-development">

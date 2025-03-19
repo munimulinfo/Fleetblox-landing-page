@@ -88,7 +88,9 @@ export default function RootLayout({
       {/*  */}
       <body className={`antialiased bg-white`}>
         <ClientSideInitialization>
+          {/* <Navbar /> */}
           {children}
+          {/* <Footer /> */}
           <Toaster />
           <GoogleAnalytics gaId="G-85PZXPJ466" />
           <GoogleTagManager gtmId="GTM-PQR3ZRTJ" />
