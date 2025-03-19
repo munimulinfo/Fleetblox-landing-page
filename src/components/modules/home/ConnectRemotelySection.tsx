@@ -41,7 +41,7 @@ const ConnectRemotelySection = () => {
             </section>
 
             {/* Video Section */}
-            <section className="mx-4 md:mx-0 my-8 md:my-10 border border-[#DFDFDF] h-[250px] xs:h-[280px] sm:h-[350px] md:h-[425px] rounded-[24px] bg-white overflow-hidden">
+            <section className="my-8 md:my-10 border border-[#DFDFDF] h-[250px] xs:h-[280px] sm:h-[350px] md:h-[425px] rounded-[24px] bg-white overflow-hidden">
               <div className="relative w-full h-full">
                 <video
                   autoPlay
@@ -52,7 +52,6 @@ const ConnectRemotelySection = () => {
                   className="absolute inset-0 w-full h-full object-cover"
                 >
                   <source src="/videos/connect-remotely.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
                 </video>
               </div>
             </section>
@@ -84,9 +83,9 @@ const ConnectRemotelySection = () => {
               detailed vehicle condition reports, including diagnostic diagrams,
               all from a single platform.
             </p>
-            <Link href="/getting-started">
+            <Link href="/under-development">
               <button className="hidden md:flex font-openSans transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
-                <div className="z-20 whitespace-nowrap"> Start Today</div>
+                <div className="z-20 whitespace-nowrap">Learn More</div>
                 <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
                   <RightArrowIcon />
                 </div>
@@ -106,14 +105,9 @@ const ConnectRemotelySection = () => {
           </div>
 
           <div className="md:hidden lg:hidden block w-full">
-            <Link href="/getting-started">
-              <button className="transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-full hover:w-full md:hover:w-[144.16px] md:w-[122.16px] lg:hover:w-[144.16px] lg:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
-                <div className="z-20 whitespace-nowrap font-openSans font-bold">
-                  Start Today
-                </div>
-                <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                  <RightArrowIcon />
-                </div>
+            <Link href="/under-development">
+              <button className="bg-[#2D65F2] mt-5 hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
+                Learn More
               </button>
             </Link>
           </div>

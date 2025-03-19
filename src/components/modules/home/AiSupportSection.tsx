@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import Image from "next/image";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import Link from "next/link";
 const AiSupportSection = () => {
   return (
     <div className="bg-[#0A2540]">
@@ -16,12 +17,14 @@ const AiSupportSection = () => {
               vehicle performance, ensure uninterrupted operations with smarter
               tools that keep every vehicle at its best.
             </p>
-            <button className="transition-all hidden md:hidden lg:flex bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] items-center px-4 py-3 text-base font-bold rounded-md group">
-              <div className="z-20 whitespace-nowrap">Learn More</div>
-              <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                <RightArrowIcon />
-              </div>
-            </button>
+            <Link href="/under-development">
+              <button className="transition-all hidden md:hidden lg:flex bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] items-center px-4 py-3 text-base font-bold rounded-md group">
+                <div className="z-20 whitespace-nowrap">Learn More</div>
+                <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
+                  <RightArrowIcon />
+                </div>
+              </button>
+            </Link>
           </div>
           <div className="relative lg:py-[0px] py-[40px] ">
             <Image
@@ -52,10 +55,14 @@ const AiSupportSection = () => {
               </div>
             </div>
           </div>
-          <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
-            Learn More
-          </button>
         </section>
+        <div className="pb-10 lg:hidden block">
+          <Link href="/under-development">
+            <button className=" bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex py-3 px-5 text-[14px] font-openSans font-bold rounded-md justify-center">
+              Learn More
+            </button>
+          </Link>
+        </div>
       </Container>
     </div>
   );

@@ -5,6 +5,7 @@ import { useRef } from "react";
 import VirtualCard from "./VirtualCard";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
+import Link from "next/link";
 
 const VirtualSlot = () => {
   const container = useRef<HTMLDivElement>(null);
@@ -85,10 +86,11 @@ const VirtualSlot = () => {
                   <p className="text-[14px] text-left font-openSans text-[#333] leading-[20px]">
                     {item.description}
                   </p>
-
-                  <button className="bg-[#2D65F2] mt-5 hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
-                    Learn More
-                  </button>
+                  <Link href="/under-development">
+                    <button className="bg-[#2D65F2] mt-5 hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
+                      Learn More
+                    </button>
+                  </Link>
 
                   {/* <div className="absolute drop-shadow-2xl top-[220px] right-2 w-[250px] h-[120px]">
                     <Image src={item.absolute} alt={item.title}></Image>
