@@ -182,11 +182,6 @@ const Footer = () => {
                 </Link>
                 <Link href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Trip Management
-                  </h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className="font-openSans py-[2px] mb-[5px]">
                     Geofencing
                   </h5>
                 </Link>
