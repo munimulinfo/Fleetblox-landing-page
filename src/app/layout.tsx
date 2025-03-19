@@ -81,10 +81,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Favicon link */}
+        <link rel="icon" href="/Favicon.png" />
+      </head>
       {/*  */}
       <body className={`antialiased bg-white`}>
         <ClientSideInitialization>
+          {/* <Navbar /> */}
           {children}
+          {/* <Footer /> */}
           <Toaster />
         </ClientSideInitialization>
       </body>

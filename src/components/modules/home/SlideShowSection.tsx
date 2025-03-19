@@ -11,7 +11,7 @@ import pioneer from "../../../../public/images/pioneer.png";
 import leader2 from "../../../../public/images/leader2_nobile.png";
 import pioneer2 from "../../../../public/images/pioneer2-mobile.png";
 import NavigationIcon from "@/components/icons/NavigationIcon";
-import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import Link from "next/link";
 
 interface Slide {
   title: string;
@@ -327,15 +327,11 @@ export default function HorizontalStackSlideshow() {
                       </div>
                     </div>
                   </div>
-
-                  <button className="w-full bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
-                    <div className="whitespace-nowrap font-openSans font-bold">
+                  <Link href="/under-development">
+                    <button className="bg-[#2D65F2] mt-5 hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
                       Learn More
-                    </div>
-                    <div className="transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                      <RightArrowIcon />
-                    </div>
-                  </button>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

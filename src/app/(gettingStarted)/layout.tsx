@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect } from "react";
 import Sidebar from "./components/sidebar";
 import ContextProvider from "@/providers/contextProvider";

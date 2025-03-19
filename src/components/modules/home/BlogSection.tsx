@@ -2,6 +2,8 @@ import Image from "next/image";
 import main_image from "../../../assets/blog_main_img.png";
 import { blogs_data } from "@/Static_data/data";
 import Container from "@/components/ui/Container";
+import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import Link from "next/link";
 const BlogSection = () => {
   return (
     <div className="bg-[#FAFAFF]">
@@ -31,10 +33,13 @@ const BlogSection = () => {
               />
             </div>
             {/* right side */}
-            <div className="space-y-[32px] w-1/2">
+            <div className=" w-1/2">
               {blogs_data.map((item, index) => (
-                <div key={index} className="flex gap-x-[60px]">
-                  <div className="flex-1 space-y-[10px] pt-[10px] hover:cursor-pointer">
+                <div
+                  key={index}
+                  className="flex gap-x-[60px] border-b py-4 border-[#DFDFDF]"
+                >
+                  <div className="flex-1 space-y-[10px]  hover:cursor-pointer">
                     <h1 className="font-openSans text-[18px] font-bold text-[#04082C] transition-all duration-500 hover:text-[#7D7D7D]">
                       {item.title}
                     </h1>
@@ -42,7 +47,7 @@ const BlogSection = () => {
                       {item.date}
                     </h5>
                   </div>
-                  <div className="overflow-hidden rounded-md">
+                  <div className="overflow-hidden rounded-md ">
                     <Image
                       src={item.image}
                       alt="image"
@@ -51,9 +56,20 @@ const BlogSection = () => {
                   </div>
                 </div>
               ))}
-              {/* <button className="text-[16px] group cursor-pointer font-openSans font-bold bg-[#2D65F2] px-5 py-3 rounded-md text-white transition-all duration-500">
-                View All Blogs
-              </button> */}
+
+              <div className="pt-4">
+                <Link href="/under-development">
+                  <button className="hidden md:flex transition-all font-openSans bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300  items-center px-[13px] w-[136.1px] hover:w-[158.1px] hover:px-4 py-3 text-base font-bold rounded-md group">
+                    <div className="z-20 whitespace-nowrap">
+                      {" "}
+                      View All Blogs
+                    </div>
+                    <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-0 duration-300 group-hover:translate-x-0">
+                      <RightArrowIcon />
+                    </div>
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -114,16 +130,13 @@ const BlogSection = () => {
             ))}
           </div>
         </div>
-        {/* <div className=" flex justify-center my-5">
-              <button className="transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-[95%] hover:w-[100%] md:hover:w-[144.16px] md:w-[122.16px] lg:hover:w-[144.16px] lg:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
-                <div className="z-20 whitespace-nowrap font-openSans font-bold">
-                  Start Today
-                </div>
-                <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                  <RightArrowIcon />
-                </div>
-              </button>
-            </div> */}
+        <div className="pt-[30px] pb-[80px]">
+          <Link href="/under-development">
+            <button className="text-[16px] group cursor-pointer font-openSans w-full font-bold bg-[#2D65F2] px-5 py-3 rounded-md text-white transition-all duration-500">
+              View All Blogs
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

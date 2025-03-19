@@ -33,6 +33,7 @@ import image31 from "../../../../public/brand/Frame 1707481679.svg";
 import image32 from "../../../../public/brand/Frame 1707481680.svg";
 import image33 from "../../../../public/brand/Frame 1707481661.svg";
 import { cars } from "@/Static_data/data";
+import Link from "next/link";
 
 const GlobalCoverageAndCompatibility = () => {
   const images = [
@@ -135,9 +136,11 @@ const GlobalCoverageAndCompatibility = () => {
               Whether in North America, Europe, or beyond, our platform supports
               a wide range of fleet types and sizes, meeting local standards
             </p>
-            {/* <button className="mt-4 text-[#2D65F2] text-[16px] font-openSans font-bold">
+            <Link href="/under-development">
+              <button className="mt-4 text-[#2D65F2] text-[16px] font-openSans font-bold">
                 Check your region
-              </button> */}
+              </button>
+            </Link>
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -163,9 +166,11 @@ const GlobalCoverageAndCompatibility = () => {
               support eco-friendly fleets. Optimize EV performance for greater
               sustainability
             </p>
-            {/* <button className="mt-4 text-[#2D65F2] text-[16px] font-openSans font-bold">
+            <Link href="/under-development">
+              <button className="mt-4 text-[#2D65F2] text-[16px] font-openSans font-bold">
                 check compatibility
-              </button> */}
+              </button>
+            </Link>
           </div>
         </div>
       </section>

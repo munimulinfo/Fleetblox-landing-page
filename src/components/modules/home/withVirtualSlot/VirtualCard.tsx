@@ -1,6 +1,8 @@
+import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import { CardProps } from "@/types/types";
 import { useTransform, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const VirtualCard: React.FC<CardProps> = ({
   index,
@@ -44,9 +46,14 @@ const VirtualCard: React.FC<CardProps> = ({
             <p className="text-[14px] font-openSans font-normal leading-[20px] text-[#333] mb-[30px]">
               {description}
             </p>
-            {/* <button className="text-[16px] border group cursor-pointer font-openSans font-bold bg-[#2D65F2] px-5 py-3 rounded-md text-white transition-all duration-500">
-              Read More
-            </button> */}
+            <Link href="/under-development">
+              <button className="hidden md:flex transition-all font-openSans bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
+                <div className="z-20 whitespace-nowrap">Learn More</div>
+                <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
+                  <RightArrowIcon />
+                </div>
+              </button>
+            </Link>
           </div>
           {/* right side */}
           <Image
