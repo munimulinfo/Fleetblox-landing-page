@@ -1,6 +1,10 @@
+import Footer from "@/components/ui/shared/Footer";
+import Navbar from "@/components/ui/shared/Navbar";
+
 const page = () => {
   return (
     <>
+      <Navbar />
       <div className="bg-[#FAFAFF] border">
         <div className="h-[80vh] mt-[80px] flex flex-col items-center justify-center">
           <svg
@@ -436,6 +440,7 @@ const page = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
