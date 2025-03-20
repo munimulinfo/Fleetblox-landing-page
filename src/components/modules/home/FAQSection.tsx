@@ -33,7 +33,7 @@ const FAQSection = () => {
           ))}
         </Accordion.Root>
         <div className="mt-4 ml-[18px]">
-          <Link href="/under-development">
+          <Link href="/contact">
             <h1 className="text-[#2D65F2] font-openSans text-[16px] font-bold">
               Have More Questions?
             </h1>

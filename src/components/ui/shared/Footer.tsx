@@ -239,7 +239,7 @@ const Footer = () => {
                 <Link href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">About</h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/contact">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">Contact</h5>
                 </Link>
               </div>
