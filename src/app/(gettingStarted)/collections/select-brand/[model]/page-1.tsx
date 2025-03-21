@@ -35,6 +35,7 @@ const ModelSelector = ({ params }: any) => {
   const [selectedCountryObj, setSelectedCountryObj] =
     useState<CountryObject | null>(null);
 
+  console.log(brandCarList, "brandCarList checking");
   useEffect(() => {
     let countrySelect: string;
     const countryName = localStorage.getItem("country");
@@ -44,7 +45,7 @@ const ModelSelector = ({ params }: any) => {
       if (code === "US" || code === "CA") {
         countrySelect = code;
       } else {
-        countrySelect = "EUROPE";
+        countrySelect = "CA";
       }
     }
 
@@ -73,6 +74,13 @@ const ModelSelector = ({ params }: any) => {
             countrySelect || "US"
           }`
         );
+        console.log(
+          data,
+          "data checking",
+          `https://api.fleetblox.com/api/dummy/check-compatibility-matrix?region=${
+            countrySelect || "US"
+          }`
+        );
         setBrandCarList(data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -84,12 +92,24 @@ const ModelSelector = ({ params }: any) => {
     fetchCountry();
   }, []);
 
-  // search filtering
+  // Updated search filtering with case-insensitive matching
   const filteredModels = React.useMemo(() => {
+    const decodedBrandNames = decodeURIComponent(modelParam).split(",");
+    console.log(decodedBrandNames, "decodedBrandNames checking");
+
+    // Log the actual brand names from your API for debugging
+    console.log(
+      "API brand names:",
+      brandCarList.map((b) => b.brand)
+    );
+
+    setTotalBrands(decodedBrandNames.length);
+
+    // Use case-insensitive matching
     return brandCarList.filter((brand) => {
-      const decodedBrandNames = decodeURIComponent(modelParam).split(",");
-      setTotalBrands(decodedBrandNames.length);
-      return decodedBrandNames.includes(brand.brand);
+      return decodedBrandNames.some(
+        (name) => name.toLowerCase() === brand.brand.toLowerCase()
+      );
     });
   }, [brandCarList, modelParam]);
 
@@ -213,7 +233,7 @@ const ModelSelector = ({ params }: any) => {
     }
   };
 
-  console.log(modelData, "modelData checking");
+  console.log(modelData, "modelData checking", currentBrandModels);
 
   return (
     <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
@@ -259,7 +279,6 @@ const ModelSelector = ({ params }: any) => {
       {/* Scrollable Content Area - Takes remaining space */}
 
       <div className="flex-grow h-[40vh] overflow-y-auto border border-[#DFDFDF] scrollbar-hidden rounded-[16px] p-5">
-
         {selectedCountryObj && (
           <div className="flex items-center mb-4">
             <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-4 border border-gray-300">

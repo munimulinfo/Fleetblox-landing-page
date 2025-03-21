@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useEffect, useState } from "react";
-import { Search, X } from "lucide-react";
+import { Search } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
@@ -11,8 +11,6 @@ import toast from "react-hot-toast";
 import Loader from "./Loader";
 import NotCompatibilityDialog from "./NotCompatibilityDialog";
 import NextStepButton from "@/components/ui/shared/NextStepButton";
-import { Button } from "@/components/ui/button";
-import { sendGTMEvent } from "@next/third-parties/google";
 
 export interface Country {
   country: string;
@@ -52,6 +50,7 @@ const SelectCountry = () => {
         );
         const response = await countries.json();
         setCountries(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
         toast.error("Failed to fetch countries");
@@ -82,6 +81,10 @@ const SelectCountry = () => {
   useEffect(() => {
     if (selectedCountries.length > 0) {
       localStorage.setItem("countries", JSON.stringify(selectedCountries));
+      // localStorage.setItem(
+      //   "selectedCountries",
+      //   JSON.stringify(selectedCountries)
+      // );
     } else {
       localStorage.removeItem("countries");
     }
@@ -101,25 +104,29 @@ const SelectCountry = () => {
       JSON.stringify(selectedCountries)
     );
 
-    // Determine routing based on countries
-    // For simplicity, we'll prioritize countries in a specific order: US, CA, then others
-    let routeCountryCode = "EUROPE"; // Default
+    // Process selected countries into groups (US, CA, EUROPE)
+    const groups = selectedCountries.map((country) => {
+      const code = getCode(country);
+      if (code === "US") return "US";
+      if (code === "CA") return "CA";
+      return "EUROPE";
+    });
 
-    // Check if US is selected
-    if (selectedCountries.some((country) => getCode(country) === "US")) {
-      routeCountryCode = "US";
-    }
-    // If not US but CA is selected
-    else if (selectedCountries.some((country) => getCode(country) === "CA")) {
-      routeCountryCode = "CA";
-    }
+    // Remove duplicates and sort in order US, CA, EUROPE
+    const uniqueGroups = Array.from(new Set(groups)).sort((a, b) => {
+      const order = ["US", "CA", "EUROPE"];
+      return order.indexOf(a) - order.indexOf(b);
+    });
+
+    const countryParam = uniqueGroups.join(",");
 
     setCustomProgress(progress + 10);
 
-    if (routeCountryCode === "US") {
-      router.push(`/collections/compatibility?country=${routeCountryCode}`);
+    // Determine the route
+    if (uniqueGroups.length === 1 && uniqueGroups[0] === "US") {
+      router.push(`/collections/compatibility?country=${countryParam}`);
     } else {
-      router.push(`/collections/select-brand?country=${routeCountryCode}`);
+      router.push(`/collections/select-brand?country=${countryParam}`);
     }
 
     // Clear other storage items when moving forward
@@ -137,9 +144,9 @@ const SelectCountry = () => {
   }, [setCurrentStep]);
 
   // Function to remove a country from selection
-  const removeCountry = (country: string) => {
-    setSelectedCountries((prev) => prev.filter((c) => c !== country));
-  };
+  // const removeCountry = (country: string) => {
+  //   setSelectedCountries((prev) => prev.filter((c) => c !== country));
+  // };
 
   return (
     <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
@@ -152,7 +159,7 @@ const SelectCountry = () => {
           Choose the countries where your fleet vehicles were originally
           registered.
         </p>
-        <Button
+        {/* <Button
           onClick={() => {
             sendGTMEvent({
               event: "buttonClicked",
@@ -161,7 +168,7 @@ const SelectCountry = () => {
           }}
         >
           test
-        </Button>
+        </Button> */}
       </div>
 
       {/* Main Content - Scrollable */}
@@ -188,7 +195,7 @@ const SelectCountry = () => {
               {selectedCountries.length === 1 ? "country" : "countries"}{" "}
               selected
             </p>
-            <div className="flex flex-wrap gap-2 mb-4">
+            {/* <div className="flex flex-wrap gap-2 mb-4">
               {selectedCountries.map((country) => (
                 <div
                   key={country}
@@ -205,7 +212,7 @@ const SelectCountry = () => {
                   </button>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         )}
 
@@ -231,8 +238,8 @@ const SelectCountry = () => {
                     <Image
                       src={country.countryFlag}
                       alt={country.country}
-                      width={28}
-                      height={28}
+                      width={200}
+                      height={200}
                       className="w-full h-full object-cover"
                     />
                   </div>

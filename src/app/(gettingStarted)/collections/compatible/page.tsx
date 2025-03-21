@@ -48,6 +48,12 @@ const Compatible = () => {
       }));
   }, [selectedBrands, storedBrandModels, brandCarList]);
 
+  console.log(
+    filteredCompatibleBrands,
+    "filteredCompatibleBrands",
+    brandCarList
+  );
+
   if (filteredCompatibleBrands().length > 0) {
     const areAllUncompatible = filteredCompatibleBrands()?.every(
       (brand: any) => brand.compatible === false
