@@ -20,7 +20,7 @@ const AnimatedCounter = ({ end }: { end: number }) => {
     if (inView) {
       delayTimer = setTimeout(() => {
         count.set(end);
-      }, 600);
+      }, 400);
     }
     return () => clearTimeout(delayTimer);
   }, [inView, count, end]);

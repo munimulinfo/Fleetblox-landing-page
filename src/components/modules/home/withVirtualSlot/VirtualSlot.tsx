@@ -5,7 +5,7 @@ import { useRef } from "react";
 import VirtualCard from "./VirtualCard";
 import Container from "@/components/ui/Container";
 import Image from "next/image";
-import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import Link from "next/link";
 
 const VirtualSlot = () => {
   const container = useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ const VirtualSlot = () => {
 
             {/* Content */}
             <div className=" hidden md:block  relative text-center">
-              <h1 className="text-[28px] z-10 lg:text-[52px] text-[#000E32] font-bold leading-[1.1]">
+              <h1 className="z-10 text-[52px] text-[#000E32] font-bold leading-[1.1]">
                 Take <span className="text-[#0336BC]">Full Control</span> with
                 Virtual <br className="hidden md:block " />
                 Parking Slot Technology
@@ -71,10 +71,10 @@ const VirtualSlot = () => {
                 key={item?.id}
                 className="relative bg-white max-h-[630px] my-5 w-full flex flex-col rounded-[16px] items-center justify-center gap-5 "
               >
-                <div className="flex-1 overflow-hidden  w-full h-full rounded-t-[16px]">
+                <div className="flex-1 overflow-hidden w-full h-full rounded-t-[16px]">
                   <Image
                     src={item.mobile}
-                    className="object-fill w-full h-full "
+                    className="object-cover w-full h-full"
                     alt="image"
                   />
                 </div>
@@ -86,19 +86,15 @@ const VirtualSlot = () => {
                   <p className="text-[14px] text-left font-openSans text-[#333] leading-[20px]">
                     {item.description}
                   </p>
-
-                  <button className="transition-all mt-4 bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-[95%] hover:w-[100%] md:hover:w-[144.16px] md:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
-                    <div className="z-20 whitespace-nowrap font-openSans font-bold">
+                  <Link href="/under-development">
+                    <button className="bg-[#2D65F2] mt-5 hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
                       Learn More
-                    </div>
-                    <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                      <RightArrowIcon />
-                    </div>
-                  </button>
+                    </button>
+                  </Link>
 
-                  <div className="absolute drop-shadow-2xl top-[220px] right-2 w-[250px] h-[120px]">
+                  {/* <div className="absolute drop-shadow-2xl top-[220px] right-2 w-[250px] h-[120px]">
                     <Image src={item.absolute} alt={item.title}></Image>
-                  </div>
+                  </div> */}
                 </div>
               </section>
             );

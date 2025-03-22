@@ -3,26 +3,27 @@ import heroCardImg from "../../../assets/heroCardImage.png";
 import Image from "next/image";
 import VerticalDividerIcon from "@/components/icons/VerticalDividerIcon";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="bg-[#FAFAFF] flex flex-col justify-center items-center z-50">
+    <section className="bg-[#FAFAFF] flex flex-col justify-center items-center z-50 overflow-hidden">
       {/* <Container> */}
-      <div className="lg:mt-[120px] mt-10 md:mt-12 pb-3 flex flex-col items-center justify-center">
-        <div className="max-w-[840px] w-full mx-auto text-center flex flex-col items-center">
-          <p className="text-[18px] md:text-[28px] lg:text-[28px] text-center font-bold text-[#0336BC]">
+      <div className="mt-[120px] pb-3 flex flex-col items-center justify-center">
+        <div className="max-w-[840px] w-full mx-auto text-center flex flex-col items-start md:items-center px-5">
+          <p className="text-[18px] md:text-[28px] lg:text-[28px] text-left md:text-center font-bold text-[#0336BC] mb-[5px]">
             Instant Fleet Connectivity
           </p>
-          <h1 className="text-[36px] md:text-[52px] lg:text-[52px] text-center font-bold text-[#04082C] leading-[1.1] font-montserrat">
+          <h1 className="text-[36px] md:text-[52px] lg:text-[52px] text-left md:text-center font-bold text-[#04082C] leading-[1.1] font-montserrat">
             Manage and Scale Without Boundaries
           </h1>
-          <p className="text-center font-openSans text-[#333] leading-6 text-[16px] mt-[10px]">
+          <p className="text-left md:text-center font-openSans text-[#333] leading-6 text-[16px] mt-[10px]">
             Say goodbye to traditional hardware hassles! Fleetblox&apos;s
             AI-powered, cloud based fleet connectivity solution cuts costs,
             reduces downtime, and transforms the way you manage your fleet
           </p>
-          <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center gap-4 mt-5 pb-[30px] font-openSans">
-            <div className="flex gap-[5px] text-[16px] font-openSans leading-6 font-semibold text-[#7D7D7D] text-center">
+          <div className="flex flex-col md:flex-row lg:flex-row items-start md:items-center justify-center gap-4 mt-5 pb-[30px] font-openSans">
+            <div className="flex gap-[5px] text-[16px] font-openSans leading-6 font-semibold text-[#7D7D7D] text-left md:text-center">
               <CheckboxIcon />
               <p>No Hardware</p>
             </div>
@@ -35,27 +36,25 @@ const HeroSection = () => {
               <p>No Additional Costs</p>
             </div>
           </div>
-          <div className="flex justify-center">
+          <Link href="/getting-started">
             <button className="hidden md:flex transition-all font-openSans bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
               <div className="z-20 whitespace-nowrap"> Start Today</div>
               <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
                 <RightArrowIcon />
               </div>
             </button>
-
-            <button className="md:hidden transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-[95%] hover:w-[100%] md:hover:w-[144.16px] md:w-[122.16px] lg:hover:w-[144.16px] lg:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
-              <div className="z-20 whitespace-nowrap font-openSans font-bold">
+          </Link>
+          <div className="w-full">
+            <Link href="/getting-started">
+              <button className="px-5 py-3 rounded-md w-full text-center bg-[#2D65F2] font-openSans text-[14px] font-bold text-[#fff] flex justify-center md:hidden">
                 Start Today
-              </div>
-              <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                <RightArrowIcon />
-              </div>
-            </button>
+              </button>
+            </Link>
           </div>
         </div>
 
         {/* Animated section for laptop screen  */}
-        <div className="hidden lg:block relative max-h-[800px] lg:h-[800px] md:h-[500px] lg:w-[1200px] xl:w-[1400px] z-[100] overflow-hidden">
+        <div className="hidden lg:block relative max-h-[800px] lg:h-[800px] md:h-[500px] lg:w-[1200px] xl:w-[1400px] z-[0] overflow-hidden">
           <div className="relative h-full w-full flex justify-center items-center">
             <Image
               src={heroCardImg}

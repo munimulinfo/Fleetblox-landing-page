@@ -6,6 +6,7 @@ import Container from "@/components/ui/Container";
 import VersusCard from "./VersusCard";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import FleetBloxMobileVerse from "./FleetBloxMobileVerse";
+import Link from "next/link";
 
 const FleetBloxVerseSection = () => {
   const container = useRef<HTMLDivElement>(null);
@@ -38,7 +39,7 @@ const FleetBloxVerseSection = () => {
             {/* left card */}
             <motion.div
               // style={{ opacity: headerOpacity }}
-              className={`sticky top-[100px] h-screen flex flex-col items-start justify-center gap-[10px] pb-[10px]`}
+              className={`sticky top-[100px] w-3/4 h-screen flex flex-col items-start justify-center pb-[10px]`}
             >
               <div className="-mt-[240px]">
                 <h1 className="text-[28px] md:text-[36px] text-center md:text-left text-[#000E32] font-bold leading-[1.1]">
@@ -50,14 +51,16 @@ const FleetBloxVerseSection = () => {
                   outperforming traditional solutions in efficiency, innovation,
                   and performance across every key metric
                 </p>
-                <button className="hidden md:flex mt-8 transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[110%] max-w-[250px]  items-center px-4 py-3 text-[16px] font-bold rounded-md group ">
-                  <div className="z-20 whitespace-nowrap">
-                    Calculate Your Savings
-                  </div>
-                  <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                    <RightArrowIcon />
-                  </div>
-                </button>
+                <Link href="/under-development">
+                  <button className="hidden md:flex mt-8 transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[110%] max-w-[250px]  items-center px-4 py-3 text-[16px] font-bold rounded-md group ">
+                    <div className="z-20 whitespace-nowrap">
+                      Calculate Your Savings
+                    </div>
+                    <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-0 duration-300 group-hover:translate-x-0">
+                      <RightArrowIcon />
+                    </div>
+                  </button>
+                </Link>
                 <div className=" hidden md:flex gap-x-6 mt-20 items-center ">
                   <div className="flex flex-col items-center gap-2">
                     <span className="text-[52px] text-[#7D7D7D] font-bold  font-montserrat">
@@ -97,10 +100,7 @@ const FleetBloxVerseSection = () => {
             </motion.div>
             {/* left card end*/}
             {/* right card start */}
-            <div
-              ref={container}
-              className=" hidden md:block lg:block relative w-full"
-            >
+            <div ref={container} className=" hidden lg:block relative w-full">
               {cards.map((item, index) => {
                 const targetScale = 1 - (cards.length - index) * 0.01;
                 return (
@@ -123,7 +123,6 @@ const FleetBloxVerseSection = () => {
         </Container>
       </div>
       {/* Mobile */}
-
       <FleetBloxMobileVerse />
     </>
   );

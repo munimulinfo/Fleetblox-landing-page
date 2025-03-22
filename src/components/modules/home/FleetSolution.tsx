@@ -6,9 +6,10 @@ import fleetSolutionImg from "../../../assets/fleetSolution.png";
 import Image from "next/image";
 import NavigationIcon from "@/components/icons/NavigationIcon";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import Link from "next/link";
 const StatsSection = () => {
   return (
-    <section className="py-[60px] flex flex-col items-center justify-center mx-auto max-w-[1200px] px-4">
+    <section className="py-[60px] flex flex-col items-center justify-center mx-auto max-w-[1200px] px-5">
       {/* counter component */}
       <div className="flex flex-col lg:flex-row justify-center gap-20 py-[30px] mb-[60px]">
         <div className="text-center flex flex-col items-center">
@@ -46,12 +47,14 @@ const StatsSection = () => {
           <h1 className="text-[#04082C] text-[36px] text-center lg:text-left font-bold mb-5 font-montserrat leading-[1.1]">
             Experience a Smarter Way to Manage Your Fleet
           </h1>
-          <button className="md:flex transition-all font-openSans bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
-            <div className="z-20 whitespace-nowrap"> Start Today</div>
-            <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-              <RightArrowIcon />
-            </div>
-          </button>
+          <Link href="/getting-started">
+            <button className="md:flex transition-all font-openSans bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
+              <div className="z-20 whitespace-nowrap"> Start Today</div>
+              <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
+                <RightArrowIcon />
+              </div>
+            </button>
+          </Link>
           <div className="pt-10">
             <div className="flex gap-[16px] mb-[30px]">
               <NavigationIcon />
@@ -103,13 +106,17 @@ const StatsSection = () => {
             </div>
           </div>
         </div>
-        <div className="lg:w-1/2 w-full mx-auto pt-10 pr-10">
-          <Image src={fleetSolutionImg} alt="logo" className="w-full h-full" />
+        <div className="lg:w-1/2 w-full mx-auto lg:mt-10 xl:mt-20 flex justify-center items-center relative">
+          <Image
+            src={fleetSolutionImg}
+            alt="logo"
+            className="w-full h-auto object-contain"
+          />
         </div>
       </div>
 
       {/* Mobile View */}
-      <div className="flex md:hidden lg:hidden  p-4  mx-auto max-w-7xl    flex-col md:flex-row lg:flex-row">
+      <div className="flex md:hidden lg:hidden mx-auto max-w-7xl  flex-col md:flex-row lg:flex-row">
         <div>
           <div className="flex flex-col items-center justify-center">
             <h1 className="text-[#04082C] text-[28px] text-center font-bold mb-5 font-montserrat leading-[1.1]">
@@ -123,8 +130,7 @@ const StatsSection = () => {
               />
             </div>
           </div>
-
-          <div className="pt-10">
+          <div className="pt-10 ">
             <div className="flex gap-[16px] mb-[30px]">
               <NavigationIcon />
               <div className=" text-[14px] leading-5 ">
@@ -181,16 +187,11 @@ const StatsSection = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-center">
-              <button className="transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 w-[95%] hover:w-[100%] md:hover:w-[144.16px] md:w-[122.16px] flex items-center justify-center px-4 py-3 text-[16px] font-bold rounded-md group ">
-                <div className="z-20 whitespace-nowrap font-openSans font-bold">
-                  Getting Started
-                </div>
-                <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
-                  <RightArrowIcon />
-                </div>
+            <Link href="/getting-started">
+              <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
+                Get Started
               </button>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
