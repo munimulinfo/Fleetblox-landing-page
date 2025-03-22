@@ -21,7 +21,7 @@ export function Resources() {
           </div>
         </MenubarTrigger>
         <MenubarContent
-          className="border-none rounded-[24px] bg-white mt-[30px] z-[2000]"
+          className="border-none rounded-[24px] bg-white mt-[30px] z-[2000] ml-4"
           style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.14)" }}
         >
           <ResourcesSubpage />

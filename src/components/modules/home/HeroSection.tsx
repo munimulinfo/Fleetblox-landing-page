@@ -54,7 +54,7 @@ const HeroSection = () => {
         </div>
 
         {/* Animated section for laptop screen  */}
-        <div className="hidden lg:block relative max-h-[800px] lg:h-[800px] md:h-[500px] lg:w-[1200px] xl:w-[1400px] z-[100] overflow-hidden">
+        <div className="hidden lg:block relative max-h-[800px] lg:h-[800px] md:h-[500px] lg:w-[1200px] xl:w-[1400px] z-[0] overflow-hidden">
           <div className="relative h-full w-full flex justify-center items-center">
             <Image
               src={heroCardImg}

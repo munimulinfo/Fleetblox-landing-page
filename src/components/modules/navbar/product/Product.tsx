@@ -21,7 +21,7 @@ export function Product() {
           </div>
         </MenubarTrigger>
         <MenubarContent
-          className="border-none rounded-[24px] bg-white mt-[30px] z-[2000]"
+          className="border-none rounded-[24px] bg-white mt-[30px] z-[2000] ml-[16px]"
           style={{ boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.14)" }}
         >
           <ProductSubpage />
