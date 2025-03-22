@@ -7,10 +7,6 @@ import {
 import { useAnimation, motion } from "framer-motion";
 import React from "react";
 import { FaCircleCheck } from "react-icons/fa6";
-<<<<<<< HEAD
-import { motion, useAnimation } from "framer-motion";
-=======
->>>>>>> 5d889173681c584c814e23743ec9c56ab51a9122
 import { useInView } from "react-intersection-observer";
 
 const FeaturesComparison = () => {
@@ -19,10 +15,6 @@ const FeaturesComparison = () => {
     triggerOnce: false,
     threshold: 0.1,
   });
-<<<<<<< HEAD
-
-=======
->>>>>>> 5d889173681c584c814e23743ec9c56ab51a9122
   React.useEffect(() => {
     if (inView) {
       controls.start("visible");
@@ -30,32 +22,17 @@ const FeaturesComparison = () => {
       controls.start("hidden");
     }
   }, [controls, inView]);
-<<<<<<< HEAD
-
-  return (
-    <div className="mt-10 flex w-full items-center justify-center">
-      <div className="max-w-[1200px] w-full">
-        {/* Sticky Header within the scrollable container */}
-        <motion.div
-          className="sticky top-[30px] grid grid-cols-3 p-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm"
-=======
   return (
     <div className="mt-10 flex w-full items-center justify-center">
       <div className="max-w-[1200px] w-full px-5 relative">
         {/* Sticky Header within the scrollable container */}
         <motion.div
->>>>>>> 5d889173681c584c814e23743ec9c56ab51a9122
           initial="visible"
           animate={controls}
           variants={{
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 1, y: 0 },
           }}
-<<<<<<< HEAD
-        >
-          <h1 className="text-[14px] font-[600] ml-5 text-[#999]">Usage</h1>
-          <h1 className="text-center text-[14px] font-bold text-black/95">
-=======
           className="sticky top-[120px] grid grid-cols-2 md:grid-cols-3 p-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm overflow-hidden"
         >
           <h1 className="text-[14px] hidden md:block font-[600] ml-5 text-[#999]">
@@ -63,7 +40,6 @@ const FeaturesComparison = () => {
           </h1>
           {/* for laptop and desktop */}
           <h1 className="text-center hidden md:block text-[14px] font-bold text-black/95">
->>>>>>> 5d889173681c584c814e23743ec9c56ab51a9122
             Eagle eye fleet
           </h1>
           {/* for mobile */}
@@ -74,12 +50,6 @@ const FeaturesComparison = () => {
           <h1 className="text-center hidden md:block text-[14px] font-bold text-black/95">
             Dynamic fleet
           </h1>
-<<<<<<< HEAD
-        </motion.div>
-        {/* Scrollable content section */}
-        <div ref={ref}>
-          <div className="rounded-md px-5 py-4">
-=======
           {/* for mobile */}
           <h1 className="text-center block md:hidden text-[14px] font-bold text-black/95">
             Dynamic
@@ -89,7 +59,6 @@ const FeaturesComparison = () => {
         {/* Scrollable content section */}
         <div ref={ref}>
           <div className="rounded-md px-5 py-5 md:py-4 text-center md:text-left">
->>>>>>> 5d889173681c584c814e23743ec9c56ab51a9122
             <h1 className="text-[18px] font-[700] text-[#7D7D7D] font-openSans">
               Vehicles
             </h1>
