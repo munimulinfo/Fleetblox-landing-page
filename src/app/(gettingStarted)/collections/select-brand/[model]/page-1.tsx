@@ -1,19 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useEffect, useState } from "react";
-import { ChevronLeft } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
 import close from "@/../public/images/access_point/down.svg";
 import open from "@/../public/images/access_point/up.svg";
 import AccessPoint from "./Access";
-import { getCode } from "country-list";
 import axios from "axios";
-import { CarBrandsData } from "@/app/(gettingStarted)/components/compatibility";
-import Loader from "@/app/(gettingStarted)/components/Loader";
+import { CarBrandsData as OriginalCarBrandsData } from "@/app/(gettingStarted)/components/compatibility";
 
-// Define Country interface (since country-list doesn't export it)
+// Extended type with region property
+interface CarBrandsData extends OriginalCarBrandsData {
+  region: string;
+}
+import Loader from "@/app/(gettingStarted)/components/Loader";
+import toast from "react-hot-toast";
+
 interface CountryObject {
   country: string;
   countryCode: string;
@@ -25,145 +29,139 @@ interface CountryObject {
 const ModelSelector = ({ params }: any) => {
   const { setCustomProgress, progress } = useProgressUpdater();
   const [totalBrands, setTotalBrands] = useState(0);
-  const [isOpen, setIsOpen] = useState("");
+
+  const [expandedCountry, setExpandedCountry] = useState<string | null>(null);
+  const [expandedModel, setExpandedModel] = useState<string | null>(null);
   const router = useRouter();
   const resolvedParams = React.use(params);
   const modelParam = (resolvedParams as { model: string }).model;
   const [loading, setLoading] = useState(false);
+  const [regionData, setRegionData] = useState<{
+    [key: string]: CarBrandsData;
+  }>({});
+  const [regionsWithCountryData, setRegionsWithCountryData] = useState<{
+    [key: string]: CountryObject[];
+  }>({});
+  const [currentBrandIndex, setCurrentBrandIndex] = useState(0);
+  const [selectedModels, setSelectedModels] = useState<string[]>([]);
 
-  const [brandCarList, setBrandCarList] = useState<CarBrandsData>([]);
-  const [selectedCountryObj, setSelectedCountryObj] =
-    useState<CountryObject | null>(null);
-
-  console.log(brandCarList, "brandCarList checking");
   useEffect(() => {
-    let countrySelect: string;
-    const countryName = localStorage.getItem("country");
-
-    if (countryName) {
-      const code = getCode(countryName);
-      if (code === "US" || code === "CA") {
-        countrySelect = code;
-      } else {
-        countrySelect = "CA";
-      }
-    }
-
-    const fetchCountry = async () => {
+    const fetchData = async () => {
       try {
         setLoading(true);
+        const selectedCountriesData = localStorage.getItem("selectedCountries");
+        const selectedCountries = selectedCountriesData
+          ? JSON.parse(selectedCountriesData)
+          : [];
 
-        // First fetch all countries to get the flag info
+        const regionsWithCountries = selectedCountries.reduce(
+          (acc: { [key: string]: string[] }, country: string) => {
+            let region: string;
+            if (country === "United States") region = "US";
+            else if (country === "Canada") region = "CA";
+            else region = "EUROPE";
+            if (!acc[region]) acc[region] = [];
+            acc[region].push(country);
+            return acc;
+          },
+          {}
+        );
+
         const countriesResponse = await axios.get(
           "https://api.fleetblox.com/api/utils/all-countries"
         );
+        const allCountries = countriesResponse.data.data;
 
-        // Find the selected country in the list
-        if (countryName && countriesResponse.data?.data) {
-          const foundCountry = countriesResponse.data.data.find(
-            (c: CountryObject) => c.country === countryName
-          );
-          if (foundCountry) {
-            setSelectedCountryObj(foundCountry);
-          }
-        }
+        const regionsWithCountryData = Object.entries(
+          regionsWithCountries
+        ).reduce((acc, [region, countryNames]) => {
+          const countries = (countryNames as string[])
+            .map((name) =>
+              allCountries.find((c: CountryObject) => c.country === name)
+            )
+            .filter(Boolean);
+          acc[region] = countries;
+          return acc;
+        }, {} as { [key: string]: CountryObject[] });
 
-        // Now fetch the brand data
-        const { data } = await axios.get(
-          `https://api.fleetblox.com/api/dummy/check-compatibility-matrix?region=${
-            countrySelect || "US"
-          }`
+        setRegionsWithCountryData(regionsWithCountryData);
+
+        const regions = Object.keys(regionsWithCountries);
+        const regionPromises = regions.map((region) =>
+          axios.get(
+            `https://api.fleetblox.com/api/dummy/check-compatibility-matrix?region=${region}`
+          )
         );
-        console.log(
-          data,
-          "data checking",
-          `https://api.fleetblox.com/api/dummy/check-compatibility-matrix?region=${
-            countrySelect || "US"
-          }`
-        );
-        setBrandCarList(data.data);
+
+        const responses = await Promise.all(regionPromises);
+        const regionData = responses.reduce((acc, res, index) => {
+          const region = regions[index];
+          acc[region] = res.data.data.map((brand: any) => ({
+            ...brand,
+            region,
+          }));
+          return acc;
+        }, {} as { [key: string]: CarBrandsData });
+
+        setRegionData(regionData);
       } catch (error) {
         console.error("Error fetching data:", error);
+        toast.error("Error loading vehicle data");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCountry();
+    fetchData();
   }, []);
 
-  // Updated search filtering with case-insensitive matching
   const filteredModels = React.useMemo(() => {
+    if (!Object.keys(regionData).length) return [];
+    const allBrands = Object.values(regionData).flat();
     const decodedBrandNames = decodeURIComponent(modelParam).split(",");
-    console.log(decodedBrandNames, "decodedBrandNames checking");
-
-    // Log the actual brand names from your API for debugging
-    console.log(
-      "API brand names:",
-      brandCarList.map((b) => b.brand)
-    );
-
     setTotalBrands(decodedBrandNames.length);
-
-    // Use case-insensitive matching
-    return brandCarList.filter((brand) => {
-      return decodedBrandNames.some(
-        (name) => name.toLowerCase() === brand.brand.toLowerCase()
-      );
-    });
-  }, [brandCarList, modelParam]);
-
-  console.log(filteredModels, "filteredModels checking");
-
-  const [currentBrandIndex, setCurrentBrandIndex] = useState(0);
-  const [selectedModels, setSelectedModels] = useState<string[]>();
+    return allBrands.filter((brand) =>
+      decodedBrandNames.some(
+        (name) =>
+          brand.brand.toLowerCase().replace(/[_\-\s]/g, "") ===
+          name.toLowerCase().replace(/[_\-\s]/g, "")
+      )
+    );
+  }, [regionData, modelParam]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (
+      filteredModels.length > 0 &&
+      currentBrandIndex < filteredModels.length
+    ) {
+      const currentBrandKey = `${filteredModels[currentBrandIndex].brand}-${filteredModels[currentBrandIndex].region}`;
       const storedBrandModels = JSON.parse(
         localStorage.getItem("brandModels") || "{}"
       );
-      const currentBrand = filteredModels[currentBrandIndex]?.brand;
-      return setSelectedModels(storedBrandModels[currentBrand] || []);
+      setSelectedModels(storedBrandModels[currentBrandKey] || []);
     }
-    return setSelectedModels([]);
   }, [currentBrandIndex, filteredModels]);
 
-  // select the model
   const handleModelSelect = (model: string) => {
-    const currentBrand = modelData.brand;
+    const currentBrand = filteredModels[currentBrandIndex].brand;
+    const currentRegion = filteredModels[currentBrandIndex].region;
+    const currentBrandKey = `${currentBrand}-${currentRegion}`;
     const storedModels = JSON.parse(
       localStorage.getItem("brandModels") || "{}"
     );
+    const updatedModels = storedModels[currentBrandKey]?.includes(model)
+      ? storedModels[currentBrandKey].filter((m: string) => m !== model)
+      : [...(storedModels[currentBrandKey] || []), model];
 
-    // Initialize current brand's models if not exists
-    if (!storedModels[currentBrand]) {
-      storedModels[currentBrand] = [];
-    }
-
-    // Get current brand's selected models
-    const currentBrandModels = storedModels[currentBrand] || [];
-
-    let updatedModels;
-    if (currentBrandModels.includes(model)) {
-      // Remove model if already selected
-      updatedModels = currentBrandModels.filter(
-        (selectedModel: string) => selectedModel !== model
-      );
-    } else {
-      // Add model if not selected
-      updatedModels = [...currentBrandModels, model];
-    }
-
-    // Update state and localStorage
     setSelectedModels(updatedModels);
-    storedModels[currentBrand] = updatedModels.length ? updatedModels : null;
-    localStorage.setItem("brandModels", JSON.stringify(storedModels));
+    localStorage.setItem(
+      "brandModels",
+      JSON.stringify({ ...storedModels, [currentBrandKey]: updatedModels })
+    );
   };
 
   const calculateProgress = 60 / totalBrands;
 
-  // handle Next Button
   const handleNext = () => {
     if (currentBrandIndex < filteredModels.length - 1) {
       setCurrentBrandIndex((prev) => prev + 1);
@@ -173,43 +171,14 @@ const ModelSelector = ({ params }: any) => {
     }
   };
 
-  function checkAllNull(obj: Record<string, any>): boolean {
-    // Check if all values are null
-    return Object.values(obj).every((value) => value === null);
-  }
-
   const handleNotFindModel = () => {
     if (currentBrandIndex < filteredModels.length - 1) {
-      const storedModels = JSON.parse(
-        localStorage.getItem("brandModels") || "{}"
-      );
-      storedModels[modelData.brand] = null;
-      localStorage.setItem("brandModels", JSON.stringify(storedModels));
       setCurrentBrandIndex((prev) => prev + 1);
       setCustomProgress(progress + calculateProgress);
     } else {
-      const storedModels = JSON.parse(
-        localStorage.getItem("brandModels") || "{}"
-      );
-      storedModels[modelData.brand] = null;
-      localStorage.setItem("brandModels", JSON.stringify(storedModels));
-      const getModels = localStorage.getItem("brandModels");
-      console.log(getModels, "brandModels checking for ");
-
-      if (getModels) {
-        const status = checkAllNull(JSON.parse(getModels));
-        console.log(status, "brandModels checking");
-
-        if (status) {
-          return router.push("/collections/compatible");
-        } else {
-          return router.push("/collections/compatible");
-        }
-      }
+      router.push("/collections/compatible");
     }
   };
-
-  const modelData = filteredModels[currentBrandIndex];
 
   const backButton = () => {
     if (currentBrandIndex > 0) {
@@ -221,23 +190,13 @@ const ModelSelector = ({ params }: any) => {
     }
   };
 
-  const currentBrandModels = JSON.parse(
-    localStorage.getItem("brandModels") || "{}"
-  )[modelData?.brand];
-
-  const showAccessPoint = (modelName: string) => {
-    if (isOpen === modelName) {
-      setIsOpen("");
-    } else {
-      setIsOpen(modelName);
-    }
-  };
-
-  console.log(modelData, "modelData checking", currentBrandModels);
+  const currentBrandData = filteredModels[currentBrandIndex];
+  const currentCountries = currentBrandData?.region
+    ? regionsWithCountryData[currentBrandData.region] || []
+    : [];
 
   return (
     <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
-      {/* Header Section - Fixed at top */}
       <div className="flex-none">
         <div
           onClick={backButton}
@@ -259,113 +218,125 @@ const ModelSelector = ({ params }: any) => {
           </p>
         </div>
 
-        {/* Brand Info */}
-        <div className="mb-8 flex items-center flex-col">
-          {modelData?.brandLogo && (
-            <Image
-              className="h-[60px] w-auto object-contain"
-              src={modelData.brandLogo}
-              alt="brand logo"
-              width={100}
-              height={100}
-            />
-          )}
-          <h1 className="text-[#002D9F] font-openSans font-bold text-3xl mt-0.5">
-            {modelData?.brand.replace(/[-_]/g, " ")}
-          </h1>
-        </div>
-      </div>
-
-      {/* Scrollable Content Area - Takes remaining space */}
-
-      <div className="flex-grow h-[40vh] overflow-y-auto border border-[#DFDFDF] scrollbar-hidden rounded-[16px] p-5">
-        {selectedCountryObj && (
-          <div className="flex items-center mb-4">
-            <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-4 border border-gray-300">
+        {currentBrandData && (
+          <div className="mb-8 flex items-center flex-col">
+            {currentBrandData.brandLogo && (
               <Image
-                src={selectedCountryObj.countryFlag}
-                alt={selectedCountryObj.country}
-                width={28}
-                height={28}
-                className="w-full h-full object-cover"
+                className="h-[60px] w-auto object-contain"
+                src={currentBrandData.brandLogo}
+                alt="brand logo"
+                width={100}
+                height={100}
               />
-            </div>
-            <span className="font-[600] text-[14px] font-openSans sm:text-[16px] text-[#04082C]">
-              {selectedCountryObj.country}
-            </span>
+            )}
+            <h1 className="text-[#002D9F] font-openSans font-bold text-3xl mt-0.5">
+              {currentBrandData.brand.replace(/[-_]/g, " ")}
+            </h1>
           </div>
         )}
-
-        <div className="space-y-2.5">
-          {loading ? (
-            <Loader />
-          ) : (
-            modelData?.models.map((model) => {
-              return (
-                <div
-                  key={model.name}
-                  className={`flex justify-between flex-col items-center border-b border-[#F7F7F7] p-4   transition-colors cursor-pointer 
-`}
-                  onClick={(e) => e.stopPropagation()} // Prevent parent onClick
-                >
-                  <div className="flex items-center justify-between w-full">
-                    <div
-                      className="flex items-center w-full "
-                      onClick={() => handleModelSelect(model.name)}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedModels?.includes(model.name)}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleModelSelect(model.name);
-                        }}
-                        className="mr-2 cursor-pointer"
-                      />
-                      <span className="font-semibold w-full text-[#333] font-openSans leading-relaxed text-sm">
-                        {model?.name
-                          ?.replace("(Unknown)", "")
-                          ?.replace("Electric", "EV")}
-                      </span>
-                    </div>
-                    <button
-                      onClick={() => {
-                        // e.stopPropagation();
-                        showAccessPoint(model.name);
-                      }}
-                      className="w-5 h-5 flex items-center justify-center"
-                    >
-                      <Image
-                        className="size-[18px] object-cover"
-                        src={isOpen === model.name ? open : close}
-                        alt="toggle"
-                      />
-                    </button>
-                  </div>
-                  {isOpen === model.name && (
-                    <AccessPoint permission={model.endpoints} />
-                  )}
-                </div>
-              );
-            })
-          )}
-        </div>
       </div>
+      <section className="flex flex-col flex-grow gap-4">
+        {currentCountries.map((country) => (
+          <div
+            key={country.countryCode}
+            className="border border-[#DFDFDF] rounded-[16px] overflow-hidden"
+          >
+            <div
+              className="p-4 flex items-center justify-between cursor-pointer hover:bg-gray-50"
+              onClick={() =>
+                setExpandedCountry((prev) =>
+                  prev === country.countryCode ? null : country.countryCode
+                )
+              }
+            >
+              <div className="flex  items-center">
+                {expandedCountry === country.countryCode ? (
+                  <ChevronDown className="size-[18px] mr-5 transition-transform" />
+                ) : (
+                  <ChevronUp size={16} className="mr-5 transition-transform" />
+                )}
+                <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-2 border border-gray-300">
+                  <Image
+                    src={country.countryFlag}
+                    alt={country.country}
+                    width={200}
+                    height={200}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="font-semibold text-[#04082C] font-openSans">
+                  {country.country}
+                </span>
+              </div>
+            </div>
 
-      {/* Footer Section - Fixed at bottom */}
-      {/* Fixed Footer */}
+            {expandedCountry === country.countryCode && (
+              <div className=" p-4 space-y-2.5">
+                {loading ? (
+                  <Loader />
+                ) : (
+                  currentBrandData?.models?.map((model) => (
+                    <div
+                      key={model.name}
+                      className="flex justify-between flex-col items-center p-4 cursor-pointer hover:bg-gray-50 rounded-lg"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="flex items-center justify-between w-full">
+                        <div
+                          className="flex items-center w-full"
+                          onClick={() => handleModelSelect(model.name)}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={selectedModels.includes(model.name)}
+                            className="mr-2 cursor-pointer"
+                            onChange={() => {}}
+                          />
+                          <span className="font-semibold w-full text-[#333] font-openSans leading-relaxed text-sm">
+                            {model.name
+                              .replace("(Unknown)", "")
+                              .replace("Electric", "EV")}
+                          </span>
+                        </div>
+                        <button
+                          onClick={() =>
+                            setExpandedModel((prev) =>
+                              prev === model.name ? null : model.name
+                            )
+                          }
+                          className="w-5 h-5 flex items-center justify-center"
+                        >
+                          <Image
+                            src={expandedModel === model.name ? open : close}
+                            alt="toggle"
+                            className="size-[18px]"
+                          />
+                        </button>
+                      </div>
+                      {expandedModel === model.name && (
+                        <AccessPoint permission={model.endpoints} />
+                      )}
+                    </div>
+                  ))
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </section>
+
       <div className="flex-none mt-6 flex flex-col-reverse items-center gap-4">
         <button
           onClick={handleNotFindModel}
-          className="  w-full font-openSans text-[#7D7D7D] px-[14px] py-[8px] font-bold  text-[14px] rounded-md"
+          className="w-full font-openSans text-[#7D7D7D] px-[14px] py-[8px] font-bold text-[14px] rounded-md"
         >
           {`I can't find my car brand`}
         </button>
         <button
-          className={`w-full   text-white px-[14px] py-[10px] font-openSans rounded-md ${
-            currentBrandModels?.length > 0 ? "bg-[#2D65F2]" : "bg-[#2D65F2]/50"
+          className={`w-full text-white px-[14px] py-[10px] font-openSans rounded-md ${
+            selectedModels.length > 0 ? "bg-[#2D65F2]" : "bg-[#2D65F2]/50"
           }`}
-          disabled={!currentBrandModels || currentBrandModels.length <= 0}
+          disabled={selectedModels.length === 0}
           onClick={handleNext}
         >
           Next Step

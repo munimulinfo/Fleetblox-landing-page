@@ -109,3 +109,15 @@ body {
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
+
+/* Add to your global CSS file */
+.country-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.country-content.expanded {
+  max-height: 1000px; /* Adjust based on expected content height */
+  transition: max-height 0.5s ease-in;
+}
