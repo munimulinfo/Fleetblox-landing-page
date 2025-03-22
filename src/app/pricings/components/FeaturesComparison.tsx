@@ -6,13 +6,37 @@ import {
 } from "@/lib/constant";
 import React from "react";
 import { FaCircleCheck } from "react-icons/fa6";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const FeaturesComparison = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+
   return (
     <div className="mt-10 flex w-full items-center justify-center">
-      <div className="max-w-[1200px] w-full h-[500px] overflow-y-auto scroll-smooth hide-scroll">
+      <div className="max-w-[1200px] w-full">
         {/* Sticky Header within the scrollable container */}
-        <div className="sticky top-0 grid grid-cols-3 p-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm">
+        <motion.div
+          className="sticky top-[30px] grid grid-cols-3 p-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm"
+          initial="visible"
+          animate={controls}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 1, y: 0 },
+          }}
+        >
           <h1 className="text-[14px] font-[600] ml-5 text-[#999]">Usage</h1>
           <h1 className="text-center text-[14px] font-bold text-black/95">
             Eagle eye fleet
@@ -20,40 +44,40 @@ const FeaturesComparison = () => {
           <h1 className="text-center text-[14px] font-bold text-black/95">
             Dynamic fleet
           </h1>
-        </div>
+        </motion.div>
         {/* Scrollable content section */}
-        <div>
+        <div ref={ref}>
           <div className="rounded-md px-5 py-4">
             <h1 className="text-[18px] font-[700] text-[#7D7D7D] font-openSans">
               Vehicles
             </h1>
           </div>
-          {vehicleFeatures?.map((featuers, index: number) => (
-            <FeaturesPermissionRow key={index} featuresPermissions={featuers} />
+          {vehicleFeatures?.map((features, index: number) => (
+            <FeaturesPermissionRow key={index} featuresPermissions={features} />
           ))}
           <div className="rounded-md px-5 py-4">
             <h1 className="text-[18px] font-[700] text-[#7D7D7D] font-openSans">
               Fleet
             </h1>
           </div>
-          {fleetFeatures?.map((featuers, index: number) => (
-            <FeaturesPermissionRow key={index} featuresPermissions={featuers} />
+          {fleetFeatures?.map((features, index: number) => (
+            <FeaturesPermissionRow key={index} featuresPermissions={features} />
           ))}
           <div className="rounded-md px-5 py-4">
             <h1 className="text-[18px] font-[700] text-[#7D7D7D] font-openSans">
               Brand
             </h1>
           </div>
-          {brandFeatures?.map((featuers, index: number) => (
-            <FeaturesPermissionRow key={index} featuresPermissions={featuers} />
+          {brandFeatures?.map((features, index: number) => (
+            <FeaturesPermissionRow key={index} featuresPermissions={features} />
           ))}
           <div className="rounded-md px-5 py-4">
             <h1 className="text-[18px] font-[700] text-[#7D7D7D] font-openSans">
               Team
             </h1>
           </div>
-          {teamFeatures?.map((featuers, index: number) => (
-            <FeaturesPermissionRow key={index} featuresPermissions={featuers} />
+          {teamFeatures?.map((features, index: number) => (
+            <FeaturesPermissionRow key={index} featuresPermissions={features} />
           ))}
         </div>
       </div>
