@@ -47,10 +47,11 @@ const AiSupportSection = () => {
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  // preload="auto"
                   className=" z-50 h-full !w-full object-contain mix-blend-plus-lighter "
                 >
-                  <source src="/videos/ai_support.webm" type="video/webm" />
+                  <source src="/videos/ai_support.mov" type="video/mp4" />
+                  {/* <source src="/videos/ai_support.webm" type="video/webm" /> */}
                   {/* <source src="/videos/ai_support.mp4" type="video/mp4" /> */}
                 </video>
               </div>
