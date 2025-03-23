@@ -184,7 +184,7 @@ export default function HorizontalStackSlideshow() {
                         duration: 0.8,
                         ease: "easeOut",
                       }}
-                      className="absolute w-full h-full rounded-[24px] p-3 bg-white overflow-hidden drop-shadow-2xl border"
+                      className="absolute w-full h-full rounded-[24px] p-3 bg-white overflow-hidden drop-shadow-2xl"
                     >
                       <div className="relative overflow-hidden flex flex-col md:flex-row w-full h-full">
                         {/* Left Side (Text) */}
