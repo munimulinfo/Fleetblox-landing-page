@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useState, useEffect } from "react";
@@ -11,7 +12,7 @@ const useBrandCarList = (initialCountry: string | null) => {
   const [countrySelect, setCountrySelect] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [storedBrandModels, setStoredBrandModels] = useState<
-    Record<string, string | null>
+    Record<string, string[] | null>
   >({});
   const [loading, setLoading] = useState(false);
   const [vins, setVins] = useState<TransformedCarData[] | null>(null);
