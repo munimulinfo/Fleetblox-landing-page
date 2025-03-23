@@ -18,7 +18,7 @@ export function RequestDemoModal() {
         </h1>
       </DialogTrigger>
       <DialogContent
-        className="max-w-[700px] w-full  rounded-[24px]"
+        className="max-w-[700px] w-full  rounded-[24px] lg:mt-9"
         style={{
           boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.14)",
         }}

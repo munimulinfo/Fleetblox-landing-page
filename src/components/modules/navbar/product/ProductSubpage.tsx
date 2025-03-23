@@ -3,7 +3,7 @@ import RightArrowIcon from "@/components/icons/RightArrowIcon";
 
 const ProductSubpage = () => {
   return (
-    <div className="xl:pt-[30px] xl:pr-[30px] pl-5 xl:pl-[30px] bg-white lg:pb-[60px] grid grid-cols-1 lg:grid-cols-3 lg:gap-[60px]">
+    <div className="lg:pt-[30px] xl:pr-[30px] pl-5 xl:pl-[30px] bg-white lg:pb-[60px] grid grid-cols-1 lg:grid-cols-3 lg:gap-[60px]">
       {/* platform page */}
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] pb-5 border-b lg:border-none">
         <p className="text-[#7D7D7D] font-openSans text-[12px]">Platform</p>
