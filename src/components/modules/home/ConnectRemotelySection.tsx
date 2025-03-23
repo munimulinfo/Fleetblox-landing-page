@@ -51,11 +51,16 @@ const ConnectRemotelySection = () => {
                   preload="auto"
                   className="absolute inset-0 w-full h-full object-cover"
                 >
-                  <source
+                  {/* <source
                     src="/videos/connect-remotely.webm"
                     type="video/mp4"
+                    media="(min-width: 768px)"
+                  /> */}
+                  <source
+                    src="/videos/connect-remotely.mp4"
+                    type="video/mp4"
+                    // media="(min-width: 768px)"
                   />
-                  {/* <source src="/videos/connect-remotely.mp4" type="video/mp4" /> */}
                 </video>
               </div>
             </section>
