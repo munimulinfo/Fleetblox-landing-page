@@ -130,7 +130,7 @@ export const AccurateSlider = ({
           <span className="absolute left-0 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
             0%
           </span>
-          <span className="absolute left-[21%] transform -translate-x-1/2 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
+          <span className="absolute left-[25%] transform -translate-x-1/2 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
             5%
           </span>
           <span className="absolute left-[50%] transform -translate-x-1/2 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">

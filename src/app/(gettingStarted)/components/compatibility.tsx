@@ -18,6 +18,8 @@ interface CarBrand {
   brandLogo: string;
   models: CarModel[];
   year: string;
+  vin?: string;
+  region?: string;
 }
 
 export type CarBrandsData = CarBrand[];

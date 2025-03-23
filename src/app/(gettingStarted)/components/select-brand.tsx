@@ -18,18 +18,17 @@ interface CarBrand {
 const BrandSelector = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const country = searchParams.get("country");
+  const countryParam = searchParams.get("country");
   const [searchQuery, setSearchQuery] = useState("");
   const [disabled, setDisabled] = useState(false);
 
   const { brandCarList, selectedBrands, setSelectedBrands, loading } =
-    useBrandCarList(country);
+    useBrandCarList(countryParam);
 
   const handleBrandSelect = (brand: string) => {
     const updatedBrands = selectedBrands.includes(brand)
       ? selectedBrands.filter((b) => b !== brand)
       : [...selectedBrands, brand];
-
     setSelectedBrands(updatedBrands);
     localStorage.setItem("brands", JSON.stringify(updatedBrands));
   };
@@ -41,11 +40,10 @@ const BrandSelector = () => {
   const { setCustomProgress, progress } = useProgressUpdater();
 
   const handleNext = () => {
+    if (disabled || !selectedBrands.length) return;
     setDisabled(true);
-    if (!disabled && selectedBrands.length) {
-      setCustomProgress(progress + 10);
-      router.push(`/collections/select-brand/${selectedBrands.join(",")}`);
-    }
+    setCustomProgress(progress + 10);
+    router.push(`/collections/select-brand/${selectedBrands.join(",")}`);
   };
 
   const handleBack = () => {
@@ -120,7 +118,7 @@ const BrandSelector = () => {
             filteredBrands.map((brand: CarBrand) => (
               <div
                 key={brand.brand}
-                className={`flex items-center px-4 py-3 h-[64px] rounded-xl cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
+                className={`flex items-center px-4 py-3 gap-x-5 h-[64px] rounded-xl cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
                   selectedBrands.includes(brand.brand)
                     ? "border-[#B8CBFC] bg-[#2D65F20F]"
                     : "border-[#F7F7F7]"
@@ -128,12 +126,12 @@ const BrandSelector = () => {
                 onClick={() => handleBrandSelect(brand.brand)}
               >
                 {brand.brandLogo && (
-                  <div className="flex-shrink-0 w-16 h-12 mr-4">
+                  <div className="flex-shrink-0 w-10 h-8 ">
                     <Image
                       src={brand.brandLogo}
                       alt={brand.brand}
-                      width={64}
-                      height={48}
+                      width={200}
+                      height={200}
                       className="w-full h-full object-contain mix-blend-multiply"
                     />
                   </div>
@@ -142,9 +140,9 @@ const BrandSelector = () => {
                   <h3 className="font-openSans text-base font-semibold text-[#04082C]">
                     {brand.brand.replace(/[-_]/g, " ")}
                   </h3>
-                  <p className="font-openSans text-sm text-[#7D7D7D]">
+                  {/* <p className="font-openSans text-sm text-[#7D7D7D]">
                     Year: {brand.year}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             ))
