@@ -31,56 +31,34 @@ export const AccurateSlider = ({
           </span>
         </div>
       </div>
-
       {/* Slider */}
-      <div className="mx-auto mt-5 w-full max-w-full sm:max-w-[610px]">
-        {/* Top Labels */}
-        <div className="flex w-full relative">
-          <span className="absolute -left-2 transform -translate-x-1/2 text-[10px] sm:text-[12px] font-medium text-black">
-            10
-          </span>
-          <span
-            className={`absolute left-[50%] transform -translate-x-1/2 text-[10px] sm:text-[12px] font-medium ${
-              value >= 100 ? "text-black" : "text-[#999]"
-            }`}
-          >
-            100
-          </span>
-          <span
-            className={`absolute -right-1 transform translate-x-1/2 text-[10px] sm:text-[12px] font-medium ${
-              value >= 200 ? "text-black" : "text-[#999]"
-            }`}
-          >
-            200
-          </span>
-        </div>
-
+      <div className="max-w-[730px] w-full">
         {/* Slider Container */}
         <div className="relative h-[32px] my-6">
           {/* Track */}
-          <div className="absolute top-1/2 z-10 h-[12px] w-full -translate-y-1/2 transform rounded-full bg-[#F6F6F6]"></div>
+          <div className="absolute top-1/2 z-10 h-[14px] w-full -translate-y-1/2 transform rounded-full bg-[#F6F6F6]"></div>
 
           {/* Dots */}
           <div
-            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            className="absolute top-1/2 z-20 h-[10px] w-[10px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
             style={{ left: "0%" }}
           ></div>
           <div
-            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
-            style={{ left: "25%" }}
+            className="absolute top-1/2 z-20 h-[10px] w-[10px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            style={{ left: "22%" }}
           ></div>
           <div
-            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
-            style={{ left: "50%" }}
+            className="absolute top-1/2 z-20 h-[10px] w-[10px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            style={{ left: "47%" }}
           ></div>
           <div
-            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
-            style={{ left: "75%" }}
+            className="absolute top-1/2 z-20 h-[10px] w-[10px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            style={{ left: "72%" }}
           ></div>
-          <div
-            className="absolute top-1/2 z-20 h-[6px] w-[6px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
-            style={{ left: "100%" }}
-          ></div>
+          {/* <div
+            className="absolute top-1/2 z-20 h-[10px] w-[10px] -translate-y-1/2 transform rounded-full bg-[#DDD]"
+            style={{ left: "99%" }}
+          ></div> */}
 
           {/* Progress (filled with #0336BC) */}
           <div
@@ -124,13 +102,32 @@ export const AccurateSlider = ({
             </div>
           </div>
         </div>
-
+        {/* Bottom Labels */}
+        <div className="flex w-full relative -mt-4">
+          <span className="absolute left-0 transform -translate-x-1/2 text-[10px] sm:text-[12px] font-medium text-black">
+            10
+          </span>
+          <span
+            className={`absolute left-[48%] transform -translate-x-1/2 text-[10px] sm:text-[12px] font-medium ${
+              value >= 100 ? "text-black" : "text-[#999]"
+            }`}
+          >
+            100
+          </span>
+          <span
+            className={`absolute right-0 transform translate-x-1/2 text-[10px] sm:text-[12px] font-medium ${
+              value >= 200 ? "text-black" : "text-[#999]"
+            }`}
+          >
+            200
+          </span>
+        </div>
         {/* Discount Levels */}
-        <div className="flex w-full relative mt-1 mb-3">
+        {/* <div className="flex w-full relative mt-1 mb-3">
           <span className="absolute left-0 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
             0%
           </span>
-          <span className="absolute left-[21%] transform -translate-x-1/2 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
+          <span className="absolute left-[25%] transform -translate-x-1/2 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
             5%
           </span>
           <span className="absolute left-[50%] transform -translate-x-1/2 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
@@ -142,7 +139,7 @@ export const AccurateSlider = ({
           <span className="absolute right-0 text-[9px] sm:text-[10px] font-medium text-[#6F6464]">
             30%
           </span>
-        </div>
+        </div> */}
       </div>
 
       {/* Cross-browser slider styling */}

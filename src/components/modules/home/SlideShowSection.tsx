@@ -115,7 +115,7 @@ export default function HorizontalStackSlideshow() {
             </button>
 
             {/* Cards Wrapper */}
-            <div className="w-[90%] max-w-[800px] h-full relative">
+            <div className="w-[90%] max-w-[800px] h-full relative ">
               <AnimatePresence initial={false}>
                 {slides.map((slide, index) => {
                   const isFront = index === currentIndex;
@@ -184,7 +184,7 @@ export default function HorizontalStackSlideshow() {
                         duration: 0.8,
                         ease: "easeOut",
                       }}
-                      className="absolute w-full h-full rounded-[24px] p-3 bg-white overflow-hidden drop-shadow-2xl"
+                      className="absolute w-full h-full rounded-[24px] p-3 bg-white overflow-hidden drop-shadow-2xl border"
                     >
                       <div className="relative overflow-hidden flex flex-col md:flex-row w-full h-full">
                         {/* Left Side (Text) */}
