@@ -107,6 +107,7 @@ const GlobalCoverageAndCompatibility = () => {
               className="absolute mt-[450px] h-[916px] object-cover"
             >
               <source src="/videos/global.mp4" type="video/mp4" />
+              <source src="/videos/global.webm" type="video/webm" />
             </video>
           </div>
         </div>
