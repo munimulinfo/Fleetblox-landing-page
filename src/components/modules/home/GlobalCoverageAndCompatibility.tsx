@@ -139,7 +139,7 @@ const GlobalCoverageAndCompatibility = () => {
             </p>
             <Link href="/under-development">
               <button className="mt-4 text-[#2D65F2] text-[16px] font-openSans font-bold">
-                Check your region
+                Check Your Region
               </button>
             </Link>
           </div>
@@ -169,7 +169,7 @@ const GlobalCoverageAndCompatibility = () => {
             </p>
             <Link href="/under-development">
               <button className="mt-4 text-[#2D65F2] text-[16px] font-openSans font-bold">
-                check compatibility
+                Check Compatibility
               </button>
             </Link>
           </div>

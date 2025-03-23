@@ -5,8 +5,8 @@ import Link from "next/link";
 const ConnectRemotelySection = () => {
   return (
     <>
-      <main className="pt-10 md:pt-16 bg-white">
-        <div className="container mx-auto w-full px-4 pt-16 lg:max-w-7xl">
+      <main className="pt-10 md:pt-[70px] bg-white md:pb-[40px]">
+        <div className="container mx-auto w-full px-4 lg:max-w-7xl">
           <div className="flex flex-col z-50">
             {/* Connect Remotely Section */}
             <section className="">

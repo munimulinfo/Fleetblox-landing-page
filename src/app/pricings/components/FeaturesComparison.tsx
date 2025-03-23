@@ -63,32 +63,32 @@ const FeaturesComparison = () => {
               Vehicles
             </h1>
           </div>
-          {vehicleFeatures?.map((featuers, index: number) => (
-            <FeaturesPermissionRow key={index} featuresPermissions={featuers} />
+          {vehicleFeatures?.map((features, index: number) => (
+            <FeaturesPermissionRow key={index} featuresPermissions={features} />
           ))}
           <div className="rounded-md px-5 py-5 mt-[30px] md:mt-0 md:py-4 text-center md:text-left">
             <h1 className="text-[18px] font-[700] text-[#7D7D7D] font-openSans">
               Fleet
             </h1>
           </div>
-          {fleetFeatures?.map((featuers, index: number) => (
-            <FeaturesPermissionRow key={index} featuresPermissions={featuers} />
+          {fleetFeatures?.map((features, index: number) => (
+            <FeaturesPermissionRow key={index} featuresPermissions={features} />
           ))}
           <div className="rounded-md px-5 py-5 mt-[30px] md:mt-0 md:py-4 text-center md:text-left">
             <h1 className="text-[18px] font-[700] text-[#7D7D7D] font-openSans">
               Brand
             </h1>
           </div>
-          {brandFeatures?.map((featuers, index: number) => (
-            <FeaturesPermissionRow key={index} featuresPermissions={featuers} />
+          {brandFeatures?.map((features, index: number) => (
+            <FeaturesPermissionRow key={index} featuresPermissions={features} />
           ))}
           <div className="rounded-md px-5 py-5 mt-[30px] md:mt-0 md:py-4 text-center md:text-left">
             <h1 className="text-[18px] font-[700] text-[#7D7D7D] font-openSans">
               Team
             </h1>
           </div>
-          {teamFeatures?.map((featuers, index: number) => (
-            <FeaturesPermissionRow key={index} featuresPermissions={featuers} />
+          {teamFeatures?.map((features, index: number) => (
+            <FeaturesPermissionRow key={index} featuresPermissions={features} />
           ))}
         </div>
       </div>
