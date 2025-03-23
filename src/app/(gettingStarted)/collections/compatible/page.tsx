@@ -40,12 +40,25 @@ const Compatible = () => {
   // Filter and determine compatibility status using `useMemo` for memoization
   const filteredCompatibleBrands = useCallback(() => {
     return brandCarList
-      .filter((brand: any) => selectedBrands.includes(brand.brand))
-      .map((brand: any) => ({
-        brand: brand.brand,
-        brandLogo: brand.brandLogo,
-        compatible: storedBrandModels[brand.brand] !== null,
-      }));
+      .filter((brand: any) =>
+        selectedBrands.some(
+          (selectedBrand) =>
+            selectedBrand.toLowerCase() === brand.brand.toLowerCase()
+        )
+      )
+      .map((brand: any) => {
+        const normalizedBrand = brand.brand.toLowerCase();
+        const hasModels =
+          storedBrandModels[normalizedBrand] &&
+          storedBrandModels[normalizedBrand]!.length > 0;
+
+        return {
+          brand: brand.brand,
+          brandLogo: brand.brandLogo,
+          compatible: !!hasModels,
+          models: storedBrandModels[normalizedBrand] || [],
+        };
+      });
   }, [selectedBrands, storedBrandModels, brandCarList]);
 
   console.log(

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -30,6 +31,52 @@ const useBrandCarList = (initialCountry: string | null) => {
         JSON.parse(localStorage.getItem("brandModels") || "{}")
       );
       if (brands) setSelectedBrands(JSON.parse(brands));
+    }
+  }, []);
+
+  // Add this function to process the stored brand models
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const rawBrandModels = localStorage.getItem("brandModels");
+        console.log("rawBrandModels", rawBrandModels);
+        if (!rawBrandModels) return;
+
+        const brandModelsData = JSON.parse(rawBrandModels);
+        const processedBrandModels: Record<string, string[] | null> = {};
+
+        // Process each country-specific entry
+        Object.entries(brandModelsData).forEach(([key, models]) => {
+          const [originalBrand, region, countryCode] = key.split("-");
+          const normalizedBrand = originalBrand.toLowerCase();
+
+          // Only process entries with actual selections
+          if (Array.isArray(models) && models.length > 0) {
+            if (!processedBrandModels[normalizedBrand]) {
+              processedBrandModels[normalizedBrand] = [];
+            }
+            // Merge models from all country entries while preserving case
+            processedBrandModels[normalizedBrand] = [
+              ...new Set([
+                ...(processedBrandModels[normalizedBrand] || []),
+                ...models,
+              ]),
+            ];
+          }
+        });
+
+        // Handle brands with no selections
+        Object.keys(processedBrandModels).forEach((brand) => {
+          if (processedBrandModels[brand]?.length === 0) {
+            processedBrandModels[brand] = null;
+          }
+        });
+
+        setStoredBrandModels(processedBrandModels);
+      } catch (error) {
+        console.error("Error processing brand models:", error);
+        setStoredBrandModels({});
+      }
     }
   }, []);
 
