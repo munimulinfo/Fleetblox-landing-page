@@ -48,13 +48,14 @@ const ConnectRemotelySection = () => {
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  controls
                   className="absolute inset-0 w-full h-full object-cover"
                 >
-                  <source
+                  <source src="/videos/connect-remotely.mov" type="video/mp4" />
+                  {/* <source
                     src="/videos/connect-remotely.webm"
                     type="video/webm"
-                  />
+                  /> */}
                   {/* <source
                     src="/videos/connect-remotely.mp4"
                     type="video/mp4"
