@@ -78,7 +78,7 @@ const ConnectRemotelySection = () => {
       </main>
       {/* Optimize section */}
       <div className="bg-[#FAFAFF] pt-[90px] pb-[120px] md:pt-[0px] md:pb-[0px] md:py-10">
-        <section className="flex mx-auto w-full lg:max-w-7xl flex-col md:flex-row p-0 rounded-[24px] px-5 items-center gap-[60px] h-auto md:h-[500px] md:rounded-[24px]">
+        <section className="flex mx-auto w-full lg:max-w-7xl flex-col py-[0px] md:py-[120px] lg:flex-row p-0 rounded-[24px] px-5 items-center gap-[60px] h-auto md:rounded-[24px]">
           <div className="lg:w-[570px] w-full">
             <h1 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold text-[#04082C] leading-tight font-montserrat">
               Optimize Fleet Safety
@@ -93,7 +93,7 @@ const ConnectRemotelySection = () => {
               all from a single platform.
             </p>
             <Link href="/under-development">
-              <button className="hidden md:flex font-openSans transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
+              <button className="hidden lg:flex font-openSans transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
                 <div className="z-20 whitespace-nowrap">Learn More</div>
                 <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
                   <RightArrowIcon />
@@ -102,18 +102,18 @@ const ConnectRemotelySection = () => {
             </Link>
           </div>
 
-          <div className="flex-1 flex justify-center">
-            <Image
-              src="/images/aI-assistant.png"
-              alt="AI assistant for fleet optimization"
-              width={548}
-              height={294}
-              className="w-full max-w-[400px] md:max-w-none object-contain"
-              priority
-            />
-          </div>
+          {/* <div className="flex-1 flex justify-center"> */}
+          <Image
+            src="/images/aI-assistant.png"
+            alt="AI assistant for fleet optimization"
+            width={548}
+            height={294}
+            className="object-contain"
+            priority
+          />
+          {/* </div> */}
 
-          <div className="md:hidden lg:hidden block w-full">
+          <div className="lg:hidden block w-full">
             <Link href="/under-development">
               <button className="bg-[#2D65F2] mt-5 hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
                 Learn More
