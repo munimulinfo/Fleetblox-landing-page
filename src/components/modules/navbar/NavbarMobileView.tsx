@@ -7,6 +7,7 @@ import SolutionsSubpage from "./solutions/SolutionsSubpage";
 import ResourcesSubpage from "./resources/ResourcesSubpage";
 import TopArrow from "@/components/icons/TopArrow";
 import Image from "next/image";
+import Link from "next/link";
 const NavbarMobileView = () => {
   const [isProduct, setIsProduct] = useState(false);
   const [isSolutions, setIsSolutions] = useState(false);
@@ -79,15 +80,21 @@ const NavbarMobileView = () => {
             {isResources && <ResourcesSubpage />}
           </div>
           <div className="flex justify-between items-center py-5 border-b text-[#04082C] text-[18px] font-bold font-openSans px-5">
-            <h1>Pricings</h1>
+            <Link href="/pricings">
+              <h1>Pricings</h1>
+            </Link>
           </div>
         </div>
 
         {/* Get Started Button - Sticks to bottom */}
         <div className=" flex flex-col items-center justify-center text-center p-5 bg-[#FAFAFF]">
-          <button className="py-3 px-5 bg-[#2D65F2] rounded-md text-[14px] font-openSans font-bold w-full text-white">
-            Get Started
-          </button>
+          <div className="w-full">
+            <Link href="/getting-started">
+              <button className="py-3 px-5 bg-[#2D65F2] rounded-md text-[14px] font-openSans font-bold w-full text-white">
+                Get Started
+              </button>
+            </Link>
+          </div>
           <button
             onClick={() => setIsDemoRequest(true)}
             className="text-[#04082C] text-[14px] font-openSans font-bold py-[10px]"
