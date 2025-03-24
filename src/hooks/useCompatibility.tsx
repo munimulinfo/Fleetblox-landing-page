@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -10,7 +12,7 @@ const useBrandCarList = (initialCountry: string | null) => {
   const [countrySelect, setCountrySelect] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [storedBrandModels, setStoredBrandModels] = useState<
-    Record<string, string | null>
+    Record<string, string[] | null>
   >({});
   const [loading, setLoading] = useState(false);
   const [vins, setVins] = useState<TransformedCarData[] | null>(null);
@@ -33,6 +35,59 @@ const useBrandCarList = (initialCountry: string | null) => {
     }
   }, []);
 
+  // Add this function to process the stored brand models
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const rawBrandModels = localStorage.getItem("brandModels");
+        console.log("rawBrandModels", rawBrandModels);
+        if (!rawBrandModels) return;
+
+        const brandModelsData = JSON.parse(rawBrandModels);
+        console.log("brandModelsData", brandModelsData);
+        const processedBrandModels: Record<string, string[] | null> = {};
+
+        // Process each country-specific entry
+        Object.entries(brandModelsData).forEach(([key, models]) => {
+          // Replace underscores with spaces for consistent normalization
+          const [originalBrand, region, countryCode] = key.split("-");
+          const normalizedBrand = originalBrand
+            .replace(/_/g, " ")
+            .toLowerCase();
+
+          console.log("normalizedBrand", normalizedBrand);
+          // Only process entries with actual selections
+          if (Array.isArray(models) && models.length > 0) {
+            if (!processedBrandModels[normalizedBrand]) {
+              processedBrandModels[normalizedBrand] = [];
+            }
+            // Merge models from all country entries while preserving case
+            processedBrandModels[normalizedBrand] = [
+              ...new Set([
+                ...(processedBrandModels[normalizedBrand] || []),
+                ...models,
+              ]),
+            ];
+          }
+        });
+
+        // Handle brands with no selections
+        Object.keys(processedBrandModels).forEach((brand) => {
+          if (processedBrandModels[brand]?.length === 0) {
+            processedBrandModels[brand] = null;
+          }
+        });
+
+        console.log("processedBrandModels", processedBrandModels);
+
+        setStoredBrandModels(processedBrandModels);
+      } catch (error) {
+        console.error("Error processing brand models:", error);
+        setStoredBrandModels({});
+      }
+    }
+  }, []);
+
   // Process country parameter from URL
   useEffect(() => {
     if (initialCountry) {
@@ -47,11 +102,13 @@ const useBrandCarList = (initialCountry: string | null) => {
   useEffect(() => {
     const fetchBrandData = async () => {
       if (countrySelect.length === 0) return;
-
+      console.log(countrySelect);
       try {
         setLoading(true);
         // Create raw JSON array string
         const regionParam = `["${countrySelect.join('","')}"]`;
+
+        console.log("Region param:", regionParam);
 
         const { data } = await axios.get(
           `https://api.fleetblox.com/api/dummy/check-compatibility-common`,
@@ -66,7 +123,10 @@ const useBrandCarList = (initialCountry: string | null) => {
           }
         );
 
+        console.log("Brand data:", data);
+
         setBrandCarList(data.data);
+        localStorage.setItem("brandCarList", JSON.stringify(data.data));
       } catch (error) {
         console.error("Error fetching brand data:", error);
         toast.error("Failed to load vehicle makes");
