@@ -9,6 +9,7 @@ import Link from "next/link";
 import AppleStore from "@/components/icons/AppleStore";
 import GoogleStore from "@/components/icons/GoogleStore";
 import GoogleStoreMobile from "@/components/icons/GoogleStoreMobile";
+import { RequestDemoModal } from "../RequestDemoModal";
 const Footer = () => {
   return (
     <div className="bg-[#0A2540]">
@@ -132,7 +133,7 @@ const Footer = () => {
                 </h5>
                 <Link href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Cloud Garage
+                    Cloud Telematics
                   </h5>
                 </Link>
                 <Link href="/under-development">
@@ -232,10 +233,19 @@ const Footer = () => {
                   <h5 className=" font-openSans py-[2px] mb-[5px]">Pricings</h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                  <h5 className=" font-openSans py-[2px] mb-[5px] block lg:hidden">
                     Request Demo
                   </h5>
                 </Link>
+                <div className="cursor-pointer hidden lg:block">
+                  <RequestDemoModal
+                    button={
+                      <h5 className=" font-openSans py-[2px] mb-[5px]">
+                        Request Demo
+                      </h5>
+                    }
+                  />
+                </div>
                 <Link href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">About</h5>
                 </Link>

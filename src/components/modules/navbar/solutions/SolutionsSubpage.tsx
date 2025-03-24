@@ -4,11 +4,13 @@ const SolutionsSubpage = () => {
     <div className="lg:pt-[30px] pr-5 xl:pr-[30px] pl-5 xl:pl-[30px] bg-white lg:pb-[60px] grid grid-cols-1 lg:grid-cols-4 lg:gap-[10px] xl:gap-[20px]">
       {/* Solutions page */}
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] pb-5 border-b lg:border-none">
-        <p className="text-[#7D7D7D] font-openSans text-[12px]">Solutions</p>
+        <p className="text-[#7D7D7D] font-openSans text-[12px] pt-5 lg:pt-0">
+          Solutions
+        </p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Cloud Garage
+              Cloud Telematics
             </h1>
           </Link>
           <Link href="/under-development">
@@ -69,7 +71,9 @@ const SolutionsSubpage = () => {
       </div>
       {/* Industries page */}
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] pb-5 border-b lg:border-none">
-        <p className="text-[#7D7D7D] font-openSans text-[12px]">Industries</p>
+        <p className="text-[#7D7D7D] font-openSans text-[12px] pt-5 lg:pt-0">
+          Industries
+        </p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
@@ -88,24 +92,16 @@ const SolutionsSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Public Transit
-            </h1>
-          </Link>
-          <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Green Logistics
-            </h1>
-          </Link>
-          <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Transportation
             </h1>
           </Link>
         </div>
       </div>
       {/* Roles page */}
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] pb-5 border-b lg:border-none">
-        <p className="text-[#7D7D7D] font-openSans text-[12px]">Roles</p>
+        <p className="text-[#7D7D7D] font-openSans text-[12px] pt-5 lg:pt-0">
+          Roles
+        </p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
@@ -131,7 +127,9 @@ const SolutionsSubpage = () => {
       </div>
       {/* Use cases page */}
       <div className="flex flex-col lg:space-y-[10px] space-y-[16px] pb-5">
-        <p className="text-[#7D7D7D] font-openSans text-[12px]">Use cases</p>
+        <p className="text-[#7D7D7D] font-openSans text-[12px] pt-5 lg:pt-0">
+          Use cases
+        </p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
