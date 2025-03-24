@@ -7,7 +7,7 @@ import trueIcon from "@/../public/images/true.svg";
 import falseIcon from "@/../public/images/false.svg";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 
 import close from "@/../public/images/access_point/down.svg";
 import open from "@/../public/images/access_point/up.svg";
@@ -23,9 +23,24 @@ const Compatible = () => {
   const { setCustomProgress, progress, currentStep, setCurrentStep } =
     useProgressUpdater();
   const [isOpen, setIsOpen] = useState("");
-  const brandCarList = localStorage.getItem("brandCarList")
-    ? JSON.parse(localStorage.getItem("brandCarList")!)
-    : [];
+
+  // Replace direct localStorage access with state
+  const [brandCarList, setBrandCarList] = useState([]);
+
+  // Move localStorage access to useEffect (client-only)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const storedBrandList = localStorage.getItem("brandCarList");
+        if (storedBrandList) {
+          setBrandCarList(JSON.parse(storedBrandList));
+        }
+      } catch (e) {
+        console.error("Error loading brandCarList:", e);
+      } finally {
+      }
+    }
+  }, []);
 
   console.log(brandCarList, "brandCarList");
 
