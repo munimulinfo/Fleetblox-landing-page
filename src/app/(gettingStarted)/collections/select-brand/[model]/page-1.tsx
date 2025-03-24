@@ -430,7 +430,7 @@ const ModelSelector = ({ params }: any) => {
       </div>
 
       {/* Country wise brand selection */}
-      <section className="flex-1 flex-col overflow-y-auto h-[calc(100vh-400px)] mb-4">
+      <section className="flex-1 flex-col overflow-y-auto h-[calc(100vh-400px)] mb-4 scrollbar-hidden">
         {loading ? (
           <div className="flex justify-center items-center h-full">
             <Loader />
@@ -448,7 +448,7 @@ const ModelSelector = ({ params }: any) => {
               >
                 {/* Country Header - Always visible */}
                 <div
-                  className="p-4 flex items-center justify-between cursor-pointer hover:bg-gray-50"
+                  className="p-4 flex items-center justify-between cursor-pointer "
                   onClick={(e) => {
                     e.stopPropagation();
                     setExpandedCountries((prev) => {
@@ -463,12 +463,20 @@ const ModelSelector = ({ params }: any) => {
                   }}
                 >
                   <div className="flex items-center flex-1">
+                    {/* Collapse/Expand icon on the right */}
+                    <div className="flex-shrink-0 mr-5">
+                      {expandedCountries.has(country.countryCode) ? (
+                        <ChevronDown className="size-[18px] text-[#666] transition-transform" />
+                      ) : (
+                        <ChevronUp className="size-[18px] text-[#666] transition-transform" />
+                      )}
+                    </div>
                     <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-3 border border-gray-300">
                       <Image
                         src={country.countryFlag}
                         alt={country.country}
-                        width={28}
-                        height={28}
+                        width={200}
+                        height={200}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -477,26 +485,17 @@ const ModelSelector = ({ params }: any) => {
                     </span>
 
                     {/* Show selection count */}
-                    {selectedModels[country.countryCode]?.length > 0 && (
+                    {/* {selectedModels[country.countryCode]?.length > 0 && (
                       <span className="ml-2 bg-[#EEF3FD] text-[#2D65F2] text-xs px-2 py-0.5 rounded-full">
                         {selectedModels[country.countryCode].length} selected
                       </span>
-                    )}
-                  </div>
-
-                  {/* Collapse/Expand icon on the right */}
-                  <div className="flex-shrink-0">
-                    {expandedCountries.has(country.countryCode) ? (
-                      <ChevronUp className="size-[18px] text-[#666] transition-transform" />
-                    ) : (
-                      <ChevronDown className="size-[18px] text-[#666] transition-transform" />
-                    )}
+                    )} */}
                   </div>
                 </div>
 
                 {/* Expandable Content */}
                 {expandedCountries.has(country.countryCode) && (
-                  <div className="p-4 space-y-2.5  bg-white">
+                  <div className="p-4 space-y-2.5  bg-white scrollbar-hidden">
                     {loading ? (
                       <Loader />
                     ) : countrySpecificModels[country.countryCode]?.length >
@@ -505,7 +504,7 @@ const ModelSelector = ({ params }: any) => {
                         (model) => (
                           <div
                             key={model.name}
-                            className="flex justify-between flex-col items-center border-b border-[#DFDFDF]/50 p-4 cursor-pointer hover:bg-gray-50 "
+                            className="flex justify-between flex-col items-center border-b border-[#DFDFDF]/50 p-4 cursor-pointer  scrollbar-hidden"
                             onClick={(e) => e.stopPropagation()}
                           >
                             <div className="flex items-center justify-between w-full">
