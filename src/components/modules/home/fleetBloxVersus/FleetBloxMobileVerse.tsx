@@ -10,7 +10,7 @@ const FleetBloxMobileVerse = () => {
     <div className="relative">
       {/* <div className="max-h-[200px] lg:h-[300px] md:h-[400px] filter blur-[200px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20  rounded-[520px] w-[200px] bg-[#FBEECA]  absolute "></div> */}
       <div className="px-5 pt-[80px] block lg:hidden">
-        <h1 className="text-[28px] text-center md:text-left text-[#000E32] font-bold leading-[1.1]">
+        <h1 className="text-[28px] text-center  text-[#000E32] font-bold leading-[1.1]">
           Fleetblox <span className="text-[#0336BC]">Versus </span> <br />{" "}
           Traditional Solutions
         </h1>

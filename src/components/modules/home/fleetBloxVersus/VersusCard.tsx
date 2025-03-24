@@ -19,7 +19,7 @@ const VirtualCard: React.FC<TVersesCard> = ({
   return (
     <div
       key={index}
-      className="sticky z-50 top-[0vh] flex h-[100vh] flex-col items-center justify-center xl:top-[13vh] 2xl:top-[12vh] 2.5xl:top-[15vh] 3xl:top-[8vh] "
+      className="sticky z-50 top-[5vh] flex h-[100vh] flex-col items-center justify-center xl:top-[13vh] "
     >
       <motion.div
         className={`relative z-[200] top-[0px] mx-auto transform flex-col gap-x-[30px] max-h-[500px] h-full xl:h-[500px] max-w-[500px] w-full xl:w-[500px]`}
