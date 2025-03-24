@@ -21,6 +21,24 @@ export interface Country {
 }
 
 const SelectCountry = () => {
+  const { setCustomProgress, progress, setCurrentStep } = useProgressUpdater();
+  // Update the cleanup useEffect
+  useEffect(() => {
+    setCurrentStep(0);
+
+    // Add client-side check
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("country");
+      localStorage.removeItem("countries");
+      localStorage.removeItem("brands");
+      localStorage.removeItem("brandModels");
+      localStorage.removeItem("VINS");
+      localStorage.removeItem("VINS_RESULT");
+      localStorage.removeItem("compatibility");
+      localStorage.removeItem("selectedCountries");
+    }
+  }, []);
+
   const router = useRouter();
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -90,8 +108,6 @@ const SelectCountry = () => {
     }
   }, [selectedCountries]);
 
-  const { setCustomProgress, progress, setCurrentStep } = useProgressUpdater();
-
   const handleNext = () => {
     setDisabled(true);
     if (disabled) {
@@ -137,11 +153,6 @@ const SelectCountry = () => {
     localStorage.removeItem("compatibility");
     localStorage.removeItem("selectedPlan");
   };
-
-  useEffect(() => {
-    setCurrentStep(0);
-    localStorage.removeItem("country"); // Remove the old single country format
-  }, [setCurrentStep]);
 
   // Function to remove a country from selection
   // const removeCountry = (country: string) => {
