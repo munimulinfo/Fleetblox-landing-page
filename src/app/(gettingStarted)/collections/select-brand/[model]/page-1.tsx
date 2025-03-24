@@ -140,6 +140,29 @@ const ModelSelector = ({ params }: any) => {
     );
   }, [regionData, modelParam]);
 
+  const combinedBrands = React.useMemo(() => {
+    // Group brands by name (case-insensitive)
+    const brandGroups: Record<string, any[]> = {};
+
+    filteredModels.forEach((brand) => {
+      const normalizedName = brand.brand.toLowerCase();
+      if (!brandGroups[normalizedName]) {
+        brandGroups[normalizedName] = [];
+      }
+      brandGroups[normalizedName].push(brand);
+    });
+
+    // Combine models from all regions for each brand
+    return Object.values(brandGroups).map((brands) => {
+      // Use the first brand as the base
+      const combined = { ...brands[0] };
+      // Add a special property to hold all regions this brand appears in
+      combined.regions = brands.map((b) => b.region);
+
+      return combined;
+    });
+  }, [filteredModels]);
+
   useEffect(() => {
     if (
       filteredModels.length > 0 &&
@@ -153,89 +176,141 @@ const ModelSelector = ({ params }: any) => {
     }
   }, [currentBrandIndex, filteredModels]);
 
-  // Add this effect to process models by country
+  // 1. Add this function to fetch models for each country separately
+  // const fetchCountrySpecificModels = async (
+  //   brand: string,
+  //   country: CountryObject
+  // ) => {
+  //   try {
+  //     // Determine which region this country belongs to
+  //     let region = "EUROPE";
+  //     if (country.country === "United States") region = "US";
+  //     else if (country.country === "Canada") region = "CA";
+
+  //     // Fetch models specific to this region
+  //     const response = await axios.get(
+  //       `https://api.fleetblox.com/api/dummy/check-compatibility-matrix?region=${region}&brand=${brand}`
+  //     );
+
+  //     // Find the brand in the response
+  //     const brandData = response.data.data.find(
+  //       (b: any) => b.brand.toLowerCase() === brand.toLowerCase()
+  //     );
+
+  //     return brandData?.models || [];
+  //   } catch (error) {
+  //     console.error(
+  //       `Error fetching models for ${brand} in ${country.country}:`,
+  //       error
+  //     );
+  //     return [];
+  //   }
+  // };
+
+  // 2. Update your useEffect that loads country models
   useEffect(() => {
     if (
-      filteredModels.length > 0 &&
-      currentBrandIndex < filteredModels.length
+      combinedBrands.length > 0 &&
+      currentBrandIndex < combinedBrands.length
     ) {
-      const currentBrand = filteredModels[currentBrandIndex];
-      const region = currentBrand.region;
-      const countries = region ? regionsWithCountryData[region] || [] : [];
+      const currentBrand = combinedBrands[currentBrandIndex];
+      const loadCountryModels = async () => {
+        setLoading(true);
 
-      // Initialize the country-specific models structure
-      const countryModels: { [countryCode: string]: any[] } = {};
-
-      // Each country in this region gets the same models from the brand
-      countries.forEach((country: any) => {
-        countryModels[country.countryCode] = currentBrand.models || [];
-      });
-
-      setCountrySpecificModels(countryModels);
-
-      // Load previously selected models for each country
-      const countrySelections: { [countryCode: string]: string[] } = {};
-      if (typeof window !== "undefined") {
         try {
-          const storedModels = JSON.parse(
-            localStorage.getItem("brandModels") || "{}"
+          // Get all regions this brand belongs to
+          const regions = currentBrand.regions || [currentBrand.region];
+
+          // Get all countries from all regions this brand belongs to
+          const allCountries: CountryObject[] = [];
+          regions.forEach((region: any) => {
+            const countriesForRegion = regionsWithCountryData[region] || [];
+            allCountries.push(...countriesForRegion);
+          });
+
+          // Initialize country-specific models with empty arrays
+          const countryModels: { [countryCode: string]: any[] } = {};
+
+          // For each country, try to find models in its own region first
+          await Promise.all(
+            allCountries.map(async (country) => {
+              // Find which region this country belongs to
+              let countryRegion = "EUROPE";
+              if (country.country === "United States") countryRegion = "US";
+              else if (country.country === "Canada") countryRegion = "CA";
+
+              // Look for the brand in that region's data
+              const regionBrands = regionData[countryRegion] || [];
+              const brandInRegion = regionBrands.find(
+                (b) =>
+                  b.brand.toLowerCase() === currentBrand.brand.toLowerCase()
+              );
+
+              // Use region-specific models if available, otherwise use combined models
+              countryModels[country.countryCode] =
+                brandInRegion?.models || currentBrand.models || [];
+            })
           );
 
-          countries.forEach((country: any) => {
-            const key = `${currentBrand.brand}-${region}-${country.countryCode}`;
-            countrySelections[country.countryCode] = storedModels[key] || [];
-          });
-        } catch (e) {
-          console.error("Error loading stored models:", e);
-        }
-      }
+          setCountrySpecificModels(countryModels);
 
-      setSelectedModels(countrySelections);
+          // Load saved selections
+          // Rest of your code for loading selections remains the same
+          const countrySelections: { [countryCode: string]: string[] } = {};
+          if (typeof window !== "undefined") {
+            // ... your existing selection loading code
+          }
+
+          setSelectedModels(countrySelections);
+        } catch (error) {
+          console.error("Error loading country-specific models:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      loadCountryModels();
     }
-  }, [currentBrandIndex, filteredModels, regionsWithCountryData]);
+  }, [currentBrandIndex, combinedBrands, regionsWithCountryData, regionData]);
 
   const handleModelSelect = (model: string, country: CountryObject) => {
-    if (!filteredModels[currentBrandIndex]) return;
+    if (!combinedBrands[currentBrandIndex]) return;
 
-    const currentBrand = filteredModels[currentBrandIndex].brand;
-    const currentRegion = filteredModels[currentBrandIndex].region;
-    const key = `${currentBrand}-${currentRegion}-${country.countryCode}`;
+    const currentBrand = combinedBrands[currentBrandIndex];
+    // Determine which region this country belongs to
+    let countryRegion = "EUROPE";
+    if (country.country === "United States") countryRegion = "US";
+    else if (country.country === "Canada") countryRegion = "CA";
 
-    // Update the selected models state
+    const key = `${currentBrand.brand}-${countryRegion}-${country.countryCode}`;
+
+    // Update the selected models state correctly
     setSelectedModels((prevSelected) => {
       const currentSelected = prevSelected[country.countryCode] || [];
       const newSelected = currentSelected.includes(model)
         ? currentSelected.filter((m) => m !== model)
         : [...currentSelected, model];
 
-      return {
+      const updatedSelections = {
         ...prevSelected,
         [country.countryCode]: newSelected,
       };
-    });
 
-    // Update localStorage
-    if (typeof window !== "undefined") {
-      try {
-        const storedModels = JSON.parse(
-          localStorage.getItem("brandModels") || "{}"
-        );
-        storedModels[key] = [...(selectedModels[country.countryCode] || [])];
-
-        // Toggle the model
-        if (storedModels[key].includes(model)) {
-          storedModels[key] = storedModels[key].filter(
-            (m: string) => m !== model
+      // Update localStorage with the updated state
+      if (typeof window !== "undefined") {
+        try {
+          const storedModels = JSON.parse(
+            localStorage.getItem("brandModels") || "{}"
           );
-        } else {
-          storedModels[key].push(model);
+          storedModels[key] = newSelected;
+          localStorage.setItem("brandModels", JSON.stringify(storedModels));
+        } catch (e) {
+          console.error("Error updating localStorage:", e);
         }
-
-        localStorage.setItem("brandModels", JSON.stringify(storedModels));
-      } catch (e) {
-        console.error("Error updating localStorage:", e);
       }
-    }
+
+      return updatedSelections;
+    });
   };
 
   const calculateProgress = 60 / totalBrands;
@@ -251,7 +326,7 @@ const ModelSelector = ({ params }: any) => {
       return;
     }
 
-    if (currentBrandIndex < filteredModels.length - 1) {
+    if (currentBrandIndex < combinedBrands.length - 1) {
       setCurrentBrandIndex((prev) => prev + 1);
       setCustomProgress(progress + calculateProgress);
     } else {
@@ -278,12 +353,19 @@ const ModelSelector = ({ params }: any) => {
     }
   };
 
-  const currentBrandData = filteredModels[currentBrandIndex];
+  const currentBrandData = combinedBrands[currentBrandIndex];
+  // Replace your current countries memo with this version
   const currentCountries = React.useMemo(() => {
-    return currentBrandData?.region
-      ? regionsWithCountryData[currentBrandData.region] || []
-      : [];
-  }, [currentBrandData?.region, regionsWithCountryData]);
+    // Instead of filtering by region, get ALL selected countries
+    const allSelectedCountries: CountryObject[] = [];
+
+    // Combine countries from all regions
+    Object.values(regionsWithCountryData).forEach((countries) => {
+      allSelectedCountries.push(...countries);
+    });
+
+    return allSelectedCountries;
+  }, [regionsWithCountryData]);
 
   const [initialExpansionDone, setInitialExpansionDone] = useState(false);
 
@@ -296,6 +378,15 @@ const ModelSelector = ({ params }: any) => {
       setInitialExpansionDone(true);
     }
   }, [currentCountries, initialExpansionDone]);
+
+  // Add this effect to log what's happening
+  useEffect(() => {
+    console.log({
+      countrySpecificModels,
+      selectedModels,
+      currentBrandData,
+    });
+  }, [countrySpecificModels, selectedModels, currentBrandData]);
 
   return (
     <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
@@ -339,7 +430,7 @@ const ModelSelector = ({ params }: any) => {
       </div>
 
       {/* Country wise brand selection */}
-      <section className="flex-1 flex-col overflow-y-auto h-[calc(100vh-400px)] mb-4">
+      <section className="flex-1 flex-col overflow-y-auto h-[calc(100vh-400px)] mb-4 scrollbar-hidden">
         {loading ? (
           <div className="flex justify-center items-center h-full">
             <Loader />
@@ -357,7 +448,7 @@ const ModelSelector = ({ params }: any) => {
               >
                 {/* Country Header - Always visible */}
                 <div
-                  className="p-4 flex items-center justify-between cursor-pointer hover:bg-gray-50"
+                  className="p-4 flex items-center justify-between cursor-pointer "
                   onClick={(e) => {
                     e.stopPropagation();
                     setExpandedCountries((prev) => {
@@ -372,12 +463,20 @@ const ModelSelector = ({ params }: any) => {
                   }}
                 >
                   <div className="flex items-center flex-1">
+                    {/* Collapse/Expand icon on the right */}
+                    <div className="flex-shrink-0 mr-5">
+                      {expandedCountries.has(country.countryCode) ? (
+                        <ChevronDown className="size-[18px] text-[#666] transition-transform" />
+                      ) : (
+                        <ChevronUp className="size-[18px] text-[#666] transition-transform" />
+                      )}
+                    </div>
                     <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-3 border border-gray-300">
                       <Image
                         src={country.countryFlag}
                         alt={country.country}
-                        width={28}
-                        height={28}
+                        width={200}
+                        height={200}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -386,26 +485,17 @@ const ModelSelector = ({ params }: any) => {
                     </span>
 
                     {/* Show selection count */}
-                    {selectedModels[country.countryCode]?.length > 0 && (
+                    {/* {selectedModels[country.countryCode]?.length > 0 && (
                       <span className="ml-2 bg-[#EEF3FD] text-[#2D65F2] text-xs px-2 py-0.5 rounded-full">
                         {selectedModels[country.countryCode].length} selected
                       </span>
-                    )}
-                  </div>
-
-                  {/* Collapse/Expand icon on the right */}
-                  <div className="flex-shrink-0">
-                    {expandedCountries.has(country.countryCode) ? (
-                      <ChevronUp className="size-[18px] text-[#666] transition-transform" />
-                    ) : (
-                      <ChevronDown className="size-[18px] text-[#666] transition-transform" />
-                    )}
+                    )} */}
                   </div>
                 </div>
 
                 {/* Expandable Content */}
                 {expandedCountries.has(country.countryCode) && (
-                  <div className="p-4 space-y-2.5  bg-white">
+                  <div className="p-4 space-y-2.5  bg-white scrollbar-hidden">
                     {loading ? (
                       <Loader />
                     ) : countrySpecificModels[country.countryCode]?.length >
@@ -414,7 +504,7 @@ const ModelSelector = ({ params }: any) => {
                         (model) => (
                           <div
                             key={model.name}
-                            className="flex justify-between flex-col items-center border-b border-[#DFDFDF]/50 p-4 cursor-pointer hover:bg-gray-50 "
+                            className="flex justify-between flex-col items-center border-b border-[#DFDFDF]/50 p-4 cursor-pointer  scrollbar-hidden"
                             onClick={(e) => e.stopPropagation()}
                           >
                             <div className="flex items-center justify-between w-full">

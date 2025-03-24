@@ -7,7 +7,7 @@ import trueIcon from "@/../public/images/true.svg";
 import falseIcon from "@/../public/images/false.svg";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 
 import close from "@/../public/images/access_point/down.svg";
 import open from "@/../public/images/access_point/up.svg";
@@ -18,11 +18,31 @@ import { ChevronLeft } from "lucide-react";
 
 const Compatible = () => {
   const router = useRouter();
-  const { selectedBrands, storedBrandModels, brandCarList, loading, vins } =
+  const { selectedBrands, storedBrandModels, loading, vins } =
     useBrandCarList(null);
   const { setCustomProgress, progress, currentStep, setCurrentStep } =
     useProgressUpdater();
   const [isOpen, setIsOpen] = useState("");
+
+  // Replace direct localStorage access with state
+  const [brandCarList, setBrandCarList] = useState([]);
+
+  // Move localStorage access to useEffect (client-only)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const storedBrandList = localStorage.getItem("brandCarList");
+        if (storedBrandList) {
+          setBrandCarList(JSON.parse(storedBrandList));
+        }
+      } catch (e) {
+        console.error("Error loading brandCarList:", e);
+      } finally {
+      }
+    }
+  }, []);
+
+  console.log(brandCarList, "brandCarList");
 
   const showAccessPoint = (modelName: string) => {
     if (isOpen === modelName) {
@@ -40,17 +60,33 @@ const Compatible = () => {
   // Filter and determine compatibility status using `useMemo` for memoization
   const filteredCompatibleBrands = useCallback(() => {
     return brandCarList
-      .filter((brand: any) => selectedBrands.includes(brand.brand))
-      .map((brand: any) => ({
-        brand: brand.brand,
-        brandLogo: brand.brandLogo,
-        compatible: storedBrandModels[brand.brand] !== null,
-      }));
+      .filter((brand: any) =>
+        selectedBrands.some(
+          (selectedBrand) =>
+            selectedBrand.toLowerCase() === brand.brand.toLowerCase()
+        )
+      )
+      .map((brand: any) => {
+        // Normalize brand name from API the same way
+        const normalizedBrand = brand.brand.replace(/_/g, " ").toLowerCase();
+        const hasModels =
+          storedBrandModels[normalizedBrand] &&
+          storedBrandModels[normalizedBrand]!.length > 0;
+
+        return {
+          brand: brand.brand,
+          brandLogo: brand.brandLogo,
+          compatible: !!hasModels,
+          models: storedBrandModels[normalizedBrand] || [],
+        };
+      });
   }, [selectedBrands, storedBrandModels, brandCarList]);
 
   console.log(
     filteredCompatibleBrands,
+    storedBrandModels,
     "filteredCompatibleBrands",
+    "brandCarList",
     brandCarList
   );
 

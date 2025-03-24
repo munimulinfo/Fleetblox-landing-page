@@ -27,12 +27,12 @@ export function Stepper({ steps, currentStep }: StepperProps) {
               {index !== steps.length - 1 && (
                 <div
                   className={cn(
-                    "absolute left-3 top-[35px] h-[calc(100%-5px)] w-[2px] border-l-2 border-dashed",
+                    "absolute left-3 top-[45px] h-[calc(100%-5px)] w-[2px] border-l-2 border-dashed",
                     isCompleted ? "border-white" : "border-white opacity-50"
                   )}
                 />
               )}
-              <div className="flex items-start space-x-4 gap-y-10">
+              <div className="flex items-center space-x-4 gap-y-10">
                 <div
                   className={cn(
                     "flex h-6 w-6 shrink-0 items-center justify-center text-center rounded-full text-[14px] font-openSans border-2 font-bold leading-5",
