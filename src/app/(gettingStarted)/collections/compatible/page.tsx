@@ -18,11 +18,16 @@ import { ChevronLeft } from "lucide-react";
 
 const Compatible = () => {
   const router = useRouter();
-  const { selectedBrands, storedBrandModels, brandCarList, loading, vins } =
+  const { selectedBrands, storedBrandModels, loading, vins } =
     useBrandCarList(null);
   const { setCustomProgress, progress, currentStep, setCurrentStep } =
     useProgressUpdater();
   const [isOpen, setIsOpen] = useState("");
+  const brandCarList = localStorage.getItem("brandCarList")
+    ? JSON.parse(localStorage.getItem("brandCarList")!)
+    : [];
+
+  console.log(brandCarList, "brandCarList");
 
   const showAccessPoint = (modelName: string) => {
     if (isOpen === modelName) {
@@ -47,7 +52,8 @@ const Compatible = () => {
         )
       )
       .map((brand: any) => {
-        const normalizedBrand = brand.brand.toLowerCase();
+        // Normalize brand name from API the same way
+        const normalizedBrand = brand.brand.replace(/_/g, " ").toLowerCase();
         const hasModels =
           storedBrandModels[normalizedBrand] &&
           storedBrandModels[normalizedBrand]!.length > 0;
@@ -63,7 +69,9 @@ const Compatible = () => {
 
   console.log(
     filteredCompatibleBrands,
+    storedBrandModels,
     "filteredCompatibleBrands",
+    "brandCarList",
     brandCarList
   );
 
