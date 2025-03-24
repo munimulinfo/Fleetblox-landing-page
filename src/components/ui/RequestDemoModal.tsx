@@ -9,16 +9,12 @@ import {
 import { X } from "lucide-react";
 import Image from "next/image";
 
-export function RequestDemoModal() {
+export function RequestDemoModal({ button }: { button: React.ReactNode }) {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <h1 className="cursor-pointer text-[16px] transition-all duration-300 ease-in-out hover:text-[#7D7D7D0] py-[10px] px-5 text-[#04082C]  font-openSans">
-          Request Demo
-        </h1>
-      </DialogTrigger>
+      <DialogTrigger asChild>{button}</DialogTrigger>
       <DialogContent
-        className="max-w-[700px] w-full  rounded-[24px] lg:mt-9"
+        className="max-w-[700px] w-full z-[500] rounded-[24px] lg:mt-9"
         style={{
           boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.14)",
         }}
