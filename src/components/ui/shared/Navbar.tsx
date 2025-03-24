@@ -74,8 +74,13 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex text-[#04082C] text-[14px] font-semibold items-center gap-[20px]">
-          
-            <RequestDemoModal />
+            <RequestDemoModal
+              button={
+                <h1 className="cursor-pointer text-[16px] transition-all duration-300 ease-in-out hover:text-[#7D7D7D0] py-[10px] px-5 text-[#04082C]  font-openSans">
+                  Request Demo
+                </h1>
+              }
+            />
             {/* <NotCompatibilityDialog title="Request demo" /> */}
             <Link href="/getting-started">
               <button className="py-[10px] px-4 rounded-lg font-openSans bg-[#2D65F2] text-[#fff]">
