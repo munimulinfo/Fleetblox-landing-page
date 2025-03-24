@@ -19,7 +19,7 @@ const VirtualCard: React.FC<CardProps> = ({
   return (
     <div
       key={index}
-      className="sticky z-50 top-[0vh] flex h-[100vh] flex-col items-center justify-center xl:top-[13vh] 2xl:top-[12vh] 2.5xl:top-[15vh] 3xl:top-[8vh] "
+      className="sticky z-50 top-[10vh] flex h-[100vh] flex-col items-center justify-center lg:top-[15vh] xl:top-[13vh] "
     >
       <motion.div
         className={`relative z-[200] top-[0px] mx-auto transform flex-col gap-x-[30px] max-h-[560px] h-full lg:h-[560px] max-w-[900px] w-full lg:w-[900px]`}
