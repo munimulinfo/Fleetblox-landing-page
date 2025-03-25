@@ -118,7 +118,7 @@ const Compatibility = () => {
         <div className="flex flex-col gap-[10px]">
           <div
             onClick={() => handleModeSelect("vin")}
-            className={`flex w-full cursor-pointer h-[380px] flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${
+            className={`flex w-full cursor-pointer  h-[250px] flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${
               compatibility === "vin" ? "bg-[#2D65F20F] border-[#B8CBFC]" : ""
             }`}
           >
@@ -132,7 +132,7 @@ const Compatibility = () => {
           </div>
           <div
             onClick={() => handleModeSelect("vehicle")}
-            className={`flex w-full h-[380px] cursor-pointer flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${
+            className={`flex w-full max-h-[300px] min-[230px] h-full cursor-pointer flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${
               compatibility === "vehicle"
                 ? "bg-[#2D65F20F] border-[#B8CBFC]"
                 : ""
