@@ -183,7 +183,7 @@ const PricingPlan = () => {
   const TotalForModal = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
 
   return (
-    <main className="h-full mb-10">
+    <main className="h-full pb-10 mb-10">
       <section className="container mx-auto  flex flex-col justify-center items-center">
         <Container>
           <h1 className="text-center text-[22px] md:text-[22px] text-[#04082C] font-bold">
@@ -342,7 +342,7 @@ const PricingPlan = () => {
           ))}
         </div>
 
-        <div className="mt-8 mb-5 flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
+        <div className="mt-8 mb-5  flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
           <Label
             className="font-openSans text-[#333333] font-bold text-[14px]"
             htmlFor="bill-monthly"
@@ -356,7 +356,7 @@ const PricingPlan = () => {
             className="cursor-pointer bg-[#2D65F2]"
           />
         </div>
-        <div className="font-openSans my-2 text-[12px] text-[#333]">
+        <div className="font-openSans pb-10 my-2 text-[12px] text-[#333]">
           *A one-time platform setup fee of $99 applies.
         </div>
       </section>

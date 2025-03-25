@@ -268,24 +268,33 @@ export default VIN;
 
 const SearchingVins = () => {
   return (
-    // className={`cursor-pointer rounded-lg w-full flex items-center justify-center flex-col p-[20px] mt-[60px]`}>
-    <div
-      className={`flex w-[600px] h-[400px] cursor-pointer flex-col mx-auto my-auto shadow-2xl items-center justify-center rounded-xl px-[40px] py-[60px]`}
-    >
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="h-[140px] w-[204.092px] object-fill"
+    <div className="flex flex-col items-center justify-center h-full mx-auto">
+      <div
+        className={`flex flex-col items-center justify-center w-[90%] sm:w-[80%] md:w-[70%] lg:w-[600px] 
+        h-auto min-h-[300px] sm:min-h-[350px] md:min-h-[400px] 
+        px-6 sm:px-8 md:px-[40px] py-8 sm:py-10 md:py-[60px] 
+        mx-auto rounded-xl shadow-xl sm:shadow-2xl`}
       >
-        <source src="/videos/sacning.mp4" className="" type="video/mp4" />
-      </video>
-      <h4 className="mt-[32px] text-center font-openSans text-[22px] font-bold text-[#04082C]">
-        Scanning VINs
-      </h4>
-      <h4 className="text-center font-openSans text-[14px] text-[#7d7d7d] leading-relaxed">{`Please wait while we finish scanning your provides VINs. This won't take long. Thank you for your patience!`}</h4>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="w-[160px] h-[110px] sm:w-[180px] sm:h-[120px] md:w-[204.092px] md:h-[140px] object-fill"
+        >
+          <source src="/videos/sacning.mp4" type="video/mp4" />
+        </video>
+
+        <h4 className="mt-4 sm:mt-6 md:mt-[32px] text-center font-openSans text-[18px] sm:text-[20px] md:text-[22px] font-bold text-[#04082C]">
+          Scanning VINs
+        </h4>
+
+        <h4 className="text-center font-openSans text-[12px] sm:text-[13px] md:text-[14px] text-[#7d7d7d] leading-relaxed max-w-xs sm:max-w-sm md:max-w-md">
+          Please wait while we finish scanning your provided VINs. This
+          won&apos;t take long. Thank you for your patience!
+        </h4>
+      </div>
     </div>
   );
 };

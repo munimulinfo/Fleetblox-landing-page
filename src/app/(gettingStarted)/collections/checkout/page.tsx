@@ -4,7 +4,7 @@
 
 import { ChevronDown } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
-import Canada from "@/../public/images/canada.png";
+import Canada from "../../../../../public/images/canada.png";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -102,10 +102,9 @@ const Page = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-
     phone: "",
     countryCode: "+1",
-    flag: Canada,
+    flag: Canada, // Provide a fallback path
   });
   // console.log();
 
@@ -176,6 +175,8 @@ const Page = () => {
       [name]: value,
     }));
   };
+
+  console.log(formData, "formData");
 
   const selectCountryCode = (data: Country) => {
     setFormData((prev) => ({
@@ -292,7 +293,7 @@ const Page = () => {
           <h2 className="font-bold text-[22px] sm:text-[22px] font-openSans text-[#04082C] ">
             Complete Your Purchase
           </h2>
-          <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
+          <p className="font-openSans text-[14px] leading-relaxed  text-[#7D7D7D] mx-auto">
             Confirm your vehicle compatibility, provide contact info and
             continue to payment.
           </p>
@@ -568,13 +569,23 @@ const Page = () => {
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                         className="h-full flex items-center rounded-l bg-[#F7F7F7] px-3 border-r border-[#e5e5e5]"
                       >
-                        <Image
-                          src={formData.flag}
-                          alt="Flag"
-                          className="mr-2 h-[20px] w-[24px] rounded-[6px]"
-                          width={50}
-                          height={50}
-                        />
+                        {formData.flag ? (
+                          <Image
+                            src={Canada}
+                            alt="Flag"
+                            className="mr-2 h-[20px] w-[24px] rounded-[6px]"
+                            width={50}
+                            height={50}
+                          />
+                        ) : (
+                          <Image
+                            src={Canada}
+                            alt="Flag"
+                            className="mr-2 h-[20px] w-[24px] rounded-[6px]"
+                            width={50}
+                            height={50}
+                          />
+                        )}
                         <span className="text-[14px] text-[#04082C]">
                           {formData.countryCode}
                         </span>
@@ -590,15 +601,19 @@ const Page = () => {
                               className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 cursor-pointer list-none"
                               onClick={() => selectCountryCode(country)}
                             >
-                              <Image
-                                src={country.countryFlag}
-                                alt={country.country}
-                                className="h-[20px] w-[24px] rounded-[6px]"
-                                width={20}
-                                height={20}
-                              />
+                              {country.countryFlag ? (
+                                <Image
+                                  src={country.countryFlag}
+                                  alt={country.country}
+                                  className="h-[20px] w-[24px] rounded-[6px]"
+                                  width={20}
+                                  height={20}
+                                />
+                              ) : (
+                                <div className="h-[20px] w-[24px] rounded-[6px] bg-gray-200"></div>
+                              )}
                               <span className="text-[14px] text-[#04082C]">
-                                {country.countryCode}
+                                {country.phoneCode}
                               </span>
                             </li>
                           ))}
@@ -686,7 +701,7 @@ const Page = () => {
         </div>
 
         {/* selected vehicle and VINS for mobile view*/}
-        <div className="max-h-[500px] lg:hidden block overflow-y-auto pr-2 scrollbar-hidden">
+        <div className=" lg:hidden block  pr-2 pb-5">
           <h3 className="mb-2 mt-5 text-[14px] font-openSans font-[700] text-[#7d7d7d]">
             {!vins ? "Selected Vehicles" : "Selected Vins"}{" "}
           </h3>
