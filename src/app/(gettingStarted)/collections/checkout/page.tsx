@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
@@ -34,7 +35,7 @@ const Page = () => {
   const {
     selectedBrands,
     storedBrandModels,
-    brandCarList,
+
     vins,
     countrySelect,
   } = useBrandCarList(null);
@@ -50,6 +51,7 @@ const Page = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState("");
+  const [brandCarList, setBrandCarList] = useState<any[]>([]);
 
   useEffect(() => {
     // Client-side initialization
@@ -58,6 +60,22 @@ const Page = () => {
     if (storedSelectedPlan) setSelectedPlan(JSON.parse(storedSelectedPlan));
     if (storedInterestedUser)
       setInterestedUser(JSON.parse(storedInterestedUser));
+  }, []);
+
+  // Move ALL direct localStorage access into useEffect
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        // Load brand car list
+        const brandCarListUser = localStorage.getItem("brandCarList");
+        if (brandCarListUser) {
+          setBrandCarList(JSON.parse(brandCarListUser));
+        }
+      } catch (error) {
+        console.error("Error loading brand car list:", error);
+        setBrandCarList([]);
+      }
+    }
   }, []);
 
   // Update these calculations to remove HST
@@ -208,10 +226,11 @@ const Page = () => {
   };
 
   // Filter and determine compatibility status using `useMemo` for memoization
+
   const filteredCompatibleBrands = useCallback(() => {
     return brandCarList
-      .filter((brand) => selectedBrands.includes(brand.brand))
-      .map((brand) => ({
+      .filter((brand: any) => selectedBrands.includes(brand.brand))
+      .map((brand: any) => ({
         brand: brand.brand,
         brandLogo: brand.brandLogo,
         compatible: storedBrandModels[brand.brand] !== null,
@@ -221,7 +240,7 @@ const Page = () => {
 
   if (filteredCompatibleBrands().length > 0) {
     const areAllUncompatible = filteredCompatibleBrands()?.every(
-      (brand) => brand.compatible === false
+      (brand: any) => brand.compatible === false
     );
     if (!areAllUncompatible) {
       console.log("areAllUncompatible", areAllUncompatible);
@@ -350,8 +369,9 @@ const Page = () => {
 
                 <div className="">
                   <h1 className="text-[#04082C] font-openSans text-[16px] font-[600] leading-[160%]">
-                    Total Vehicle Slot (
-                    {selectedPlan?.annually ? "Annually" : "Monthly"})
+                    Total Vehicle Slot
+                    {/* (
+                    {selectedPlan?.annually ? "Annually" : "Monthly"}) */}
                   </h1>
                   <p className="text-[12px] font-openSans font-normal text-[#7d7d7d]">
                     Fleet Size
@@ -378,7 +398,7 @@ const Page = () => {
               {loading && !vins ? (
                 <Loader />
               ) : (
-                filteredCompatibleBrands().map((brand) => (
+                filteredCompatibleBrands().map((brand: any) => (
                   <div
                     key={brand.brand}
                     className="flex items-center justify-between rounded-md border px-[10px] py-[10px]"
@@ -439,7 +459,7 @@ const Page = () => {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-[10px]">
-                        {/* {vin.isCompatible ? (
+                        {vin.isCompatible ? (
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
@@ -447,15 +467,15 @@ const Page = () => {
                             }}
                             className="flex h-5 w-5 items-center justify-center"
                           >
-                            <Image
+                            {/* <Image
                               className="size-[20px] object-cover"
                               src={isOpen === vin.vin ? open : close}
                               alt="toggle"
-                            />
+                            /> */}
                           </button>
                         ) : (
                           <div className="h-5 w-5"></div>
-                        )} */}
+                        )}
                         <div className="text-left font-openSans font-semibold text-[14px] leading-[160%] text-[#04082C]">
                           {`VIN - ${vin.vin}`}
                         </div>
@@ -552,8 +572,8 @@ const Page = () => {
                           src={formData.flag}
                           alt="Flag"
                           className="mr-2 h-[20px] w-[24px] rounded-[6px]"
-                          width={20}
-                          height={20}
+                          width={50}
+                          height={50}
                         />
                         <span className="text-[14px] text-[#04082C]">
                           {formData.countryCode}
@@ -674,7 +694,7 @@ const Page = () => {
             {loading && !vins ? (
               <Loader />
             ) : (
-              filteredCompatibleBrands().map((brand) => (
+              filteredCompatibleBrands().map((brand: any) => (
                 <div
                   key={brand.brand}
                   className="flex items-center justify-between rounded-md border px-[10px] py-[10px]"
