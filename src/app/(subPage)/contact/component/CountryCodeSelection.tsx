@@ -2,10 +2,16 @@
 import { ChevronDown } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useRef, useState } from "react";
-import Canada from "@/../public/images/canada.png";
 import { Country } from "@/app/(gettingStarted)/components/SelectCountry";
+import { TContactFormData } from "@/types/types";
 
-const CountryCodeSelection = () => {
+const CountryCodeSelection = ({
+  setFormData,
+  formData,
+}: {
+  setFormData: React.Dispatch<React.SetStateAction<TContactFormData>>;
+  formData: TContactFormData;
+}) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [countries, setCountries] = useState<Country[] | null>(null);
@@ -30,25 +36,9 @@ const CountryCodeSelection = () => {
 
     getCountries();
   }, []);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    brandName: "",
-    fleetSize: "",
-    businessType: "",
-    teamSize: "",
-    locations: "",
-    country: "",
-    state: "",
-    city: "",
-    postalCode: "",
-    address: "",
-    phone: "",
-    countryCode: "+1",
-    flag: Canada,
-  });
+
   const selectCountryCode = (data: Country) => {
-    setFormData((prev) => ({
+    setFormData((prev: TContactFormData) => ({
       ...prev,
       countryCode: data.phoneCode,
       flag: data.countryFlag as unknown as StaticImageData,
