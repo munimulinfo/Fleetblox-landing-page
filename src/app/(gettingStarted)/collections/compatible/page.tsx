@@ -8,7 +8,6 @@ import falseIcon from "@/../public/images/false.svg";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
 import { useCallback, useState, useEffect } from "react";
-
 import close from "@/../public/images/access_point/down.svg";
 import open from "@/../public/images/access_point/up.svg";
 import Loader from "../../components/Loader";
