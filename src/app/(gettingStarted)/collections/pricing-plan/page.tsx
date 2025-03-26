@@ -74,53 +74,37 @@ const PricingPlan = () => {
     fetchPlans();
   }, []);
 
-  // const calculateDiscount = (
-  //   slotCount: number,
-  //   basePrice: number,
-  //   isAnnual: boolean = false
-  // ): number => {
-  //   let discountPercentage = 0;
-  //   if (slotCount >= 200) {
-  //     discountPercentage = 30;
-  //   } else if (slotCount >= 150) {
-  //     discountPercentage = 18;
-  //   } else if (slotCount >= 100) {
-  //     discountPercentage = 10;
-  //   } else if (slotCount >= 50) {
-  //     discountPercentage = 0;
-  //   }
-  //   let discountedPrice = basePrice - (basePrice * discountPercentage) / 100;
-
-  //   if (isAnnual) {
-  //     discountedPrice = discountedPrice - (discountedPrice * 15) / 100;
-  //   }
-  //   return discountedPrice;
-  // };
-
+  // Improved calculation function with better precision handling
   const calculateDiscount = (
     totalSlot: number,
     isAnnual: boolean,
     planPrice: number
   ): number => {
-    let discountPercentage = 0;
-    // Apply slot-based discount
+    // Calculate slot-based discount percentage
+    let slotDiscountPercentage = 0;
     if (totalSlot >= 200) {
-      discountPercentage = 30;
+      slotDiscountPercentage = 30;
     } else if (totalSlot >= 150) {
-      discountPercentage = 18;
+      slotDiscountPercentage = 18;
     } else if (totalSlot >= 100) {
-      discountPercentage = 10;
+      slotDiscountPercentage = 10;
     } else if (totalSlot >= 50) {
-      discountPercentage = 5;
+      slotDiscountPercentage = 5;
     }
-    // Calculate price after slot discount
-    let discountedPrice = planPrice! * (1 - discountPercentage / 100);
 
-    // Apply 15% annual discount if applicable
-    if (isAnnual) {
-      discountedPrice *= 0.85; // Equivalent to 15% off
-    }
-    return parseFloat(discountedPrice.toFixed(2)); // Keep two decimal places
+    // Calculate annual discount percentage
+    const annualDiscountPercentage = isAnnual ? 15 : 0;
+
+    // Calculate effective discount percentage (not just adding percentages)
+    const effectiveDiscount =
+      1 -
+      (1 - slotDiscountPercentage / 100) * (1 - annualDiscountPercentage / 100);
+
+    // Apply total discount
+    const discountedPrice = planPrice * (1 - effectiveDiscount);
+
+    // Return with exactly 2 decimal places
+    return parseFloat(discountedPrice.toFixed(2));
   };
 
   const handleBillingMonthly = () => {
@@ -129,54 +113,6 @@ const PricingPlan = () => {
   };
 
   console.log(selectedPlan, "checking selected plan");
-  // const handleSubscriptionPlan = async () => {
-  // try {
-  //   const subscriptionInfo = {
-  //     userId: "sarkarsoumik215@gmail.com",
-  //     customerId: "cus_RgQvMiKISS0OAX",
-  //     newPlanId: "cm4vhz3pu0001oniuypx7p2uh",
-  //     totalSlot: slotCount,
-  //     price: Number(selectedPlan?.price?.toFixed(2)),
-  //     interval: billAnnually ? "year" : "month",
-  //   };
-
-  //   const response = await fetch("/payment/subscription/upgrade", {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(subscriptionInfo),
-  //   });
-
-  //   if (!response.ok) throw new Error("Update failed");
-
-  //   const res = await response.json();
-  //   if (res?.success) {
-  //     toast.success("Subscription plan updated successfully");
-  //     setShowUpdatePlanModal(false);
-  //   }
-  // } catch (error: any) {
-  //   console.log(error);
-  //   toast.error("Failed to update subscription plan");
-  // }
-
-  // For now, just close the modal
-
-  // await localStorage.setItem("selectedPlan", JSON.stringify(selectedPlan));
-
-  // toast.success("Subscription plan updated successfully");
-
-  // router.push("/collections/checkout");
-  // };
-
-  // const handlePriceAndModal = ({ fleet, slot, annually, price }: any) => {
-  //   setSelectedPlan({
-  //     price: price,
-  //     fleet: fleet,
-  //     slot: slot,
-  //     annually: annually,
-  //   });
-  //   setShowUpdatePlanModal(true);
-  //   setCurrentStep(currentStep + 1);
-  // };
 
   console.log(handleBillingMonthly, calculateDiscount);
 
