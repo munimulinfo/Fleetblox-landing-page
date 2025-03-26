@@ -58,7 +58,7 @@ const BlogSection = () => {
               ))}
 
               <div className="pt-4">
-                <Link href="/under-development">
+                <Link href="/blog">
                   <button className="hidden md:flex transition-all font-openSans bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300  items-center px-[13px] w-[136.1px] hover:w-[158.1px] hover:px-4 py-3 text-base font-bold rounded-md group">
                     <div className="z-20 whitespace-nowrap">
                       {" "}
@@ -131,7 +131,7 @@ const BlogSection = () => {
           </div>
         </div>
         <div className="pt-[30px] pb-[80px]">
-          <Link href="/under-development">
+          <Link href="/blog">
             <button className="text-[16px] group cursor-pointer font-openSans w-full font-bold bg-[#2D65F2] px-5 py-3 rounded-md text-white transition-all duration-500">
               View All Blogs
             </button>

@@ -192,7 +192,7 @@ const Footer = () => {
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Resources
                 </h5>
-                <Link href="/under-development">
+                <Link href="/blog">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">Blogs</h5>
                 </Link>
                 <Link href="/under-development">
