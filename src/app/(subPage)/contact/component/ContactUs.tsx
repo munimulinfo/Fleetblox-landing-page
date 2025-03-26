@@ -4,6 +4,7 @@ import CountryCodeSelection from "./CountryCodeSelection";
 import { useState } from "react";
 import Canada from "@/../public/images/canada.png";
 import { TContactFormData } from "@/types/types";
+// import { toast } from "react-hot-toast";
 const ContactUs = () => {
   const [formData, setFormData] = useState<TContactFormData>({
     firstName: "",
@@ -24,10 +25,23 @@ const ContactUs = () => {
       [name]: value,
     }));
   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log({ formData });
+
+    // const res = await fetch("/api/contact", {
+    //   method: "POST",
+    //   body: JSON.stringify(formData),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+    // console.log({ res });
+    // if (res?.status === 200) {
+    //   toast.success("Message sent successfully!");
+    // }
   };
+
   return (
     <div>
       <section className="w-full bg-[#FAFAFF] pt-[140px] pb-[60px] flex flex-col justify-center items-center">
