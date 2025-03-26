@@ -4,8 +4,11 @@ import CountryCodeSelection from "./CountryCodeSelection";
 import { useState } from "react";
 import Canada from "@/../public/images/canada.png";
 import { TContactFormData } from "@/types/types";
-// import { toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import { AxiosErrorResponse } from "@/interface/AxiosErrorResponse";
 const ContactUs = () => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<TContactFormData>({
     firstName: "",
     lastName: "",
@@ -20,6 +23,7 @@ const ContactUs = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -27,19 +31,56 @@ const ContactUs = () => {
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ formData });
+    setLoading(true);
+    // Regular expression for validating an email address
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-    // const res = await fetch("/api/contact", {
-    //   method: "POST",
-    //   body: JSON.stringify(formData),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // console.log({ res });
-    // if (res?.status === 200) {
-    //   toast.success("Message sent successfully!");
-    // }
+    if (!emailRegex.test(formData.email.trim())) {
+      toast.error("Please enter a valid email address");
+      setLoading(false);
+      return;
+    }
+
+    if (formData.phoneNumber.length > 17) {
+      toast.error("Please enter a valid phone number");
+    }
+    const contactData = {
+      firstName: formData.firstName.trim(),
+      lastName: formData.lastName.trim(),
+      company: formData.company.trim(),
+      email: formData.email.trim(),
+      phoneNumber: `${formData.countryCode}${formData.phoneNumber.trim()}`,
+      message: formData.message.trim(),
+    };
+
+    try {
+      setLoading(true);
+      const { data } = await axios.post(
+        "https://api.fleetblox.com/api/contact/create",
+        contactData
+      );
+      if (data?.success) {
+        toast.success("Message sent successfully!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          company: "",
+          email: "",
+          phoneNumber: "",
+          message: "",
+          countryCode: "+1",
+          flag: Canada,
+        });
+      }
+      setLoading(false);
+    } catch (e) {
+      const axiosError = e as AxiosErrorResponse;
+      const errorMessage =
+        axiosError?.response?.data?.error?.message ||
+        "An unexpected error occurred";
+      toast.error(errorMessage);
+      setLoading(false);
+    }
   };
 
   return (
@@ -91,7 +132,9 @@ const ContactUs = () => {
                 type="text"
                 required
                 name="firstName"
-                defaultValue={formData.firstName}
+                autoComplete="off"
+                maxLength={20}
+                value={formData.firstName}
                 onChange={handleChange}
                 className={`p-4 text-[#333] font-openSans text-[14px] leading-5 outline-none border border-[#DFDFDF] rounded-md focus:border-[#B8CBFC] duration-200 peer bg-white w-full ${
                   formData.firstName ? "has-value" : ""
@@ -108,7 +151,9 @@ const ContactUs = () => {
               <input
                 type="text"
                 name="lastName"
-                defaultValue={formData.lastName}
+                autoComplete="off"
+                maxLength={20}
+                value={formData.lastName}
                 onChange={handleChange}
                 className={`p-4 text-[#333] font-openSans text-[14px] leading-5 outline-none border border-[#DFDFDF] rounded-md focus:border-[#B8CBFC] duration-200 peer bg-white w-full ${
                   formData.lastName ? "has-value" : ""
@@ -125,8 +170,10 @@ const ContactUs = () => {
               <input
                 type="text"
                 required
+                autoComplete="off"
                 name="company"
-                defaultValue={formData.company}
+                maxLength={40}
+                value={formData.company}
                 onChange={handleChange}
                 className={`p-4 text-[#333] font-openSans text-[14px] leading-5 outline-none border border-[#DFDFDF] rounded-md focus:border-[#B8CBFC] duration-200 peer bg-white w-full ${
                   formData.company ? "has-value" : ""
@@ -144,13 +191,25 @@ const ContactUs = () => {
                 required
                 type="number"
                 name="phoneNumber"
-                defaultValue={formData.phoneNumber}
+                autoComplete="off"
+                pattern="[0-9]*"
+                value={formData.phoneNumber}
                 onChange={handleChange}
-                className={`py-4 px-[100px] text-[#333] font-openSans text-[14px] leading-5 outline-none border border-[#DFDFDF] rounded-md focus:border-[#B8CBFC] duration-200 peer bg-white w-full ${
+                className={`py-4  ${
+                  formData?.countryCode.length === 4
+                    ? "px-[110px]"
+                    : "px-[100px]"
+                } text-[#333] font-openSans text-[14px] leading-5 outline-none border border-[#DFDFDF] rounded-md focus:border-[#B8CBFC] duration-200 peer bg-white w-full ${
                   formData.phoneNumber ? "has-value" : ""
                 }`}
               />
-              <span className="absolute left-[85px] top-0 text-[#333] font-openSans text-[14px] leading-5 tracking-wide peer-focus:text-[#2D65F2] pointer-events-none duration-200 peer-focus:text-sm peer-focus:-translate-y-[27px] bg-white ml-4 peer-[.has-value]:text-[#2D65F2] peer-[.has-value]:-translate-y-[27px] peer-[.has-value]:text-sm">
+              <span
+                className={`absolute  ${
+                  formData?.countryCode.length === 4
+                    ? "left-[90px]"
+                    : "left-[85px]"
+                }  top-0 text-[#333] font-openSans text-[14px] leading-5 tracking-wide peer-focus:text-[#2D65F2] pointer-events-none duration-200 peer-focus:text-sm peer-focus:-translate-y-[27px] bg-white ml-4 peer-[.has-value]:text-[#2D65F2] peer-[.has-value]:-translate-y-[27px] peer-[.has-value]:text-sm`}
+              >
                 Phone number
               </span>
               <span className="absolute z-10 left-4 top-0">
@@ -168,7 +227,8 @@ const ContactUs = () => {
                 required
                 type="email"
                 name="email"
-                defaultValue={formData.email}
+                autoComplete="off"
+                value={formData.email}
                 onChange={handleChange}
                 className={`p-4 text-[#333] font-openSans text-[14px] leading-5 outline-none border border-[#DFDFDF] rounded-md focus:border-[#B8CBFC] duration-200 peer bg-white w-full ${
                   formData.email ? "has-value" : ""
@@ -186,7 +246,7 @@ const ContactUs = () => {
                 required
                 rows={4}
                 name="message"
-                defaultValue={formData.message}
+                value={formData.message}
                 onChange={handleChange}
                 className={`p-4 text-[#333] font-openSans text-[14px] leading-5 outline-none border border-[#DFDFDF] rounded-md focus:border-[#B8CBFC] duration-200 peer bg-white w-full ${
                   formData.message ? "has-value" : ""
@@ -203,7 +263,10 @@ const ContactUs = () => {
               type="submit"
               className="hidden lg:flex transition-all font-openSans bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300  items-center px-[13px]  hover:w-[105px] w-[83px] hover:px-4 py-3 text-base font-bold rounded-md group"
             >
-              <div className="z-20 whitespace-nowrap"> Submit</div>
+              <div className="z-20 whitespace-nowrap">
+                {" "}
+                {loading ? "Sending.." : "Submit"}
+              </div>
               <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
                 <RightArrowIcon />
               </div>
@@ -212,7 +275,7 @@ const ContactUs = () => {
               type="submit"
               className="md:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center"
             >
-              Submit
+              {loading ? "Sending.." : "Submit"}
             </button>
           </div>
         </form>
