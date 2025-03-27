@@ -141,7 +141,7 @@ const PricingPlan = () => {
           {currentPlans?.data?.slice(0, 2).map((plan: any, index: number) => (
             <Card
               key={index}
-              className="relative min-w-[350px] max-w-[400px] rounded-[16px] "
+              className="relative min-w-[350px] max-w-[400px] shadow-none rounded-[16px] "
             >
               {/* Ribbon */}
               {plan && plan?.name !== "Eagle eye fleet" && (
@@ -194,6 +194,7 @@ const PricingPlan = () => {
                     <div className="flex ">
                       {slotCount >= 50 && (
                         <p className="text-[#04082C] font-openSans text-[14px] leading-[155%]  font-semibold flex items-center">
+                          pricings{" "}
                           {slotCount >= 200
                             ? "30%"
                             : slotCount >= 150
