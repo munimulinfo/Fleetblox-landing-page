@@ -11,6 +11,9 @@ export default function robots(): MetadataRoute.Robots {
         "/collections/checkout/", // Protect checkout routes
         "/result/paymentSuccess", // Protect payment results
         "/result/paymentFaild", // Protect payment results
+        "/collections/select-country",
+        "/pricings",
+        "/q",
       ],
     },
     sitemap: "https://fleetblox.com/sitemap.xml", // Update with your actual domain

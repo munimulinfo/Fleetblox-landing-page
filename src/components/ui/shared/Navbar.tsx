@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed left-0 right-0 top-0 z-[9999]  lg:mt-5 mt-0 transition-all duration-200 ease-in-out py-[18px] md:py-[16px] px-[20px] lg:rounded-[10px] mx-auto w-full max-w-[calc(100vw-30px)] xxl:max-w-[1440px] ${
+      className={`fixed left-0 right-0 top-0 z-[9999]  lg:mt-5 mt-0 transition-all duration-200 ease-in-out py-[18px] md:py-[16px] px-[20px] lg:rounded-[10px] mx-auto w-full lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] ${
         isScrolled || mobileMenuOpen ? "bg-white" : "bg-transparent"
       }`}
       style={
