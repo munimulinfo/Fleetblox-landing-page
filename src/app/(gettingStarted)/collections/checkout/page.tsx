@@ -230,13 +230,26 @@ const Page = () => {
 
   const filteredCompatibleBrands = useCallback(() => {
     return brandCarList
-      .filter((brand: any) => selectedBrands.includes(brand.brand))
-      .map((brand: any) => ({
-        brand: brand.brand,
-        brandLogo: brand.brandLogo,
-        compatible: storedBrandModels[brand.brand] !== null,
-        brandModels: storedBrandModels[brand.brand],
-      }));
+      .filter((brand: any) =>
+        selectedBrands.some(
+          (selectedBrand) =>
+            selectedBrand.toLowerCase() === brand.brand.toLowerCase()
+        )
+      )
+      .map((brand: any) => {
+        // Normalize brand name from API the same way
+        const normalizedBrand = brand.brand.replace(/_/g, " ").toLowerCase();
+        const hasModels =
+          storedBrandModels[normalizedBrand] &&
+          storedBrandModels[normalizedBrand]!.length > 0;
+
+        return {
+          brand: brand.brand,
+          brandLogo: brand.brandLogo,
+          compatible: !!hasModels,
+          models: storedBrandModels[normalizedBrand] || [],
+        };
+      });
   }, [selectedBrands, storedBrandModels, brandCarList]);
 
   if (filteredCompatibleBrands().length > 0) {
@@ -287,7 +300,7 @@ const Page = () => {
 
   console.log(vins, "vins");
   return (
-    <main className="flex flex-col h-[94vh] w-full mx-auto px-5 xl:px-6 py-6 sm:py-8 scrollbar-hidden">
+    <main className="flex flex-col h-[94vh] w-full  mx-auto px-5 xl:px-6 py-6 sm:py-8 scrollbar-hidden">
       <div className="flex flex-shrink-0 flex-col items-center">
         <div className="mb-8 text-center">
           <h2 className="font-bold text-[22px] sm:text-[22px] font-openSans text-[#04082C] ">
@@ -391,7 +404,7 @@ const Page = () => {
           </div>
 
           {/* Selected Vehicle and VINs */}
-          <div className="max-h-[500px] hidden lg:block overflow-y-auto pr-2 scrollbar-hidden">
+          <div className="max-h-[500px] hidden lg:block overflow-y-auto md:pr-2 scrollbar-hidden">
             <h3 className="mb-2 mt-5 text-[14px] font-openSans font-[700] text-[#7d7d7d]">
               {!vins ? "Selected Vehicles" : "Selected Vins"}{" "}
             </h3>
@@ -402,9 +415,9 @@ const Page = () => {
                 filteredCompatibleBrands().map((brand: any) => (
                   <div
                     key={brand.brand}
-                    className="flex items-center justify-between rounded-md border px-[10px] py-[10px]"
+                    className="flex items-center justify-between rounded-md border  px-2 py-[10px]"
                   >
-                    <div className="flex items-center gap-[10px]">
+                    <div className="flex items-center ">
                       <Image
                         src={brand.brandLogo}
                         alt={brand.brand}
@@ -416,33 +429,74 @@ const Page = () => {
                         <h4 className="font-openSans text-[14px] leading-[160%] font-semibold text-[#04082C]">
                           {brand.brand}
                         </h4>
-                        <p className="font-openSans text-[10px] font-[500] text-[#6F6464]">
-                          {brand?.brandModels}
-                        </p>
+
+                        {brand.compatible &&
+                        brand.models &&
+                        brand.models.length > 0 ? (
+                          <div>
+                            {/* Preview first 2 models */}
+                            <p className="font-openSans text-[12px] font-[500] text-[#6F6464]">
+                              {brand.models.slice(0, 2).join(", ")}
+                              {brand.models.length > 2 && (
+                                <button
+                                  onClick={() => showAccessPoint(brand.brand)}
+                                  className="ml-1 text-[#2D65F2]"
+                                >
+                                  {isOpen === brand.brand
+                                    ? `, ${brand.models.length - 2} less`
+                                    : `, ${brand.models.length - 2} more`}
+                                  {/* Toggle button text */}
+
+                                  {/* {isOpen === brand.brand ? "less" : "more"} */}
+                                </button>
+                              )}
+                            </p>
+
+                            {/* Expanded model list */}
+                            {isOpen === brand.brand && (
+                              <div className="mt-2 pl-2 border-l-2 border-[#EEF3FD]">
+                                {brand.models.map((model: any, idx: number) => (
+                                  <p
+                                    key={idx}
+                                    className="font-openSans text-[12px] font-[500] text-[#6F6464] mb-1"
+                                  >
+                                    • {model}
+                                  </p>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <p className="font-openSans text-[12px] ml-2 font-[500] text-[#6F6464] italic">
+                            {brand.compatible
+                              ? "No models selected"
+                              : "Incompatible models"}
+                          </p>
+                        )}
                       </div>
                     </div>
                     <div className="w-[110px]">
                       {brand.compatible ? (
-                        <div className="flex items-center gap-[5px]">
+                        <div className="flex items-center gap-x-2">
                           <Image
                             src={trueIcon}
                             width={16}
                             height={16}
                             alt="success"
                           />
-                          <span className="font-openSans text-[14px] text-[#2D65F2]">
+                          <span className="font-openSans text-[12px]  text-[#2D65F2]">
                             Compatible
                           </span>
                         </div>
                       ) : (
-                        <div className="flex items-center gap-[5px]">
+                        <div className="flex items-center gap-x-2">
                           <Image
                             src={falseIcon}
                             width={16}
                             height={16}
                             alt="failed"
                           />
-                          <span className="font-openSans text-[14px] text-[#F00]">
+                          <span className="font-openSans text-[12px]  text-[#F00]">
                             Incompatible
                           </span>
                         </div>
@@ -726,9 +780,45 @@ const Page = () => {
                       <h4 className="font-openSans text-[14px] leading-[160%] font-semibold text-[#04082C]">
                         {brand.brand}
                       </h4>
-                      <p className="font-openSans text-[10px] font-[500] text-[#6F6464]">
-                        {brand?.brandModels}
-                      </p>
+
+                      {brand.compatible &&
+                      brand.models &&
+                      brand.models.length > 0 ? (
+                        <div>
+                          {/* Preview first 2 models */}
+                          <p className="font-openSans text-[12px] font-[500] text-[#6F6464]">
+                            {brand.models.slice(0, 2).join(", ")}
+                            {brand.models.length > 2 && (
+                              <button
+                                onClick={() => showAccessPoint(brand.brand)}
+                                className="ml-1 text-[#2D65F2]"
+                              >
+                                +{brand.models.length - 2} more
+                              </button>
+                            )}
+                          </p>
+
+                          {/* Expanded model list */}
+                          {isOpen === brand.brand && (
+                            <div className="mt-2 pl-2 border-l-2 border-[#EEF3FD]">
+                              {brand.models.map((model: any, idx: number) => (
+                                <p
+                                  key={idx}
+                                  className="font-openSans text-[12px] font-[500] text-[#6F6464] mb-1"
+                                >
+                                  • {model}
+                                </p>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="font-openSans text-[12px] font-[500] text-[#6F6464] italic">
+                          {brand.compatible
+                            ? "No models selected"
+                            : "Incompatible models"}
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="w-[110px]">
@@ -740,9 +830,9 @@ const Page = () => {
                           height={16}
                           alt="success"
                         />
-                        {/* <span className="font-openSans text-[14px] text-[#2D65F2]">
+                        <span className="font-openSans text-[14px] text-[#2D65F2]">
                           Compatible
-                        </span> */}
+                        </span>
                       </div>
                     ) : (
                       <div className="flex justify-end">
@@ -752,9 +842,9 @@ const Page = () => {
                           height={16}
                           alt="failed"
                         />
-                        {/* <span className="font-openSans text-[14px] text-[#F00]">
+                        <span className="font-openSans text-[14px] text-[#F00]">
                           Incompatible
-                        </span> */}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -800,7 +890,7 @@ const Page = () => {
                             height={16}
                             alt="success"
                           />
-                          <span className="font-openSans text-[14px] text-[#2D65F2]">
+                          <span className="font-openSans text-[12px] text-[#2D65F2]">
                             Compatible
                           </span>
                         </div>
@@ -812,7 +902,7 @@ const Page = () => {
                             height={16}
                             alt="failed"
                           />
-                          <span className="font-openSans text-[14px] text-[#F00]">
+                          <span className="font-openSans text-[12px] text-[#F00]">
                             Incompatible
                           </span>
                         </div>
