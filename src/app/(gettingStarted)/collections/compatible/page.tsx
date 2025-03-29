@@ -190,7 +190,7 @@ const Compatible = () => {
                           height={16}
                           alt="failed"
                         />
-                        <span className="font-openSans text-[14px] text-[#F00]">
+                        <span className="font-openSans text-[12px] text-[#F00]">
                           Incompatible
                         </span>
                       </div>
@@ -238,7 +238,7 @@ const Compatible = () => {
                             height={16}
                             alt="success"
                           />
-                          <span className="font-openSans text-[14px] text-[#2D65F2]">
+                          <span className="font-openSans text-[12px] text-[#2D65F2]">
                             Compatible
                           </span>
                         </div>
@@ -250,7 +250,7 @@ const Compatible = () => {
                             height={16}
                             alt="failed"
                           />
-                          <span className="font-openSans text-[14px] text-[#F00]">
+                          <span className="font-openSans text-[12px] text-[#F00]">
                             Incompatible
                           </span>
                         </div>

@@ -154,9 +154,9 @@ const VIN = () => {
   };
 
   return (
-    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <main className="flex flex-col h-[92vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 py-6 sm:py-8 scrollbar-hidden">
       {loading ? (
-        <SearchingVins />
+        <SearchingVinsModal open={loading} />
       ) : (
         <>
           {/* Fixed Header */}
@@ -266,35 +266,38 @@ const VIN = () => {
 
 export default VIN;
 
-const SearchingVins = () => {
+const SearchingVinsModal = ({ open }: { open: boolean }) => {
+  if (!open) return null;
+
   return (
-    <div className="flex flex-col items-center justify-center h-full mx-auto">
-      <div
-        className={`flex flex-col items-center justify-center w-[90%] sm:w-[80%] md:w-[70%] lg:w-[600px] 
-        h-auto min-h-[300px] sm:min-h-[350px] md:min-h-[400px] 
-        px-6 sm:px-8 md:px-[40px] py-8 sm:py-10 md:py-[60px] 
-        mx-auto rounded-xl shadow-xl sm:shadow-2xl`}
-      >
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="w-[160px] h-[110px] sm:w-[180px] sm:h-[120px] md:w-[204.092px] md:h-[140px] object-fill"
-        >
-          <source src="/videos/sacning.mp4" type="video/mp4" />
-        </video>
+    <>
+      {/* Overlay */}
+      <div className="fixed inset-0 bg-black/20 z-40" aria-hidden="true" />
 
-        <h4 className="mt-4 sm:mt-6 md:mt-[32px] text-center font-openSans text-[18px] sm:text-[20px] md:text-[22px] font-bold text-[#04082C]">
-          Scanning VINs
-        </h4>
+      {/* Modal */}
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[600px] w-[90%] bg-white rounded-lg shadow-2xl z-50 p-0">
+        <div className="flex flex-col items-center justify-center py-10 sm:py-12 px-6 sm:px-8">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-[160px] h-[110px] sm:w-[180px] sm:h-[120px] md:w-[204.092px] md:h-[140px] object-fill"
+          >
+            <source src="/videos/sacning.mp4" type="video/mp4" />
+          </video>
 
-        <h4 className="text-center font-openSans text-[12px] sm:text-[13px] md:text-[14px] text-[#7d7d7d] leading-relaxed max-w-xs sm:max-w-sm md:max-w-md">
-          Please wait while we finish scanning your provided VINs. This
-          won&apos;t take long. Thank you for your patience!
-        </h4>
+          <h4 className="mt-4 sm:mt-6 md:mt-[32px] text-center font-openSans text-[18px] sm:text-[20px] md:text-[22px] font-bold text-[#04082C]">
+            Scanning VINs
+          </h4>
+
+          <h4 className="text-center font-openSans text-[12px] sm:text-[13px] md:text-[14px] text-[#7d7d7d] leading-relaxed max-w-xs sm:max-w-sm md:max-w-md">
+            Please wait while we finish scanning your provided VINs. This
+            won&apos;t take long. Thank you for your patience!
+          </h4>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
