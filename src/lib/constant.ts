@@ -100,7 +100,7 @@ export const teamFeatures = [
     permissions: [{ permission: true }, { permission: true }],
   },
   {
-    title: "Assigned fleet managersÂ ",
+    title: "Assigned fleet managers",
     permissions: [{ permission: true }, { permission: true }],
   },
   {
