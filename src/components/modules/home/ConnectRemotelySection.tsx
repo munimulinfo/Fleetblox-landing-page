@@ -104,7 +104,7 @@ const ConnectRemotelySection = () => {
 
           {/* <div className="flex-1 flex justify-center"> */}
           <Image
-            src="/images/aI-assistant.png"
+            src="/images/aI-assistant.webp"
             alt="AI assistant for fleet optimization"
             width={548}
             height={294}

@@ -65,7 +65,7 @@ const WorkforceManageSection = () => {
 
             <div className="md:hidden w-full mb-8">
               <Image
-                src="/images/workforce-2.png"
+                src="/images/workforce-2.webp"
                 alt="Workforce management mobile view"
                 width={350}
                 height={500}

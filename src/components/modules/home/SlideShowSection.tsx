@@ -8,8 +8,8 @@ import Container from "@/components/ui/Container";
 import Image from "next/image";
 import leader from "../../../../public/images/leader.png";
 import pioneer from "../../../../public/images/pioneer.png";
-import leader2 from "../../../../public/images/leader2_nobile.png";
-import pioneer2 from "../../../../public/images/pioneer2-mobile.png";
+import leader2 from "../../../../public/images/leader2_nobile.webp";
+import pioneer2 from "../../../../public/images/pioneer2-mobile.webp";
 import NavigationIcon from "@/components/icons/NavigationIcon";
 import Link from "next/link";
 

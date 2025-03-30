@@ -3,6 +3,7 @@ import DecisionMakingIcon from "@/components/icons/DecisionMakingIcon";
 import DriverAccountabilityIcon from "@/components/icons/DriverAccountabilityIcon";
 import AnimatedCounter from "./../../ui/AnimatedCounter";
 import fleetSolutionImg from "../../../assets/fleetSolution.png";
+import fleetSolutionImg2 from "../../../assets/fleetSolution.png";
 import Image from "next/image";
 import NavigationIcon from "@/components/icons/NavigationIcon";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
@@ -126,7 +127,12 @@ const StatsSection = () => {
               <Image
                 src={fleetSolutionImg}
                 alt="logo"
-                className="w-full h-full"
+                className="w-full h-full hidden lg:block"
+              />
+              <Image
+                src={fleetSolutionImg2}
+                alt="logo"
+                className="w-full h-full block lg:hidden"
               />
             </div>
           </div>

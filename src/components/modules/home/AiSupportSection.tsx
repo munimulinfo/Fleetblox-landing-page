@@ -29,7 +29,15 @@ const AiSupportSection = () => {
           <div className="relative lg:py-[0px] py-[40px] ">
             <Image
               src="/images/aiSupportImg.png"
-              className="relative z-[200]"
+              className="relative z-[200] hidden lg:block"
+              alt="ai support img"
+              width={540}
+              height={300}
+              quality={100}
+            />
+            <Image
+              src="/images/aiSupportImg.webp"
+              className="relative z-[200] block lg:hidden"
               alt="ai support img"
               width={540}
               height={300}
