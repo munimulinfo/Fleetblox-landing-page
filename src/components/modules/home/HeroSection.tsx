@@ -145,11 +145,13 @@ const HeroSection = () => {
           {/* Hero image - properly centered */}
           <div className="relative z-30 flex justify-center items-center h-full">
             <Image
-              src="/images/hero-2.png"
+              src="/images/hero-2.webp"
+              priority
               alt="Mobile hero"
               width={272}
               height={550}
-              className="object-contain max-h-[500px]"
+              quality={75}
+              className="object-contain"
             />
           </div>
         </div>
