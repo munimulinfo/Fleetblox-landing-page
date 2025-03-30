@@ -222,8 +222,20 @@ const PricingPlan = () => {
                       </div>
                     )} */}
                   </div>
+                )}{" "}
+                {plan?.name !== "Eagle eye fleet" && (
+                  <div className="flex items-center mt-5 justify-between">
+                    <h1 className="text-[14px] font-openSans leading-[155%] font-normal text-[#999]">
+                      All features in Eagle eye fleet
+                    </h1>
+                  </div>
                 )}
-                <ul className="mt-6 space-y-2">
+                {/* <p className="text-sm text-[#999]">{plan.discount}</p> */}
+                <ul
+                  className={`${
+                    plan?.name !== "Eagle eye fleet" ? "mt-2 " : "mt-5"
+                  } space-y-2`}
+                >
                   {plan?.description.map((feature: any, i: number) => (
                     <li key={i} className="flex items-start gap-[10px]">
                       <FaCircleCheck className="text-[#2D65F2]" size={16} />

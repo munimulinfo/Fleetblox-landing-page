@@ -404,7 +404,7 @@ const Page = () => {
           </div>
 
           {/* Selected Vehicle and VINs */}
-          <div className="max-h-[500px] hidden lg:block overflow-y-auto md:pr-2 scrollbar-hidden">
+          <div className="max-h-[400px] hidden lg:block overflow-y-auto md:pr-2 scrollbar-hidden">
             <h3 className="mb-2 mt-5 text-[14px] font-openSans font-[700] text-[#7d7d7d]">
               {!vins ? "Selected Vehicles" : "Selected Vins"}{" "}
             </h3>
@@ -591,7 +591,7 @@ const Page = () => {
                     required
                     maxLength={50}
                     name="fullName"
-                    placeholder="Enter Fullname"
+                    placeholder="Full name"
                     value={formData.fullName}
                     onChange={handleChange}
                     className="w-full h-12 rounded bg-[#F7F7F7] px-4 font-openSans text-[14px] text-[#04082C] outline-none placeholder:text-[#7D7D7D]"
@@ -606,7 +606,7 @@ const Page = () => {
                     required
                     name="email"
                     maxLength={50}
-                    placeholder="Enter email address"
+                    placeholder="Business email"
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full h-12 rounded bg-[#F7F7F7] px-4 font-openSans text-[14px] text-[#04082C] outline-none placeholder:text-[#7D7D7D]"
@@ -682,7 +682,7 @@ const Page = () => {
                       name="phone"
                       maxLength={17}
                       required
-                      placeholder="Enter mobile number"
+                      placeholder="Phone number"
                       value={formData.phone}
                       onChange={handleChange}
                       className="flex-1 h-12 rounded-r bg-[#F7F7F7] px-4 font-openSans text-[14px] text-[#04082C] outline-none placeholder:text-[#7D7D7D]"

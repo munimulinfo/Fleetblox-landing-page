@@ -585,7 +585,7 @@ const ModelSelector = ({ params }: any) => {
           onClick={handleNotFindModel}
           className="w-full font-openSans text-[#7D7D7D] px-[14px] py-[8px] font-bold text-[14px] rounded-md"
         >
-          {`can’t find my make`}
+          {`Can’t find my make`}
         </button>
         <button
           className={`w-full text-white px-[14px] py-[10px] font-openSans rounded-md ${
