@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import ClientSideInitialization from "./ClientSideInitialization";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { Toaster } from "react-hot-toast";
+import { Montserrat, Open_Sans, Roboto } from "next/font/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fleetblox.com"),
@@ -74,16 +75,48 @@ export const metadata: Metadata = {
   },
 };
 
+// Configure primary font
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+// Configure secondary fonts
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
+
+const roboto = Roboto({
+  subsets: ["latin-ext"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-roboto",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${montserrat.variable} ${openSans.variable} ${roboto.variable}`}
+    >
       <head>
         {/* Favicon link */}
         <link rel="icon" href="/Favicon.png" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
       </head>
       {/*  */}
       <body className={`antialiased bg-white`}>
