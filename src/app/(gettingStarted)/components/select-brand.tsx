@@ -58,6 +58,7 @@ const BrandSelector = () => {
         <div
           onClick={handleBack}
           className="mb-4 flex cursor-pointer items-center gap-1"
+          aria-label="Get started with FleetBlox"
         >
           <ChevronLeft size={16} className="text-[#999]" />
           <span className="font-openSans text-sm font-semibold text-[#999]">

@@ -28,7 +28,10 @@ const ConnectRemotelySection = () => {
                 </span>{" "}
                 you remain in control, no matter where you are.
               </p>
-              <Link href="/getting-started">
+              <Link
+                href="/getting-started"
+                aria-label="Get started with FleetBlox"
+              >
                 <button className="hidden md:flex lg:flex transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white duration-300 hover:w-[144.16px] w-[122.16px] items-center px-4 py-3 text-[16px] font-bold rounded-md group">
                   <div className="z-20 whitespace-nowrap font-openSans font-bold">
                     Start Today
@@ -66,7 +69,10 @@ const ConnectRemotelySection = () => {
             </section>
 
             {/* <div className=" flex md:hidden lg:hidden justify-center w-full"> */}
-            <Link href="/getting-started">
+            <Link
+              href="/getting-started"
+              aria-label="Get started with FleetBlox"
+            >
               <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
                 Start Today
               </button>

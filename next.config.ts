@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   siteUrl: "https://fleetblox.com",
   generateRobotsTxt: true,
   images: {
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",
