@@ -36,7 +36,8 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <div
+    <nav
+      aria-label="Primary navigation"
       className={`fixed left-0 right-0 top-0 z-[9999]  lg:mt-5 mt-0 transition-all duration-200 ease-in-out py-[18px] md:py-[16px] px-[20px] lg:rounded-[10px] mx-auto w-full lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] ${
         isScrolled || mobileMenuOpen ? "bg-white" : "bg-transparent"
       }`}
@@ -82,7 +83,10 @@ const Navbar = () => {
               }
             />
             {/* <NotCompatibilityDialog title="Request demo" /> */}
-            <Link href="/getting-started">
+            <Link
+              aria-label="Get started with FleetBlox"
+              href="/getting-started"
+            >
               <button className="py-[10px] px-4 rounded-lg font-openSans bg-[#2D65F2] text-[#fff]">
                 Get Started
               </button>
@@ -98,6 +102,7 @@ const Navbar = () => {
             <AnimatePresence mode="wait">
               {mobileMenuOpen ? (
                 <motion.div
+                  aria-label="close menu"
                   key="close"
                   initial={{ rotate: -90, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}
@@ -108,6 +113,7 @@ const Navbar = () => {
                 </motion.div>
               ) : (
                 <motion.div
+                  aria-label="open menu"
                   key="menu"
                   initial={{ rotate: 90, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}
@@ -126,7 +132,7 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && <NavbarMobileView />}
       </AnimatePresence>
-    </div>
+    </nav>
   );
 };
 

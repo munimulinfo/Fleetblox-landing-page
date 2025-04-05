@@ -3,7 +3,11 @@ import "../styles/globals.css";
 import ClientSideInitialization from "./ClientSideInitialization";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { Toaster } from "react-hot-toast";
+
 import { Montserrat, Open_Sans, Roboto } from "next/font/google";
+
+
+import imageUrl from "../../public/images/hero-2.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fleetblox.com"),
@@ -117,6 +121,9 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+
+        <link rel="preload" href={imageUrl.src} as="image" />
+
       </head>
       {/*  */}
       <body className={`antialiased bg-white`}>

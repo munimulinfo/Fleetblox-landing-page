@@ -93,7 +93,10 @@ const NavbarMobileView = () => {
           {/* Fixed bottom buttons */}
           <div className="sticky bottom-0 left-0 right-0 flex flex-col items-center justify-center text-center p-5 bg-[#FAFAFF]">
             <div className="w-full">
-              <Link href="/getting-started">
+              <Link
+                aria-label="Get started with FleetBlox"
+                href="/getting-started"
+              >
                 <button className="py-3 px-5 bg-[#2D65F2] rounded-md text-[14px] font-openSans font-bold w-full text-white">
                   Get Started
                 </button>

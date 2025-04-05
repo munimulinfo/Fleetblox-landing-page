@@ -58,6 +58,7 @@ const BrandSelector = () => {
         <div
           onClick={handleBack}
           className="mb-4 flex cursor-pointer items-center gap-1"
+          aria-label="Get started with FleetBlox"
         >
           <ChevronLeft size={16} className="text-[#999]" />
           <span className="font-openSans text-sm font-semibold text-[#999]">
@@ -81,6 +82,7 @@ const BrandSelector = () => {
             <Search className="text-[#7D7D7D] mr-3" size={20} />
             <input
               type="text"
+              aria-describedby="email-help"
               placeholder="Search vehicle makes"
               className="w-full bg-transparent font-openSans text-base text-[#333] outline-none"
               value={searchQuery}

@@ -7,7 +7,7 @@ const page = () => {
     <>
       <Suspense
         fallback={
-          <div>
+          <div className="flex items-center justify-center h-screen">
             <Loader />
           </div>
         }

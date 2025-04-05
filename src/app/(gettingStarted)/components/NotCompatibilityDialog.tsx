@@ -63,6 +63,7 @@ const NotCompatibilityDialog = ({ title }: { title: string }) => {
                 id="email"
                 required
                 name="email"
+                aria-describedby="email-help"
                 maxLength={50}
                 placeholder="Enter email"
                 value={formData.email}
