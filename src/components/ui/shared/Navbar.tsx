@@ -82,7 +82,10 @@ const Navbar = () => {
               }
             />
             {/* <NotCompatibilityDialog title="Request demo" /> */}
-            <Link href="/getting-started">
+            <Link
+              aria-label="Get started with FleetBlox"
+              href="/getting-started"
+            >
               <button className="py-[10px] px-4 rounded-lg font-openSans bg-[#2D65F2] text-[#fff]">
                 Get Started
               </button>
@@ -98,6 +101,7 @@ const Navbar = () => {
             <AnimatePresence mode="wait">
               {mobileMenuOpen ? (
                 <motion.div
+                  aria-label="close menu"
                   key="close"
                   initial={{ rotate: -90, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}
@@ -108,6 +112,7 @@ const Navbar = () => {
                 </motion.div>
               ) : (
                 <motion.div
+                  aria-label="open menu"
                   key="menu"
                   initial={{ rotate: 90, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}

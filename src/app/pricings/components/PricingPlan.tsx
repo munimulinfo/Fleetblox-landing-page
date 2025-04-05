@@ -285,7 +285,10 @@ const PricingPlan = () => {
                   {plan.name === "Eagle eye fleet" && (
                     <div className="w-full">
                       <Link href="/getting-started">
-                        <button className="bg-[#2D65F2] px-4 py-3 rounded-md text-white text-[16px] w-full font-openSans font-bold">
+                        <button
+                          aria-label="Get started with FleetBlox"
+                          className="bg-[#2D65F2] px-4 py-3 rounded-md text-white text-[16px] w-full font-openSans font-bold"
+                        >
                           Get Started
                         </button>
                       </Link>
