@@ -521,6 +521,7 @@ const ModelSelector = ({ params }: any) => {
                                       country.countryCode
                                     ]?.includes(model.name) || false
                                   }
+                                  aria-describedby="model-selection"
                                   className="mr-2 cursor-pointer"
                                   onChange={() => {}} // Required for controlled component
                                 />

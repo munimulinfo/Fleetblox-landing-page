@@ -82,6 +82,7 @@ const BrandSelector = () => {
             <Search className="text-[#7D7D7D] mr-3" size={20} />
             <input
               type="text"
+              aria-describedby="email-help"
               placeholder="Search vehicle makes"
               className="w-full bg-transparent font-openSans text-base text-[#333] outline-none"
               value={searchQuery}

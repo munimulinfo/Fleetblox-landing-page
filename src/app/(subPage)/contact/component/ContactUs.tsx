@@ -132,6 +132,7 @@ const ContactUs = () => {
                 type="text"
                 required
                 name="firstName"
+                aria-describedby="Enter your first name"
                 autoComplete="off"
                 maxLength={20}
                 value={formData.firstName}
@@ -151,6 +152,7 @@ const ContactUs = () => {
               <input
                 type="text"
                 name="lastName"
+                aria-describedby="Enter your last name"
                 autoComplete="off"
                 maxLength={20}
                 value={formData.lastName}
@@ -171,6 +173,7 @@ const ContactUs = () => {
                 type="text"
                 required
                 autoComplete="off"
+                aria-describedby="Enter your company name"
                 name="company"
                 maxLength={40}
                 value={formData.company}
@@ -191,6 +194,7 @@ const ContactUs = () => {
                 required
                 type="number"
                 name="phoneNumber"
+                aria-describedby="Enter your phone number"
                 autoComplete="off"
                 pattern="[0-9]*"
                 value={formData.phoneNumber}
@@ -227,6 +231,7 @@ const ContactUs = () => {
                 required
                 type="email"
                 name="email"
+                aria-describedby="email-help"
                 autoComplete="off"
                 value={formData.email}
                 onChange={handleChange}
@@ -246,6 +251,7 @@ const ContactUs = () => {
                 required
                 rows={4}
                 name="message"
+                aria-describedby="Enter your message"
                 value={formData.message}
                 onChange={handleChange}
                 className={`p-4 text-[#333] font-openSans text-[14px] leading-5 outline-none border border-[#DFDFDF] rounded-md focus:border-[#B8CBFC] duration-200 peer bg-white w-full ${
