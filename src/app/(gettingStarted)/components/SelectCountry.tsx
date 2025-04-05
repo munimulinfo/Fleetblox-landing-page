@@ -167,7 +167,7 @@ const SelectCountry = () => {
           Select Registered Countries
         </h2>
         <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
-          Choose the countries where your fleet vehicles were originally
+          Choose all the countries where your fleet vehicles were originally
           registered.
         </p>
         {/* <Button
@@ -254,7 +254,7 @@ const SelectCountry = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <span className="font-[600] text-[14px] font-openSans sm:text-[16px] text-[#04082C]">
+                  <span className="font-[400] md:font-semibold text-[14px] font-openSans sm:text-[16px] text-[#04082C]">
                     {country.country}
                   </span>
                 </div>

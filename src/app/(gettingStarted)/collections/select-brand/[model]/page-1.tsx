@@ -466,9 +466,9 @@ const ModelSelector = ({ params }: any) => {
                     {/* Collapse/Expand icon on the right */}
                     <div className="flex-shrink-0 mr-5">
                       {expandedCountries.has(country.countryCode) ? (
-                        <ChevronDown className="size-[18px] text-[#666] transition-transform" />
-                      ) : (
                         <ChevronUp className="size-[18px] text-[#666] transition-transform" />
+                      ) : (
+                        <ChevronDown className="size-[18px] text-[#666] transition-transform" />
                       )}
                     </div>
                     <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-3 border border-gray-300">
@@ -585,7 +585,7 @@ const ModelSelector = ({ params }: any) => {
           onClick={handleNotFindModel}
           className="w-full font-openSans text-[#7D7D7D] px-[14px] py-[8px] font-bold text-[14px] rounded-md"
         >
-          {`I can't find my car brand`}
+          {`Can’t find my make`}
         </button>
         <button
           className={`w-full text-white px-[14px] py-[10px] font-openSans rounded-md ${

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { ChevronDown } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
-import Canada from "@/../public/images/canada.png";
+import Canada from "../../../../../public/images/canada.png";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -34,7 +35,7 @@ const Page = () => {
   const {
     selectedBrands,
     storedBrandModels,
-    brandCarList,
+
     vins,
     countrySelect,
   } = useBrandCarList(null);
@@ -50,6 +51,7 @@ const Page = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useState("");
+  const [brandCarList, setBrandCarList] = useState<any[]>([]);
 
   useEffect(() => {
     // Client-side initialization
@@ -58,6 +60,22 @@ const Page = () => {
     if (storedSelectedPlan) setSelectedPlan(JSON.parse(storedSelectedPlan));
     if (storedInterestedUser)
       setInterestedUser(JSON.parse(storedInterestedUser));
+  }, []);
+
+  // Move ALL direct localStorage access into useEffect
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        // Load brand car list
+        const brandCarListUser = localStorage.getItem("brandCarList");
+        if (brandCarListUser) {
+          setBrandCarList(JSON.parse(brandCarListUser));
+        }
+      } catch (error) {
+        console.error("Error loading brand car list:", error);
+        setBrandCarList([]);
+      }
+    }
   }, []);
 
   // Update these calculations to remove HST
@@ -84,10 +102,9 @@ const Page = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-
     phone: "",
     countryCode: "+1",
-    flag: Canada,
+    flag: Canada, // Provide a fallback path
   });
   // console.log();
 
@@ -159,6 +176,8 @@ const Page = () => {
     }));
   };
 
+  console.log(formData, "formData");
+
   const selectCountryCode = (data: Country) => {
     setFormData((prev) => ({
       ...prev,
@@ -208,20 +227,34 @@ const Page = () => {
   };
 
   // Filter and determine compatibility status using `useMemo` for memoization
+
   const filteredCompatibleBrands = useCallback(() => {
     return brandCarList
-      .filter((brand) => selectedBrands.includes(brand.brand))
-      .map((brand) => ({
-        brand: brand.brand,
-        brandLogo: brand.brandLogo,
-        compatible: storedBrandModels[brand.brand] !== null,
-        brandModels: storedBrandModels[brand.brand],
-      }));
+      .filter((brand: any) =>
+        selectedBrands.some(
+          (selectedBrand) =>
+            selectedBrand.toLowerCase() === brand.brand.toLowerCase()
+        )
+      )
+      .map((brand: any) => {
+        // Normalize brand name from API the same way
+        const normalizedBrand = brand.brand.replace(/_/g, " ").toLowerCase();
+        const hasModels =
+          storedBrandModels[normalizedBrand] &&
+          storedBrandModels[normalizedBrand]!.length > 0;
+
+        return {
+          brand: brand.brand,
+          brandLogo: brand.brandLogo,
+          compatible: !!hasModels,
+          models: storedBrandModels[normalizedBrand] || [],
+        };
+      });
   }, [selectedBrands, storedBrandModels, brandCarList]);
 
   if (filteredCompatibleBrands().length > 0) {
     const areAllUncompatible = filteredCompatibleBrands()?.every(
-      (brand) => brand.compatible === false
+      (brand: any) => brand.compatible === false
     );
     if (!areAllUncompatible) {
       console.log("areAllUncompatible", areAllUncompatible);
@@ -267,13 +300,13 @@ const Page = () => {
 
   console.log(vins, "vins");
   return (
-    <main className="flex flex-col h-[94vh] w-full mx-auto px-5 xl:px-6 py-6 sm:py-8 scrollbar-hidden">
+    <main className="flex flex-col h-[94vh] w-full  mx-auto px-5 xl:px-6 py-6 sm:py-8 scrollbar-hidden">
       <div className="flex flex-shrink-0 flex-col items-center">
         <div className="mb-8 text-center">
           <h2 className="font-bold text-[22px] sm:text-[22px] font-openSans text-[#04082C] ">
             Complete Your Purchase
           </h2>
-          <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
+          <p className="font-openSans text-[14px] leading-relaxed  text-[#7D7D7D] mx-auto">
             Confirm your vehicle compatibility, provide contact info and
             continue to payment.
           </p>
@@ -350,8 +383,9 @@ const Page = () => {
 
                 <div className="">
                   <h1 className="text-[#04082C] font-openSans text-[16px] font-[600] leading-[160%]">
-                    Total Vehicle Slot (
-                    {selectedPlan?.annually ? "Annually" : "Monthly"})
+                    Total Vehicle Slot
+                    {/* (
+                    {selectedPlan?.annually ? "Annually" : "Monthly"}) */}
                   </h1>
                   <p className="text-[12px] font-openSans font-normal text-[#7d7d7d]">
                     Fleet Size
@@ -370,7 +404,7 @@ const Page = () => {
           </div>
 
           {/* Selected Vehicle and VINs */}
-          <div className="max-h-[500px] hidden lg:block overflow-y-auto pr-2 scrollbar-hidden">
+          <div className="max-h-[400px] hidden lg:block overflow-y-auto md:pr-2 scrollbar-hidden">
             <h3 className="mb-2 mt-5 text-[14px] font-openSans font-[700] text-[#7d7d7d]">
               {!vins ? "Selected Vehicles" : "Selected Vins"}{" "}
             </h3>
@@ -378,12 +412,12 @@ const Page = () => {
               {loading && !vins ? (
                 <Loader />
               ) : (
-                filteredCompatibleBrands().map((brand) => (
+                filteredCompatibleBrands().map((brand: any) => (
                   <div
                     key={brand.brand}
-                    className="flex items-center justify-between rounded-md border px-[10px] py-[10px]"
+                    className="flex items-center justify-between rounded-md border  px-2 py-[10px]"
                   >
-                    <div className="flex items-center gap-[10px]">
+                    <div className="flex items-center ">
                       <Image
                         src={brand.brandLogo}
                         alt={brand.brand}
@@ -395,33 +429,74 @@ const Page = () => {
                         <h4 className="font-openSans text-[14px] leading-[160%] font-semibold text-[#04082C]">
                           {brand.brand}
                         </h4>
-                        <p className="font-openSans text-[10px] font-[500] text-[#6F6464]">
-                          {brand?.brandModels}
-                        </p>
+
+                        {brand.compatible &&
+                        brand.models &&
+                        brand.models.length > 0 ? (
+                          <div>
+                            {/* Preview first 2 models */}
+                            <p className="font-openSans text-[12px] font-[500] text-[#6F6464]">
+                              {brand.models.slice(0, 2).join(", ")}
+                              {brand.models.length > 2 && (
+                                <button
+                                  onClick={() => showAccessPoint(brand.brand)}
+                                  className="ml-1 text-[#2D65F2]"
+                                >
+                                  {isOpen === brand.brand
+                                    ? `, ${brand.models.length - 2} less`
+                                    : `, ${brand.models.length - 2} more`}
+                                  {/* Toggle button text */}
+
+                                  {/* {isOpen === brand.brand ? "less" : "more"} */}
+                                </button>
+                              )}
+                            </p>
+
+                            {/* Expanded model list */}
+                            {isOpen === brand.brand && (
+                              <div className="mt-2 pl-2 border-l-2 border-[#EEF3FD]">
+                                {brand.models.map((model: any, idx: number) => (
+                                  <p
+                                    key={idx}
+                                    className="font-openSans text-[12px] font-[500] text-[#6F6464] mb-1"
+                                  >
+                                    • {model}
+                                  </p>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <p className="font-openSans text-[12px] ml-2 font-[500] text-[#6F6464] italic">
+                            {brand.compatible
+                              ? "No models selected"
+                              : "Incompatible models"}
+                          </p>
+                        )}
                       </div>
                     </div>
                     <div className="w-[110px]">
                       {brand.compatible ? (
-                        <div className="flex items-center gap-[5px]">
+                        <div className="flex items-center gap-x-2">
                           <Image
                             src={trueIcon}
                             width={16}
                             height={16}
                             alt="success"
                           />
-                          <span className="font-openSans text-[14px] text-[#2D65F2]">
+                          <span className="font-openSans text-[12px]  text-[#2D65F2]">
                             Compatible
                           </span>
                         </div>
                       ) : (
-                        <div className="flex items-center gap-[5px]">
+                        <div className="flex items-center gap-x-2">
                           <Image
                             src={falseIcon}
                             width={16}
                             height={16}
                             alt="failed"
                           />
-                          <span className="font-openSans text-[14px] text-[#F00]">
+                          <span className="font-openSans text-[12px]  text-[#F00]">
                             Incompatible
                           </span>
                         </div>
@@ -439,7 +514,7 @@ const Page = () => {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-[10px]">
-                        {/* {vin.isCompatible ? (
+                        {vin.isCompatible ? (
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
@@ -447,15 +522,15 @@ const Page = () => {
                             }}
                             className="flex h-5 w-5 items-center justify-center"
                           >
-                            <Image
+                            {/* <Image
                               className="size-[20px] object-cover"
                               src={isOpen === vin.vin ? open : close}
                               alt="toggle"
-                            />
+                            /> */}
                           </button>
                         ) : (
                           <div className="h-5 w-5"></div>
-                        )} */}
+                        )}
                         <div className="text-left font-openSans font-semibold text-[14px] leading-[160%] text-[#04082C]">
                           {`VIN - ${vin.vin}`}
                         </div>
@@ -516,7 +591,7 @@ const Page = () => {
                     required
                     maxLength={50}
                     name="fullName"
-                    placeholder="Enter Fullname"
+                    placeholder="Full name"
                     value={formData.fullName}
                     onChange={handleChange}
                     className="w-full h-12 rounded bg-[#F7F7F7] px-4 font-openSans text-[14px] text-[#04082C] outline-none placeholder:text-[#7D7D7D]"
@@ -531,7 +606,7 @@ const Page = () => {
                     required
                     name="email"
                     maxLength={50}
-                    placeholder="Enter email address"
+                    placeholder="Business email"
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full h-12 rounded bg-[#F7F7F7] px-4 font-openSans text-[14px] text-[#04082C] outline-none placeholder:text-[#7D7D7D]"
@@ -548,13 +623,23 @@ const Page = () => {
                         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                         className="h-full flex items-center rounded-l bg-[#F7F7F7] px-3 border-r border-[#e5e5e5]"
                       >
-                        <Image
-                          src={formData.flag}
-                          alt="Flag"
-                          className="mr-2 h-[20px] w-[24px] rounded-[6px]"
-                          width={20}
-                          height={20}
-                        />
+                        {formData.flag ? (
+                          <Image
+                            src={Canada}
+                            alt="Flag"
+                            className="mr-2 h-[20px] w-[24px] rounded-[6px]"
+                            width={50}
+                            height={50}
+                          />
+                        ) : (
+                          <Image
+                            src={Canada}
+                            alt="Flag"
+                            className="mr-2 h-[20px] w-[24px] rounded-[6px]"
+                            width={50}
+                            height={50}
+                          />
+                        )}
                         <span className="text-[14px] text-[#04082C]">
                           {formData.countryCode}
                         </span>
@@ -570,15 +655,19 @@ const Page = () => {
                               className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 cursor-pointer list-none"
                               onClick={() => selectCountryCode(country)}
                             >
-                              <Image
-                                src={country.countryFlag}
-                                alt={country.country}
-                                className="h-[20px] w-[24px] rounded-[6px]"
-                                width={20}
-                                height={20}
-                              />
+                              {country.countryFlag ? (
+                                <Image
+                                  src={country.countryFlag}
+                                  alt={country.country}
+                                  className="h-[20px] w-[24px] rounded-[6px]"
+                                  width={20}
+                                  height={20}
+                                />
+                              ) : (
+                                <div className="h-[20px] w-[24px] rounded-[6px] bg-gray-200"></div>
+                              )}
                               <span className="text-[14px] text-[#04082C]">
-                                {country.countryCode}
+                                {country.phoneCode}
                               </span>
                             </li>
                           ))}
@@ -593,7 +682,7 @@ const Page = () => {
                       name="phone"
                       maxLength={17}
                       required
-                      placeholder="Enter mobile number"
+                      placeholder="Phone number"
                       value={formData.phone}
                       onChange={handleChange}
                       className="flex-1 h-12 rounded-r bg-[#F7F7F7] px-4 font-openSans text-[14px] text-[#04082C] outline-none placeholder:text-[#7D7D7D]"
@@ -666,7 +755,7 @@ const Page = () => {
         </div>
 
         {/* selected vehicle and VINS for mobile view*/}
-        <div className="max-h-[500px] lg:hidden block overflow-y-auto pr-2 scrollbar-hidden">
+        <div className=" lg:hidden block  pr-2 pb-5">
           <h3 className="mb-2 mt-5 text-[14px] font-openSans font-[700] text-[#7d7d7d]">
             {!vins ? "Selected Vehicles" : "Selected Vins"}{" "}
           </h3>
@@ -674,7 +763,7 @@ const Page = () => {
             {loading && !vins ? (
               <Loader />
             ) : (
-              filteredCompatibleBrands().map((brand) => (
+              filteredCompatibleBrands().map((brand: any) => (
                 <div
                   key={brand.brand}
                   className="flex items-center justify-between rounded-md border px-[10px] py-[10px]"
@@ -691,9 +780,45 @@ const Page = () => {
                       <h4 className="font-openSans text-[14px] leading-[160%] font-semibold text-[#04082C]">
                         {brand.brand}
                       </h4>
-                      <p className="font-openSans text-[10px] font-[500] text-[#6F6464]">
-                        {brand?.brandModels}
-                      </p>
+
+                      {brand.compatible &&
+                      brand.models &&
+                      brand.models.length > 0 ? (
+                        <div>
+                          {/* Preview first 2 models */}
+                          <p className="font-openSans text-[12px] font-[500] text-[#6F6464]">
+                            {brand.models.slice(0, 2).join(", ")}
+                            {brand.models.length > 2 && (
+                              <button
+                                onClick={() => showAccessPoint(brand.brand)}
+                                className="ml-1 text-[#2D65F2]"
+                              >
+                                +{brand.models.length - 2} more
+                              </button>
+                            )}
+                          </p>
+
+                          {/* Expanded model list */}
+                          {isOpen === brand.brand && (
+                            <div className="mt-2 pl-2 border-l-2 border-[#EEF3FD]">
+                              {brand.models.map((model: any, idx: number) => (
+                                <p
+                                  key={idx}
+                                  className="font-openSans text-[12px] font-[500] text-[#6F6464] mb-1"
+                                >
+                                  • {model}
+                                </p>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="font-openSans text-[12px] font-[500] text-[#6F6464] italic">
+                          {brand.compatible
+                            ? "No models selected"
+                            : "Incompatible models"}
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="w-[110px]">
@@ -705,9 +830,9 @@ const Page = () => {
                           height={16}
                           alt="success"
                         />
-                        {/* <span className="font-openSans text-[14px] text-[#2D65F2]">
+                        <span className="font-openSans text-[14px] text-[#2D65F2]">
                           Compatible
-                        </span> */}
+                        </span>
                       </div>
                     ) : (
                       <div className="flex justify-end">
@@ -717,9 +842,9 @@ const Page = () => {
                           height={16}
                           alt="failed"
                         />
-                        {/* <span className="font-openSans text-[14px] text-[#F00]">
+                        <span className="font-openSans text-[14px] text-[#F00]">
                           Incompatible
-                        </span> */}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -765,7 +890,7 @@ const Page = () => {
                             height={16}
                             alt="success"
                           />
-                          <span className="font-openSans text-[14px] text-[#2D65F2]">
+                          <span className="font-openSans text-[12px] text-[#2D65F2]">
                             Compatible
                           </span>
                         </div>
@@ -777,7 +902,7 @@ const Page = () => {
                             height={16}
                             alt="failed"
                           />
-                          <span className="font-openSans text-[14px] text-[#F00]">
+                          <span className="font-openSans text-[12px] text-[#F00]">
                             Incompatible
                           </span>
                         </div>

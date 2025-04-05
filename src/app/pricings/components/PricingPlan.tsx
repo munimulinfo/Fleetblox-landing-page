@@ -69,27 +69,37 @@ const PricingPlan = () => {
     fetchPlans();
   }, []);
 
+  // Improved calculation function with better precision handling
   const calculateDiscount = (
-    slotCount: number,
-    basePrice: number,
-    isAnnual: boolean = false
+    totalSlot: number,
+    isAnnual: boolean,
+    planPrice: number
   ): number => {
-    let discountPercentage = 0;
-    if (slotCount >= 200) {
-      discountPercentage = 30;
-    } else if (slotCount >= 150) {
-      discountPercentage = 18;
-    } else if (slotCount >= 100) {
-      discountPercentage = 10;
-    } else if (slotCount >= 50) {
-      discountPercentage = 5;
+    // Calculate slot-based discount percentage
+    let slotDiscountPercentage = 0;
+    if (totalSlot >= 200) {
+      slotDiscountPercentage = 30;
+    } else if (totalSlot >= 150) {
+      slotDiscountPercentage = 18;
+    } else if (totalSlot >= 100) {
+      slotDiscountPercentage = 10;
+    } else if (totalSlot >= 50) {
+      slotDiscountPercentage = 5;
     }
-    let discountedPrice = basePrice - (basePrice * discountPercentage) / 100;
 
-    if (isAnnual) {
-      discountedPrice = discountedPrice - (discountedPrice * 15) / 100;
-    }
-    return discountedPrice;
+    // Calculate annual discount percentage
+    const annualDiscountPercentage = isAnnual ? 15 : 0;
+
+    // Calculate effective discount percentage (not just adding percentages)
+    const effectiveDiscount =
+      1 -
+      (1 - slotDiscountPercentage / 100) * (1 - annualDiscountPercentage / 100);
+
+    // Apply total discount
+    const discountedPrice = planPrice * (1 - effectiveDiscount);
+
+    // Return with exactly 2 decimal places
+    return parseFloat(discountedPrice.toFixed(2));
   };
 
   const handleBillingMonthly = () => {
@@ -176,7 +186,7 @@ const PricingPlan = () => {
           {currentPlans?.data?.slice(0, 2).map((plan: any, index: number) => (
             <Card
               key={index}
-              className="relative min-w-[350px] max-w-[400px] rounded-[16px] "
+              className="relative min-w-[350px] max-w-[400px] shadow-none rounded-[16px] "
             >
               {/* Ribbon */}
               {plan && plan?.name !== "Eagle eye fleet" && (
@@ -206,15 +216,15 @@ const PricingPlan = () => {
                     <div className=" text-[36px] font-montserrat font-bold text-[#04082C]">
                       $
                       {Math.floor(
-                        calculateDiscount(slotCount, plan?.price, billAnnually)
+                        calculateDiscount(slotCount, billAnnually, plan?.price)
                       )}
                       <span className="text-[12px] font-montserrat font-medium text-[#04082C]">
                         .
                         {
                           calculateDiscount(
                             slotCount,
-                            plan?.price,
-                            billAnnually
+                            billAnnually,
+                            plan?.price
                           )
                             ?.toFixed(2)
                             ?.split(".")[1]
@@ -224,16 +234,44 @@ const PricingPlan = () => {
                         /month per slot
                       </span>
                     </div>
-                    {billAnnually && (
-                      <p className="text-[#04082C] font-openSans text-[14px] font-semibold">
-                        5% discount + 15% annual discount
-                      </p>
-                    )}
+                    {/* Dynamic discount message based on slot count */}
+                    <div className="flex ">
+                      {slotCount >= 50 && (
+                        <p className="text-[#04082C] font-openSans text-[14px] leading-[155%]  font-semibold flex items-center">
+                          {slotCount >= 200
+                            ? "30%"
+                            : slotCount >= 150
+                            ? "18%"
+                            : slotCount >= 100
+                            ? "10%"
+                            : "5%"}{" "}
+                          discount {billAnnually && "+"}
+                        </p>
+                      )}
+
+                      {billAnnually && (
+                        <p className="text-[#04082C] font-openSans text-[14px] leading-[155%] font-semibold flex items-center">
+                          {""} 15% annual discount
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {plan?.name !== "Eagle eye fleet" && (
+                  <div className="flex items-center mt-5 justify-between">
+                    <h1 className="text-[14px] font-openSans leading-[155%] font-normal text-[#999]">
+                      All features in Eagle eye fleet
+                    </h1>
                   </div>
                 )}
 
                 {/* <p className="text-sm text-[#999]">{plan.discount}</p> */}
-                <ul className="mt-6 space-y-2">
+                <ul
+                  className={`${
+                    plan?.name !== "Eagle eye fleet" ? "mt-2 " : "mt-5"
+                  } space-y-2`}
+                >
                   {plan?.description.map((feature: any, i: number) => (
                     <li key={i} className="flex items-start gap-[10px]">
                       <FaCircleCheck className="text-[#2D65F2]" size={16} />

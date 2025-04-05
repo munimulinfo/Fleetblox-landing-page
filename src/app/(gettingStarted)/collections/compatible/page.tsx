@@ -8,7 +8,6 @@ import falseIcon from "@/../public/images/false.svg";
 import { useRouter } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
 import { useCallback, useState, useEffect } from "react";
-
 import close from "@/../public/images/access_point/down.svg";
 import open from "@/../public/images/access_point/up.svg";
 import Loader from "../../components/Loader";
@@ -191,7 +190,7 @@ const Compatible = () => {
                           height={16}
                           alt="failed"
                         />
-                        <span className="font-openSans text-[14px] text-[#F00]">
+                        <span className="font-openSans text-[12px] text-[#F00]">
                           Incompatible
                         </span>
                       </div>
@@ -239,7 +238,7 @@ const Compatible = () => {
                             height={16}
                             alt="success"
                           />
-                          <span className="font-openSans text-[14px] text-[#2D65F2]">
+                          <span className="font-openSans text-[12px] text-[#2D65F2]">
                             Compatible
                           </span>
                         </div>
@@ -251,7 +250,7 @@ const Compatible = () => {
                             height={16}
                             alt="failed"
                           />
-                          <span className="font-openSans text-[14px] text-[#F00]">
+                          <span className="font-openSans text-[12px] text-[#F00]">
                             Incompatible
                           </span>
                         </div>
