@@ -186,6 +186,7 @@ const VIN = () => {
           <div className="relative mb-[16px] flex flex-shrink-0 items-center gap-[8px] rounded-md">
             <input
               type="text"
+              aria-describedby="email-help"
               placeholder="Enter VIN"
               // className="w-full bg-bg_dusty_white text-ti_grey font-openSans text-[12px] leading-[16px] outline-none"
               className={`w-3/4 rounded-md bg-[#F7F7F7] p-3 font-openSans text-sm leading-[155%] outline-none ${

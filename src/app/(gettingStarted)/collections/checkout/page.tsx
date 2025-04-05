@@ -589,6 +589,7 @@ const Page = () => {
                     type="text"
                     id="fullName"
                     required
+                    aria-describedby="Enter your fullName"
                     maxLength={50}
                     name="fullName"
                     placeholder="Full name"
@@ -605,6 +606,7 @@ const Page = () => {
                     id="email"
                     required
                     name="email"
+                    aria-describedby="email-help"
                     maxLength={50}
                     placeholder="Business email"
                     value={formData.email}
@@ -682,6 +684,7 @@ const Page = () => {
                       name="phone"
                       maxLength={17}
                       required
+                      aria-describedby="Phone-help"
                       placeholder="Phone number"
                       value={formData.phone}
                       onChange={handleChange}
