@@ -122,7 +122,7 @@ const Compatibility = () => {
               compatibility === "vin" ? "bg-[#2D65F20F] border-[#B8CBFC]" : ""
             }`}
           >
-            <Image src={Vin} alt="" />
+            <Image src={Vin} alt="Test VIN" />
             <h4 className="mt-[32px] text-center font-openSans text-[18px] font-semibold text-ti_black">
               Test by VIN
             </h4>
@@ -138,7 +138,7 @@ const Compatibility = () => {
                 : ""
             }`}
           >
-            <Image src={vehicle} alt="" />
+            <Image src={vehicle} alt="Test by vehicle" />
             <h4 className="mt-[32px] text-center font-openSans text-[18px] font-semibold text-ti_black">
               Test by vehicle models
             </h4>

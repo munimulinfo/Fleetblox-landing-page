@@ -65,9 +65,9 @@ export default {
         },
       },
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
-        openSans: ["Open Sans", "sans-serif"],
-        roboto: ["Roboto", "sans-serif"],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        openSans: ["var(--font-open-sans)", "sans-serif"],
+        roboto: ["var(--font-roboto)", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
