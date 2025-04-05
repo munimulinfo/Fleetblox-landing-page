@@ -27,7 +27,7 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Monitoring
+              Compatibility
             </h1>
           </Link>
           <Link href="/under-development">
@@ -60,14 +60,10 @@ const ProductSubpage = () => {
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Vehicle Compatibility
-            </h1>
-          </Link>
-          <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Real-time Telematics
             </h1>
           </Link>
+
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               AI-powered Inspection
@@ -101,11 +97,6 @@ const ProductSubpage = () => {
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Dynamic Fleet Alerts
-            </h1>
-          </Link>
-          <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Advanced Team Management
             </h1>
           </Link>
           <Link href="/under-development">

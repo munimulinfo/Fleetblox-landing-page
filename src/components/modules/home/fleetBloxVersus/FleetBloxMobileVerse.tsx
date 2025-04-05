@@ -7,10 +7,10 @@ import Link from "next/link";
 
 const FleetBloxMobileVerse = () => {
   return (
-    <div className="relative">
+    <div className="relative ">
       {/* <div className="max-h-[200px] lg:h-[300px] md:h-[400px] filter blur-[200px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20  rounded-[520px] w-[200px] bg-[#FBEECA]  absolute "></div> */}
-      <div className="px-5 pt-[80px] block lg:hidden">
-        <h1 className="text-[28px] text-center md:text-left text-[#000E32] font-bold leading-[1.1]">
+      <div className="px-5 md:px-[120px] pt-[80px] block lg:hidden">
+        <h1 className="text-[28px] text-center  text-[#000E32] font-bold leading-[1.1]">
           Fleetblox <span className="text-[#0336BC]">Versus </span> <br />{" "}
           Traditional Solutions
         </h1>
@@ -81,7 +81,7 @@ const FleetBloxMobileVerse = () => {
             ))}
           </div>
         </div>
-        <div className="px-5 mt-10">
+        <div className="px-5 md:px-[120px] mt-10">
           <Link href="/under-development">
             <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
               Calculate Your Savings

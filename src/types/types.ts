@@ -27,3 +27,14 @@ export type TCards = {
   fleetbloxText: string;
   traditionalText: string;
 };
+
+export type TContactFormData = {
+  firstName: string;
+  lastName: string;
+  company: string;
+  email: string;
+  phoneNumber: string;
+  message: string;
+  countryCode: string;
+  flag: StaticImageData;
+};

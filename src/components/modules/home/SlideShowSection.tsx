@@ -8,8 +8,8 @@ import Container from "@/components/ui/Container";
 import Image from "next/image";
 import leader from "../../../../public/images/leader.png";
 import pioneer from "../../../../public/images/pioneer.png";
-import leader2 from "../../../../public/images/leader2_nobile.png";
-import pioneer2 from "../../../../public/images/pioneer2-mobile.png";
+import leader2 from "../../../../public/images/leader2_nobile.webp";
+import pioneer2 from "../../../../public/images/pioneer2-mobile.webp";
 import NavigationIcon from "@/components/icons/NavigationIcon";
 import Link from "next/link";
 
@@ -98,7 +98,7 @@ export default function HorizontalStackSlideshow() {
         <div className="container hidden lg:block mx-auto px-4 relative">
           {/* Slider Container */}
           <div
-            className="relative flex items-center justify-center max-w-full h-[450px] md:h-[500px]"
+            className="relative flex items-center justify-center max-w-full w-full h-[450px] md:h-[500px]"
             onMouseEnter={() =>
               intervalRef.current && clearInterval(intervalRef.current)
             }
@@ -109,13 +109,13 @@ export default function HorizontalStackSlideshow() {
             {/* Left Arrow */}
             <button
               onClick={prevSlide}
-              className="absolute left-24 top-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full drop-shadow-lg hover:bg-white/90"
+              className="absolute left-0 xl:left-24 top-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full drop-shadow-lg hover:bg-white/90"
             >
               <ChevronLeft className="w-6 h-6 text-[#000E32]" />
             </button>
 
             {/* Cards Wrapper */}
-            <div className="w-[90%] max-w-[800px] h-full relative ">
+            <div className="w-full max-w-[800px] h-full relative ">
               <AnimatePresence initial={false}>
                 {slides.map((slide, index) => {
                   const isFront = index === currentIndex;
@@ -252,7 +252,7 @@ export default function HorizontalStackSlideshow() {
             {/* Right Arrow */}
             <button
               onClick={nextSlide}
-              className="absolute right-24 top-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full drop-shadow-lg hover:bg-white/90"
+              className="absolute right-0 xl:right-24 top-1/2 -translate-y-1/2 z-20 bg-white p-2 rounded-full drop-shadow-lg hover:bg-white/90"
             >
               <ChevronRight className="w-6 h-6 text-[#000E32]" />
             </button>
