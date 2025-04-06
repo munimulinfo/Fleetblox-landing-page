@@ -46,7 +46,6 @@ const PricingPlan = () => {
     null
   );
 
-  console.log(currentPlans, "checking current plans");
   const { currentStep, setCurrentStep } = useProgressUpdater();
 
   const [showUpdatePlanModal, setShowUpdatePlanModal] = useState(false);
@@ -54,6 +53,25 @@ const PricingPlan = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Add this at the beginning of the component
+  useEffect(() => {
+    // Check if user already selected Starter Fleet
+    if (typeof window !== "undefined") {
+      try {
+        const selectedPlanData = localStorage.getItem("selectedPlan");
+        if (selectedPlanData) {
+          const selectedPlan = JSON.parse(selectedPlanData);
+          if (selectedPlan.fleet === "Starter Fleet") {
+            // If Starter Fleet is selected, redirect to checkout
+            setCurrentStep(2); // Skip to checkout step
+            router.push("/collections/checkout");
+          }
+        }
+      } catch (error) {
+        console.error("Error parsing selectedPlan:", error);
+      }
+    }
+  }, [router, setCurrentStep]);
   // Fetch plans on mount
   useEffect(() => {
     const fetchPlans = async () => {
@@ -63,7 +81,7 @@ const PricingPlan = () => {
         );
         if (!response.ok) throw new Error("Failed to fetch plans");
         const data = await response.json();
-        console.log(data, "checking data");
+
         setCurrentPlans(data);
       } catch (err: any) {
         setError(err.message);
@@ -111,10 +129,6 @@ const PricingPlan = () => {
     setBillingAnnually(!billAnnually);
     setBillingMonthly(!billMonthly);
   };
-
-  console.log(selectedPlan, "checking selected plan");
-
-  console.log(handleBillingMonthly, calculateDiscount);
 
   const TotalForModal = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
 

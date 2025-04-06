@@ -54,6 +54,22 @@ const PricingPlan = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    // Add client-side check
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("country");
+      localStorage.removeItem("countries");
+      localStorage.removeItem("selectedPlan");
+      localStorage.removeItem("brands");
+      localStorage.removeItem("brandCarList");
+      localStorage.removeItem("brandModels");
+      localStorage.removeItem("VINS");
+      localStorage.removeItem("VINS_RESULT");
+      localStorage.removeItem("compatibility");
+      localStorage.removeItem("selectedCountries");
+    }
+  }, []);
+
   // Fetch plans on mount
   useEffect(() => {
     const fetchPlans = async () => {
@@ -399,7 +415,25 @@ const PricingPlan = () => {
                 </div>
               </div>
               <div className="w-full border flex justify-center  bg-[#2D65F2] hover:bg-[#0336BC] rounded-md mt-[30px]">
-                <button className="transition-all font-openSans text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] flex items-center px-4 py-3 text-base font-bold  group">
+                <button
+                  aria-label="Get started with Starter Fleet"
+                  onClick={() => {
+                    const planData = {
+                      price: 9.79,
+                      fleet: "Starter Fleet",
+                      slot: 10,
+                      annually: false,
+                      id: "cm95qsolw0000nbt4jd77z8kd", // Replace with actual ID from your backend
+                    };
+
+                    localStorage.setItem(
+                      "selectedPlan",
+                      JSON.stringify(planData)
+                    );
+                    router.push("/getting-started");
+                  }}
+                  className="transition-all font-openSans text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] flex items-center px-4 py-3 text-base font-bold  group"
+                >
                   <div className="z-20 whitespace-nowrap">Get Started</div>
                   <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 translate-x-0 duration-300 group-hover:translate-x-0">
                     <RightArrowIcon />
