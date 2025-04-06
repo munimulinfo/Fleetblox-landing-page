@@ -304,7 +304,7 @@ const PricingPlan = () => {
           ))}
         </div>
 
-        <div className="mt-8 mb-5 flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
+        <div className="mt-8 mb-[10px] flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
           <Label
             className="font-openSans text-[#333333] font-bold text-[14px]"
             htmlFor="bill-monthly"
@@ -318,7 +318,7 @@ const PricingPlan = () => {
             className="cursor-pointer bg-[#2D65F2]"
           />
         </div>
-        <div className="font-openSans my-2 text-[12px] text-[#333]">
+        <div className="font-openSans text-[12px] text-[#333]">
           *A one-time platform setup fee of $99 applies.
         </div>
       </section>
@@ -326,11 +326,13 @@ const PricingPlan = () => {
       <section className="bg-[#FAFAFF] mt-[60px] mb-[80px]">
         <div className="max-w-[1200px] w-full mx-auto px-5 py-[80px] md:py-[100px] flex flex-col md:flex-row gap-[60px] items-center relative">
           <div className="absolute left-1/2 xl:left-3/4  top-1/2 w-full h-full max-w-[602px] max-h-[602px] -translate-x-1/2 -translate-y-1/2 rounded-[500px] lg:rounded-[602px] bg-[#FBEECA] opacity-40 blur-[200px]"></div>
+
+          <div className="absolute top-[10vh] right-[30px] hidden md:block z-[10] rounded-[24px] bg-[#000] opacity-[0.07] blur-[20px] h-[462px] w-[340px] "></div>
           <div className="">
             <h1 className="text-[#0336BC] font-openSans text-[18px] lg:text-[22px] font-bold">
               Starter Fleet
             </h1>
-            <h2 className="text-[#04082C] font-bold text-[28px] lg:text-[36px]">
+            <h2 className="text-[#04082C] font-bold text-[28px] lg:text-[36px] leading-[1.1] my-[10px]">
               Connect and Explore - Upgrade When You Are Ready
             </h2>
             <p className="text-[#333] font-openSans text-[14px] lg:text-[16px] leading-6">
@@ -340,7 +342,7 @@ const PricingPlan = () => {
             </p>
           </div>
           {/* right card */}
-          <div className="max-w-[360px] z-50 p-[20px] bg-white w-full rounded-[24px] shadow-lg">
+          <div className="max-w-[360px] z-50 p-[20px] bg-white w-full rounded-[24px] shadow-lg md:shadow-none ">
             <div className="">
               <div className="text-[36px] lg:text-[52px] font-montserrat font-bold text-[#04082C]">
                 $9
@@ -352,7 +354,7 @@ const PricingPlan = () => {
                   /month per slot
                 </span>
               </div>
-              <div className="my-[10px]">
+              <div className="mb-[20px] mt-[10px]">
                 <div className="flex items-center gap-[5px]">
                   <VehicleIcon />
                   <p className="text-[#333] text-[14px] font-openSans font-semibold leading-5">
@@ -372,7 +374,7 @@ const PricingPlan = () => {
                   </p>
                 </div>
               </div>
-              <div className="my-[10px]">
+              <div className="my-[20px]">
                 <div className="flex items-center gap-[5px]">
                   <CheckIcon2 />
                   <p className="text-[#04082C] text-[14px] font-openSans font-normal leading-5">
