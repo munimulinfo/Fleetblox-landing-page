@@ -357,19 +357,19 @@ const PricingPlan = () => {
               <div className="mb-[20px] mt-[10px]">
                 <div className="flex items-center gap-[5px]">
                   <VehicleIcon />
-                  <p className="text-[#333] text-[14px] font-openSans font-semibold leading-5">
+                  <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
                     10 vehicle slots
                   </p>
                 </div>
                 <div className="flex items-center gap-[5px]">
                   <DollarIcon />
-                  <p className="text-[#333] text-[14px] font-openSans font-semibold leading-5">
+                  <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
                     Monthly subscription
                   </p>
                 </div>
                 <div className="flex items-center gap-[5px]">
                   <VehicleIcon />
-                  <p className="text-[#333] text-[14px] font-openSans font-semibold leading-5">
+                  <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
                     01 fleet location
                   </p>
                 </div>
