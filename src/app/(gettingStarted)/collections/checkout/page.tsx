@@ -106,7 +106,6 @@ const Page = () => {
     countryCode: "+1",
     flag: Canada, // Provide a fallback path
   });
-  // console.log();
 
   //   const [plan, setPlan] = useState("");
   //   const [vinsResult, setVinsResult] = useState("");
@@ -139,8 +138,6 @@ const Page = () => {
       setIsOpen(modelName);
     }
   };
-
-  console.log(selectedPlan, "selectedPlan");
 
   useEffect(() => {
     if (countries?.length && country) {
@@ -176,8 +173,6 @@ const Page = () => {
     }));
   };
 
-  console.log(formData, "formData");
-
   const selectCountryCode = (data: Country) => {
     setFormData((prev) => ({
       ...prev,
@@ -200,15 +195,13 @@ const Page = () => {
       return; // Prevent further execution if email is invalid
     }
 
-    console.log(formData, submitData, "submitData");
-
     try {
       setLoading(true);
       const { data } = await axios.post(
         "https://api.fleetblox.com/api/payment/create-session",
         submitData
       );
-      console.log(data, "data");
+
       if (data.statusCode === 200) {
         // localStorage.clear();
         return router.push(data?.data.sessionUrl);
@@ -298,7 +291,6 @@ const Page = () => {
     localStorage.removeItem("selectedPlan");
   };
 
-  console.log(vins, "vins");
   return (
     <main className="flex flex-col h-[94vh] w-full  mx-auto px-5 xl:px-6 py-6 sm:py-8 scrollbar-hidden">
       <div className="flex flex-shrink-0 flex-col items-center">

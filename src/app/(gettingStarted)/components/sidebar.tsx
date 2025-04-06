@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
 import FleetBloxIconWhite from "@/components/icons/FleetBloxIconWhite";
-
 import { Stepper } from "@/components/ui/stepper";
 import { useProgressUpdater } from "@/hooks/useProgress";
 import Link from "next/link";
@@ -10,9 +8,31 @@ import Link from "next/link";
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isStarterFleet, setIsStarterFleet] = useState(false);
 
-  const { currentStep } = useProgressUpdater();
-  console.log(isMobile, currentStep);
+  const { currentStep, setCurrentStep } = useProgressUpdater();
+
+  // Check if the selected plan is Starter Fleet
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const selectedPlanData = localStorage.getItem("selectedPlan");
+        if (selectedPlanData) {
+          const selectedPlan = JSON.parse(selectedPlanData);
+          if (selectedPlan.fleet === "Starter Fleet") {
+            setIsStarterFleet(true);
+
+            // Adjust current step if needed (skip pricing step)
+            if (currentStep > 0) {
+              setCurrentStep(currentStep === 1 ? 2 : currentStep);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error parsing selectedPlan from localStorage:", error);
+      }
+    }
+  }, [currentStep, setCurrentStep]);
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -30,41 +50,45 @@ const Sidebar = () => {
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
-  const sidebarSteps = [
+  // Define base steps
+  const baseSteps = [
     {
       title: "Check Compatibility",
       description: "Verify Your Fleet's Compatibility",
     },
-    {
-      title: "Select Pricing",
-      description: "Choose Your Subscription Plan",
-    },
-    {
-      title: "Complete Checkout",
-      description: "Review and Provide Your Info",
-    },
   ];
+
+  // Add pricing step only if NOT using Starter Fleet
+  const pricingStep = {
+    title: "Select Pricing",
+    description: "Choose Your Subscription Plan",
+  };
+
+  const checkoutStep = {
+    title: "Complete Checkout",
+    description: "Review and Provide Your Info",
+  };
+
+  // Build the final steps array based on plan type
+  const sidebarSteps = isStarterFleet
+    ? [...baseSteps, checkoutStep]
+    : [...baseSteps, pricingStep, checkoutStep];
 
   return (
     <>
-      {/* Mobile sidebar toggle */}
-
-      {/* Sidebar */}
       <aside
         className={`min-w-[350px] bg-[#2D65F2] overflow-y-hidden transition-all duration-300 
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
           fixed lg:static h-screen z-40
-          hidden lg:block`} // Hide by default, only show on large screens
+          hidden lg:block`}
       >
         <div className="p-4">
-          {/* <h2 className="text-xl font-bold">Sidebar</h2> */}
           <Link href="/">
             <div className="flex items-center justify-center mt-10 ">
               <FleetBloxIconWhite />
             </div>
           </Link>
           <nav className="mt-6 flex justify-center">
-            {/* Add your sidebar navigation here */}
             <Stepper steps={sidebarSteps} currentStep={currentStep} />
           </nav>
         </div>

@@ -40,11 +40,11 @@ const useBrandCarList = (initialCountry: string | null) => {
     if (typeof window !== "undefined") {
       try {
         const rawBrandModels = localStorage.getItem("brandModels");
-        console.log("rawBrandModels", rawBrandModels);
+
         if (!rawBrandModels) return;
 
         const brandModelsData = JSON.parse(rawBrandModels);
-        console.log("brandModelsData", brandModelsData);
+
         const processedBrandModels: Record<string, string[] | null> = {};
 
         // Process each country-specific entry
@@ -55,7 +55,6 @@ const useBrandCarList = (initialCountry: string | null) => {
             .replace(/_/g, " ")
             .toLowerCase();
 
-          console.log("normalizedBrand", normalizedBrand);
           // Only process entries with actual selections
           if (Array.isArray(models) && models.length > 0) {
             if (!processedBrandModels[normalizedBrand]) {
@@ -77,8 +76,6 @@ const useBrandCarList = (initialCountry: string | null) => {
             processedBrandModels[brand] = null;
           }
         });
-
-        console.log("processedBrandModels", processedBrandModels);
 
         setStoredBrandModels(processedBrandModels);
       } catch (error) {
@@ -102,13 +99,11 @@ const useBrandCarList = (initialCountry: string | null) => {
   useEffect(() => {
     const fetchBrandData = async () => {
       if (countrySelect.length === 0) return;
-      console.log(countrySelect);
+
       try {
         setLoading(true);
         // Create raw JSON array string
         const regionParam = `["${countrySelect.join('","')}"]`;
-
-        console.log("Region param:", regionParam);
 
         const { data } = await axios.get(
           `https://api.fleetblox.com/api/dummy/check-compatibility-common`,
@@ -122,8 +117,6 @@ const useBrandCarList = (initialCountry: string | null) => {
             },
           }
         );
-
-        console.log("Brand data:", data);
 
         setBrandCarList(data.data);
         localStorage.setItem("brandCarList", JSON.stringify(data.data));

@@ -41,8 +41,6 @@ const Compatible = () => {
     }
   }, []);
 
-  console.log(brandCarList, "brandCarList");
-
   const showAccessPoint = (modelName: string) => {
     if (isOpen === modelName) {
       setIsOpen("");
@@ -81,14 +79,6 @@ const Compatible = () => {
       });
   }, [selectedBrands, storedBrandModels, brandCarList]);
 
-  console.log(
-    filteredCompatibleBrands,
-    storedBrandModels,
-    "filteredCompatibleBrands",
-    "brandCarList",
-    brandCarList
-  );
-
   if (filteredCompatibleBrands().length > 0) {
     const areAllUncompatible = filteredCompatibleBrands()?.every(
       (brand: any) => brand.compatible === false
@@ -114,6 +104,26 @@ const Compatible = () => {
   }
 
   const handleNext = () => {
+    // Check if Starter Fleet plan is already selected in localStorage
+    const selectedPlanData = localStorage.getItem("selectedPlan");
+
+    if (selectedPlanData) {
+      try {
+        const selectedPlan = JSON.parse(selectedPlanData);
+        if (selectedPlan.fleet === "Starter Fleet") {
+          // If Starter Fleet is selected, skip pricing plan and go directly to checkout
+          setCustomProgress(progress + 20); // Advance progress by more since we're skipping a step
+          setCurrentStep(2); // Set to checkout step (skipping pricing step)
+          router.push("/collections/checkout");
+          return;
+        }
+      } catch (error) {
+        console.error("Error parsing selectedPlan:", error);
+        // Continue with normal flow if there's an error
+      }
+    }
+
+    // Normal flow - proceed to pricing plan
     setCustomProgress(progress + 10);
     router.push("/collections/pricing-plan");
     setCurrentStep(currentStep + 1);
