@@ -74,6 +74,7 @@ export const AccurateSlider = ({
             type="range"
             min="10"
             max="200"
+            aria-describedby="Slider to select fleet size"
             step="1"
             value={value}
             onChange={handleChange}

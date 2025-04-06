@@ -115,7 +115,6 @@ export default function RootLayout({
       <head>
         {/* Favicon link */}
         <link rel="icon" href="/Favicon.png" />
-
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link
           rel="preconnect"

@@ -4,7 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Country } from "@/app/(gettingStarted)/components/SelectCountry";
 import { TContactFormData } from "@/types/types";
-
+import Canada from "../../../../../public/images/canada.png";
 const CountryCodeSelection = ({
   setFormData,
   formData,
@@ -37,6 +37,23 @@ const CountryCodeSelection = ({
     getCountries();
   }, []);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const selectCountryCode = (data: Country) => {
     setFormData((prev: TContactFormData) => ({
       ...prev,
@@ -45,7 +62,22 @@ const CountryCodeSelection = ({
     }));
     setIsDropdownOpen(false);
   };
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
 
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <div className="relative h-full" ref={dropdownRef}>
       <button
@@ -53,40 +85,59 @@ const CountryCodeSelection = ({
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         className="h-full flex items-center pr-1 bg-white border-r border-[#e5e5e5]"
       >
-        <Image
-          src={formData.flag}
-          alt="Flag"
-          className="mr-1 h-[20px] w-[24px] rounded-[6px]"
-          width={20}
-          height={20}
-        />
+        {formData.flag ? (
+          <Image
+            src={Canada}
+            alt="Flag"
+            className="mr-2 h-[20px] w-[24px] rounded-[6px]"
+            width={50}
+            height={50}
+          />
+        ) : (
+          <Image
+            src={Canada}
+            alt="Flag"
+            className="mr-2 h-[20px] w-[24px] rounded-[6px]"
+            width={50}
+            height={50}
+          />
+        )}
         <span className="text-[14px] text-[#04082C]">
           {formData.countryCode}
         </span>
-        <ChevronDown className="ml-1 h-[14px] w-[14px] text-[#6F6464]" />
+        <ChevronDown className="ml-1 h-4 w-4 text-[#04082C]" />
       </button>
 
       {/* Dropdown Menu */}
       {isDropdownOpen && (
-        <div className="absolute z-10 mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 shadow-lg border w-[100px]">
-          {countries?.map((country) => (
-            <li
-              key={country.country}
-              className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 cursor-pointer list-none"
-              onClick={() => selectCountryCode(country)}
-            >
-              <Image
-                src={country.countryFlag}
-                alt={country.country}
-                className="h-[20px] w-[24px] rounded-[6px]"
-                width={20}
-                height={20}
-              />
-              <span className="text-[14px] text-[#04082C]">
-                {country.countryCode}
-              </span>
-            </li>
-          ))}
+        <div
+          className="absolute z-10 mt-1 w-[100px] max-h-[180px] overflow-y-auto rounded-md bg-white py-1 shadow-lg border"
+          onWheel={(e) => e.stopPropagation()}
+        >
+          <div className="">
+            {countries?.map((country) => (
+              <li
+                key={country.country}
+                className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 cursor-pointer list-none"
+                onClick={() => selectCountryCode(country)}
+              >
+                {country.countryFlag ? (
+                  <Image
+                    src={country.countryFlag}
+                    alt={country.country}
+                    className="h-[20px] w-[24px] rounded-[6px]"
+                    width={20}
+                    height={20}
+                  />
+                ) : (
+                  <div className="h-[20px] w-[24px] rounded-[6px] bg-gray-200"></div>
+                )}
+                <span className="text-[14px] text-[#04082C]">
+                  {country.phoneCode}
+                </span>
+              </li>
+            ))}
+          </div>
         </div>
       )}
     </div>
