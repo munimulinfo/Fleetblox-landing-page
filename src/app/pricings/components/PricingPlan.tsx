@@ -318,6 +318,11 @@ const PricingPlan = () => {
           *A one-time platform setup fee of $99 applies.
         </div>
       </section>
+      {/* <section className="bg-[#FAFAFF] mt-[60px] mb-[80px]">
+        <div className="max-w-[1200px] w-full mx-auto px-5 py-[100px] ">
+          <h1>This is another section</h1>
+        </div>
+      </section> */}
       {/* ***************Full features comparison************ */}
       <FeaturesComparison />
       <FAQSection />
