@@ -12,6 +12,8 @@ const Sidebar = () => {
 
   const { currentStep, setCurrentStep } = useProgressUpdater();
 
+  console.log(isMobile);
+
   // Check if the selected plan is Starter Fleet
   useEffect(() => {
     if (typeof window !== "undefined") {
