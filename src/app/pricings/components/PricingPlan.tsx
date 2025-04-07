@@ -210,7 +210,7 @@ const PricingPlan = () => {
         </Container>
       </section> */}
       {/* connect vehicle section start */}
-      <section className="bg-[#FAFAFF] pt-0 md:pt-[80px] mb-[60px]">
+      <section className="bg-[#FAFAFF] pt-10 md:pt-[80px] pb-[80px] md:mb-[60px]">
         {staterPlanLoading ? (
           <div className="flex justify-center items-center h-[400px]">
             <p className="text-[#0336BC] font-openSans text-[32px] font-bold">
@@ -218,13 +218,13 @@ const PricingPlan = () => {
             </p>
           </div>
         ) : (
-          <div className="max-w-[1200px] w-full mx-auto px-5 pt-[100px] pb-[60px] flex flex-col md:flex-row gap-[60px] items-center relative">
+          <div className="max-w-[1200px] w-full mx-auto px-5 pt-12 md:pt-[100px] md:pb-[60px] flex flex-col md:flex-row gap-[60px] items-center relative">
             <div className="absolute top-[10vh] right-[30px] hidden md:block z-[10] rounded-[24px] bg-[#000] opacity-[0.07] blur-[20px] h-[430px] w-[340px] "></div>
             <div className="">
               <h1 className="text-[#0336BC] font-openSans text-[18px] lg:text-[22px] font-bold">
                 {starterPlan[0]?.name}
               </h1>
-              <h2 className="text-[#04082C] font-bold text-[28px] lg:text-[36px] leading-[1.1] my-[10px]">
+              <h2 className="text-[#04082C] font-bold text-[36px] lg:text-[52px] leading-[1.1] my-[10px]">
                 {starterPlan[0]?.subHeading}
               </h2>
               <p className="text-[#333] font-openSans text-[14px] lg:text-[16px] leading-6">
@@ -277,7 +277,25 @@ const PricingPlan = () => {
                   )}
                 </div>
                 <div className="w-full border flex justify-center  bg-[#2D65F2] hover:bg-[#0336BC] rounded-md mt-[30px]">
-                  <button className="transition-all font-openSans text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] flex items-center px-4 py-3 text-base font-bold  group">
+                  <button
+                    aria-label="Get started with Starter Fleet"
+                    onClick={() => {
+                      const planData = {
+                        price: 9.79,
+                        fleet: "Starter Fleet",
+                        slot: 10,
+                        annually: false,
+                        id: "cm95qsolw0000nbt4jd77z8kd", // Replace with actual ID from your backend
+                      };
+
+                      localStorage.setItem(
+                        "selectedPlan",
+                        JSON.stringify(planData)
+                      );
+                      router.push("/getting-started");
+                    }}
+                    className="transition-all font-openSans text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] flex items-center px-4 py-3 text-base font-bold  group"
+                  >
                     <div className="z-20 whitespace-nowrap">Get Started</div>
                     <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 translate-x-0 duration-300 group-hover:translate-x-0">
                       <RightArrowIcon />
@@ -288,6 +306,15 @@ const PricingPlan = () => {
             </div>
           </div>
         )}
+      </section>
+      <section className="flex justify-center flex-col items-center px-5 pt-[60px] md:pt-0">
+        <h2 className="text-[#333] text-[28px] font-bold text-center leading-[1.1] mb-[2px]">
+          Scale Your Fleet Seamlessly
+        </h2>
+        <p className="text-[#7D7D7D] text-center leading-5">
+          Slide the bar to explore pricing based on vehicle slots - Clear and
+          transparent with no hidden fees
+        </p>
       </section>
       <section className="container mx-auto  flex flex-col justify-center items-center">
         <Container>
