@@ -6,24 +6,11 @@ import { Button } from "@/components/ui/button";
 import { FaCircleCheck } from "react-icons/fa6";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Container from "@/components/ui/Container";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import {
-  brandFeatures,
-  fleetFeatures,
-  teamFeatures,
-  vehicleFeatures,
-} from "@/lib/constant";
 import FAQSection from "@/components/modules/home/FAQSection";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import AccurateSlider from "./AccurateSlider";
 import FeaturesComparison from "./FeaturesComparison";
 import Link from "next/link";
@@ -31,6 +18,8 @@ import VehicleIcon from "@/components/icons/VehicleIcon";
 import DollarIcon from "@/components/icons/DollarIcon";
 import CheckIcon2 from "@/components/icons/CheckIcon2";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import axios from "axios";
+import { TStaterPlanData } from "@/types/types";
 
 type TSelectedPlan = {
   price: number;
@@ -44,16 +33,16 @@ const PricingPlan = () => {
   const [slotCount, setSlotCount] = useState(10);
   const [billAnnually, setBillingAnnually] = useState(true);
   const [billMonthly, setBillingMonthly] = useState(false);
-  const [showFullFeatures, setShowFullFeatures] = useState(false);
   const [currentPlans, setCurrentPlans] = useState<{ data: any[] } | null>(
     null
   );
-
   const [showUpdatePlanModal, setShowUpdatePlanModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<TSelectedPlan | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [starterPlan, setStarterPlan] = useState<TStaterPlanData[]>([]);
+  const [staterPlanLoading, setStarterPlanLoading] = useState(true);
+  const [staterPlanError, setStarterPlanError] = useState<string | null>(null);
   // Fetch plans on mount
   useEffect(() => {
     const fetchPlans = async () => {
@@ -158,11 +147,38 @@ const PricingPlan = () => {
     });
     setShowUpdatePlanModal(true);
   };
+  // get starter plan data fetching start
+  useEffect(() => {
+    const fetchStaterPlanData = async () => {
+      try {
+        const response = await axios.get(
+          "https://backend.illama360.com/api/subscription/plan/starter"
+        );
+        setStarterPlan(response.data.data);
+      } catch (err) {
+        if (err instanceof Error) {
+          setStarterPlanError(err.message);
+        } else {
+          setStarterPlanError("Unexpected error!! Please try again later.");
+        }
+      } finally {
+        setStarterPlanLoading(false);
+      }
+    };
 
-  // console.log(handleBillingMonthly, calculateDiscount);
+    fetchStaterPlanData();
+  }, []);
 
-  const TotalForModal = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
+  let whole = "";
+  let decimal = "";
 
+  if (starterPlan[0]?.price !== undefined) {
+    const parts = starterPlan[0].price.toString().split(".");
+    whole = parts[0];
+    decimal = parts[1] || "00";
+  }
+
+  // get starter plan data fetching end
   return (
     <main className="h-full">
       <section className="w-full bg-[#FAFAFF] py-10 md:h-[400px] flex flex-col justify-center items-center">
@@ -182,7 +198,7 @@ const PricingPlan = () => {
           <AccurateSlider value={slotCount} setValue={setSlotCount} />
         </Container>
       </section>
-
+      {/* pricing plane start */}
       <section className="container mx-auto  flex flex-col justify-center items-center">
         {/* ****************Billing Options**************** */}
 
@@ -322,95 +338,89 @@ const PricingPlan = () => {
           *A one-time platform setup fee of $99 applies.
         </div>
       </section>
+      {/* pricing plane end */}
+
       {/* connect vehicle section start */}
       <section className="bg-[#FAFAFF] mt-[60px] mb-[80px]">
-        <div className="max-w-[1200px] w-full mx-auto px-5 py-[80px] md:py-[100px] flex flex-col md:flex-row gap-[60px] items-center relative">
-          <div className="absolute left-1/2 xl:left-3/4  top-1/2 w-full h-full max-w-[602px] max-h-[602px] -translate-x-1/2 -translate-y-1/2 rounded-[500px] lg:rounded-[602px] bg-[#FBEECA] opacity-40 blur-[200px]"></div>
-
-          <div className="absolute top-[10vh] right-[30px] hidden md:block z-[10] rounded-[24px] bg-[#000] opacity-[0.07] blur-[20px] h-[462px] w-[340px] "></div>
-          <div className="">
-            <h1 className="text-[#0336BC] font-openSans text-[18px] lg:text-[22px] font-bold">
-              Starter Fleet
-            </h1>
-            <h2 className="text-[#04082C] font-bold text-[28px] lg:text-[36px] leading-[1.1] my-[10px]">
-              Connect and Explore - Upgrade When You Are Ready
-            </h2>
-            <p className="text-[#333] font-openSans text-[14px] lg:text-[16px] leading-6">
-              Embark on your Fleetblox journey by tracking your fleet’s
-              real-time telematics. Unlock full <br /> potential of smarter
-              fleet management as you explore everything Fleetblox has to offer.
+        {staterPlanLoading ? (
+          <div className="flex justify-center items-center h-[400px]">
+            <p className="text-[#0336BC] font-openSans text-[32px] font-bold">
+              Loading....
             </p>
           </div>
-          {/* right card */}
-          <div className="max-w-[360px] z-50 p-[20px] bg-white w-full rounded-[24px] shadow-lg md:shadow-none ">
+        ) : (
+          <div className="max-w-[1200px] w-full mx-auto px-5 py-[80px] md:py-[100px] flex flex-col md:flex-row gap-[60px] items-center relative">
+            <div className="absolute left-1/2 xl:left-3/4  top-1/2 w-full h-full max-w-[602px] max-h-[602px] -translate-x-1/2 -translate-y-1/2 rounded-[500px] lg:rounded-[602px] bg-[#FBEECA] opacity-40 blur-[200px]"></div>
+
+            <div className="absolute top-[10vh] right-[30px] hidden md:block z-[10] rounded-[24px] bg-[#000] opacity-[0.07] blur-[20px] h-[462px] w-[340px] "></div>
             <div className="">
-              <div className="text-[36px] lg:text-[52px] font-montserrat font-bold text-[#04082C]">
-                $9
-                <span className="text-[14px] lg:text-[16px] font-montserrat font-semibold text-[#04082C] leading-[150%]">
-                  .79
-                </span>
-                <span className="text-[14px] lg:text-[16px] font-semibold text-[#999] leading-[150%]">
-                  {" "}
-                  /month per slot
-                </span>
-              </div>
-              <div className="mb-[20px] mt-[10px]">
-                <div className="flex items-center gap-[5px]">
-                  <VehicleIcon />
-                  <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
-                    10 vehicle slots
-                  </p>
+              <h1 className="text-[#0336BC] font-openSans text-[18px] lg:text-[22px] font-bold">
+                {starterPlan[0]?.name}
+              </h1>
+              <h2 className="text-[#04082C] font-bold text-[28px] lg:text-[36px] leading-[1.1] my-[10px]">
+                {starterPlan[0]?.subHeading}
+              </h2>
+              <p className="text-[#333] font-openSans text-[14px] lg:text-[16px] leading-6">
+                {starterPlan[0]?.extraDescription}
+              </p>
+            </div>
+            {/* right card */}
+            <div className="max-w-[360px] z-50 p-[20px] bg-white w-full rounded-[24px] shadow-lg md:shadow-none ">
+              <div className="">
+                <div className="text-[36px] lg:text-[52px] font-montserrat font-bold text-[#04082C]">
+                  ${whole}
+                  <span className="text-[14px] lg:text-[16px] font-montserrat font-semibold text-[#04082C] leading-[150%]">
+                    .{decimal}
+                  </span>
+                  <span className="text-[14px] lg:text-[16px] font-semibold text-[#999] leading-[150%]">
+                    {" "}
+                    /month per slot
+                  </span>
                 </div>
-                <div className="flex items-center gap-[5px]">
-                  <DollarIcon />
-                  <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
-                    Monthly subscription
-                  </p>
-                </div>
-                <div className="flex items-center gap-[5px]">
-                  <VehicleIcon />
-                  <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
-                    01 fleet location
-                  </p>
-                </div>
-              </div>
-              <div className="my-[20px]">
-                <div className="flex items-center gap-[5px]">
-                  <CheckIcon2 />
-                  <p className="text-[#04082C] text-[14px] font-openSans font-normal leading-5">
-                    Cloud-based real-time telematics
-                  </p>
-                </div>
-                <div className="flex items-center gap-[5px]">
-                  <CheckIcon2 />
-                  <p className="text-[#04082C] text-[14px] font-openSans font-normal leading-5">
-                    Vehicle compatibility
-                  </p>
-                </div>
-                <div className="flex items-center gap-[5px]">
-                  <CheckIcon2 />
-                  <p className="text-[#04082C] text-[14px] font-openSans font-normal leading-5">
-                    Vehicle profiles
-                  </p>
-                </div>
-                <div className="flex items-center gap-[5px]">
-                  <CheckIcon2 />
-                  <p className="text-[#04082C] text-[14px] font-openSans font-normal leading-5">
-                    VIN scanner
-                  </p>
-                </div>
-              </div>
-              <div className="w-full border flex justify-center  bg-[#2D65F2] hover:bg-[#0336BC] rounded-md mt-[30px]">
-                <button className="transition-all font-openSans text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] flex items-center px-4 py-3 text-base font-bold  group">
-                  <div className="z-20 whitespace-nowrap">Get Started</div>
-                  <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 translate-x-0 duration-300 group-hover:translate-x-0">
-                    <RightArrowIcon />
+                <div className="mb-[20px] mt-[10px]">
+                  <div className="flex items-center gap-[5px]">
+                    <VehicleIcon />
+                    <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
+                      {starterPlan[0]?.slotMinimum} vehicle slots
+                    </p>
                   </div>
-                </button>
+                  <div className="flex items-center gap-[5px]">
+                    <DollarIcon />
+                    <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
+                      Monthly subscription
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-[5px]">
+                    <VehicleIcon />
+                    <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
+                      01 fleet location
+                    </p>
+                  </div>
+                </div>
+                <div className="my-[20px]">
+                  {starterPlan[0]?.description.map(
+                    (feature: string, i: number) => (
+                      <div key={i} className="flex items-center gap-[5px]">
+                        <CheckIcon2 />
+                        <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
+                          {feature}
+                        </p>
+                      </div>
+                    )
+                  )}
+                </div>
+                <div className="w-full border flex justify-center  bg-[#2D65F2] hover:bg-[#0336BC] rounded-md mt-[30px]">
+                  <button className="transition-all font-openSans text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] flex items-center px-4 py-3 text-base font-bold  group">
+                    <div className="z-20 whitespace-nowrap">Get Started</div>
+                    <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 translate-x-0 duration-300 group-hover:translate-x-0">
+                      <RightArrowIcon />
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* connect vehicle section end */}
