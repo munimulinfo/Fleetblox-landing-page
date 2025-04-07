@@ -119,8 +119,6 @@ const VIN = () => {
         const areAllUncompatible = data.data?.every(
           (brand: { isCompatible: boolean }) => brand.isCompatible === false
         );
-        console.log(areAllUncompatible, "uncompatible");
-        console.log(data.data, "data is not compatible");
 
         if (areAllUncompatible) {
           return router.push("/result/not-compatible");

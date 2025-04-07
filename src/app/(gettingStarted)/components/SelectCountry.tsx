@@ -68,7 +68,6 @@ const SelectCountry = () => {
         );
         const response = await countries.json();
         setCountries(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log(error);
         toast.error("Failed to fetch countries");
@@ -149,9 +148,9 @@ const SelectCountry = () => {
     localStorage.removeItem("brands");
     localStorage.removeItem("brandModels");
     localStorage.removeItem("VINS");
+    localStorage.removeItem("brandCarList");
     localStorage.removeItem("VINS_RESULT");
     localStorage.removeItem("compatibility");
-    localStorage.removeItem("selectedPlan");
   };
 
   // Function to remove a country from selection

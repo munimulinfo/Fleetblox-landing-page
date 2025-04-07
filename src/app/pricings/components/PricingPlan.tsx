@@ -43,6 +43,23 @@ const PricingPlan = () => {
   const [starterPlan, setStarterPlan] = useState<TStaterPlanData[]>([]);
   const [staterPlanLoading, setStarterPlanLoading] = useState(true);
   const [staterPlanError, setStarterPlanError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Add client-side check
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("country");
+      localStorage.removeItem("countries");
+      localStorage.removeItem("selectedPlan");
+      localStorage.removeItem("brands");
+      localStorage.removeItem("brandCarList");
+      localStorage.removeItem("brandModels");
+      localStorage.removeItem("VINS");
+      localStorage.removeItem("VINS_RESULT");
+      localStorage.removeItem("compatibility");
+      localStorage.removeItem("selectedCountries");
+    }
+  }, []);
+
   // Fetch plans on mount
   useEffect(() => {
     const fetchPlans = async () => {
