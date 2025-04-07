@@ -6,8 +6,30 @@ import { Toaster } from "react-hot-toast";
 
 import { Montserrat, Open_Sans, Roboto } from "next/font/google";
 
-
 import imageUrl from "../../public/images/hero-2.png";
+
+// Configure primary font
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+// Configure secondary fonts
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
+
+const roboto = Roboto({
+  subsets: ["latin-ext"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-roboto",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fleetblox.com"),
@@ -79,29 +101,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Configure primary font
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
-
-// Configure secondary fonts
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-open-sans",
-  display: "swap",
-});
-
-const roboto = Roboto({
-  subsets: ["latin-ext"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-roboto",
-  display: "swap",
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -123,7 +122,6 @@ export default function RootLayout({
         />
 
         <link rel="preload" href={imageUrl.src} as="image" />
-
       </head>
       {/*  */}
       <body className={`antialiased bg-white`}>
