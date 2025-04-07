@@ -348,7 +348,7 @@ const ModelSelector = ({ params }: any) => {
       setCurrentBrandIndex((prev) => prev - 1);
       setCustomProgress(progress - calculateProgress);
     } else {
-      router.push("/collections/select-brand");
+      router.back();
       setCustomProgress(progress - 10);
     }
   };
