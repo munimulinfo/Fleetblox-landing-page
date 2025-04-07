@@ -38,3 +38,15 @@ export type TContactFormData = {
   countryCode: string;
   flag: StaticImageData;
 };
+
+export type TStaterPlanData = {
+  id: string;
+  name: string;
+  subHeading: string;
+  extraDescription: string;
+  description: string[];
+  price: number;
+  slotMinimum: number;
+  createdAt: string;
+  updatedAt: string;
+};

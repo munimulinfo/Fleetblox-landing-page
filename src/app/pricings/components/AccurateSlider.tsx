@@ -18,7 +18,7 @@ export const AccurateSlider = ({
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col items-center px-2 sm:px-6">
       {/* Slot Display */}
-      <div className="mt-[10px] text-center">
+      <div className=" text-center">
         <span className="text-[24px] md:text-[28px] font-bold text-[#04082C]">
           {value}
         </span>

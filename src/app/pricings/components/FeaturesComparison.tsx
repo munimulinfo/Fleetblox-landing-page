@@ -23,7 +23,7 @@ const FeaturesComparison = () => {
     }
   }, [controls, inView]);
   return (
-    <div className="mt-10 flex w-full items-center justify-center">
+    <div className="mt-[160px] md:mt-[100px] flex w-full items-center justify-center">
       <div className="max-w-[1200px] w-full px-5 relative">
         {/* Sticky Header within the scrollable container */}
         <motion.div
@@ -35,7 +35,7 @@ const FeaturesComparison = () => {
           }}
           className="sticky top-[120px] grid grid-cols-2 md:grid-cols-3 p-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm overflow-hidden"
         >
-          <h1 className="text-[14px] hidden md:block font-[600] ml-5 text-[#999]">
+          <h1 className="text-[14px] hidden md:block font-[600] ml-5 text-[#333]">
             Usage
           </h1>
           {/* for laptop and desktop */}
