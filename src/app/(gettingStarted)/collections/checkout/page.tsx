@@ -619,7 +619,7 @@ const Page = () => {
                       >
                         {formData.flag ? (
                           <Image
-                            src={Canada}
+                            src={formData.flag}
                             alt="Flag"
                             className="mr-2 h-[20px] w-[24px] rounded-[6px]"
                             width={50}

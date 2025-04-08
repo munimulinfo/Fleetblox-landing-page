@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, Search } from "lucide-react";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
 import useBrandCarList from "@/hooks/useCompatibility";
 import Loader from "./Loader";
@@ -17,11 +17,15 @@ interface CarBrand {
 
 const BrandSelector = () => {
   const router = useRouter();
+  const pathname = usePathname(); // get current route pathname
   const searchParams = useSearchParams();
   const countryParam = searchParams.get("country");
   const [searchQuery, setSearchQuery] = useState("");
   const [disabled, setDisabled] = useState(false);
 
+  useEffect(() => {
+    setSearchQuery("");
+  }, [pathname]);
   const { brandCarList, selectedBrands, setSelectedBrands, loading } =
     useBrandCarList(countryParam);
 
@@ -33,9 +37,11 @@ const BrandSelector = () => {
     localStorage.setItem("brands", JSON.stringify(updatedBrands));
   };
 
-  const filteredBrands = brandCarList.filter((brand: CarBrand) =>
-    brand.brand.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredBrands = useMemo(() => {
+    return brandCarList.filter((brand: CarBrand) =>
+      brand.brand.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery, brandCarList]);
 
   const { setCustomProgress, progress } = useProgressUpdater();
 
