@@ -16,11 +16,11 @@ export const vehicleFeatures = [
     permissions: [{ permission: true }, { permission: true }],
   },
   {
-    title: "Ai based vehicle body inspection",
+    title: "AI based vehicle inspections",
     permissions: [{ permission: true }, { permission: true }],
   },
   {
-    title: "Dynamic body condition visualization",
+    title: "Dynamic vehicle condition diagram",
     permissions: [{ permission: true }, { permission: true }],
   },
   {
@@ -38,10 +38,6 @@ export const vehicleFeatures = [
 ];
 
 export const fleetFeatures = [
-  {
-    title: "Automated fleet health report",
-    permissions: [{ permission: true }, { permission: true }],
-  },
   {
     title: "Advanced fleet analytics",
     permissions: [{ permission: false }, { permission: true }],
@@ -63,11 +59,19 @@ export const fleetFeatures = [
     permissions: [{ permission: false }, { permission: true }],
   },
   {
+    title: "Fleet condition alerts",
+    permissions: [{ permission: true }, { permission: true }],
+  },
+  {
     title: "Documents expiration alerts",
-    permissions: [{ permission: false }, { permission: true }],
+    permissions: [{ permission: true }, { permission: true }],
   },
   {
     title: "Mileage reminders",
+    permissions: [{ permission: false }, { permission: true }],
+  },
+  {
+    title: "Budget exceeded alerts",
     permissions: [{ permission: false }, { permission: true }],
   },
   {
@@ -75,7 +79,7 @@ export const fleetFeatures = [
     permissions: [{ permission: false }, { permission: true }],
   },
   {
-    title: "Documents expiration alerts",
+    title: "Mileage reminders",
     permissions: [{ permission: false }, { permission: true }],
   },
 ];
@@ -88,7 +92,7 @@ export const brandFeatures = [
   {
     title: "BEE - Ai chat bot",
     permissions: [
-      { permission: true, message: "Fleet assistant" },
+      { permission: true, message: "Garage assistant" },
       { permission: true, message: "Garage manager" },
     ],
   },
