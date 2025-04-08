@@ -62,7 +62,7 @@ const Footer = () => {
               </video>
             </div>
           </div>
-          <div className="flex items-center lg:items-start space-y-[30px] lg:space-y-0 lg:gap-[100px] gap-10 flex-col lg:flex-row justify-between mb-10 mt-[20px] lg:mt-[100px]">
+          <div className="flex items-center lg:items-start space-y-[30px] lg:space-y-0 lg:gap-[100px] gap-10 flex-col lg:flex-row justify-between mb-10 mt-[20px] lg:mt-[125px]">
             {/* logo section */}
             <div className="max-w-[400px] w-full flex flex-col lg:h-[400px] justify-between">
               <div className="cursor-pointer text-left space-y-[10px] ">
@@ -89,17 +89,17 @@ const Footer = () => {
             {/* pages section */}
             <div className=" grid grid-cols-2 lg:grid-cols-4 w-full  text-[16px] font-openSans font-normal text-white leading-6 gap-10 xl:gap-[60px]">
               {/* product section */}
-              <div className="cursor-pointer text-[14px] leading-5">
+              <div className="text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Products
                 </h5>
-                <Link href="/under-development">
+                <Link className="cursor-pointer" href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px] cursor-pointer">
                     Platform Overview
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
                     Connectivity
                   </h5>
                 </Link>
@@ -133,7 +133,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* solutions */}
-              <div className="cursor-pointer text-[14px] leading-5 max-w-[240px] xl:w-[240px] w-full">
+              <div className=" text-[14px] leading-5 max-w-[240px] xl:w-[240px] w-full">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Solutions
                 </h5>
@@ -194,7 +194,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* resources section */}
-              <div className="cursor-pointer text-[14px] leading-5">
+              <div className="text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Resources
                 </h5>
@@ -231,7 +231,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* company section */}
-              <div className="cursor-pointer text-[14px] leading-5">
+              <div className="text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Company
                 </h5>
