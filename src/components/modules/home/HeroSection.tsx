@@ -63,6 +63,12 @@ const HeroSection = () => {
               src={heroCardImg}
               alt="logo"
               className="w-full h-auto max-w-[1200px] max-h-[80vh] -mt-[70px] z-30 absolute xl:max-w-[1200px] lg:max-w-[1000px]"
+              width={1200}
+              height={800}
+              quality={90}
+              priority
+              placeholder="blur"
+              sizes="100vw"
             />
 
             {/* Centered blur effect */}
@@ -155,6 +161,7 @@ const HeroSection = () => {
               height={550}
               quality={75}
               className="object-contain"
+              sizes="100vw"
             />
           </div>
         </div>
