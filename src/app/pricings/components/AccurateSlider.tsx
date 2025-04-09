@@ -18,14 +18,14 @@ export const AccurateSlider = ({
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col items-center px-2 sm:px-6">
       {/* Slot Display */}
-      <div className=" text-center">
-        <span className="text-[24px] md:text-[28px] font-bold text-[#04082C]">
+      <div className="text-center">
+        <span className="text-[24px] md:text-[28px] font-bold text-[#0336BC]">
           {value}
         </span>
         <span className="ml-1 text-[12px] md:text-[14px] font-normal text-[#6F6464]">
           slots
         </span>
-        <div>
+        <div className="-mt-1">
           <span className="ml-1 text-[12px] md:text-[14px] font-normal font-openSans leading-[150%] text-[#6F6464]">
             Total Vehicle Slots (Fleet Size)
           </span>
@@ -34,7 +34,7 @@ export const AccurateSlider = ({
       {/* Slider */}
       <div className="max-w-[730px] w-full">
         {/* Slider Container */}
-        <div className="relative h-[32px] my-6">
+        <div className="relative h-[32px] mb-5 mt-2">
           {/* Track */}
           <div className="absolute top-1/2 z-10 h-[14px] w-full -translate-y-1/2 transform rounded-full bg-[#F6F6F6]"></div>
 
