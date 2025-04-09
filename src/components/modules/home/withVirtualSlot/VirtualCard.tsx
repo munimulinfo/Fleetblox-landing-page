@@ -60,6 +60,11 @@ const VirtualCard: React.FC<CardProps> = ({
             src={image}
             className="object-fill w-full rounded-r-[24px]"
             alt="image"
+            width={500}
+            height={500}
+            quality={90}
+            priority={true}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
           />
         </div>
 
