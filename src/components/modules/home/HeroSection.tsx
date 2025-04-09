@@ -86,7 +86,7 @@ const HeroSection = () => {
                 preload="auto"
                 className="w-full h-full object-cover object-center opacity-5 mix-blend-difference absolute inset-0"
               >
-                <source src="/videos/hero.mp4" type="video/mp4" />
+                <source src="/videos/hero.webm" type="video/webm" />
               </video>
             </div>
           </div>
