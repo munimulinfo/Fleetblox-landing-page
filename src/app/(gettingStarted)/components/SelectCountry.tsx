@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import Loader from "./Loader";
 import NotCompatibilityDialog from "./NotCompatibilityDialog";
 import NextStepButton from "@/components/ui/shared/NextStepButton";
+import Head from "next/head";
 
 export interface Country {
   country: string;
@@ -159,17 +160,24 @@ const SelectCountry = () => {
   // };
 
   return (
-    <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
-      {/* Header - Fixed at the Top */}
-      <div className="my-4 text-center flex-none">
-        <h2 className="font-bold text-[20px] sm:text-[28px] font-openSans text-[#04082C] ">
-          Select Registered Countries
-        </h2>
-        <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
-          Choose all the countries where your fleet vehicles were originally
-          registered.
-        </p>
-        {/* <Button
+    <>
+      <Head>
+        <link
+          rel="canonical"
+          href="https://www.fleetblox.com/collections/select-country"
+        />
+      </Head>
+      <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
+        {/* Header - Fixed at the Top */}
+        <div className="my-4 text-center flex-none">
+          <h2 className="font-bold text-[20px] sm:text-[28px] font-openSans text-[#04082C] ">
+            Select Registered Countries
+          </h2>
+          <p className="font-openSans text-[14px] leading-[155%] sm:text-[16px] text-[#7D7D7D] mx-auto">
+            Choose all the countries where your fleet vehicles were originally
+            registered.
+          </p>
+          {/* <Button
           onClick={() => {
             sendGTMEvent({
               event: "buttonClicked",
@@ -179,34 +187,34 @@ const SelectCountry = () => {
         >
           test
         </Button> */}
-      </div>
-
-      {/* Main Content - Scrollable */}
-      <div className="flex-grow overflow-y-auto scrollbar-hidden pb-4">
-        {/* Search Bar */}
-        <div className="relative mb-4 w-full">
-          <div className="flex items-center w-full bg-[#F7F7F7] rounded-md px-4 py-4">
-            <Search className="text-[#7D7D7D] mr-3" size={20} />
-            <input
-              type="text"
-              aria-describedby="email-help"
-              placeholder="Search country"
-              className="w-full bg-[#F7F7F7] font-openSans text-[14px] text-[#333] outline-none"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
         </div>
 
-        {/* Selected Countries Chips */}
-        {selectedCountries.length > 0 && (
-          <div className="my-3 mx-1">
-            <p className="font-openSans text-sm font-[600] mb-2">
-              {selectedCountries.length}{" "}
-              {selectedCountries.length === 1 ? "country" : "countries"}{" "}
-              selected
-            </p>
-            {/* <div className="flex flex-wrap gap-2 mb-4">
+        {/* Main Content - Scrollable */}
+        <div className="flex-grow overflow-y-auto scrollbar-hidden pb-4">
+          {/* Search Bar */}
+          <div className="relative mb-4 w-full">
+            <div className="flex items-center w-full bg-[#F7F7F7] rounded-md px-4 py-4">
+              <Search className="text-[#7D7D7D] mr-3" size={20} />
+              <input
+                type="text"
+                aria-describedby="email-help"
+                placeholder="Search country"
+                className="w-full bg-[#F7F7F7] font-openSans text-[14px] text-[#333] outline-none"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* Selected Countries Chips */}
+          {selectedCountries.length > 0 && (
+            <div className="my-3 mx-1">
+              <p className="font-openSans text-sm font-[600] mb-2">
+                {selectedCountries.length}{" "}
+                {selectedCountries.length === 1 ? "country" : "countries"}{" "}
+                selected
+              </p>
+              {/* <div className="flex flex-wrap gap-2 mb-4">
               {selectedCountries.map((country) => (
                 <div
                   key={country}
@@ -224,60 +232,61 @@ const SelectCountry = () => {
                 </div>
               ))}
             </div> */}
-          </div>
-        )}
+            </div>
+          )}
 
-        {/* Scrollable Country List */}
-        <div className="h-full overflow-y-auto scrollbar-hidden">
-          <div className="space-y-3">
-            {loading ? (
-              <div className="flex justify-center items-center h-[200px]">
-                <Loader />
-              </div>
-            ) : filteredCountries && filteredCountries.length > 0 ? (
-              filteredCountries.map((country) => (
-                <div
-                  key={country.country}
-                  className={`flex items-center p-4 rounded-[12px] cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
-                    selectedCountries.includes(country.country)
-                      ? "border-[#B8CBFC] bg-[#2D65F20F]"
-                      : "border-[#F7F7F7]"
-                  }`}
-                  onClick={() => handleCountrySelect(country)}
-                >
-                  <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-4 border border-gray-300">
-                    <Image
-                      src={country.countryFlag}
-                      alt={country.country}
-                      width={200}
-                      height={200}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <span className="font-[400] md:font-semibold text-[14px] font-openSans sm:text-[16px] text-[#04082C]">
-                    {country.country}
-                  </span>
+          {/* Scrollable Country List */}
+          <div className="h-full overflow-y-auto scrollbar-hidden">
+            <div className="space-y-3">
+              {loading ? (
+                <div className="flex justify-center items-center h-[200px]">
+                  <Loader />
                 </div>
-              ))
-            ) : (
-              <div className="flex justify-center items-center h-[200px] text-[#6F6464]">
-                No countries found matching your search
-              </div>
-            )}
+              ) : filteredCountries && filteredCountries.length > 0 ? (
+                filteredCountries.map((country) => (
+                  <div
+                    key={country.country}
+                    className={`flex items-center p-4 rounded-[12px] cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
+                      selectedCountries.includes(country.country)
+                        ? "border-[#B8CBFC] bg-[#2D65F20F]"
+                        : "border-[#F7F7F7]"
+                    }`}
+                    onClick={() => handleCountrySelect(country)}
+                  >
+                    <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-4 border border-gray-300">
+                      <Image
+                        src={country.countryFlag}
+                        alt={country.country}
+                        width={200}
+                        height={200}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <span className="font-[400] md:font-semibold text-[14px] font-openSans sm:text-[16px] text-[#04082C]">
+                      {country.country}
+                    </span>
+                  </div>
+                ))
+              ) : (
+                <div className="flex justify-center items-center h-[200px] text-[#6F6464]">
+                  No countries found matching your search
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Footer - Fixed at the Bottom */}
-      <div className="flex flex-col justify-center items-center gap-4 flex-none">
-        <NextStepButton
-          onClick={handleNext}
-          disabled={selectedCountries.length === 0 || disabled}
-        />
-      </div>
+        {/* Footer - Fixed at the Bottom */}
+        <div className="flex flex-col justify-center items-center gap-4 flex-none">
+          <NextStepButton
+            onClick={handleNext}
+            disabled={selectedCountries.length === 0 || disabled}
+          />
+        </div>
 
-      <NotCompatibilityDialog title="Can't Find My Country" />
-    </main>
+        <NotCompatibilityDialog title="Can't Find My Country" />
+      </main>
+    </>
   );
 };
 

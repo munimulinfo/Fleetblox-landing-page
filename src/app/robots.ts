@@ -7,12 +7,12 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: [
         "/api/", // Protect API routes
-        "/admin/", // Protect admin routes if any
         "/collections/checkout/", // Protect checkout routes
         "/result/paymentSuccess", // Protect payment results
         "/result/paymentFaild", // Protect payment results
         "/collections/select-country",
         "/pricings",
+        "/getting-started",
         "/q",
       ],
     },

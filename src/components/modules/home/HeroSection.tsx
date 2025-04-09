@@ -66,9 +66,6 @@ const HeroSection = () => {
               width={1200}
               height={800}
               quality={90}
-              priority
-              placeholder="blur"
-              sizes="100vw"
             />
 
             {/* Centered blur effect */}
