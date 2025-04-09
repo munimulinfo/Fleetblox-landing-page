@@ -162,7 +162,6 @@ const HeroSection = () => {
               sizes="(max-width: 400px) 50vw"
               placeholder="blur"
               blurDataURL="/images/hero-2.webp"
-              loading="eager"
             />
           </div>
         </div>
