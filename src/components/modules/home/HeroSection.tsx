@@ -155,13 +155,13 @@ const HeroSection = () => {
               src="/images/hero-2.webp"
               priority
               alt="Mobile hero"
-              width={200}
-              height={400}
-              quality={75}
+              width={272} // Match max-w-[272px]
+              height={550} // Match max-h-[550px]
+              quality={80} // Test values between 75-85
               className="object-contain w-full h-auto max-w-[272px] max-h-[550px]"
-              sizes="(max-width: 400px) 50vw"
+              sizes="(max-width: 400px) 272px, 50vw"
               placeholder="blur"
-              blurDataURL="/images/hero-2.webp"
+              blurDataURL="data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA"
             />
           </div>
         </div>

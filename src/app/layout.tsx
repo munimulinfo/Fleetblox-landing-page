@@ -124,6 +124,7 @@ export default function RootLayout({
         <link rel="canonical" href="https://www.fleetblox.com/" />
 
         <link rel="preload" href={imageUrl.src} as="image" />
+        <link rel="preload" href="/images/hero-2.webp" as="image" />
       </head>
 
       <Script
