@@ -303,7 +303,7 @@ const PricingPlan = () => {
         <h2 className="text-[#333] text-[28px] font-bold text-center leading-[1.1] mb-[2px]">
           Scale Your Fleet Seamlessly
         </h2>
-        <p className="text-[#7D7D7D] text-center leading-5">
+        <p className="text-[#7D7D7D] text-center leading-5 text-[14px]">
           Slide the bar to explore pricing based on vehicle slots - Clear and
           transparent with no hidden fees
         </p>

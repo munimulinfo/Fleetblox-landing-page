@@ -126,7 +126,7 @@ const FeaturesPermissionRow: React.FC<FeaturesPermissionRowComponentProps> = ({
       >
         {/* features title */}
         <div>
-          <h1 className="text-[14px] text-center md:text-left font-[600] text-[#202020]">
+          <h1 className="text-[14px] text-center md:text-left font-openSans font-[600] text-[#202020]">
             {featuresPermissions?.title}
           </h1>
         </div>

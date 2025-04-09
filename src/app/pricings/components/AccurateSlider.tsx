@@ -27,7 +27,7 @@ export const AccurateSlider = ({
         </span>
         <div className="-mt-1">
           <span className="ml-1 text-[12px] md:text-[14px] font-normal font-openSans leading-[150%] text-[#6F6464]">
-            Total Vehicle Slots (Fleet Size)
+            Vehicle Slots (Fleet Size)
           </span>
         </div>
       </div>
