@@ -158,9 +158,11 @@ const HeroSection = () => {
               width={200}
               height={400}
               quality={75}
-              className="object-contain w-full h-auto max-w-[272px] max-h-[550px] rounded-[24px] shadow-lg"
-              sizes="(max-width: 400px) 70vw"
+              className="object-contain w-full h-auto max-w-[272px] max-h-[550px]"
+              sizes="(max-width: 400px) 50vw"
               placeholder="blur"
+              blurDataURL="/images/hero-2.webp"
+              loading="eager"
             />
           </div>
         </div>
