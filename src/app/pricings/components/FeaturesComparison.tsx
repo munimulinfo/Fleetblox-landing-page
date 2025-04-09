@@ -22,6 +22,7 @@ const FeaturesComparison = () => {
       controls.start("hidden");
     }
   }, [controls, inView]);
+
   return (
     <div className="mt-[160px] md:mt-[100px] flex w-full items-center justify-center">
       <div className="max-w-[1200px] w-full px-5 relative">
@@ -33,7 +34,7 @@ const FeaturesComparison = () => {
             visible: { opacity: 1, y: 0 },
             hidden: { opacity: 1, y: 0 },
           }}
-          className="sticky top-[120px] grid grid-cols-2 md:grid-cols-3 p-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm overflow-hidden"
+          className="sticky top-[80px] lg:top-[120px] grid grid-cols-2 md:grid-cols-3 h-[60px] items-center bg-[#FAFAFF] rounded-lg z-10 shadow-sm overflow-hidden"
         >
           <h1 className="text-[14px] hidden md:block font-[600] ml-5 text-[#333]">
             Usage
@@ -55,10 +56,10 @@ const FeaturesComparison = () => {
             Dynamic
           </h1>
         </motion.div>
-        <div className="sticky top-[70px] left-0 w-full h-[50px] bg-white z-0"></div>
+        <div className="sticky top-[58px] lg:top-[96px] left-0 w-full h-[24px] bg-white z-0"></div>
         {/* Scrollable content section */}
         <div ref={ref}>
-          <div className="rounded-md px-5 py-5 md:py-4 text-center md:text-left">
+          <div className="rounded-md px-5 pb-5 text-center md:text-left">
             <h1 className="text-[18px] font-[700] text-[#7D7D7D] font-openSans">
               Vehicles
             </h1>
@@ -126,7 +127,7 @@ const FeaturesPermissionRow: React.FC<FeaturesPermissionRowComponentProps> = ({
       >
         {/* features title */}
         <div>
-          <h1 className="text-[14px] text-center md:text-left font-[600] text-[#202020]">
+          <h1 className="text-[14px] text-center md:text-left font-openSans font-[600] text-[#202020]">
             {featuresPermissions?.title}
           </h1>
         </div>
