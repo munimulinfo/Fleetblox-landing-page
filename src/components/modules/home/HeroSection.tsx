@@ -158,7 +158,6 @@ const HeroSection = () => {
               height={550}
               quality={75}
               className="object-contain"
-              sizes="100vw"
             />
           </div>
         </div>
