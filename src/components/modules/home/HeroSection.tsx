@@ -66,6 +66,7 @@ const HeroSection = () => {
               width={1200}
               height={800}
               quality={90}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
             />
 
             {/* Centered blur effect */}
@@ -158,6 +159,7 @@ const HeroSection = () => {
               height={400}
               quality={75}
               className="object-contain w-full h-auto max-w-[272px] max-h-[550px] rounded-[24px] shadow-lg"
+              sizes="(max-width: 500px) 70vw"
             />
           </div>
         </div>
