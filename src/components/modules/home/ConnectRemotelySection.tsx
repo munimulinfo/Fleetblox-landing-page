@@ -112,9 +112,11 @@ const ConnectRemotelySection = () => {
           <Image
             src="/images/aI-assistant.webp"
             alt="AI assistant for fleet optimization"
-            width={548}
-            height={294}
-            className="object-contain"
+            width={500}
+            height={300}
+            className="object-contain w-full h-auto rounded-[24px] lg:max-w-[548px] max-h-[294px]"
+            quality={90}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
             priority
           />
           {/* </div> */}

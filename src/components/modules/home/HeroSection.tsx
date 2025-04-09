@@ -154,10 +154,10 @@ const HeroSection = () => {
               src="/images/hero-2.webp"
               priority
               alt="Mobile hero"
-              width={272}
-              height={550}
+              width={200}
+              height={400}
               quality={75}
-              className="object-contain"
+              className="object-contain w-full h-auto max-w-[272px] max-h-[550px] rounded-[24px] shadow-lg"
             />
           </div>
         </div>
