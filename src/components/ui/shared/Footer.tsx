@@ -58,7 +58,7 @@ const Footer = () => {
                 preload="auto"
                 className="z-30 h-full object-cover object-center opacity-55 mix-blend-multiply"
               >
-                <source src="/videos/Footer.mp4" type="video/mp4" />
+                <source src="/videos/Footer.webm" type="video/webm" />
               </video>
             </div>
           </div>
