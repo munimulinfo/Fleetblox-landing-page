@@ -120,6 +120,7 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <link rel="canonical" href="https://www.fleetblox.com/" />
 
         <link rel="preload" href={imageUrl.src} as="image" />
       </head>
