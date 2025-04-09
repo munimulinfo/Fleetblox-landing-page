@@ -159,7 +159,9 @@ const HeroSection = () => {
               height={400}
               quality={75}
               className="object-contain w-full h-auto max-w-[272px] max-h-[550px] rounded-[24px] shadow-lg"
-              sizes="(max-width: 500px) 70vw"
+              sizes="(max-width: 400px) 70vw"
+              loading="lazy"
+              placeholder="blur"
             />
           </div>
         </div>
