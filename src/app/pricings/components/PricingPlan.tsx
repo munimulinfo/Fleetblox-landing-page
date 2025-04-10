@@ -20,6 +20,7 @@ import CheckIcon2 from "@/components/icons/CheckIcon2";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import axios from "axios";
 import { TStaterPlanData } from "@/types/types";
+import LocationIcon from "@/components/icons/LocationIcon";
 
 type TSelectedPlan = {
   price: number;
@@ -276,7 +277,7 @@ const PricingPlan = () => {
                     </p>
                   </div>
                   <div className="flex items-center gap-[5px]">
-                    <VehicleIcon />
+                    <LocationIcon />
                     <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
                       01 fleet location
                     </p>
@@ -300,10 +301,10 @@ const PricingPlan = () => {
         )}
       </section>
       <section className="flex justify-center flex-col items-center px-5 pt-[80px] pb-[20px]">
-        <h2 className="text-[#333] text-[28px] font-bold text-center leading-[1.1] mb-[2px]">
+        <h2 className="text-[#333] text-[28px] font-bold text-center leading-[1.1] mb-[8px]">
           Scale Your Fleet Seamlessly
         </h2>
-        <p className="text-[#7D7D7D] text-center leading-5 text-[14px]">
+        <p className="text-[#7D7D7D] text-center leading-5 text-[14px] font-openSans">
           Slide the bar to explore pricing based on vehicle slots - Clear and
           transparent with no hidden fees
         </p>
