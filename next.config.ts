@@ -1,11 +1,19 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   siteUrl: "https://fleetblox.com",
-  generateRobotsTxt: true,
+
   images: {
     formats: ["image/avif", "image/webp"],
+    deviceSizes: [320, 420, 768, 1024, 1280, 1920],
+    imageSizes: [200, 200, 200, 300, 500, 500, 500],
+    domains: ["fleetblox.com"],
     remotePatterns: [
       {
         protocol: "https",
@@ -21,10 +29,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "ibb.co.com",
+        hostname: "ibb.co", // Corrected domain
       },
     ],
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig); // Use `withBundleAnalyzer` here

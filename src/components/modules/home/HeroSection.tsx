@@ -66,9 +66,7 @@ const HeroSection = () => {
               width={1200}
               height={800}
               quality={90}
-              priority
-              placeholder="blur"
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
             />
 
             {/* Centered blur effect */}
@@ -88,7 +86,7 @@ const HeroSection = () => {
                 preload="auto"
                 className="w-full h-full object-cover object-center opacity-5 mix-blend-difference absolute inset-0"
               >
-                <source src="/videos/hero.mp4" type="video/mp4" />
+                <source src="/videos/hero.webm" type="video/webm" />
               </video>
             </div>
           </div>
@@ -157,11 +155,13 @@ const HeroSection = () => {
               src="/images/hero-2.webp"
               priority
               alt="Mobile hero"
-              width={272}
-              height={550}
-              quality={75}
-              className="object-contain"
-              sizes="100vw"
+              width={272} // Match max-w-[272px]
+              height={550} // Match max-h-[550px]
+              quality={80} // Test values between 75-85
+              className="object-contain w-full h-auto max-w-[272px] max-h-[550px]"
+              sizes="(max-width: 400px) 272px, 50vw"
+              placeholder="blur"
+              blurDataURL="data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA"
             />
           </div>
         </div>
