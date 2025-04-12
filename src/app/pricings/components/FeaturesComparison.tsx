@@ -22,7 +22,7 @@ const FeaturesComparison = () => {
       controls.start("hidden");
     }
   }, [controls, inView]);
-
+  console.log({ ref, inView });
   return (
     <div className="mt-[160px] md:mt-[100px] flex w-full items-center justify-center">
       <div className="max-w-[1200px] w-full px-5 relative">
@@ -166,10 +166,10 @@ const FeaturesPermissionRow: React.FC<FeaturesPermissionRowComponentProps> = ({
           </div>
         ))}
         {/* mobile view features permission */}
-        <div className="flex justify-around">
+        <div className="grid grid-cols-2 gap-20 text-center">
           {featuresPermissions.permissions.map((permissionItem, index) => (
             <div
-              className="flex md:hidden mt-[10px] flex-col gap-[5px] items-center justify-center space-x-[7px]"
+              className="flex md:hidden mt-[10px] flex-col gap-[5px] items-center justify-center"
               key={index}
             >
               {permissionItem?.permission ? (

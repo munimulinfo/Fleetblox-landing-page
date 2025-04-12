@@ -13,7 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         "/collections/select-country",
         "/pricings",
         "/getting-started",
-        "/q",
       ],
     },
     sitemap: "https://fleetblox.com/sitemap.xml", // Update with your actual domain
