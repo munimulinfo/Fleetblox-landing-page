@@ -14,8 +14,7 @@ const ConnectRemotelySection = () => {
                 Connect Your Fleet Remotely -{" "}
                 <span className="md:block">Anytime, Anywhere</span>
               </h1>
-
-              <p className="my-4 md:my-5 text-[#333] leading-6 font-openSans text-left  text-[15px] md:text-[16px]">
+              {/* <p className="my-4 md:my-5 text-[#333] leading-6 font-openSans text-left  text-[15px] md:text-[16px]">
                 Manage your fleet with unparalleled ease and flexibility.
                 Perform comprehensive vehicle checks, unlock vehicles,
                 <span className="hidden md:inline">
@@ -27,6 +26,14 @@ const ConnectRemotelySection = () => {
                   <br />
                 </span>{" "}
                 you remain in control, no matter where you are.
+              </p> */}
+              <p className="my-4 md:my-5 text-[#333] leading-6 font-openSans text-left  text-[15px] md:text-[16px]">
+                Take full control of your fleet without ever being on-site. From
+                performing detailed vehicle checks and unlocking cars remotely
+                to coordinating repairs in real time, everything is at your
+                fingertips. Powered by our advanced Virtual Parking Slot
+                technology, you can monitor and manage your fleet from anywhere
+                seamlessly, securely, and efficiently.
               </p>
               <Link
                 href="/getting-started"
@@ -88,15 +95,24 @@ const ConnectRemotelySection = () => {
           <div className="lg:w-[570px] w-full">
             <h1 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold text-[#04082C] leading-tight font-montserrat">
               Optimize Fleet Safety
-              <span className="md:block"> and Stay Compliant</span>
+              <span className="md:block"> and Ensure Compliance</span>
             </h1>
-            <p className="my-4 md:my-5 text-[#333] leading-6 text-[15px] font-openSans md:text-[16px]">
+            {/* <p className="my-4 md:my-5 text-[#333] leading-6 text-[15px] font-openSans md:text-[16px]">
               Stay ahead with dynamic reminders for registrations and insurance
               renewals, ensuring your fleet&apos;s compliance. Simplify repairs,
               access vehicles with digital keys, and keep your fleet in peak
               condition. Utilize GPS tracking, customize trips, and review
               detailed vehicle condition reports, including diagnostic diagrams,
               all from a single platform.
+            </p> */}
+            <p className="my-4 md:my-5 text-[#333] leading-6 text-[15px] font-openSans md:text-[16px]">
+              Stay ahead with dynamic reminders for registration and insurance
+              renewals, seamless repair coordination, and real-time GPS
+              tracking. Access detailed vehicle condition reports, including
+              diagnostic diagrams, all from a single platform. Your data is
+              secured with HTTPS encryption, AES-256, SOC 2 Type 2, and complies
+              with CCPA & GDPR, ensuring top-notch security and privacy
+              standards.
             </p>
             <Link href="/under-development">
               <button className="hidden lg:flex font-openSans transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
