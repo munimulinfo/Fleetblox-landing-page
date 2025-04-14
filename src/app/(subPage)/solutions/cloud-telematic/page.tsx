@@ -1,4 +1,6 @@
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import FeatureCard from "@/components/ui/FeatureCard";
+import { WhyCloudData } from "@/Static_data/solution";
 import Image from "next/image";
 
 const page = () => {
@@ -34,6 +36,33 @@ const page = () => {
               className="object-contain w-full"
             />
           </div>
+        </div>
+      </div>
+      <div className="max-w-[1200px] mx-auto w-full my-[100px]">
+        <h1 className="mb-[60px] text-center text-[#04082C] text-[36px] font-bold">
+          Why Cloud Telematics is the Future
+        </h1>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-[30px]">
+          {WhyCloudData?.slice(0, 3).map((data, index) => (
+            <FeatureCard
+              key={index}
+              icon={<data.icon />}
+              title={data.title}
+              description={data.description}
+              className="w-[380px]"
+            />
+          ))}
+        </div>
+        <div className="flex justify-center mt-[30px] gap-[30px]">
+          {WhyCloudData?.slice(3, 5).map((data, index) => (
+            <FeatureCard
+              key={index}
+              icon={<data.icon />}
+              title={data.title}
+              description={data.description}
+              className="w-[380px]"
+            />
+          ))}
         </div>
       </div>
     </div>
