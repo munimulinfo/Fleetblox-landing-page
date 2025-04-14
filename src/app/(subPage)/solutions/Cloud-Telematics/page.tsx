@@ -1,11 +1,12 @@
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import Image from "next/image";
 
 const page = () => {
   return (
     <div>
-      <div className="bg-[#FAFAFF] pt-[140px] pb-[60px]">
-        <div className="max-w-[1200px] mx-auto w-full flex items-center justify-between">
-          <div>
+      <div className="bg-[#FAFAFF] pt-[140px] pb-[10px]">
+        <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex items-center justify-between">
+          <div className="pl-[130px]">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px]">
               Cloud Telematics
             </h3>
@@ -24,7 +25,15 @@ const page = () => {
               </div>
             </button>
           </div>
-          <div className="h-[600px] w-full bg-white"></div>
+          <div className=" w-full py-10 pl-[60px]">
+            <Image
+              src="/images/coludTalematics-hero.png"
+              alt="AI assistant for fleet optimization"
+              width={700}
+              height={491}
+              className="object-contain w-full"
+            />
+          </div>
         </div>
       </div>
     </div>
