@@ -380,13 +380,6 @@ const ModelSelector = ({ params }: any) => {
   }, [currentCountries, initialExpansionDone]);
 
   // Add this effect to log what's happening
-  useEffect(() => {
-    console.log({
-      countrySpecificModels,
-      selectedModels,
-      currentBrandData,
-    });
-  }, [countrySpecificModels, selectedModels, currentBrandData]);
 
   return (
     <main className="flex flex-col h-[94vh] w-full max-w-[900px] mx-auto px-4 sm:px-6 ">
