@@ -267,7 +267,7 @@ const PricingPlan = () => {
                             "selectedPlan",
                             JSON.stringify(planData)
                           );
-                          console.log("Plan saved to localStorage:", planData);
+
                           setCurrentStep(2);
                           router.push("/collections/checkout");
                         } catch (error) {
