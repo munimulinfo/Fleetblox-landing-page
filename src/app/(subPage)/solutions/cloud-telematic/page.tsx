@@ -1,12 +1,46 @@
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
+import TickIcon from "@/components/icons/TickIcon";
 import FeatureCard from "@/components/ui/FeatureCard";
 import { WhyCloudData } from "@/Static_data/solution";
 import Image from "next/image";
 
 const page = () => {
+  const items = [
+    {
+      id: 1,
+      title: "One-Click Connectivity",
+      description:
+        "Effortlessly  connect or disconnect vehicles in seconds—right from your dashboard.",
+    },
+    {
+      id: 2,
+      title: "Real-Time Data Updates",
+      description:
+        "Track vehicle location, performance, and status—anytime, anywhere",
+    },
+    {
+      id: 3,
+      title: "Global Accessibility",
+      description:
+        "Access fleet data anytime—at the office, at home, or on the go.",
+    },
+    {
+      id: 4,
+      title: "User-Friendly Interface",
+      description:
+        "Intuitive design lets fleet managers monitor and control everything from one place.",
+    },
+    {
+      id: 5,
+      title: "Instant Scalability",
+      description:
+        "Easily add or remove vehicles as your fleet grows—no hassle, just simple management.",
+    },
+  ];
   return (
     <div>
-      <div className="bg-[#FAFAFF] pt-[140px] pb-[10px]">
+      {/* hero section */}
+      <section className="bg-[#FAFAFF] pt-[140px] pb-[10px]">
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex items-center justify-between">
           <div className="pl-[130px]">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px]">
@@ -37,8 +71,50 @@ const page = () => {
             />
           </div>
         </div>
-      </div>
-      <div className="max-w-[1200px] mx-auto w-full my-[100px]">
+      </section>
+      {/* hero section end */}
+      <section className="max-w-[1200px] mx-auto w-full mt-[100px]">
+        <div className="max-w-[840px] mx-auto w-full text-center">
+          <h1 className="text-[#04082C] text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
+            How Cloud Telematics Sets Us Apart with Innovative Fleet Solutions
+          </h1>
+          <p className="text-[#333] text-[16px] leading-6 font-openSans">
+            Unlocking the power of real-time data, advanced insights, and
+            seamless fleet management for unmatched efficiency and control
+          </p>
+        </div>
+        <div className="flex items-center py-[60px] justify-between">
+          <div className="py-10">
+            <Image
+              src="/images/howTelamaticsSet.png"
+              alt="AI assistant for fleet optimization"
+              width={520}
+              height={387}
+              className="object-contain w-full"
+            />
+          </div>
+          <div className="flex flex-col w-[350px] md:w-[600px] mx-auto md:ml-10 pt-10 gap-5">
+            {items.map((item) => (
+              <div key={item.id} className="flex items-center w-full gap-x-4">
+                {/* Consistent icon container */}
+                <div className="w-8 h-8 min-w-[32px]">
+                  <TickIcon />
+                </div>
+                <div>
+                  <h1 className="text-[18px] font-openSans font-bold text-[#333]">
+                    {item.title}
+                  </h1>
+                  <p className="text-[#7D7D7D] leading-6 font-normal font-openSans text-[14px] ">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* why Cloud section */}
+      <section className="max-w-[1200px] mx-auto w-full my-[100px]">
         <h1 className="mb-[60px] text-center text-[#04082C] text-[36px] font-bold">
           Why Cloud Telematics is the Future
         </h1>
@@ -64,7 +140,8 @@ const page = () => {
             />
           ))}
         </div>
-      </div>
+      </section>
+      {/* why Cloud section end */}
     </div>
   );
 };
