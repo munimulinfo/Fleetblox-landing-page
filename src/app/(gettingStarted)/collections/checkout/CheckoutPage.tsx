@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
@@ -6,7 +7,7 @@ import { ChevronDown } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Canada from "../../../../../public/images/canada.png";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import axios from "axios";
@@ -45,6 +46,7 @@ const CheckOutPage = () => {
   const [brands, setBrands] = useState("");
   const [country, setCountry] = useState("");
   const [countries, setCountries] = useState<Country[] | null>(null);
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
 
   const [selectedPlan, setSelectedPlan] = useState<PlanType>({});
   const [interestedUser, setInterestedUser] = useState({});
@@ -115,6 +117,10 @@ const CheckOutPage = () => {
       setBrandModels(localStorage.getItem("brandModels") || "");
       setBrands(localStorage.getItem("brands") || "");
       setCountry(localStorage.getItem("country") || "");
+      const storedSelectedCountries = localStorage.getItem("selectedCountries");
+      setSelectedCountries(
+        storedSelectedCountries ? JSON.parse(storedSelectedCountries) : []
+      );
       //   setPlan(localStorage.getItem("price_plan") || "");
       //   setVinsResult(localStorage.getItem("VINS_RESULT") || "");
     }
@@ -150,20 +156,7 @@ const CheckOutPage = () => {
     }
   }, [countries, country]);
 
-  const contactNumber = `${formData.countryCode}${formData.phone}`;
-
-  const submitData = {
-    email: formData.email,
-    fullName: formData.fullName,
-    planId: selectedPlan?.id,
-    phone: contactNumber,
-    isFromPreLunching: true,
-    successUrl: "https://fleetblox.com/result/paymentSuccess",
-    cancelUrl: "https://fleetblox.com/result/paymentFaild",
-    slot: selectedPlan?.slot,
-    price: selectedPlan?.price,
-    interval: selectedPlan?.annually ? "year" : "month",
-  };
+  const contactNumber = `${formData.phone}`;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -180,48 +173,6 @@ const CheckOutPage = () => {
       flag: data.countryFlag as unknown as StaticImageData,
     }));
     setIsDropdownOpen(false);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    setLoading(true);
-    e.preventDefault();
-
-    // Regular expression for validating an email address
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(formData.email)) {
-      toast.error("Please enter a valid email address");
-      setLoading(false);
-      return; // Prevent further execution if email is invalid
-    }
-    // https://backend.illama360.com
-    try {
-      setLoading(true);
-      // const { data } = await axios.post(
-      //   "https://api.fleetblox.com/api/payment/create-session",
-      //   submitData
-      // );
-
-      const { data } = await axios.post(
-        "https://backend.illama360.com/api/payment/create-session",
-        submitData
-      );
-
-      if (data.statusCode === 200) {
-        // localStorage.clear();
-        return router.push(data?.data.sessionUrl);
-      }
-      setLoading(false);
-    } catch (error) {
-      const axiosError = error as AxiosErrorResponse;
-      setLoading(false);
-
-      const errorMessage =
-        axiosError?.response?.data?.error?.message ||
-        "An unexpected error occurred";
-      console.error(errorMessage, "test");
-      toast.error(errorMessage);
-    }
   };
 
   // Filter and determine compatibility status using `useMemo` for memoization
@@ -294,6 +245,82 @@ const CheckOutPage = () => {
   const handleChangePlan = () => {
     router.back();
     localStorage.removeItem("selectedPlan");
+  };
+
+  const filterSelectedCountry = useMemo(
+    () =>
+      countries?.filter((country) =>
+        selectedCountries.includes(country.country)
+      ),
+    [countries, selectedCountries]
+  );
+
+  useEffect(() => {
+    if (filterSelectedCountry && filterSelectedCountry.length > 0) {
+      setFormData((prev) => ({
+        ...prev,
+        countryCode: filterSelectedCountry[0].phoneCode,
+        flag: filterSelectedCountry[0]
+          .countryFlag as unknown as StaticImageData,
+      }));
+    }
+  }, [filterSelectedCountry]);
+
+  const submitData = {
+    email: formData.email,
+    fullName: formData.fullName,
+    planId: selectedPlan?.id,
+    phone: contactNumber,
+    isFromPreLunching: true,
+    successUrl: "https://fleetblox.com/result/paymentSuccess",
+    cancelUrl: "https://fleetblox.com/result/paymentFaild",
+    slot: selectedPlan?.slot,
+    price: selectedPlan?.price,
+    interval: selectedPlan?.annually ? "year" : "month",
+    // @ts-ignore
+    phoneCountryId: filterSelectedCountry?.[0]?.id, // Use an existing property, or add 'id' to Country type if needed
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
+    e.preventDefault();
+
+    // Regular expression for validating an email address
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address");
+      setLoading(false);
+      return; // Prevent further execution if email is invalid
+    }
+    // https://backend.illama360.com
+    try {
+      setLoading(true);
+      // const { data } = await axios.post(
+      //   "https://api.fleetblox.com/api/payment/create-session",
+      //   submitData
+      // );
+
+      const { data } = await axios.post(
+        "https://backend.illama360.com/api/payment/create-session",
+        submitData
+      );
+
+      if (data.statusCode === 200) {
+        // localStorage.clear();
+        return router.push(data?.data.sessionUrl);
+      }
+      setLoading(false);
+    } catch (error) {
+      const axiosError = error as AxiosErrorResponse;
+      setLoading(false);
+
+      const errorMessage =
+        axiosError?.response?.data?.error?.message ||
+        "An unexpected error occurred";
+      console.error(errorMessage, "test");
+      toast.error(errorMessage);
+    }
   };
 
   return (

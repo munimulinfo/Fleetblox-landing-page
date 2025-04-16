@@ -14,7 +14,7 @@ export default function GettingLayout({
         <Sidebar />
 
         {/* Client-only wrapper for pathname and scroll logic */}
-        <div className="flex-1 flex flex-col relative overflow-hidden">
+        <div className="flex-1 flex flex-col relative overflow-auto">
           <ClientWrapper>{children}</ClientWrapper>
         </div>
       </div>

@@ -116,7 +116,7 @@ const PricingPlan = () => {
   const TotalForModal = (selectedPlan?.price ?? 0) * (selectedPlan?.slot ?? 0);
 
   return (
-    <main className="h-full pb-10 mb-10">
+    <main className="min-h-screen pb-10 mb-10">
       <section className="container mx-auto  flex flex-col justify-center items-center">
         <Container>
           <h1 className="text-center text-[22px] md:text-[22px] text-[#04082C] font-bold">
@@ -135,7 +135,7 @@ const PricingPlan = () => {
         {/* ****************Billing Options**************** */}
 
         <div className=" flex flex-col justify-center gap-5 md:flex-row">
-          {currentPlans?.data?.slice(0, 2).map((plan: any, index: number) => (
+          {currentPlans?.data?.slice(0, 1).map((plan: any, index: number) => (
             <Card
               key={index}
               className="relative min-w-[350px] max-w-[400px] shadow-none rounded-[16px] "
@@ -267,7 +267,7 @@ const PricingPlan = () => {
                             "selectedPlan",
                             JSON.stringify(planData)
                           );
-                          console.log("Plan saved to localStorage:", planData);
+
                           setCurrentStep(2);
                           router.push("/collections/checkout");
                         } catch (error) {
