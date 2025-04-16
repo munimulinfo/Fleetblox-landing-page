@@ -1,8 +1,12 @@
+import EfficiencyFlexibilityIcon from "@/components/icons/solution/EfficiencyFlexibilityIcon";
 import FleetManagementIcon from "@/components/icons/solution/FleetManagementIcon";
 import FlexibilityIcon from "@/components/icons/solution/FlexibilityIcon";
+import IncreasedSecurityIcon from "@/components/icons/solution/IncreasedSecurityIcon";
 import InstantConnectivityIcon from "@/components/icons/solution/InstantConnectivityIcon";
 import OperationsIcon from "@/components/icons/solution/OperationsIcon";
 import RealTimeInsightIcon from "@/components/icons/solution/RealTimeInsightIcon";
+import RemoteControlIcon from "@/components/icons/solution/RemoteControlIcon";
+import VehicleAccessIcon from "@/components/icons/solution/VehicleAccessIcon";
 
 const WhyCloudData = [
   {
@@ -36,5 +40,31 @@ const WhyCloudData = [
       "Make informed, data-driven decisions in real time to optimize routes, monitor fuel usage, and improve overall fleet efficiency.",
   },
 ];
+const WhyRemoteAccessData = [
+  {
+    icon: VehicleAccessIcon,
+    title: "Simplified Vehicle Access",
+    description:
+      "Grant or revoke vehicle access instantly, without needing physical keys or on-site supervision.",
+  },
+  {
+    icon: IncreasedSecurityIcon,
+    title: "Increased Security",
+    description:
+      "Ensure only authorized drivers have access to vehicles, preventing unauthorized use and improving fleet security.",
+  },
+  {
+    icon: RemoteControlIcon,
+    title: "Remote Control",
+    description:
+      "Manage access to your fleet from anywhere, ensuring that you have full control over your vehicles at all times.",
+  },
+  {
+    icon: EfficiencyFlexibilityIcon,
+    title: "Efficiency and Flexibility",
+    description:
+      "Speed up the process of assigning vehicle access, allowing for more streamlined operations and less downtime.",
+  },
+];
 
-export { WhyCloudData };
+export { WhyCloudData, WhyRemoteAccessData };

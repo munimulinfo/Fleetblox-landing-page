@@ -142,7 +142,7 @@ const Footer = () => {
                     Cloud Telematics
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/remote-access">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
                     Remote Access
                   </h5>
@@ -319,7 +319,7 @@ const Footer = () => {
               </div>
             </div>
             <h5 className="font-openSans text-[16px] leading-6 mt-[10px] mt:mt-0">
-              ©2025 Fleetblox. All Rights Reserved
+              &copy; {new Date().getFullYear()} Fleetblox. All Rights Reserved
             </h5>
           </div>
         </div>
