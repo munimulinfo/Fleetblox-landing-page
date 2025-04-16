@@ -8,7 +8,7 @@ const SolutionsSubpage = () => {
           Solutions
         </p>
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
-          <Link href="/under-development">
+          <Link href="/solutions/cloud-telematic">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Cloud Telematics
             </h1>

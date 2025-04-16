@@ -137,7 +137,7 @@ const Footer = () => {
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Solutions
                 </h5>
-                <Link href="/under-development">
+                <Link href="/solutions/cloud-telematic">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
                     Cloud Telematics
                   </h5>
