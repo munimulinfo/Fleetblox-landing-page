@@ -79,7 +79,7 @@ const Sidebar = () => {
   return (
     <>
       <aside
-        className={`min-w-[350px] bg-[#2D65F2] overflow-y-hidden transition-all duration-300 
+        className={`min-w-[350px] bg-[#2D65F2] overflow-y-auto transition-all duration-300 
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
           fixed lg:static h-screen z-40
           hidden lg:block`}

@@ -137,19 +137,19 @@ const Footer = () => {
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Solutions
                 </h5>
-                <Link href="/under-development">
+                <Link href="/solutions/cloud-telematic">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
                     Cloud Telematics
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/remote-access">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
                     Remote Access
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/remote-scalability">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Remote Scale
+                    Remote Scalability
                   </h5>
                 </Link>
                 <Link href="/under-development">
@@ -319,7 +319,7 @@ const Footer = () => {
               </div>
             </div>
             <h5 className="font-openSans text-[16px] leading-6 mt-[10px] mt:mt-0">
-              ©2025 Fleetblox. All Rights Reserved
+              &copy; {new Date().getFullYear()} Fleetblox. All Rights Reserved
             </h5>
           </div>
         </div>
