@@ -6,6 +6,11 @@ import InstantConnectivityIcon from "@/components/icons/solution/InstantConnecti
 import OperationsIcon from "@/components/icons/solution/OperationsIcon";
 import RealTimeInsightIcon from "@/components/icons/solution/RealTimeInsightIcon";
 import RemoteControlIcon from "@/components/icons/solution/RemoteControlIcon";
+import CentralizedControlIcon from "@/components/icons/solution/remoteScalability/CentralizedControlIcon";
+import FleetTypesSupported from "@/components/icons/solution/remoteScalability/FleetTypesSupported";
+import FutureProofIcon from "@/components/icons/solution/remoteScalability/FutureProofIcon";
+import GlobalExpansion from "@/components/icons/solution/remoteScalability/GlobalExpansion";
+import MarketAdaptability from "@/components/icons/solution/remoteScalability/MarketAdaptability";
 import VehicleAccessIcon from "@/components/icons/solution/VehicleAccessIcon";
 
 const WhyCloudData = [
@@ -66,5 +71,36 @@ const WhyRemoteAccessData = [
       "Speed up the process of assigning vehicle access, allowing for more streamlined operations and less downtime.",
   },
 ];
-
-export { WhyCloudData, WhyRemoteAccessData };
+const WhyRemoteScalabilityData = [
+  {
+    icon: GlobalExpansion,
+    title: "Effortless Global Expansion",
+    description:
+      "Whether expanding within the same country or across multiple regions, Fleetblox makes it easy to scale your fleet without complicated processes.",
+  },
+  {
+    icon: FleetTypesSupported,
+    title: "Diverse Fleet Types Supported",
+    description:
+      "Seamlessly manage different fleets with various car makes and models—fully compatible with all major brands, including EVs, hybrids and fuel-powered cars.",
+  },
+  {
+    icon: MarketAdaptability,
+    title: "Local Market Adaptability",
+    description:
+      "Fleetblox ensures that your fleet complies with local regulations and standards, providing peace of mind when expanding into new markets.",
+  },
+  {
+    icon: CentralizedControlIcon,
+    title: "Centralized Control",
+    description:
+      "Manage your global fleet from a single dashboard, allowing you to monitor, scale, and optimize operations no matter where you are.",
+  },
+  {
+    icon: FutureProofIcon,
+    title: "Future-Proof Your Fleet",
+    description:
+      "As your business grows and enters new regions, Fleetblox helps you scale your fleet operations effortlessly, ensuring long-term flexibility and efficiency.",
+  },
+];
+export { WhyCloudData, WhyRemoteAccessData, WhyRemoteScalabilityData };
