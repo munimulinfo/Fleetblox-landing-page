@@ -18,9 +18,9 @@ const SolutionsSubpage = () => {
               Remote Access
             </h1>
           </Link>
-          <Link href="/under-development">
+          <Link href="/solutions/remote-scalability">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Remote Scale
+              Remote Scalability
             </h1>
           </Link>
           <Link href="/under-development">

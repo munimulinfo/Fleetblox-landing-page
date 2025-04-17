@@ -147,9 +147,9 @@ const Footer = () => {
                     Remote Access
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/remote-scalability">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Remote Scale
+                    Remote Scalability
                   </h5>
                 </Link>
                 <Link href="/under-development">
