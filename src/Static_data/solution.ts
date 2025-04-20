@@ -1,3 +1,8 @@
+import ActionableInsightIcon from "@/components/icons/solution/costOptimization/ActionableInsightIcon";
+import CostDecisionMakingIcon from "@/components/icons/solution/costOptimization/CostDecisionMakingIcon";
+import FinencialControlIcon from "@/components/icons/solution/costOptimization/FinencialControlIcon";
+import ImproveCostIcon from "@/components/icons/solution/costOptimization/ImproveCostIcon";
+import TargetedSavingIcon from "@/components/icons/solution/costOptimization/TargetedSavingIcon";
 import EfficiencyFlexibilityIcon from "@/components/icons/solution/EfficiencyFlexibilityIcon";
 import FleetManagementIcon from "@/components/icons/solution/FleetManagementIcon";
 import FlexibilityIcon from "@/components/icons/solution/FlexibilityIcon";
@@ -103,4 +108,41 @@ const WhyRemoteScalabilityData = [
       "As your business grows and enters new regions, Fleetblox helps you scale your fleet operations effortlessly, ensuring long-term flexibility and efficiency.",
   },
 ];
-export { WhyCloudData, WhyRemoteAccessData, WhyRemoteScalabilityData };
+const WhyCostOptimizationData = [
+  {
+    icon: ImproveCostIcon,
+    title: "Improved Cost Visibility",
+    description:
+      "With real-time tracking and intelligent analytics, you can stay on top of every penny spent on your fleet operations.",
+  },
+  {
+    icon: TargetedSavingIcon,
+    title: "Targeted Savings",
+    description:
+      "Identify high-cost vehicles and take corrective actions—whether it’s route optimization or addressing inefficient maintenance practices.",
+  },
+  {
+    icon: FinencialControlIcon,
+    title: "Better Financial Control",
+    description:
+      "Customize your fleet’s budget to align with business goals, ensuring financial targets are met and preventing overspending.",
+  },
+  {
+    icon: ActionableInsightIcon,
+    title: "Actionable Insights",
+    description:
+      "Use AI-driven recommendations to optimize fleet operations, reduce fuel consumption, and extend vehicle lifespans—all contributing to significant savings.",
+  },
+  {
+    icon: CostDecisionMakingIcon,
+    title: "Data-Driven Decision-Making",
+    description:
+      "Make informed decisions based on detailed cost analytics, helping you optimize fleet efficiency and improve overall profitability.",
+  },
+];
+export {
+  WhyCloudData,
+  WhyRemoteAccessData,
+  WhyRemoteScalabilityData,
+  WhyCostOptimizationData,
+};

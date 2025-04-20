@@ -151,7 +151,7 @@ const Footer = () => {
                     Remote Scalability
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/cost-optimization">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
                     Cost Optimization
                   </h5>
