@@ -13,7 +13,7 @@ import { RequestDemoModal } from "../RequestDemoModal";
 const Footer = () => {
   return (
     <div className="bg-[#0A2540]">
-      <div className="md:block h-auto w-full text-[#fff] max-w-[1440px] mx-auto px-4">
+      <div className="md:block h-auto w-full text-[#fff] max-w-[1450px] mx-auto px-4">
         <div className="">
           {/* animation */}
           <div className="relative flex flex-col items-center justify-center py-[120px]">
@@ -61,7 +61,7 @@ const Footer = () => {
               </video>
             </div>
           </div>
-          <div className="flex items-center lg:items-start space-y-[30px] lg:space-y-0  gap-10 flex-col lg:flex-row justify-between mb-10 mt-[20px] lg:mt-[125px]">
+          <div className="flex items-center lg:items-start space-y-[30px] lg:space-y-0 gap-10 flex-col lg:flex-row justify-between mb-10 mt-[20px] lg:mt-[125px]">
             {/* logo section */}
             <div className="max-w-[390px] w-full flex flex-col lg:h-[400px] justify-between">
               <div className="cursor-pointer text-left space-y-[10px] ">
@@ -86,9 +86,9 @@ const Footer = () => {
               </div>
             </div>
             {/* pages section */}
-            <div className=" grid grid-cols-2 lg:grid-cols-5 w-full  text-[16px] font-openSans font-normal text-white leading-6 gap-10 xl:gap-[40px]">
+            <div className="grid grid-cols-2 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10">
               {/* product section */}
-              <div className="text-[14px] leading-5">
+              <div className="text-[14px] w-[150px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Products
                 </h5>
@@ -132,7 +132,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* solutions */}
-              <div className=" text-[14px] leading-5 max-w-[240px] xl:w-[240px] w-full">
+              <div className=" text-[14px] leading-5 w-[240px]">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Solutions
                 </h5>
@@ -189,7 +189,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* Industries section */}
-              <div className="text-[14px] leading-5">
+              <div className="text-[14px] leading-5 w-[240px]">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Industries
                 </h5>
@@ -230,7 +230,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* company section */}
-              <div className="text-[14px] leading-5">
+              <div className="text-[14px] leading-5 w-[120px]">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Company
                 </h5>
@@ -259,7 +259,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* Resourse pages */}
-              <div className="text-[14px] leading-5">
+              <div className="text-[14px] leading-5 w-[120px]">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Resources
                 </h5>
