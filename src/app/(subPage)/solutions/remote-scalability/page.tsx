@@ -73,7 +73,7 @@ const page = () => {
               href="/getting-started"
             >
               <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
-                Switch Today
+              Start today
               </button>
             </Link>
           </div>
@@ -129,7 +129,7 @@ const page = () => {
           </div>
         </div>
       </section>
-      {/* why Cloud section */}
+      {/* why Remote Scalability section */}
       <section className="max-w-[1200px] mx-auto w-full my-10 lg:my-[100px] px-5">
         <h1 className="mb-[40px] lg:mb-[60px] text-center text-[#04082C] text-[28px] lg:text-[36px] font-bold">
           Why Remote Scalability Matters
