@@ -86,9 +86,9 @@ const Footer = () => {
               </div>
             </div>
             {/* pages section */}
-            <div className="grid grid-cols-2 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10">
+            <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10 lg:gap-[60px]">
               {/* product section */}
-              <div className="text-[14px] w-[150px] leading-5">
+              <div className="text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Products
                 </h5>
@@ -132,7 +132,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* solutions */}
-              <div className=" text-[14px] leading-5 w-[240px]">
+              <div className=" text-[14px] leading-5 ">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Solutions
                 </h5>
@@ -189,7 +189,7 @@ const Footer = () => {
                 </Link>
               </div>
               {/* Industries section */}
-              <div className="text-[14px] leading-5 w-[240px]">
+              <div className="text-[14px] leading-5 ">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Industries
                 </h5>
@@ -229,8 +229,60 @@ const Footer = () => {
                   </h5>
                 </Link>
               </div>
+              {/* mobile view company and resources */}
+              <div className="flex md:hidden  flex-col gap-[35px] ">
+                {/* Resourse pages */}
+                <div className="text-[14px] leading-5 ">
+                  <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
+                    Resources
+                  </h5>
+                  <Link href="/under-development">
+                    <h5 className=" font-openSans py-[2px] mb-[5px]">Blogs</h5>
+                  </Link>
+                  <Link href="/under-development">
+                    <h5 className=" font-openSans py-[2px] mb-[5px]">
+                      Next Updates
+                    </h5>
+                  </Link>
+                </div>
+                {/* company section */}
+                <div className="text-[14px] leading-5 ">
+                  <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
+                    Company
+                  </h5>
+                  <Link href="/pricings">
+                    <h5 className=" font-openSans py-[2px] mb-[5px]">
+                      Pricings
+                    </h5>
+                  </Link>
+                  <Link href="/under-development">
+                    <h5 className=" font-openSans py-[2px] mb-[5px] block lg:hidden">
+                      Request Demo
+                    </h5>
+                  </Link>
+                  <div className="cursor-pointer hidden lg:block">
+                    <RequestDemoModal
+                      button={
+                        <h5 className=" font-openSans py-[2px] mb-[5px]">
+                          Request Demo
+                        </h5>
+                      }
+                    />
+                  </div>
+                  <Link href="/contact">
+                    <h5 className=" font-openSans py-[2px] mb-[5px]">
+                      Contact
+                    </h5>
+                  </Link>
+                  <Link href="/under-development">
+                    <h5 className=" font-openSans py-[2px] mb-[5px]">About</h5>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Desktop view company and resources */}
               {/* company section */}
-              <div className="text-[14px] leading-5 w-[120px]">
+              <div className="text-[14px] hidden md:block leading-5 ">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Company
                 </h5>
@@ -258,8 +310,8 @@ const Footer = () => {
                   <h5 className=" font-openSans py-[2px] mb-[5px]">About</h5>
                 </Link>
               </div>
-              {/* Resourse pages */}
-              <div className="text-[14px] leading-5 w-[120px]">
+              {/* resources pages */}
+              <div className="text-[14px] hidden md:block leading-5 ">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Resources
                 </h5>
