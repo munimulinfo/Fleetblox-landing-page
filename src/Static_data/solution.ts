@@ -8,6 +8,11 @@ import FleetManagementIcon from "@/components/icons/solution/FleetManagementIcon
 import FlexibilityIcon from "@/components/icons/solution/FlexibilityIcon";
 import IncreasedSecurityIcon from "@/components/icons/solution/IncreasedSecurityIcon";
 import InstantConnectivityIcon from "@/components/icons/solution/InstantConnectivityIcon";
+import CostSavingsIcon from "@/components/icons/solution/MaintenanceDiagnostics/CostSavingsIcon";
+import MaintenanceDiagnosticsRemoteIcon from "@/components/icons/solution/MaintenanceDiagnostics/MaintenanceDiagnosticsRemoteIcon";
+import OptimizedFleetPerformanceIcon from "@/components/icons/solution/MaintenanceDiagnostics/OptimizedFleetPerformanceIcon";
+import ProactiveFleetIcon from "@/components/icons/solution/MaintenanceDiagnostics/ProactiveFleetIcon";
+import ReducedDowntime from "@/components/icons/solution/MaintenanceDiagnostics/ReducedDowntime";
 import OperationsIcon from "@/components/icons/solution/OperationsIcon";
 import RealTimeInsightIcon from "@/components/icons/solution/RealTimeInsightIcon";
 import RemoteControlIcon from "@/components/icons/solution/RemoteControlIcon";
@@ -140,9 +145,42 @@ const WhyCostOptimizationData = [
       "Make informed decisions based on detailed cost analytics, helping you optimize fleet efficiency and improve overall profitability.",
   },
 ];
+const WhyMaintenanceDiagnosticData = [
+  {
+    icon: ProactiveFleetIcon,
+    title: "Proactive Fleet Management",
+    description:
+      "Stay ahead of potential issues with real-time diagnostics and predictive maintenance, reducing the risk of sudden breakdowns and expensive repairs.",
+  },
+  {
+    icon: ReducedDowntime,
+    title: "Reduced Downtime",
+    description:
+      "With predictive maintenance, identify and address minor issues before they become major problems, keeping your fleet on the road longer.",
+  },
+  {
+    icon: MaintenanceDiagnosticsRemoteIcon,
+    title: "Remote Control",
+    description:
+      "Perform comprehensive checks, unlock vehicles, and coordinate repairs remotely through the employee app, improving overall operational efficiency without physical presence.",
+  },
+  {
+    icon: OptimizedFleetPerformanceIcon,
+    title: "Optimized Fleet Performance",
+    description:
+      "Use detailed diagnostic data to improve vehicle performance, reduce fuel consumption, and extend the lifespan of your fleet.",
+  },
+  {
+    icon: CostSavingsIcon,
+    title: "Cost Savings",
+    description:
+      "By identifying issues early and scheduling timely maintenance, you can avoid costly emergency repairs and optimize your fleet’s maintenance budget.",
+  },
+];
 export {
   WhyCloudData,
   WhyRemoteAccessData,
   WhyRemoteScalabilityData,
   WhyCostOptimizationData,
+  WhyMaintenanceDiagnosticData,
 };

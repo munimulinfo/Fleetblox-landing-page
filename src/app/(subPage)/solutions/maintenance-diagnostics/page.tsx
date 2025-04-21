@@ -1,7 +1,7 @@
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import TickIcon from "@/components/icons/TickIcon";
 import FeatureCard from "@/components/ui/FeatureCard";
-import { WhyCostOptimizationData } from "@/Static_data/solution";
+import { WhyMaintenanceDiagnosticData } from "@/Static_data/solution";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,33 +9,33 @@ const page = () => {
   const items = [
     {
       id: 1,
-      title: "Customizable Fleet Budget",
+      title: "Comprehensive Vehicle Checks",
       description:
-        "Set and manage budgets for each vehicle or your entire fleet, keeping expenses on target.",
+        "Monitor real-time diagnostics for each vehicle, ensuring that any potential issues are detected early.",
     },
     {
       id: 2,
-      title: "Expense Tracking Alerts",
+      title: "Remote Vehicle Unlocking",
       description:
-        "Get notified when a vehicle exceeds cost limit, enabling quick action.",
+        "If a vehicle is locked or inaccessible, Fleetblox allows you to remotely unlock it, ensuring your fleet operates without delays.",
     },
     {
       id: 3,
-      title: "Real-Time Cost Monitoring",
+      title: "Predictive Maintenance",
       description:
-        "Track fuel, maintenance, repairs, and expenses in real time, with detailed cost breakdowns.",
+        "Using AI-powered analytics, anticipate maintenance needs before they occur, helping to prevent breakdowns and reduce unplanned downtime.",
     },
     {
       id: 4,
-      title: "Advanced Analytics",
+      title: "Maintenance Coordination via Employee App",
       description:
-        "Use analytics to spot expenses, and find areas for improvement.",
+        "Fleet managers can coordinate repairs directly through the employee app, allowing for seamless communication with your team and service providers.",
     },
     {
       id: 5,
-      title: "Cost Optimization Recommendations",
+      title: "Diagnostic Alerts",
       description:
-        "Receive AI-driven suggestions to optimize routes, maintenance, and operations, minimizing costs.",
+        "Receive instant alerts for any vehicle anomalies, from engine performance to tire pressure, so you can take action immediately.",
     },
   ];
   return (
@@ -45,16 +45,17 @@ const page = () => {
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex flex-col px-5 lg:flex-row items-center justify-between">
           <div className="lg:pl-[130px]">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px]">
-              Cost Optimization
+              Maintenance and Diagnostics
             </h3>
             <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-[1.1]">
-              Cut Fleet Costs with Smarter Management
+              Proactive Vehicle Care, Anytime, Anywhere
             </h1>
             <p className="text-[#333] text-[16px] leading-6 mt-[10px] lg:mt-4 mb-5 font-openSans">
-              Fleetblox’s Cost Optimization tool gives fleet owners custom
-              budgets, real-time cost tracking, and clear analytics. Identify
-              high-cost vehicles, control spending, and make smart, data-based
-              decisions to cut running costs.
+              Fleetblox’s Maintenance and Diagnostics feature allows fleet
+              owners to perform comprehensive vehicle checks, unlock vehicles,
+              and coordinate repairs remotely, with advanced predictive
+              maintenance capabilities and remote access to their maintenance
+              coordinator via the employee app.
             </p>
             <Link
               aria-label="Get started with FleetBlox"
@@ -78,7 +79,7 @@ const page = () => {
           </div>
           <div className=" w-full py-10 lg:pl-[60px]">
             <Image
-              src="/images/cost-optimization-hero.png"
+              src="/images/maintenance-diagnosticsHero.png"
               alt="cost optimization hero"
               width={700}
               height={491}
@@ -89,22 +90,21 @@ const page = () => {
       </section>
       {/* hero section end */}
       <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5">
-        <div className="max-w-[840px] mx-auto w-full text-center">
+        <div className="w-full text-center">
           <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
-            Establish Clear Cost Control with Fleetblox’s Expenses Tools
+            Safeguard Reliable Performance with Fleetblox’s Maintenance &
+            Diagnostics
           </h2>
           <p className="text-[#333] text-[16px] leading-6 font-openSans">
-            Take control of fleet expenses with a smart, efficient, and scalable
-            management solution designed to reduce costs and boost operational
-            performance. Optimize budgeting, track spending in real time, and
-            make data-driven decisions—all from one powerful platform.
+            Ensure your fleet runs smoothly and avoid costly breakdowns before
+            they happen.
           </p>
         </div>
         <div className="flex flex-col lg:flex-row items-center py-8 lg:py-[60px] justify-between">
           <div className="py-10">
             <Image
-              src="/images/cost-optimization2.png"
-              alt="cost optimization"
+              src="/images/maintenance-diagnostics2.png"
+              alt="maintenance diagnostics"
               width={600}
               height={387}
               className="object-contain w-full"
@@ -133,10 +133,10 @@ const page = () => {
       {/* why Cloud section */}
       <section className="max-w-[1200px] mx-auto w-full my-10 lg:my-[100px] px-5">
         <h2 className="mb-[40px] lg:mb-[60px] text-center text-[#04082C] text-[28px] lg:text-[36px] font-bold">
-          Why Cost Optimization Matters
+          Why Maintenance and Diagnostics Matter
         </h2>
         <div className="lg:grid hidden grid-cols-1 lg:grid-cols-3 justify-items-center gap-[30px]">
-          {WhyCostOptimizationData?.slice(0, 3).map((data, index) => (
+          {WhyMaintenanceDiagnosticData?.slice(0, 3).map((data, index) => (
             <FeatureCard
               key={index}
               icon={<data.icon />}
@@ -147,7 +147,7 @@ const page = () => {
           ))}
         </div>
         <div className="grid lg:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center lg:gap-[30px] gap-[20px]">
-          {WhyCostOptimizationData?.map((data, index) => (
+          {WhyMaintenanceDiagnosticData?.map((data, index) => (
             <FeatureCard
               key={index}
               icon={<data.icon />}
@@ -158,7 +158,7 @@ const page = () => {
           ))}
         </div>
         <div className="lg:flex hidden flex-col items-center justify-items-center justify-center lg:flex-row mt-[30px] gap-[30px]">
-          {WhyCostOptimizationData?.slice(3, 5).map((data, index) => (
+          {WhyMaintenanceDiagnosticData?.slice(3, 5).map((data, index) => (
             <FeatureCard
               key={index}
               icon={<data.icon />}
