@@ -2,9 +2,11 @@ import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import TickIcon from "@/components/icons/TickIcon";
 import FeatureCard from "@/components/ui/FeatureCard";
 import { WhyAiFleetAssistantData } from "@/Static_data/solution";
-
 import Image from "next/image";
 import Link from "next/link";
+
+
+
 
 const page = () => {
     const items = [
@@ -127,9 +129,10 @@ const page = () => {
             </section>
             {/* why Workforce Connectivity */}
             <section className="max-w-[1100px] mx-auto w-full my-10 lg:my-[100px] px-5">
-                <h1 className="mb-[40px] max-w-[840px] w-full lg:mb-[60px] text-center text-[#04082C] text-[28px] lg:text-[36px] font-bold">
+                <h2 className="mb-[40px] max-w-[840px] mx-auto w-full lg:mb-[60px] text-center text-[#04082C] text-[28px] lg:text-[36px] font-bold">
                     Why Workforce Connectivity and Collaboration Matters
-                </h1>
+                </h2>
+
                 <div className="lg:grid hidden grid-cols-1 lg:grid-cols-3 justify-items-center gap-[30px]">
                     {WhyAiFleetAssistantData?.slice(0, 3).map((data, index) => (
                         <FeatureCard

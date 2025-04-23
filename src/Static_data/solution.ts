@@ -291,6 +291,39 @@ const WhyAiFleetAssistantData = [
   },
 ]
 
+const WhyWorkforceConnectivityData = [
+  {
+    icon: FlexibilityIcon,
+    title: "Increased Productivity",
+    description:
+      "With task assignment and progress tracking, you can ensure that your team stays focused on priorities and operates at maximum efficiency.",
+  },
+  {
+    icon: InstantConnectivityIcon,
+    title: "Tailored Workforce Structure",
+    description:
+      "Customize roles and responsibilities based on your fleet’s specific needs, allowing you to manage your workforce more effectively and achieve operational goals.",
+  },
+  {
+    icon: OperationsIcon,
+    title: "Effortless Communication",
+    description:
+      "Simplify your operations with a centralized platform that allows for easy communication, task management, and data sharing across your team.",
+  },
+  {
+    icon: RealTimeInsightIcon,
+    title: "Streamlined Operations",
+    description:
+      "Centralize all workforce management activities, including task tracking, updates, and data sharing, into one platform—reducing confusion and enhancing workflow efficiency.",
+  },
+  {
+    icon: EnhancedFleetVisibilityIcon,
+    title: "Enhanced Fleet Visibility",
+    description:
+      "Empower your workforce to work remotely or on the go, while still having access to all tools, data, and communication channels needed to stay connected and effective.",
+  },
+]
+
 export {
   WhyCloudData,
   WhyRemoteAccessData,
@@ -299,5 +332,6 @@ export {
   WhyMaintenanceDiagnosticData,
   WhyEVFleetData,
   WhyRemoteInspectionData,
-  WhyAiFleetAssistantData
+  WhyAiFleetAssistantData,
+  WhyWorkforceConnectivityData,
 };
