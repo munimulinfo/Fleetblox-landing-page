@@ -4,6 +4,11 @@ import FinencialControlIcon from "@/components/icons/solution/costOptimization/F
 import ImproveCostIcon from "@/components/icons/solution/costOptimization/ImproveCostIcon";
 import TargetedSavingIcon from "@/components/icons/solution/costOptimization/TargetedSavingIcon";
 import EfficiencyFlexibilityIcon from "@/components/icons/solution/EfficiencyFlexibilityIcon";
+import FlexibleFutureProofIcon from "@/components/icons/solution/evFleetIntegration/FlexibleFutureProofIcon";
+import GlobalReachIcon from "@/components/icons/solution/evFleetIntegration/GlobalReachIcon";
+import LowerOperationCostIcon from "@/components/icons/solution/evFleetIntegration/LowerOperationCostIcon";
+import SimplifiedManagementIcon from "@/components/icons/solution/evFleetIntegration/SimplifiedManagementIcon";
+import SustainabilityIcon from "@/components/icons/solution/evFleetIntegration/SustainabilityIcon";
 import FleetManagementIcon from "@/components/icons/solution/FleetManagementIcon";
 import FlexibilityIcon from "@/components/icons/solution/FlexibilityIcon";
 import IncreasedSecurityIcon from "@/components/icons/solution/IncreasedSecurityIcon";
@@ -177,10 +182,43 @@ const WhyMaintenanceDiagnosticData = [
       "By identifying issues early and scheduling timely maintenance, you can avoid costly emergency repairs and optimize your fleet’s maintenance budget.",
   },
 ];
+const WhyEVFleetData = [
+  {
+    icon: FlexibleFutureProofIcon,
+    title: "Flexible and Future-Proof",
+    description:
+      "Easily integrate electric vehicles into your fleet without worrying about compatibility issues or additional equipment.",
+  },
+  {
+    icon: GlobalReachIcon,
+    title: "Global Reach",
+    description:
+      "Scale your EV fleet operations globally, knowing that Fleetblox supports multiple regions and complies with local regulations",
+  },
+  {
+    icon: SimplifiedManagementIcon,
+    title: "Simplified Management",
+    description:
+      "Manage your electric and traditional vehicles from a single platform, with real-time updates on charging status, battery life, and fleet performance.",
+  },
+  {
+    icon: LowerOperationCostIcon,
+    title: "Lower Operational Costs",
+    description:
+      "EVs generally have lower maintenance and fuel costs compared to traditional vehicles, and Fleetblox helps you track and optimize these savings.",
+  },
+  {
+    icon: SustainabilityIcon,
+    title: "Sustainability",
+    description:
+      "Transition to a greener fleet and meet sustainability goals by easily adopting electric vehicles with Fleetblox’s seamless integration process.",
+  },
+];
 export {
   WhyCloudData,
   WhyRemoteAccessData,
   WhyRemoteScalabilityData,
   WhyCostOptimizationData,
   WhyMaintenanceDiagnosticData,
+  WhyEVFleetData,
 };
