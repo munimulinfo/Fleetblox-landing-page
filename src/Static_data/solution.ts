@@ -1,3 +1,8 @@
+import TimeSavingEfficiencyIcon from "@/components/icons/solution/AiFleetAssistent/ContinuousMonitoring";
+import EnhancedFleetVisibilityIcon from "@/components/icons/solution/AiFleetAssistent/EnhancedFleetVisibility";
+import OptimizationAcrossOperationsIcon from "@/components/icons/solution/AiFleetAssistent/OptimizationAcrossOperationsIcon";
+import ProactiveFleetManagementIcon from "@/components/icons/solution/AiFleetAssistent/ProactiveFleetManagementIcon";
+import SmarterDecisionMaking from "@/components/icons/solution/AiFleetAssistent/SmarterDecision-Making";
 import ContinuousMonitoringIcon from "@/components/icons/solution/AiRemoteInspection/ContinuousMonitoringIcon";
 import EnhancedAccuracyIcon from "@/components/icons/solution/AiRemoteInspection/EnhancedAccuracyIcon";
 import ProactiveMaintenanceIcon from "@/components/icons/solution/AiRemoteInspection/ProactiveMaintenance";
@@ -252,6 +257,40 @@ const WhyRemoteInspectionData = [
   },
 
 ];
+
+const WhyAiFleetAssistantData = [
+  {
+    icon: SmarterDecisionMaking,
+    title: "Smarter Decision-Making",
+    description:
+      "With real-time data analysis and predictive insights, the AI Fleet Assistant helps you make informed decisions that improve fleet efficiency and reduce costs.",
+  },
+  {
+    icon: TimeSavingEfficiencyIcon,
+    title: "Time-Saving Efficiency",
+    description:
+      "Instead of manually sifting through data or trying to troubleshoot issues, the AI provides immediate answers and solutions, saving you time and effort.",
+  },
+  {
+    icon: ProactiveFleetManagementIcon,
+    title: "Proactive Fleet Management",
+    description:
+      "By predicting potential issues before they arise, the AI helps you stay ahead of problems and address them proactively, reducing downtime and costs.",
+  },
+  {
+    icon: OptimizationAcrossOperationsIcon,
+    title: "Optimization Across Operations",
+    description:
+      "From route optimization to maintenance management, the AI continuously suggests ways to improve fleet operations, ensuring you achieve maximum efficiency and cost savings.",
+  },
+  {
+    icon: EnhancedFleetVisibilityIcon,
+    title: "Enhanced Fleet Visibility",
+    description:
+      "Get an overview of fleet performance with data-driven insights that help you understand trends and take action to improve fleet operations at every level.",
+  },
+]
+
 export {
   WhyCloudData,
   WhyRemoteAccessData,
@@ -259,5 +298,6 @@ export {
   WhyCostOptimizationData,
   WhyMaintenanceDiagnosticData,
   WhyEVFleetData,
-  WhyRemoteInspectionData
+  WhyRemoteInspectionData,
+  WhyAiFleetAssistantData
 };
