@@ -162,7 +162,7 @@ const Footer = () => {
                   </h5>
                 </Link>
 
-                <Link href="/under-development">
+                <Link href="/solutions/ev-fleet-integration">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
                     EV Fleet Integration
                   </h5>
