@@ -151,7 +151,7 @@ const Footer = () => {
                     Remote Scalability
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/cost-optimization">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
                     Cost Optimization
                   </h5>
@@ -162,7 +162,7 @@ const Footer = () => {
                   </h5>
                 </Link>
 
-                <Link href="/under-development">
+                <Link href="/solutions/ev-fleet-integration">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
                     EV Fleet Integration
                   </h5>
@@ -172,7 +172,7 @@ const Footer = () => {
                     Remote Inspection
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/maintenance-diagnostics">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Maintenance and Diagnostics
                   </h5>
