@@ -1,7 +1,7 @@
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import TickIcon from "@/components/icons/TickIcon";
 import FeatureCard from "@/components/ui/FeatureCard";
-import { WhyRemoteInspectionData } from "@/Static_data/solution";
+import { WhyWorkforceConnectivityData } from "@/Static_data/solution";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -126,11 +126,11 @@ const page = () => {
             </section>
             {/* why AI Remote section */}
             <section className="max-w-[1100px] mx-auto w-full my-10 lg:my-[100px] px-5">
-                <h1 className="mb-[40px] max-w-[840px] w-full lg:mb-[60px] text-center  text-[#04082C] text-[28px] lg:text-[36px] font-bold">
+                <h2 className="mb-[40px] max-w-[840px] mx-auto w-full lg:mb-[60px] text-center text-[#04082C] text-[28px] lg:text-[36px] font-bold">
                     Why Workforce Connectivity and Collaboration Matters
-                </h1>
+                </h2>
                 <div className="lg:grid hidden grid-cols-1 lg:grid-cols-3 justify-items-center gap-[30px]">
-                    {WhyRemoteInspectionData?.slice(0, 3).map((data, index) => (
+                    {WhyWorkforceConnectivityData?.slice(0, 3).map((data, index) => (
                         <FeatureCard
                             key={index}
                             icon={<data.icon />}
@@ -141,7 +141,7 @@ const page = () => {
                     ))}
                 </div>
                 <div className="grid lg:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center lg:gap-[30px] gap-[20px]">
-                    {WhyRemoteInspectionData?.map((data, index) => (
+                    {WhyWorkforceConnectivityData?.map((data, index) => (
                         <FeatureCard
                             key={index}
                             icon={<data.icon />}
@@ -152,7 +152,7 @@ const page = () => {
                     ))}
                 </div>
                 <div className="lg:flex hidden flex-col items-center justify-items-center justify-center lg:flex-row mt-[30px] gap-[30px]">
-                    {WhyRemoteInspectionData?.slice(3, 5).map((data, index) => (
+                    {WhyWorkforceConnectivityData?.slice(3, 5).map((data, index) => (
                         <FeatureCard
                             key={index}
                             icon={<data.icon />}
