@@ -1,7 +1,7 @@
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import TickIcon from "@/components/icons/TickIcon";
 import FeatureCard from "@/components/ui/FeatureCard";
-import { WhyRemoteAccessData } from "@/Static_data/solution";
+import { WhyRemoteInspectionData } from "@/Static_data/solution";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -129,19 +129,41 @@ const page = () => {
           </div>
         </div>
       </section>
-      {/* why Cloud section */}
+      {/* why AI Remote section */}
       <section className="max-w-[1100px] mx-auto w-full my-10 lg:my-[100px] px-5">
         <h1 className="mb-[40px] max-w-[840px] w-full lg:mb-[60px] text-center text-[#04082C] text-[28px] lg:text-[36px] font-bold">
-          Why Remote Access with a Digital Key Matters
+          Why AI Remote Inspection Matters
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center lg:gap-[30px] gap-[20px]">
-          {WhyRemoteAccessData?.map((data, index) => (
+        <div className="lg:grid hidden grid-cols-1 lg:grid-cols-3 justify-items-center gap-[30px]">
+          {WhyRemoteInspectionData?.slice(0, 3).map((data, index) => (
             <FeatureCard
               key={index}
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              className="max-w-[500px] w-full"
+              className="max-w-[380px] w-full"
+            />
+          ))}
+        </div>
+        <div className="grid lg:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center lg:gap-[30px] gap-[20px]">
+          {WhyRemoteInspectionData?.map((data, index) => (
+            <FeatureCard
+              key={index}
+              icon={<data.icon />}
+              title={data.title}
+              description={data.description}
+            // className="w-full"
+            />
+          ))}
+        </div>
+        <div className="lg:flex hidden flex-col items-center justify-items-center justify-center lg:flex-row mt-[30px] gap-[30px]">
+          {WhyRemoteInspectionData?.slice(3, 5).map((data, index) => (
+            <FeatureCard
+              key={index}
+              icon={<data.icon />}
+              title={data.title}
+              description={data.description}
+              className="max-w-[380px] w-full"
             />
           ))}
         </div>

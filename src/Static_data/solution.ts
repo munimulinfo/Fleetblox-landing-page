@@ -1,3 +1,7 @@
+import ContinuousMonitoringIcon from "@/components/icons/solution/AiRemoteInspection/ContinuousMonitoringIcon";
+import EnhancedAccuracyIcon from "@/components/icons/solution/AiRemoteInspection/EnhancedAccuracyIcon";
+import ProactiveMaintenanceIcon from "@/components/icons/solution/AiRemoteInspection/ProactiveMaintenance";
+import { TimeandCostEfficiencyIcon } from "@/components/icons/solution/AiRemoteInspection/TimeandCostEfficiencyIcon";
 import ActionableInsightIcon from "@/components/icons/solution/costOptimization/ActionableInsightIcon";
 import CostDecisionMakingIcon from "@/components/icons/solution/costOptimization/CostDecisionMakingIcon";
 import FinencialControlIcon from "@/components/icons/solution/costOptimization/FinencialControlIcon";
@@ -214,6 +218,40 @@ const WhyEVFleetData = [
       "Transition to a greener fleet and meet sustainability goals by easily adopting electric vehicles with Fleetblox’s seamless integration process.",
   },
 ];
+
+const WhyRemoteInspectionData = [
+  {
+    icon: ProactiveMaintenanceIcon,
+    title: "Proactive Maintenance",
+    description:
+      "The AI-driven inspections at both departure and return points help detect problems early, minimizing costly repairs and ensuring vehicles are in top shape before starting a new trip.",
+  },
+  {
+    icon: ContinuousMonitoringIcon,
+    title: "Continuous Monitoring",
+    description:
+      "With inspections tied to each trip, you get continuous monitoring of vehicle condition, enhancing overall fleet management and reducing the chances of undetected issues.",
+  },
+  {
+    icon: ReducedDowntime,
+    title: "Reduced Downtime",
+    description:
+      "By identifying and addressing potential issues right after trips, fleet downtime is minimized, helping your fleet stay on the road and generate revenue.",
+  },
+  {
+    icon: TimeandCostEfficiencyIcon,
+    title: "Time and Cost Efficiency",
+    description:
+      "Automated, real-time inspections eliminate the need for manual checkups, reducing operational costs and saving time spent on traditional vehicle inspections.",
+  },
+  {
+    icon: EnhancedAccuracyIcon,
+    title: "Enhanced Accuracy",
+    description:
+      "Leverage AI technology to ensure accurate and consistent inspections that help maintain fleet health and improve decision-making on repairs and maintenance.",
+  },
+
+];
 export {
   WhyCloudData,
   WhyRemoteAccessData,
@@ -221,4 +259,5 @@ export {
   WhyCostOptimizationData,
   WhyMaintenanceDiagnosticData,
   WhyEVFleetData,
+  WhyRemoteInspectionData
 };
