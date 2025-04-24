@@ -168,7 +168,7 @@ const Footer = () => {
                     Cost Optimization
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/compliance-and-safety">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Compliance and Safety
                   </h5>
