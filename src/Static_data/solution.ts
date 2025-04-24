@@ -2,6 +2,15 @@ import DocumentManagementIcon from "@/components/icons/solution/complianceAndSaf
 import DriverQualificationIcon from "@/components/icons/solution/complianceAndSafty/DriverQualificationIcon";
 import RealTimeReportingIcon from "@/components/icons/solution/complianceAndSafty/RealTimeReportingIcon";
 import StayComplientIcon from "@/components/icons/solution/complianceAndSafty/StayComplientIcon";
+import TimeSavingEfficiencyIcon from "@/components/icons/solution/AiFleetAssistent/ContinuousMonitoring";
+import EnhancedFleetVisibilityIcon from "@/components/icons/solution/AiFleetAssistent/EnhancedFleetVisibility";
+import OptimizationAcrossOperationsIcon from "@/components/icons/solution/AiFleetAssistent/OptimizationAcrossOperationsIcon";
+import ProactiveFleetManagementIcon from "@/components/icons/solution/AiFleetAssistent/ProactiveFleetManagementIcon";
+import SmarterDecisionMaking from "@/components/icons/solution/AiFleetAssistent/SmarterDecision-Making";
+import ContinuousMonitoringIcon from "@/components/icons/solution/AiRemoteInspection/ContinuousMonitoringIcon";
+import EnhancedAccuracyIcon from "@/components/icons/solution/AiRemoteInspection/EnhancedAccuracyIcon";
+import ProactiveMaintenanceIcon from "@/components/icons/solution/AiRemoteInspection/ProactiveMaintenance";
+import { TimeandCostEfficiencyIcon } from "@/components/icons/solution/AiRemoteInspection/TimeandCostEfficiencyIcon";
 import ActionableInsightIcon from "@/components/icons/solution/costOptimization/ActionableInsightIcon";
 import CostDecisionMakingIcon from "@/components/icons/solution/costOptimization/CostDecisionMakingIcon";
 import FinencialControlIcon from "@/components/icons/solution/costOptimization/FinencialControlIcon";
@@ -244,6 +253,107 @@ const WhyComplianceAndSafetyData = [
       "Fleetblox helps you stay on top of regulations and avoid penalties by tracking all compliance-related tasks, such as document renewals and driver certifications.",
   },
 ];
+
+const WhyRemoteInspectionData = [
+  {
+    icon: ProactiveMaintenanceIcon,
+    title: "Proactive Maintenance",
+    description:
+      "The AI-driven inspections at both departure and return points help detect problems early, minimizing costly repairs and ensuring vehicles are in top shape before starting a new trip.",
+  },
+  {
+    icon: ContinuousMonitoringIcon,
+    title: "Continuous Monitoring",
+    description:
+      "With inspections tied to each trip, you get continuous monitoring of vehicle condition, enhancing overall fleet management and reducing the chances of undetected issues.",
+  },
+  {
+    icon: ReducedDowntime,
+    title: "Reduced Downtime",
+    description:
+      "By identifying and addressing potential issues right after trips, fleet downtime is minimized, helping your fleet stay on the road and generate revenue.",
+  },
+  {
+    icon: TimeandCostEfficiencyIcon,
+    title: "Time and Cost Efficiency",
+    description:
+      "Automated, real-time inspections eliminate the need for manual checkups, reducing operational costs and saving time spent on traditional vehicle inspections.",
+  },
+  {
+    icon: EnhancedAccuracyIcon,
+    title: "Enhanced Accuracy",
+    description:
+      "Leverage AI technology to ensure accurate and consistent inspections that help maintain fleet health and improve decision-making on repairs and maintenance.",
+  },
+
+];
+
+const WhyAiFleetAssistantData = [
+  {
+    icon: SmarterDecisionMaking,
+    title: "Smarter Decision-Making",
+    description:
+      "With real-time data analysis and predictive insights, the AI Fleet Assistant helps you make informed decisions that improve fleet efficiency and reduce costs.",
+  },
+  {
+    icon: TimeSavingEfficiencyIcon,
+    title: "Time-Saving Efficiency",
+    description:
+      "Instead of manually sifting through data or trying to troubleshoot issues, the AI provides immediate answers and solutions, saving you time and effort.",
+  },
+  {
+    icon: ProactiveFleetManagementIcon,
+    title: "Proactive Fleet Management",
+    description:
+      "By predicting potential issues before they arise, the AI helps you stay ahead of problems and address them proactively, reducing downtime and costs.",
+  },
+  {
+    icon: OptimizationAcrossOperationsIcon,
+    title: "Optimization Across Operations",
+    description:
+      "From route optimization to maintenance management, the AI continuously suggests ways to improve fleet operations, ensuring you achieve maximum efficiency and cost savings.",
+  },
+  {
+    icon: EnhancedFleetVisibilityIcon,
+    title: "Enhanced Fleet Visibility",
+    description:
+      "Get an overview of fleet performance with data-driven insights that help you understand trends and take action to improve fleet operations at every level.",
+  },
+]
+
+const WhyWorkforceConnectivityData = [
+  {
+    icon: FlexibilityIcon,
+    title: "Increased Productivity",
+    description:
+      "With task assignment and progress tracking, you can ensure that your team stays focused on priorities and operates at maximum efficiency.",
+  },
+  {
+    icon: InstantConnectivityIcon,
+    title: "Tailored Workforce Structure",
+    description:
+      "Customize roles and responsibilities based on your fleet’s specific needs, allowing you to manage your workforce more effectively and achieve operational goals.",
+  },
+  {
+    icon: OperationsIcon,
+    title: "Effortless Communication",
+    description:
+      "Simplify your operations with a centralized platform that allows for easy communication, task management, and data sharing across your team.",
+  },
+  {
+    icon: RealTimeInsightIcon,
+    title: "Streamlined Operations",
+    description:
+      "Centralize all workforce management activities, including task tracking, updates, and data sharing, into one platform—reducing confusion and enhancing workflow efficiency.",
+  },
+  {
+    icon: EnhancedFleetVisibilityIcon,
+    title: "Enhanced Fleet Visibility",
+    description:
+      "Empower your workforce to work remotely or on the go, while still having access to all tools, data, and communication channels needed to stay connected and effective.",
+  },
+]
+
 export {
   WhyCloudData,
   WhyRemoteAccessData,
@@ -252,4 +362,7 @@ export {
   WhyMaintenanceDiagnosticData,
   WhyEVFleetData,
   WhyComplianceAndSafetyData,
+  WhyRemoteInspectionData,
+  WhyAiFleetAssistantData,
+  WhyWorkforceConnectivityData,
 };

@@ -1,37 +1,27 @@
-"use client";
 
-import { useState, useEffect } from "react";
 import CheckboxIcon from "@/components/icons/CheckboxIcon";
 import heroCardImg from "../../../assets/heroCardImage.png";
 import Image from "next/image";
 import VerticalDividerIcon from "@/components/icons/VerticalDividerIcon";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-const Skeleton = dynamic(
-  () => import("@/components/ui/skeleton").then((mod) => mod.Skeleton),
-  {
-    ssr: true,
-    loading: () => (
-      <div className="w-full h-full bg-gray-200/50 animate-pulse rounded-lg"></div>
-    ),
-  }
-);
+
+
 
 const HeroSection = () => {
-  const [isDesktopImageLoaded, setIsDesktopImageLoaded] = useState(false);
-  const [isMobileImageLoaded, setIsMobileImageLoaded] = useState(false);
+  // const [isDesktopImageLoaded, setIsDesktopImageLoaded] = useState(false);
+  // const [isMobileImageLoaded, setIsMobileImageLoaded] = useState(false);
 
   // Preload images for better performance
-  useEffect(() => {
-    const desktopImg = new window.Image();
-    desktopImg.src = heroCardImg.src;
-    desktopImg.onload = () => setIsDesktopImageLoaded(true);
+  // useEffect(() => {
+  //   const desktopImg = new window.Image();
+  //   desktopImg.src = heroCardImg.src;
+  //   desktopImg.onload = () => setIsDesktopImageLoaded(true);
 
-    const mobileImg = new window.Image();
-    mobileImg.src = "/images/hero-2.webp";
-    mobileImg.onload = () => setIsMobileImageLoaded(true);
-  }, []);
+  //   const mobileImg = new window.Image();
+  //   mobileImg.src = "/images/hero-2.webp";
+  //   mobileImg.onload = () => setIsMobileImageLoaded(true);
+  // }, []);
 
   return (
     <section className="bg-[#FAFAFF] flex flex-col justify-center items-center z-50 overflow-hidden">
@@ -87,23 +77,19 @@ const HeroSection = () => {
         {/* Desktop hero with skeleton loader */}
         <div className="hidden lg:block relative max-h-[800px] lg:h-[800px] md:h-[500px] lg:w-[1200px] xl:w-[1400px] z-[0] overflow-hidden">
           <div className="relative h-full w-full flex justify-center items-center">
-            {!isDesktopImageLoaded ? (
-              <div className="w-full h-auto max-w-[1200px] max-h-[80vh] -mt-[70px] z-30 absolute xl:max-w-[1200px] lg:max-w-[1000px]">
-                <Skeleton className="w-full h-[500px] bg-gray-200/50 rounded-lg animate-pulse" />
-              </div>
-            ) : (
-              <Image
-                src={heroCardImg}
-                alt="Fleet management dashboard"
-                className="w-full h-auto max-w-[1200px] max-h-[80vh] -mt-[70px] z-30 absolute xl:max-w-[1200px] lg:max-w-[1000px]"
-                width={1200}
-                height={800}
-                quality={80}
-                sizes="(max-width: 1200px) 90vw, 1200px"
-                onLoad={() => setIsDesktopImageLoaded(true)}
-                priority={true}
-              />
-            )}
+
+            <Image
+              src={heroCardImg}
+              alt="Fleet management dashboard"
+              className="w-full h-auto max-w-[1200px] max-h-[80vh] -mt-[70px] z-30 absolute xl:max-w-[1200px] lg:max-w-[1000px]"
+              width={1200}
+              height={800}
+              quality={80}
+              sizes="(max-width: 1200px) 90vw, 1200px"
+
+              priority={true}
+            />
+
 
             {/* Centered blur effect */}
             <div
@@ -186,25 +172,21 @@ const HeroSection = () => {
 
           {/* Hero image with skeleton fallback */}
           <div className="relative z-30 flex justify-center items-center h-full">
-            {!isMobileImageLoaded ? (
-              <div className="w-full h-auto max-w-[272px] max-h-[550px]">
-                <Skeleton className="w-[272px] h-[550px] bg-gray-200/50 rounded-lg animate-pulse" />
-              </div>
-            ) : (
-              <Image
-                src="/images/hero-2.webp"
-                priority={true}
-                alt="Mobile hero"
-                width={272}
-                height={550}
-                quality={80}
-                className="object-contain w-full h-auto max-w-[272px] max-h-[550px]"
-                sizes="(max-width: 400px) 272px, 50vw"
-                placeholder="blur"
-                blurDataURL="data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA"
-                onLoad={() => setIsMobileImageLoaded(true)}
-              />
-            )}
+
+            <Image
+              src="/images/hero-2.webp"
+              priority={true}
+              alt="Mobile hero"
+              width={272}
+              height={550}
+              quality={80}
+              className="object-contain w-full h-auto max-w-[272px] max-h-[550px]"
+              sizes="(max-width: 400px) 272px, 50vw"
+              placeholder="blur"
+              blurDataURL="data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA"
+
+            />
+
           </div>
         </div>
 

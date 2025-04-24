@@ -150,7 +150,7 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              // className="w-full"
+            // className="w-full"
             />
           ))}
         </div>
