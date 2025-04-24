@@ -1,3 +1,7 @@
+import DocumentManagementIcon from "@/components/icons/solution/complianceAndSafty/DocumentManagementIcon";
+import DriverQualificationIcon from "@/components/icons/solution/complianceAndSafty/DriverQualificationIcon";
+import RealTimeReportingIcon from "@/components/icons/solution/complianceAndSafty/RealTimeReportingIcon";
+import StayComplientIcon from "@/components/icons/solution/complianceAndSafty/StayComplientIcon";
 import ActionableInsightIcon from "@/components/icons/solution/costOptimization/ActionableInsightIcon";
 import CostDecisionMakingIcon from "@/components/icons/solution/costOptimization/CostDecisionMakingIcon";
 import FinencialControlIcon from "@/components/icons/solution/costOptimization/FinencialControlIcon";
@@ -214,6 +218,32 @@ const WhyEVFleetData = [
       "Transition to a greener fleet and meet sustainability goals by easily adopting electric vehicles with Fleetblox’s seamless integration process.",
   },
 ];
+const WhyComplianceAndSafetyData = [
+  {
+    icon: DocumentManagementIcon,
+    title: "Simplified Document Management",
+    description:
+      "Fleetblox centralizes your fleet’s documents, making it easy to track, update, and manage everything in one place, saving time and reducing the risk of missed deadlines.",
+  },
+  {
+    icon: DriverQualificationIcon,
+    title: "Ensure Driver Qualification",
+    description:
+      "Verify that all drivers are properly certified and meet industry safety standards before operating fleet vehicles.",
+  },
+  {
+    icon: RealTimeReportingIcon,
+    title: "Enhanced Safety with Real-Time Reporting",
+    description:
+      "With the employee app’s issue reporting system, drivers can instantly report safety concerns, allowing you to address issues quickly and ensure a safe working environment.",
+  },
+  {
+    icon: StayComplientIcon,
+    title: "Stay Compliant with Ease",
+    description:
+      "Fleetblox helps you stay on top of regulations and avoid penalties by tracking all compliance-related tasks, such as document renewals and driver certifications.",
+  },
+];
 export {
   WhyCloudData,
   WhyRemoteAccessData,
@@ -221,4 +251,5 @@ export {
   WhyCostOptimizationData,
   WhyMaintenanceDiagnosticData,
   WhyEVFleetData,
+  WhyComplianceAndSafetyData,
 };
