@@ -77,7 +77,7 @@ const Footer = () => {
               </div>
               <div className="hidden lg:block">
                 <h2 className="mb-[10px] text-[14px] leading-5 text-[#DFDFDF] font-openSans">
-                  Download Fleetblox Crew
+                  Download Fleetblox Apps
                 </h2>
                 <div className="flex gap-[10px]">
                   <AppleStore />
@@ -99,37 +99,52 @@ const Footer = () => {
                 </Link>
                 <Link href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Connectivity
-                  </h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">AI</h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Compatibility
+                    Vehicle Compatibility
                   </h5>
                 </Link>
                 <Link href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Scalability
+                    Real-Time Telematics
                   </h5>
                 </Link>
                 <Link href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Efficiency
+                    GPS Fleet Tracking
                   </h5>
                 </Link>
                 <Link href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Compliance
+                    Remote Digital Key
                   </h5>
                 </Link>
                 <Link href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Artificial Intelligence
+                    AI-Powered Inspection
                   </h5>
                 </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    AI Driven Maintenance Management
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Dynamic Expense Management
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Dynamic Fleet Alerts
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    BEE - AI Chat Bot
+                  </h5>
+                </Link>
+                <div className="mt-[10px] text-white text-[14px] font-openSans leading-5 font-semibold">
+                  <button className="pt-2">View All Features</button>
+                </div>
               </div>
               {/* solutions */}
               <div className=" text-[14px] leading-5 ">
@@ -328,7 +343,7 @@ const Footer = () => {
           </div>
           <div className="lg:hidden block text-center">
             <h2 className="mb-[10px] text-[14px] leading-5 text-[#DFDFDF] font-openSans">
-              Download Fleetblox Crew
+            Download Fleetblox Apps
             </h2>
             <div className="flex gap-[10px] justify-center">
               <AppleStore />
