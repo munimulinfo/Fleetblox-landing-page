@@ -86,65 +86,62 @@ const Footer = () => {
               </div>
             </div>
             {/* pages section */}
-            <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10 lg:gap-[47px]">
+            <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10 lg:gap-[70px]">
               {/* product section */}
               <div className="text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Products
                 </h5>
                 <Link className="cursor-pointer" href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px] cursor-pointer">
+                  <h5 className="font-openSans py-[2px] mb-[5px] cursor-pointer">
                     Overview
                   </h5>
                 </Link>
                 <Link href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Vehicle Compatibility
+                    Scalability
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Real-Time Telematics
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Fleet Connectivity
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    GPS Fleet Tracking
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Inspections
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Remote Digital Key
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Maintenance
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    AI-Powered Inspection
+                  <h5 className="font-openSans py-[2px] mb-[5px]">Expenses</h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Compliance
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    AI Driven Maintenance Management
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Fleet Alerts
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Dynamic Expense Management
-                  </h5>
+                  <h5 className="font-openSans py-[2px] mb-[5px]">Teams</h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Dynamic Fleet Alerts
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    AI Fleet Assistant
                   </h5>
                 </Link>
-                <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    BEE - AI Chat Bot
-                  </h5>
-                </Link>
-                <div className="mt-[10px] text-white text-[14px] font-openSans leading-5 font-semibold">
+
+                {/* <div className="mt-[10px] text-white text-[14px] font-openSans leading-5 font-semibold">
                   <button className="pt-2">View All Features</button>
-                </div>
+                </div> */}
               </div>
               {/* solutions */}
               <div className=" text-[14px] leading-5 ">
@@ -171,7 +168,7 @@ const Footer = () => {
                     Cost Optimization
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/compliance-and-safety">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Compliance and Safety
                   </h5>

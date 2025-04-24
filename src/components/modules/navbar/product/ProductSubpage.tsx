@@ -16,52 +16,52 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Vehicle Compatibility
+              Scalability
             </h1>
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Real-Time Telematics
+              Fleet Connectivity
             </h1>
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              GPS Fleet Tracking
+              Inspections
             </h1>
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Remote Digital Key
+              Maintenance
             </h1>
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              AI-Powered Inspection
+              Expenses
             </h1>
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              AI Driven Maintenance Management
+              Compliance
             </h1>
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Dynamic Expense Management
+              Fleet Alerts
             </h1>
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Dynamic Fleet Alerts
+              Teams
             </h1>
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              BEE - AI Chat Bot
+              AI Fleet Assistant
             </h1>
           </Link>
-          <div className="mt-[20px] text-[#2D65F2] text-[14px] font-openSans leading-5 font-semibold">
+          {/* <div className="mt-[20px] text-[#2D65F2] text-[14px] font-openSans leading-5 font-semibold">
             <button className="pt-2">View All Features</button>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* Mobile apps */}
