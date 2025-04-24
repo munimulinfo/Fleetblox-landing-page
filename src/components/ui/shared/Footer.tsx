@@ -86,7 +86,7 @@ const Footer = () => {
               </div>
             </div>
             {/* pages section */}
-            <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10 lg:gap-[60px]">
+            <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10 lg:gap-[47px]">
               {/* product section */}
               <div className="text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
@@ -343,7 +343,7 @@ const Footer = () => {
           </div>
           <div className="lg:hidden block text-center">
             <h2 className="mb-[10px] text-[14px] leading-5 text-[#DFDFDF] font-openSans">
-            Download Fleetblox Apps
+              Download Fleetblox Apps
             </h2>
             <div className="flex gap-[10px] justify-center">
               <AppleStore />
