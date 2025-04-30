@@ -7,17 +7,18 @@ import Link from "next/link";
 
 const page = () => {
   const items = [
+
     {
       id: 1,
-      title: "Wide EV Compatibility",
-      description:
-        "Fleetblox supports a broad selection of electric vehicle models across different brands, making it easy to integrate EVs into your fleet",
-    },
-    {
-      id: 2,
       title: "No Hardware Required",
       description:
         "Unlike other solutions, Fleetblox doesn’t require additional hardware or installation tools, simplifying the process and reducing upfront costs.",
+    },
+    {
+      id: 2,
+      title: "Wide EV Compatibility",
+      description:
+        "Fleetblox supports a broad selection of electric vehicle models across different brands, making it easy to integrate EVs into your fleet",
     },
     {
       id: 3,
@@ -48,15 +49,10 @@ const page = () => {
               EV Fleet Integration
             </h3>
             <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-[1.1]">
-              Effortlessly Integrate Electric Vehicles Across Regions
+              Integrate Electric Vehicles Across Regions
             </h1>
             <p className="text-[#333] text-[16px] leading-6 mt-[10px] lg:mt-4 mb-5 font-openSans">
-              {`Fleetblox’s EV Fleet Integration makes it easy to incorporate
-              electric vehicles. With support for a wide range of electric
-              vehicle models across multiple regions, Fleetblox ensures that
-              managing your electric fleet is simple, seamless, and ready for
-              the future—whether you're in North America, Europe, or anywhere in
-              between.`}
+              {`Fleetblox’s EV Integration simplifies electric fleet management across global regions, supporting a wide range of EV models for a seamless, future-ready experience.`}
             </p>
             <Link
               aria-label="Get started with FleetBlox"
@@ -94,11 +90,11 @@ const page = () => {
       <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5">
         <div className="w-full text-center">
           <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
-            Accelerate Your EV Fleet Adoption with Fleetblox’s Integration Suite
+            Accelerate Your EV Fleet Adoption
+            with Fleetblox
           </h2>
           <p className="text-[#333] text-[16px] leading-6 font-openSans">
-            Incorporate electric vehicles into your fleet without needing any
-            specialized hardware or tools.
+            Incorporate electric vehicles into your fleet without needing any specialized hardware or tools.
           </p>
         </div>
         <div className="flex flex-col lg:flex-row items-center py-8 lg:py-[60px] justify-between">
@@ -155,7 +151,7 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              // className="w-full"
+            // className="w-full"
             />
           ))}
         </div>
