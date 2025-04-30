@@ -107,6 +107,7 @@ const page = () => {
   ];
   return (
     <div>
+      {/* hero section */}
       <section className="bg-[#FAFAFF] pt-[100px] lg:pt-[140px] pb-[30px] ">
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex flex-col px-5 lg:flex-row items-center justify-between">
           <div className="lg:pl-[130px]">
@@ -152,7 +153,8 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="py-[100px]">
+      {/* Fleet management section */}
+      <section className="py-[80px]">
         <div className="max-w-[840px] mx-auto w-full text-center">
           <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
             Simplify Fleet Management
@@ -249,29 +251,165 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="max-w-[1200px] mx-auto w-full my-[60px] px-5">
+      <section className="bg-[#FAFAFF] py-[100px]">
+        <h3 className="text-[#04082C] text-[36px] font-bold leading-[1.1] text-center ">
+          Connect Your Fleet In Just 3 Simple Steps
+        </h3>
+        <p className="text-[#333] text-[16px] mt-[10px] leading-6 text-center font-openSans">
+          Gain full visibility and control over your vehicle across all
+          locations from anywhere.
+        </p>
+        <div className="max-w-[1200px] w-full mx-auto mt-[60px] mb-10 px-5">
+          <Image
+            src="/images/features/connect-fleet-step.svg"
+            alt="Remote Scalability Hero"
+            width={700}
+            height={491}
+            className="object-contain w-full"
+            quality={100}
+          />
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 relative max-w-[1200px] mx-auto w-full gap-5 justify-items-center items-center px-5">
+          <div className="absolute left-1/2 top-1/2 mt-[90px] max-w-[664px] max-h-[664px] h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FBEECA] opacity-40 blur-[200px]"></div>
+          <div
+            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[540px] w-full`}
+          >
+            <div className=" bg-white absolute z-50 rounded-[24px] py-10 px-[30px] flex flex-col gap-[10px] w-full h-full">
+              {/* Card Header */}
+              <div className="font-openSans">
+                <h3 className="text-[#04082C] text-[22px] font-bold">
+                  Scan The VIN
+                </h3>
+                <p className="text-[14px] text-[#7D7D7D] leading-5 mt-[5px]">
+                  Add the vehicle using the VIN or scan it with the VIN scanner.
+                </p>
+              </div>
+              <div className="w-full mt-10">
+                <Image
+                  src="/images/features/connect-step-1.svg"
+                  alt="Remote Scalability Hero"
+                  width={327}
+                  height={344}
+                  className="object-contain w-full"
+                  quality={100}
+                />
+              </div>
+            </div>
+            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[573px] w-[370px] left-[8px]"></div>
+          </div>
+          <div
+            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[540px] w-full`}
+          >
+            <div className=" bg-white absolute z-50 rounded-[24px] py-10 px-[30px] flex flex-col gap-[10px] max-w-[387px] w-full h-full">
+              {/* Card Header */}
+              <div className="font-openSans">
+                <h3 className="text-[#04082C] text-[22px] font-bold">
+                  Connect The Vehicle
+                </h3>
+                <p className="text-[14px] text-[#7D7D7D] leading-5 mt-[5px]">
+                  Use your manufacturer credentials to link your vehicle.
+                </p>
+              </div>
+              <div className="w-full mt-10">
+                <Image
+                  src="/images/features/connect-step-2.svg"
+                  alt="Remote Scalability Hero"
+                  width={700}
+                  height={491}
+                  className="object-contain w-full"
+                  quality={100}
+                />
+              </div>
+            </div>
+            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[573px] w-[370px] left-[8px]"></div>
+          </div>
+          <div
+            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[540px] w-full`}
+          >
+            <div className=" bg-white absolute z-50 rounded-[24px] pt-10 px-[30px] flex flex-col gap-[10px] max-w-[387px] w-full h-full">
+              {/* Card Header */}
+              <div className="font-openSans">
+                <h3 className="text-[#04082C] text-[22px] font-bold">
+                  Enable Access
+                </h3>
+                <p className="text-[14px] text-[#7D7D7D] leading-5 mt-[5px]">
+                  Review and approve permissions to allow data streaming.
+                </p>
+              </div>
+              <div className="w-full mt-10 overflow-hidden">
+                <Image
+                  src="/images/features/connect-step-3.svg"
+                  alt="Remote Scalability Hero"
+                  width={700}
+                  height={491}
+                  className="object-contain w-full rounded-3xl"
+                  quality={100}
+                />
+              </div>
+            </div>
+            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[573px] w-[370px] left-[8px]"></div>
+          </div>
+        </div>
+      </section>
+      {/* how fleetblox connected section */}
+      <section className="py-[100px] ">
+        <div className="max-w-[840px] w-full mx-auto text-center px-5">
+          <h3 className="text-[#04082C] text-[18px] md:text-[36px] font-bold leading-[1.1]">
+            How Fleetblox’s Cloud Connectivity Works
+          </h3>
+          <p className="text-[#333] text-[16px] font-normal leading-6 font-openSans mt-[5px] ">
+            By securely connecting to each vehicle via manufacturer credentials,
+            Fleetblox pulls live diagnostic and location data directly from the
+            cloud.
+          </p>
+        </div>
+        <div className="max-w-[1200px] hidden md:block w-full mx-auto mt-[60px] px-5">
+          <Image
+            src="/images/features/Fleetblox-deals.svg"
+            alt="Remote Scalability Hero"
+            width={700}
+            height={491}
+            className="object-contain w-full"
+            quality={100}
+          />
+        </div>
+        <div className="max-w-[1200px] md:hidden block w-full mx-auto mt-[40px] px-5">
+          <Image
+            src="/images/features/cloud-connectivity-work-mobile.svg"
+            alt="Remote Scalability Hero"
+            width={700}
+            height={491}
+            className="object-contain w-full"
+            quality={100}
+          />
+        </div>
+      </section>
+      {/* why fleet owner partner section*/}
+      <section className="max-w-[1200px] mx-auto w-full mb-[60px] px-5">
         <h1 className="mb-[40px] lg:mb-[60px] text-center max-w-[840px] w-full mx-auto text-[#04082C] text-[28px] lg:text-[36px] font-bold">
           {`Every Fleet Owner’s Reliable Partner - Here's Why`}
         </h1>
-        <div className="lg:grid hidden grid-cols-1 lg:grid-cols-3 justify-items-center gap-[30px]">
+        <div className="lg:grid hidden grid-cols-1 lg:grid-cols-3 justify-items-center items-center gap-[30px]">
           {whyFleetManager?.slice(0, 3).map((data, index) => (
             <FeatureCard
               key={index}
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              className="max-w-[380px] w-full"
+              // className="lg:max-w-[380px] lg:w-full"
             />
           ))}
         </div>
-        <div className="grid lg:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center lg:gap-[30px] gap-[20px]">
+        <div className="grid lg:hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center items-center lg:gap-[30px] gap-[20px]">
           {whyFleetManager?.map((data, index) => (
             <FeatureCard
               key={index}
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              // className="w-full"
+              className={`w-full ${
+                index === 4 && "md:col-span-2 md:max-w-[380px] mx-auto"
+              }`}
             />
           ))}
         </div>
@@ -282,11 +420,12 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              className="max-w-[380px] w-full"
+              className="lg:max-w-[380px] lg:w-full"
             />
           ))}
         </div>
       </section>
+      {/* vehicle might be smarter section */}
       <section className="pt-[100px]">
         <div className="z-[100] mx-auto max-w-[1300px] lg:w-[1000px] 2xl:w-[1300px] space-y-[20px] overflow-hidden">
           <div className="relative z-[1000] px-5 max-w-[840px] w-full mx-auto text-center">
