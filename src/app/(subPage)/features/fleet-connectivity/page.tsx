@@ -270,13 +270,13 @@ const page = () => {
           />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 relative max-w-[1200px] mx-auto w-full gap-5 justify-items-center items-center px-5">
-          <div className="absolute left-1/2 top-1/2 mt-[90px] max-w-[664px] max-h-[664px] h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FBEECA] opacity-40 blur-[200px]"></div>
+          <div className="absolute hidden lg:block left-1/2 top-1/2 mt-[90px] max-w-[664px] max-h-[664px] h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FBEECA] opacity-40 blur-[200px]"></div>
           <div
             className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[540px] w-full`}
           >
             <div className=" bg-white absolute z-50 rounded-[24px] py-10 px-[30px] flex flex-col gap-[10px] w-full h-full">
               {/* Card Header */}
-              <div className="font-openSans">
+              <div className="font-openSans text-center lg:text-left">
                 <h3 className="text-[#04082C] text-[22px] font-bold">
                   Scan The VIN
                 </h3>
@@ -284,25 +284,25 @@ const page = () => {
                   Add the vehicle using the VIN or scan it with the VIN scanner.
                 </p>
               </div>
-              <div className="w-full mt-10">
+              <div className="w-full mt-10 ">
                 <Image
                   src="/images/features/connect-step-1.svg"
                   alt="Remote Scalability Hero"
                   width={327}
                   height={344}
-                  className="object-contain w-full"
+                  className="object-contain w-full h-[344px]"
                   quality={100}
                 />
               </div>
             </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[573px] w-[370px] left-[8px]"></div>
+            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[573px] w-full lg:w-[370px] left-[8px]"></div>
           </div>
           <div
-            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[540px] w-full`}
+            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[600px] lg:h-[540px] w-full`}
           >
-            <div className=" bg-white absolute z-50 rounded-[24px] py-10 px-[30px] flex flex-col gap-[10px] max-w-[387px] w-full h-full">
+            <div className=" bg-white absolute z-50 rounded-[24px] py-10 px-[30px] flex flex-col gap-[10px] w-full h-full">
               {/* Card Header */}
-              <div className="font-openSans">
+              <div className="font-openSans text-center lg:text-left">
                 <h3 className="text-[#04082C] text-[22px] font-bold">
                   Connect The Vehicle
                 </h3>
@@ -314,21 +314,21 @@ const page = () => {
                 <Image
                   src="/images/features/connect-step-2.svg"
                   alt="Remote Scalability Hero"
-                  width={700}
-                  height={491}
-                  className="object-contain w-full"
+                  width={327}
+                  height={344}
+                  className="object-contain w-full h-[344px]"
                   quality={100}
                 />
               </div>
             </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[573px] w-[370px] left-[8px]"></div>
+            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[573px] w-full lg:w-[370px] left-[8px]"></div>
           </div>
           <div
-            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[540px] w-full`}
+            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[600px] lg:h-[536px] w-full`}
           >
-            <div className=" bg-white absolute z-50 rounded-[24px] pt-10 px-[30px] flex flex-col gap-[10px] max-w-[387px] w-full h-full">
+            <div className=" bg-white absolute z-50 rounded-[24px] pt-10 px-[30px] flex flex-col gap-[10px] w-full h-full">
               {/* Card Header */}
-              <div className="font-openSans">
+              <div className="font-openSans text-center lg:text-left">
                 <h3 className="text-[#04082C] text-[22px] font-bold">
                   Enable Access
                 </h3>
@@ -340,14 +340,14 @@ const page = () => {
                 <Image
                   src="/images/features/connect-step-3.svg"
                   alt="Remote Scalability Hero"
-                  width={700}
-                  height={491}
-                  className="object-contain w-full rounded-3xl"
+                  width={327}
+                  height={700}
+                  className="object-contain w-full h-[550px] lg:h-[400px]"
                   quality={100}
                 />
               </div>
             </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[573px] w-[370px] left-[8px]"></div>
+            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[573px] w-full lg:w-[370px] left-[8px]"></div>
           </div>
         </div>
       </section>
@@ -437,9 +437,11 @@ const page = () => {
               smarter, cloud-powered solutions designed for greater efficiency,
               flexibility, and future readiness.
             </p>
-            <button className="bg-[#2D65F2] rounded-[6px] px-5 py-3 text-white font-openSans text-[16px] font-bold">
-              Check Compatibility
-            </button>
+            <Link href={"/under-development"}>
+              <button className="bg-[#2D65F2] rounded-[6px] px-5 py-3 text-white font-openSans text-[16px] font-bold">
+                Check Compatibility
+              </button>
+            </Link>
           </div>
           <div className="flex relative h-[376px] w-full items-center justify-center overflow-hidden">
             <video
