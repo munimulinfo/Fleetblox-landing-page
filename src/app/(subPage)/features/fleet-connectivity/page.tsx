@@ -321,8 +321,7 @@ const page = () => {
         </div>
       </section>
 
-      {/* Golobal */}
-      <GlobeSection />
+
       {/* why fleet owner partner section*/}
       <section className="max-w-[1200px] mx-auto w-full mb-[60px] px-5">
         <h1 className="mb-[40px] lg:mb-[60px] text-center max-w-[840px] w-full mx-auto text-[#04082C] text-[28px] lg:text-[36px] font-bold">
@@ -364,7 +363,8 @@ const page = () => {
         </div>
       </section>
       {/* vehicle might be smarter section */}
-
+      {/* Golobal */}
+      <GlobeSection />
     </div>
   );
 };
