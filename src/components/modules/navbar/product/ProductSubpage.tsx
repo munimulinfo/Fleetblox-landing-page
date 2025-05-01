@@ -16,17 +16,25 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+              Onboarding
+            </h1>
+          </Link>
+          <Link href="/features/fleet-connectivity">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+              Connectivity
+            </h1>
+          </Link>
+          <Link href="/under-development">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Scalability
             </h1>
           </Link>
           <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Fleet Connectivity
-            </h1>
-          </Link>
-          <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
               Inspections
+              <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
+                Upcoming
+              </button>
             </h1>
           </Link>
           <Link href="/under-development">
@@ -46,7 +54,7 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Fleet Alerts
+              Alerts
             </h1>
           </Link>
           <Link href="/under-development">
@@ -56,7 +64,7 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              AI Fleet Assistant
+              AI Assistant
             </h1>
           </Link>
           {/* <div className="mt-[20px] text-[#2D65F2] text-[14px] font-openSans leading-5 font-semibold">

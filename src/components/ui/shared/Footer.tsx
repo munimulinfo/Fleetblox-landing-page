@@ -99,12 +99,17 @@ const Footer = () => {
                 </Link>
                 <Link href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Scalability
+                    Onboarding
                   </h5>
                 </Link>
                 <Link href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Fleet Connectivity
+                    Connectivity
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Scalability
                   </h5>
                 </Link>
                 <Link href="/under-development">
@@ -126,16 +131,14 @@ const Footer = () => {
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Fleet Alerts
-                  </h5>
+                  <h5 className="font-openSans py-[2px] mb-[5px]">Alerts</h5>
                 </Link>
                 <Link href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px]">Teams</h5>
                 </Link>
                 <Link href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    AI Fleet Assistant
+                    AI Assistant
                   </h5>
                 </Link>
 
