@@ -136,7 +136,7 @@ const page = () => {
 
                         <div className="border border-[#0336BC] w-10 h-10 font-bold font-openSans flex items-center justify-center text-[#0336BC] rounded-full">3</div>
                     </div>
-                    <div className="flex items-center my-5 justify-center gap-4">
+                    <div className="flex items-center my-8 justify-center gap-4">
 
                         {cardData.map((item, index) => (
                             <FeatureCard
