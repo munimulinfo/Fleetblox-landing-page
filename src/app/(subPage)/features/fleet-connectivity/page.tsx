@@ -295,7 +295,7 @@ const page = () => {
                 />
               </div>
             </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[573px] w-full lg:w-[370px] left-[8px]"></div>
+            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[565px] w-full max-w-[358px] left-[8px]"></div>
           </div>
           <div
             className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[600px] lg:h-[540px] w-full`}
@@ -321,7 +321,7 @@ const page = () => {
                 />
               </div>
             </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[573px] w-full lg:w-[370px] left-[8px]"></div>
+            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[565px] w-full max-w-[358px] left-[8px]"></div>
           </div>
           <div
             className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[600px] lg:h-[536px] w-full`}
@@ -347,7 +347,7 @@ const page = () => {
                 />
               </div>
             </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[573px] w-full lg:w-[370px] left-[8px]"></div>
+            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[565px] w-full max-w-[358px] left-[8px]"></div>
           </div>
         </div>
       </section>
