@@ -16,12 +16,12 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Connectivity
+              Onboarding
             </h1>
           </Link>
-          <Link href="/under-development">
+          <Link href="/features/fleet-connectivity">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Compatibility
+              Connectivity
             </h1>
           </Link>
           <Link href="/under-development">
@@ -30,8 +30,21 @@ const ProductSubpage = () => {
             </h1>
           </Link>
           <Link href="/under-development">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
+              Inspections
+              <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
+                Upcoming
+              </button>
+            </h1>
+          </Link>
+          <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Efficiency
+              Maintenance
+            </h1>
+          </Link>
+          <Link href="/under-development">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+              Expenses
             </h1>
           </Link>
           <Link href="/under-development">
@@ -41,9 +54,22 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Artificial Intelligence
+              Alerts
             </h1>
           </Link>
+          <Link href="/under-development">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+              Teams
+            </h1>
+          </Link>
+          <Link href="/under-development">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+              AI Assistant
+            </h1>
+          </Link>
+          {/* <div className="mt-[20px] text-[#2D65F2] text-[14px] font-openSans leading-5 font-semibold">
+            <button className="pt-2">View All Features</button>
+          </div> */}
         </div>
       </div>
       {/* Mobile apps */}

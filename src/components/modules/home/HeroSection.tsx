@@ -9,19 +9,7 @@ import Link from "next/link";
 
 
 const HeroSection = () => {
-  // const [isDesktopImageLoaded, setIsDesktopImageLoaded] = useState(false);
-  // const [isMobileImageLoaded, setIsMobileImageLoaded] = useState(false);
 
-  // Preload images for better performance
-  // useEffect(() => {
-  //   const desktopImg = new window.Image();
-  //   desktopImg.src = heroCardImg.src;
-  //   desktopImg.onload = () => setIsDesktopImageLoaded(true);
-
-  //   const mobileImg = new window.Image();
-  //   mobileImg.src = "/images/hero-2.webp";
-  //   mobileImg.onload = () => setIsMobileImageLoaded(true);
-  // }, []);
 
   return (
     <section className="bg-[#FAFAFF] flex flex-col justify-center items-center z-50 overflow-hidden">
@@ -32,7 +20,7 @@ const HeroSection = () => {
           <p className="text-[18px] md:text-[28px] lg:text-[28px] text-left md:text-center font-bold text-[#0336BC] mb-[5px]">
             Instant Fleet Connectivity
           </p>
-          <h1 className="text-[28px] md:text-[52px] lg:text-[52px] text-left md:text-center font-bold text-[#04082C] leading-[1.1] font-montserrat">
+          <h1 className="text-[36px] md:text-[52px] lg:text-[52px] text-left md:text-center font-bold text-[#04082C] leading-[1.1] font-montserrat">
             Manage and Scale Without Boundaries
           </h1>
           <p className="text-left md:text-center font-openSans text-[#333] leading-6 text-[16px] mt-[10px]">
@@ -86,7 +74,6 @@ const HeroSection = () => {
               height={800}
               quality={80}
               sizes="(max-width: 1200px) 90vw, 1200px"
-
               priority={true}
             />
 
@@ -177,11 +164,11 @@ const HeroSection = () => {
               src="/images/hero-2.webp"
               priority={true}
               alt="Mobile hero"
-              width={272}
+              width={300}
               height={550}
-              quality={80}
-              className="object-contain w-full h-auto max-w-[272px] max-h-[550px]"
-              sizes="(max-width: 400px) 272px, 50vw"
+              quality={70}
+              className="object-contain w-full h-auto max-w-[300px] max-h-[550px]"
+              sizes="(max-width: 400px) 300px, 50vw"
               placeholder="blur"
               blurDataURL="data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA"
 

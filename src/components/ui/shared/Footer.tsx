@@ -77,7 +77,7 @@ const Footer = () => {
               </div>
               <div className="hidden lg:block">
                 <h2 className="mb-[10px] text-[14px] leading-5 text-[#DFDFDF] font-openSans">
-                  Download Fleetblox Crew
+                  Download Fleetblox Apps
                 </h2>
                 <div className="flex gap-[10px]">
                   <AppleStore />
@@ -86,15 +86,20 @@ const Footer = () => {
               </div>
             </div>
             {/* pages section */}
-            <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10 lg:gap-[60px]">
+            <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10 lg:gap-[70px]">
               {/* product section */}
               <div className="text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
                   Products
                 </h5>
                 <Link className="cursor-pointer" href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px] cursor-pointer">
+                  <h5 className="font-openSans py-[2px] mb-[5px] cursor-pointer">
                     Overview
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Onboarding
                   </h5>
                 </Link>
                 <Link href="/under-development">
@@ -103,33 +108,43 @@ const Footer = () => {
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">AI</h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Compatibility
-                  </h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
                     Scalability
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Efficiency
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Inspections
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Maintenance
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">Expenses</h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
                     Compliance
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Artificial Intelligence
+                  <h5 className="font-openSans py-[2px] mb-[5px]">Alerts</h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">Teams</h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    AI Assistant
                   </h5>
                 </Link>
+
+                {/* <div className="mt-[10px] text-white text-[14px] font-openSans leading-5 font-semibold">
+                  <button className="pt-2">View All Features</button>
+                </div> */}
               </div>
               {/* solutions */}
               <div className=" text-[14px] leading-5 ">
@@ -156,7 +171,7 @@ const Footer = () => {
                     Cost Optimization
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/solutions/compliance-and-safety">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Compliance and Safety
                   </h5>
@@ -328,7 +343,7 @@ const Footer = () => {
           </div>
           <div className="lg:hidden block text-center">
             <h2 className="mb-[10px] text-[14px] leading-5 text-[#DFDFDF] font-openSans">
-              Download Fleetblox Crew
+              Download Fleetblox Apps
             </h2>
             <div className="flex gap-[10px] justify-center">
               <AppleStore />

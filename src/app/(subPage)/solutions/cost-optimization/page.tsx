@@ -31,12 +31,7 @@ const page = () => {
       description:
         "Use analytics to spot expenses, and find areas for improvement.",
     },
-    {
-      id: 5,
-      title: "Cost Optimization Recommendations",
-      description:
-        "Receive AI-driven suggestions to optimize routes, maintenance, and operations, minimizing costs.",
-    },
+
   ];
   return (
     <div>
@@ -91,13 +86,10 @@ const page = () => {
       <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5">
         <div className="max-w-[840px] mx-auto w-full text-center">
           <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
-            Establish Clear Cost Control with Fleetblox’s Expenses Tools
+            Track & Control Costs with FleetBlox
           </h2>
           <p className="text-[#333] text-[16px] leading-6 font-openSans">
-            Take control of fleet expenses with a smart, efficient, and scalable
-            management solution designed to reduce costs and boost operational
-            performance. Optimize budgeting, track spending in real time, and
-            make data-driven decisions—all from one powerful platform.
+            Take control of fleet expenses with a smart, scalable solution designed to cut costs and improve performance. Track spending in real time, optimize budgets, and make data-driven decisions—all in one platform
           </p>
         </div>
         <div className="flex flex-col lg:flex-row items-center py-8 lg:py-[60px] justify-between">
@@ -153,7 +145,7 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              // className="w-full"
+            // className="w-full"
             />
           ))}
         </div>
