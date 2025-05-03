@@ -148,6 +148,7 @@ const page = () => {
               alt="Remote Scalability Hero"
               width={700}
               height={491}
+              priority
               className="object-contain w-full"
             />
           </div>
