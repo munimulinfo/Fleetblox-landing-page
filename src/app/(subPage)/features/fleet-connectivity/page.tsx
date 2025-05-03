@@ -8,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const page = () => {
-
   const whyFleetManager = [
     {
       icon: NoHardware,
@@ -322,7 +321,6 @@ const page = () => {
         </div>
       </section>
 
-
       {/* why fleet owner partner section*/}
       <section className="max-w-[1200px] mx-auto w-full mb-[60px] px-5">
         <h1 className="mb-[40px] lg:mb-[60px] text-center max-w-[840px] w-full mx-auto text-[#04082C] text-[28px] lg:text-[36px] font-bold">
@@ -335,7 +333,7 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-            // className="lg:max-w-[380px] lg:w-full"
+              // className="lg:max-w-[380px] lg:w-full"
             />
           ))}
         </div>
@@ -346,8 +344,9 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              className={`w-full ${index === 4 && "md:col-span-2 md:max-w-[380px] mx-auto"
-                }`}
+              className={`w-full ${
+                index === 4 && "md:col-span-2 md:max-w-[380px] mx-auto"
+              }`}
             />
           ))}
         </div>
@@ -363,9 +362,13 @@ const page = () => {
           ))}
         </div>
       </section>
-      {/* vehicle might be smarter section */}
       {/* Golobal */}
-      <GlobeSection />
+      <GlobeSection
+        title="Your Vehicles Might Be Smarter <br /> Than You Think"
+        description="  Check your fleet’s compatibility and take the first step toward
+            smarter, cloud-powered solutions designed for greater efficiency,
+            flexibility, and future readiness."
+      />
     </div>
   );
 };

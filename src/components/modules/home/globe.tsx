@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 import image1 from "../../../../public/brand/Frame 1707481648.svg";
 import image2 from "../../../../public/brand/Frame 1707481652.svg";
 import image3 from "../../../../public/brand/Frame 1707481662.png";
@@ -34,95 +34,99 @@ import image30 from "../../../../public/brand/Frame 1707481678.svg";
 import image31 from "../../../../public/brand/Frame 1707481679.svg";
 import image32 from "../../../../public/brand/Frame 1707481680.svg";
 import image33 from "../../../../public/brand/Frame 1707481661.svg";
+type GlobeSectionProps = {
+  title: string;
+  description: string;
+};
+const GlobeSection = ({ title, description }: GlobeSectionProps) => {
+  const images = [
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+    image8,
+    image9,
+    image10,
+    image11,
+    image12,
+    image13,
+    image14,
+    image15,
+    image16,
+    image17,
+    image18,
+    image19,
+    image20,
+    image21,
+    image22,
+    image23,
+    image24,
+    image25,
+    image26,
+    image27,
+    image28,
+    image29,
+    image30,
+    image31,
+    image32,
+    image33,
+  ];
+  return (
+    <section className="pt-[100px]">
+      <div className="z-[100] mx-auto max-w-[1300px] lg:w-[1000px] 2xl:w-[1300px] space-y-[20px] overflow-hidden">
+        <div className="relative z-[1000] px-5 max-w-[842px] w-full mx-auto text-center">
+          <h1 className="font-montserrat text-[#04082C] text-[28px] md:text-[36px] font-bold  text-center leading-[1.1]">
+            {title.split("<br />").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                {index !== title.split("<br />").length - 1 && <br />}
+              </React.Fragment>
+            ))}
+          </h1>
+          <p className="mt-[10px] text-[#333] text-[16px] font-normal leading-6 font-openSans mb-5">
+            {description}
+          </p>
+          <Link href={"/under-development"}>
+            <button className="bg-[#2D65F2] rounded-[6px] px-5 py-3 text-white font-openSans text-[16px] font-bold">
+              Check Compatibility
+            </button>
+          </Link>
+        </div>
+        <div className="flex relative h-[376px] w-full items-center justify-center overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="absolute mt-[450px] h-[916px] object-cover"
+          >
+            <source src="/videos/global.webm" type="video/webm" />
+            <source src="/videos/global.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
 
-
-const GlobeSection = () => {
-
-    const images = [
-        image1,
-        image2,
-        image3,
-        image4,
-        image5,
-        image6,
-        image7,
-        image8,
-        image9,
-        image10,
-        image11,
-        image12,
-        image13,
-        image14,
-        image15,
-        image16,
-        image17,
-        image18,
-        image19,
-        image20,
-        image21,
-        image22,
-        image23,
-        image24,
-        image25,
-        image26,
-        image27,
-        image28,
-        image29,
-        image30,
-        image31,
-        image32,
-        image33,
-    ];
-    return (
-        <section className="pt-[100px]">
-            <div className="z-[100] mx-auto max-w-[1300px] lg:w-[1000px] 2xl:w-[1300px] space-y-[20px] overflow-hidden">
-                <div className="relative z-[1000] px-5 max-w-[840px] w-full mx-auto text-center">
-                    <h1 className="font-montserrat text-[#04082C] text-[28px] md:text-[36px] font-bold  text-center leading-[1.1]">
-                        Your Vehicles Might Be Smarter <br /> Than You Think
-                    </h1>
-                    <p className="mt-[10px] text-[#333] text-[16px] font-normal leading-6 font-openSans mb-5">
-                        Check your fleet’s compatibility and take the first step toward
-                        smarter, cloud-powered solutions designed for greater efficiency,
-                        flexibility, and future readiness.
-                    </p>
-                    <Link href={"/under-development"}>
-                        <button className="bg-[#2D65F2] rounded-[6px] px-5 py-3 text-white font-openSans text-[16px] font-bold">
-                            Check Compatibility
-                        </button>
-                    </Link>
-                </div>
-                <div className="flex relative h-[376px] w-full items-center justify-center overflow-hidden">
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                        className="absolute mt-[450px] h-[916px] object-cover"
-                    >
-                        <source src="/videos/global.webm" type="video/webm" />
-                        <source src="/videos/global.mp4" type="video/mp4" />
-                    </video>
-                </div>
+      <div className="mx-auto relative -mt-[88px] lg:-mt-[80px] xl:-mt-[90px] xxl:-mt-[100px] w-full lg:w-[1000px] 2xl:w-[1300px] overflow-hidden whitespace-nowrap">
+        <div className="flex animate-scroll items-center space-x-3 md:space-x-8">
+          {images.map((image, index) => (
+            <div key={index} className="z-[1000] flex-shrink-0">
+              <Image
+                src={image}
+                alt="image"
+                className="z-[1000] mix-blend-multiply w-[80px] xl:w-[80%] 2xl:w-[90%]"
+              />
             </div>
+          ))}
+        </div>
+        <div className="to-transparent absolute hidden md:block left-0 top-0 z-[1001] h-full w-32 bg-gradient-to-r from-white"></div>
+        <div className="to-transparent absolute hidden md:block right-0 top-0 z-[1001] h-full w-32 bg-gradient-to-l from-white"></div>
+      </div>
+    </section>
+  );
+};
 
-            <div className="mx-auto relative -mt-[88px] lg:-mt-[80px] xl:-mt-[90px] xxl:-mt-[100px] w-full lg:w-[1000px] 2xl:w-[1300px] overflow-hidden whitespace-nowrap">
-                <div className="flex animate-scroll items-center space-x-3 md:space-x-8">
-                    {images.map((image, index) => (
-                        <div key={index} className="z-[1000] flex-shrink-0">
-                            <Image
-                                src={image}
-                                alt="image"
-                                className="z-[1000] mix-blend-multiply w-[80px] xl:w-[80%] 2xl:w-[90%]"
-                            />
-                        </div>
-                    ))}
-                </div>
-                <div className="to-transparent absolute hidden md:block left-0 top-0 z-[1001] h-full w-32 bg-gradient-to-r from-white"></div>
-                <div className="to-transparent absolute hidden md:block right-0 top-0 z-[1001] h-full w-32 bg-gradient-to-l from-white"></div>
-            </div>
-        </section>
-    )
-}
-
-export default GlobeSection
+export default GlobeSection;
