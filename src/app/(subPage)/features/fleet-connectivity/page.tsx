@@ -1,78 +1,14 @@
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import ReducedDowntime from "@/components/icons/solution/MaintenanceDiagnostics/ReducedDowntime";
 import CentralizedControlIcon from "@/components/icons/solution/remoteScalability/CentralizedControlIcon";
+import GlobeSection from "@/components/modules/home/globe";
+
 import FeatureCard from "@/components/ui/FeatureCard";
 import Image from "next/image";
 import Link from "next/link";
-import image1 from "../../../../../public/brand/Frame 1707481648.svg";
-import image2 from "../../../../../public/brand/Frame 1707481652.svg";
-import image3 from "../../../../../public/brand/Frame 1707481662.png";
-import image4 from "../../../../../public/brand/Frame 1707481651.svg";
-import image5 from "../../../../../public/brand/Frame 1707481669.svg";
-import image6 from "../../../../../public/brand/Frame 1707481649.png";
-import image7 from "../../../../../public/brand/Frame 1707481650.svg";
-import image8 from "../../../../../public/brand/Frame 1707481653.svg";
-import image9 from "../../../../../public/brand/Frame 1707481670.png";
-import image10 from "../../../../../public/brand/Frame 1707481671.svg";
-import image11 from "../../../../../public/brand/Frame 1707481655.svg";
-import image12 from "../../../../../public/brand/Frame 1707481668.svg";
-import image13 from "../../../../../public/brand/Frame 1707481656.svg";
-import image14 from "../../../../../public/brand/Frame 1707481664.svg";
-import image15 from "../../../../../public/brand/Frame 1707481654.svg";
-import image16 from "../../../../../public/brand/Frame 1707481666.svg";
-import image17 from "../../../../../public/brand/Frame 1707481672.svg";
-import image18 from "../../../../../public/brand/Frame 1707481657.svg";
-import image19 from "../../../../../public/brand/Frame 1707481658.svg";
-import image20 from "../../../../../public/brand/Frame 1707481665.svg";
-import image21 from "../../../../../public/brand/Frame 1707481659.svg";
-import image22 from "../../../../../public/brand/Frame 1707481660.svg";
-import image23 from "../../../../../public/brand/Frame 1707481663.svg";
-import image24 from "../../../../../public/brand/Frame 1707481673.svg";
-import image25 from "../../../../../public/brand/Frame 1707481674.svg";
-import image26 from "../../../../../public/brand/Frame 1707481675.svg";
-import image27 from "../../../../../public/brand/Frame 1707481667.svg";
-import image28 from "../../../../../public/brand/Frame 1707481676.svg";
-import image29 from "../../../../../public/brand/Frame 1707481677.svg";
-import image30 from "../../../../../public/brand/Frame 1707481678.svg";
-import image31 from "../../../../../public/brand/Frame 1707481679.svg";
-import image32 from "../../../../../public/brand/Frame 1707481680.svg";
-import image33 from "../../../../../public/brand/Frame 1707481661.svg";
+
 const page = () => {
-  const images = [
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7,
-    image8,
-    image9,
-    image10,
-    image11,
-    image12,
-    image13,
-    image14,
-    image15,
-    image16,
-    image17,
-    image18,
-    image19,
-    image20,
-    image21,
-    image22,
-    image23,
-    image24,
-    image25,
-    image26,
-    image27,
-    image28,
-    image29,
-    image30,
-    image31,
-    image32,
-    image33,
-  ];
+
   const whyFleetManager = [
     {
       icon: NoHardware,
@@ -385,6 +321,8 @@ const page = () => {
           />
         </div>
       </section>
+
+
       {/* why fleet owner partner section*/}
       <section className="max-w-[1200px] mx-auto w-full mb-[60px] px-5">
         <h1 className="mb-[40px] lg:mb-[60px] text-center max-w-[840px] w-full mx-auto text-[#04082C] text-[28px] lg:text-[36px] font-bold">
@@ -397,7 +335,7 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              // className="lg:max-w-[380px] lg:w-full"
+            // className="lg:max-w-[380px] lg:w-full"
             />
           ))}
         </div>
@@ -408,9 +346,8 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              className={`w-full ${
-                index === 4 && "md:col-span-2 md:max-w-[380px] mx-auto"
-              }`}
+              className={`w-full ${index === 4 && "md:col-span-2 md:max-w-[380px] mx-auto"
+                }`}
             />
           ))}
         </div>
@@ -427,54 +364,8 @@ const page = () => {
         </div>
       </section>
       {/* vehicle might be smarter section */}
-      <section className="pt-[100px]">
-        <div className="z-[100] mx-auto max-w-[1300px] lg:w-[1000px] 2xl:w-[1300px] space-y-[20px] overflow-hidden">
-          <div className="relative z-[1000] px-5 max-w-[840px] w-full mx-auto text-center">
-            <h1 className="font-montserrat text-[#04082C] text-[28px] md:text-[36px] font-bold  text-center leading-[1.1]">
-              Your Vehicles Might Be Smarter <br /> Than You Think
-            </h1>
-            <p className="mt-[10px] text-[#333] text-[16px] font-normal leading-6 font-openSans mb-5">
-              Check your fleet’s compatibility and take the first step toward
-              smarter, cloud-powered solutions designed for greater efficiency,
-              flexibility, and future readiness.
-            </p>
-            <Link href={"/under-development"}>
-              <button className="bg-[#2D65F2] rounded-[6px] px-5 py-3 text-white font-openSans text-[16px] font-bold">
-                Check Compatibility
-              </button>
-            </Link>
-          </div>
-          <div className="flex relative h-[376px] w-full items-center justify-center overflow-hidden">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="absolute mt-[450px] h-[916px] object-cover"
-            >
-              <source src="/videos/global.webm" type="video/webm" />
-              <source src="/videos/global.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-        {/* brand logo animate */}
-        <div className="mx-auto relative -mt-[88px] lg:-mt-[80px] xl:-mt-[90px] xxl:-mt-[100px] w-full lg:w-[1000px] 2xl:w-[1300px] overflow-hidden whitespace-nowrap">
-          <div className="flex animate-scroll items-center space-x-3 md:space-x-8">
-            {images.map((image, index) => (
-              <div key={index} className="z-[1000] flex-shrink-0">
-                <Image
-                  src={image}
-                  alt="image"
-                  className="z-[1000] mix-blend-multiply w-[80px] xl:w-[80%] 2xl:w-[90%]"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="to-transparent absolute hidden md:block left-0 top-0 z-[1001] h-full w-32 bg-gradient-to-r from-white"></div>
-          <div className="to-transparent absolute hidden md:block right-0 top-0 z-[1001] h-full w-32 bg-gradient-to-l from-white"></div>
-        </div>
-      </section>
+      {/* Golobal */}
+      <GlobeSection />
     </div>
   );
 };
