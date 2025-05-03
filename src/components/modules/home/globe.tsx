@@ -117,6 +117,7 @@ const GlobeSection = ({ title, description }: GlobeSectionProps) => {
               <Image
                 src={image}
                 alt="image"
+                priority
                 className="z-[1000] mix-blend-multiply w-[80px] xl:w-[80%] 2xl:w-[90%]"
               />
             </div>
