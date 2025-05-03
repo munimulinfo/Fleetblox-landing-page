@@ -117,7 +117,7 @@ const Footer = () => {
                     Inspections
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/features/dynamic-maintenance">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Maintenance
                   </h5>
