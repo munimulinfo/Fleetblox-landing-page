@@ -7,7 +7,6 @@ import Link from "next/link";
 
 const page = () => {
   const items = [
-
     {
       id: 1,
       title: "No Hardware Required",
@@ -88,13 +87,13 @@ const page = () => {
       </section>
       {/* hero section end */}
       <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5">
-        <div className="w-full text-center">
+        <div className="w-full text-center max-w-[840px] mx-auto">
           <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
-            Accelerate Your EV Fleet Adoption
-            with Fleetblox
+            Accelerate Your EV Fleet Adoption with Fleetblox
           </h2>
           <p className="text-[#333] text-[16px] leading-6 font-openSans">
-            Incorporate electric vehicles into your fleet without needing any specialized hardware or tools.
+            Incorporate electric vehicles into your fleet without needing any
+            specialized hardware or tools.
           </p>
         </div>
         <div className="flex flex-col lg:flex-row items-center py-8 lg:py-[60px] justify-between">
@@ -151,7 +150,7 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-            // className="w-full"
+              // className="w-full"
             />
           ))}
         </div>

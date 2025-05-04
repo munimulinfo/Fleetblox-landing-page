@@ -272,13 +272,13 @@ const page = () => {
                   Review and approve permissions to allow data streaming.
                 </p>
               </div>
-              <div className="w-full mt-10 overflow-hidden">
+              <div className="w-full my-10 ">
                 <Image
                   src="/images/features/connect-step-3.svg"
                   alt="Remote Scalability Hero"
                   width={327}
                   height={700}
-                  className="object-contain w-full h-[550px] lg:h-[400px]"
+                  className="object-contain w-full h-[344px]"
                   quality={100}
                 />
               </div>
