@@ -61,7 +61,7 @@ const ModelSelector = ({ params }: any) => {
           ? JSON.parse(selectedCountriesData)
           : [];
 
-        console.log("Selected countries:", selectedCountries);
+
 
         // Group countries by region as before
         const regionsWithCountries = selectedCountries.reduce(
