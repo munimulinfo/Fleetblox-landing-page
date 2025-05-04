@@ -38,13 +38,19 @@ const ProductSubpage = () => {
             </h1>
           </Link>
           <Link href="/features/dynamic-maintenance">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
               Maintenance
+              <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
+                Upcoming
+              </button>
             </h1>
           </Link>
           <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
               Expenses
+              <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
+                Upcoming
+              </button>
             </h1>
           </Link>
           <Link href="/under-development">
@@ -53,8 +59,11 @@ const ProductSubpage = () => {
             </h1>
           </Link>
           <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
               Alerts
+              <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
+                Upcoming
+              </button>
             </h1>
           </Link>
           <Link href="/under-development">
