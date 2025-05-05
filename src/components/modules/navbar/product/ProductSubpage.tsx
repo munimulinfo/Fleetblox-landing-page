@@ -14,7 +14,7 @@ const ProductSubpage = () => {
               Overview
             </h1>
           </Link>
-          <Link href="/under-development">
+          <Link href="/features/onboarding">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Onboarding
             </h1>
@@ -24,7 +24,7 @@ const ProductSubpage = () => {
               Connectivity
             </h1>
           </Link>
-          <Link href="/under-development">
+          <Link href="/features/scalability">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Scalability
             </h1>
