@@ -197,7 +197,7 @@ const page = () => {
         </div>
         <div className="max-w-[1200px] md:hidden block w-full mx-auto mt-[40px] px-5">
           <Image
-            src="/images/features/cloud-connectivity-work-mobile.svg"
+            src="/images/features/Ask-Bee-Get-Answer-mobile.svg"
             alt="Remote Scalability Hero"
             width={700}
             height={491}
