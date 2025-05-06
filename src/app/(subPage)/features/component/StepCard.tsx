@@ -36,7 +36,7 @@ const StepCard = ({
           />
         </div>
       </div>
-      <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[565px] w-full max-w-[358px] left-[8px]" />
+      <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[565px] w-[calc(100%-15px)] max-w-[1000px] left-[8px]" />
     </div>
   );
 };

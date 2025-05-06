@@ -403,7 +403,7 @@ const LowerOperation = () => {
     </svg>
   );
 };
-const RealtimeVisibility = () => {
+export const RealtimeVisibility = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -424,7 +424,7 @@ const RealtimeVisibility = () => {
     </svg>
   );
 };
-const NoHardware = () => {
+export const NoHardware = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
