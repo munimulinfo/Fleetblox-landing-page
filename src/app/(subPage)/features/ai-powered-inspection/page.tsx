@@ -7,6 +7,7 @@ import stayCompliant from "../icons/stayCompliant";
 import zeroPaper from "../icons/zeroPaper";
 import GlobeSection from "@/components/modules/home/globe";
 import FeatureCard from "@/components/ui/FeatureCard";
+import StepCard from "../component/StepCard";
 
 const page = () => {
   const items = [
@@ -150,59 +151,18 @@ const page = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 relative max-w-[1200px] mx-auto w-full gap-5 justify-items-center items-center px-5">
           <div className="absolute hidden lg:block left-1/2 top-1/2 mt-[90px] max-w-[664px] max-h-[664px] h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FBEECA] opacity-40 blur-[200px]"></div>
-          <div
-            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[540px] w-full`}
-          >
-            <div className=" bg-white absolute z-50 rounded-[24px] py-10 px-[30px] flex flex-col gap-[10px] w-full h-full">
-              {/* Card Header */}
-              <div className="font-openSans text-center lg:text-left">
-                <h3 className="text-[#04082C] text-[22px] font-bold">
-                  Assign a Technician
-                </h3>
-                <p className="text-[14px] text-[#7D7D7D] leading-5 mt-[5px]">
-                  Choose a team member or partner to handle the inspection.
-                </p>
-              </div>
-              <div className="w-full mt-10 ">
-                <Image
-                  src="/images/ai-powered-inspection.png"
-                  alt="Remote Scalability Hero"
-                  width={327}
-                  height={344}
-                  className="object-contain w-full h-[344px]"
-                  quality={100}
-                />
-              </div>
-            </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[565px] w-full max-w-[358px] left-[8px]"></div>
-          </div>
-          <div
-            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[600px] lg:h-[540px] w-full`}
-          >
-            <div className=" bg-white absolute z-50 rounded-[24px] py-10 px-[30px] flex flex-col gap-[10px] w-full h-full">
-              {/* Card Header */}
-              <div className="font-openSans text-center lg:text-left">
-                <h3 className="text-[#04082C] text-[22px] font-bold">
-                  Perform the Inspection
-                </h3>
-                <p className="text-[14px] text-[#7D7D7D] leading-5 mt-[5px]">
-                  Complete the digital checklist, capture photos, and test the
-                  vehicle’s performance.
-                </p>
-              </div>
-              <div className="w-full mt-10">
-                <Image
-                  src="/images/ai-powered-inspection2.png"
-                  alt="Remote Scalability Hero"
-                  width={327}
-                  height={344}
-                  className="object-contain w-full h-[344px]"
-                  quality={100}
-                />
-              </div>
-            </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[565px] w-full max-w-[358px] left-[8px]"></div>
-          </div>
+          <StepCard
+            title="Assign a Technician"
+            description="Choose a team member or partner to handle the inspection."
+            imagePath="/images/ai-powered-inspection.png"
+          />
+          <StepCard
+            title="Perform the Inspection"
+            description="Complete the digital checklist, capture photos, and test the
+                  vehicle’s performance."
+            imagePath="/images/ai-powered-inspection2.png"
+          />
+
           <div
             className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[600px] lg:h-[536px] w-full`}
           >
