@@ -61,11 +61,13 @@ const ModelSelector = ({ params }: any) => {
           ? JSON.parse(selectedCountriesData)
           : [];
 
+
+
         // Group countries by region as before
         const regionsWithCountries = selectedCountries.reduce(
           (acc: { [key: string]: string[] }, country: string) => {
             let region: string;
-            if (country === "United States") region = "US";
+            if (country === "United States of America") region = "US";
             else if (country === "Canada") region = "CA";
             else region = "EUROPE";
             if (!acc[region]) acc[region] = [];
@@ -433,11 +435,10 @@ const ModelSelector = ({ params }: any) => {
             {currentCountries.map((country) => (
               <div
                 key={country.countryCode}
-                className={`border rounded-[16px] overflow-hidden transition-all duration-200 ${
-                  expandedCountries.has(country.countryCode)
-                    ? "border-[#DFDFDF] shadow-sm"
-                    : "border-[#DFDFDF]"
-                }`}
+                className={`border rounded-[16px] overflow-hidden transition-all duration-200 ${expandedCountries.has(country.countryCode)
+                  ? "border-[#DFDFDF] shadow-sm"
+                  : "border-[#DFDFDF]"
+                  }`}
               >
                 {/* Country Header - Always visible */}
                 <div
@@ -516,7 +517,7 @@ const ModelSelector = ({ params }: any) => {
                                   }
                                   aria-describedby="model-selection"
                                   className="mr-2 cursor-pointer"
-                                  onChange={() => {}} // Required for controlled component
+                                  onChange={() => { }} // Required for controlled component
                                 />
                                 <span className="font-semibold w-full text-[#333] font-openSans leading-relaxed text-sm">
                                   {model.name
@@ -529,7 +530,7 @@ const ModelSelector = ({ params }: any) => {
                                   e.stopPropagation();
                                   setExpandedModel((prev) =>
                                     prev ===
-                                    `${country.countryCode}-${model.name}`
+                                      `${country.countryCode}-${model.name}`
                                       ? null
                                       : `${country.countryCode}-${model.name}`
                                   );
@@ -539,7 +540,7 @@ const ModelSelector = ({ params }: any) => {
                                 <Image
                                   src={
                                     expandedModel ===
-                                    `${country.countryCode}-${model.name}`
+                                      `${country.countryCode}-${model.name}`
                                       ? open
                                       : close
                                   }
@@ -550,8 +551,8 @@ const ModelSelector = ({ params }: any) => {
                             </div>
                             {expandedModel ===
                               `${country.countryCode}-${model.name}` && (
-                              <AccessPoint permission={model.endpoints} />
-                            )}
+                                <AccessPoint permission={model.endpoints} />
+                              )}
                           </div>
                         )
                       )
@@ -582,11 +583,10 @@ const ModelSelector = ({ params }: any) => {
           {`Can’t find my make`}
         </button>
         <button
-          className={`w-full text-white px-[14px] py-[10px] font-openSans rounded-md ${
-            Object.values(selectedModels).some((models) => models.length > 0)
-              ? "bg-[#2D65F2]"
-              : "bg-[#2D65F2]/50"
-          }`}
+          className={`w-full text-white px-[14px] py-[10px] font-openSans rounded-md ${Object.values(selectedModels).some((models) => models.length > 0)
+            ? "bg-[#2D65F2]"
+            : "bg-[#2D65F2]/50"
+            }`}
           disabled={
             !Object.values(selectedModels).some((models) => models.length > 0)
           }
