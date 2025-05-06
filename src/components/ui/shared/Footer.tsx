@@ -136,7 +136,7 @@ const Footer = () => {
                 <Link href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px]">Teams</h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/features/ai-assistant">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     AI Assistant
                   </h5>
