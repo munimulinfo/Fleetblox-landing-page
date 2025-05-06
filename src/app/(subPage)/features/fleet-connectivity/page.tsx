@@ -6,6 +6,7 @@ import GlobeSection from "@/components/modules/home/globe";
 import FeatureCard from "@/components/ui/FeatureCard";
 import Image from "next/image";
 import Link from "next/link";
+import StepCard from "../component/StepCard";
 
 const page = () => {
   const whyFleetManager = [
@@ -47,7 +48,7 @@ const page = () => {
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex flex-col px-5 lg:flex-row items-center justify-between">
           <div className="lg:pl-[130px]">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px]">
-              Fleet Connectivity
+              Fleet Integration
             </h3>
             <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-[1.1]">
               Smarter, Hardware-Free Vehicle Control in Real Time
@@ -187,6 +188,8 @@ const page = () => {
           </div>
         </div>
       </section>
+
+      {/* how fleetblox connected section */}
       <section className="bg-[#FAFAFF] py-[100px]">
         <h3 className="text-[#04082C] text-[36px] font-bold leading-[1.1] text-center ">
           Connect Your Fleet In Just 3 Simple Steps
@@ -207,87 +210,23 @@ const page = () => {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 relative max-w-[1200px] mx-auto w-full gap-5 justify-items-center items-center px-5">
           <div className="absolute hidden lg:block left-1/2 top-1/2 mt-[90px] max-w-[664px] max-h-[664px] h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FBEECA] opacity-40 blur-[200px]"></div>
-          <div
-            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[540px] w-full`}
-          >
-            <div className=" bg-white absolute z-50 rounded-[24px] py-10 px-[30px] flex flex-col gap-[10px] w-full h-full">
-              {/* Card Header */}
-              <div className="font-openSans text-center lg:text-left">
-                <h3 className="text-[#04082C] text-[22px] font-bold">
-                  Scan The VIN
-                </h3>
-                <p className="text-[14px] text-[#7D7D7D] leading-5 mt-[5px]">
-                  Add the vehicle using the VIN or scan it with the VIN scanner.
-                </p>
-              </div>
-              <div className="w-full mt-10 ">
-                <Image
-                  src="/images/features/connect-step-1.svg"
-                  alt="Remote Scalability Hero"
-                  width={327}
-                  height={344}
-                  className="object-contain w-full h-[344px]"
-                  quality={100}
-                />
-              </div>
-            </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[565px] w-full max-w-[358px] left-[8px]"></div>
-          </div>
-          <div
-            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[600px] lg:h-[540px] w-full`}
-          >
-            <div className=" bg-white absolute z-50 rounded-[24px] py-10 px-[30px] flex flex-col gap-[10px] w-full h-full">
-              {/* Card Header */}
-              <div className="font-openSans text-center lg:text-left">
-                <h3 className="text-[#04082C] text-[22px] font-bold">
-                  Connect The Vehicle
-                </h3>
-                <p className="text-[14px] text-[#7D7D7D] leading-5 mt-[5px]">
-                  Use your manufacturer credentials to link your vehicle.
-                </p>
-              </div>
-              <div className="w-full mt-10">
-                <Image
-                  src="/images/features/connect-step-2.svg"
-                  alt="Remote Scalability Hero"
-                  width={327}
-                  height={344}
-                  className="object-contain w-full h-[344px]"
-                  quality={100}
-                />
-              </div>
-            </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[565px] w-full max-w-[358px] left-[8px]"></div>
-          </div>
-          <div
-            className={`relative z-[200] top-[0px] mx-auto transform flex-col h-[600px] lg:h-[536px] w-full`}
-          >
-            <div className=" bg-white absolute z-50 rounded-[24px] pt-10 px-[30px] flex flex-col gap-[10px] w-full h-full">
-              {/* Card Header */}
-              <div className="font-openSans text-center lg:text-left">
-                <h3 className="text-[#04082C] text-[22px] font-bold">
-                  Enable Access
-                </h3>
-                <p className="text-[14px] text-[#7D7D7D] leading-5 mt-[5px]">
-                  Review and approve permissions to allow data streaming.
-                </p>
-              </div>
-              <div className="w-full my-10 ">
-                <Image
-                  src="/images/features/connect-step-3.svg"
-                  alt="Remote Scalability Hero"
-                  width={327}
-                  height={700}
-                  className="object-contain w-full h-[344px]"
-                  quality={100}
-                />
-              </div>
-            </div>
-            <div className="absolute top-[1vh] z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[610px] lg:h-[565px] w-full max-w-[358px] left-[8px]"></div>
-          </div>
+          <StepCard
+            title="Scan The VIN"
+            description="Add the vehicle using the VIN or scan it with the VIN scanner."
+            imagePath="/images/features/connect-step-1.svg"
+          />
+          <StepCard
+            title="Connect The Vehicle"
+            description="Use your manufacturer credentials to link your vehicle."
+            imagePath="/images/features/connect-step-2.svg"
+          />
+          <StepCard
+            title="Enable Access"
+            description=" Review and approve permissions to allow data streaming."
+            imagePath="/images/features/connect-step-3.svg"
+          />
         </div>
       </section>
-      {/* how fleetblox connected section */}
       <section className="py-[100px] ">
         <div className="max-w-[840px] w-full mx-auto text-center px-5">
           <h3 className="text-[#04082C] text-[18px] md:text-[36px] font-bold leading-[1.1]">
@@ -403,7 +342,7 @@ const LowerOperation = () => {
     </svg>
   );
 };
-const RealtimeVisibility = () => {
+export const RealtimeVisibility = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -424,7 +363,7 @@ const RealtimeVisibility = () => {
     </svg>
   );
 };
-const NoHardware = () => {
+export const NoHardware = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

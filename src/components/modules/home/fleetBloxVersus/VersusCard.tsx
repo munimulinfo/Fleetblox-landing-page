@@ -19,10 +19,10 @@ const VirtualCard: React.FC<TVersesCard> = ({
   return (
     <div
       key={index}
-      className="sticky z-50 top-[5vh] flex h-[100vh] flex-col items-center justify-center xl:top-[13vh] "
+      className="sticky z-50 top-[5vh] flex h-[100vh] flex-col items-center justify-center xl:top-[13vh] xl:w-[500px]  max-w-[500px]"
     >
       <motion.div
-        className={`relative z-[200] top-[0px] mx-auto transform flex-col gap-x-[30px] max-h-[500px] h-full xl:h-[500px] max-w-[500px] w-full xl:w-[500px]`}
+        className={`relative z-[200] top-[0px] mx-auto transform flex-col gap-x-[30px] max-h-[500px] h-full xl:h-[500px]  w-full `}
         style={{ top: `calc(-5vh + ${index * 15}px)`, scale: scale }}
       >
         {index === 0 && (
@@ -31,7 +31,7 @@ const VirtualCard: React.FC<TVersesCard> = ({
         <div className="hidden md:block ml-0 lg:ml-10 xl:ml-20 absolute top-[0vh] xl:-top-[8vh] z-[200] w-full h-full">
           {/* <div className="w-[500px] h-[500px] bg-[#FFE1BF] opacity-30 blur-[100px] rounded-full"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div> */}
-          <div className="w-[500px] h-[500px] bg-white rounded-[24px] pt-8 px-4 pb-4 flex flex-col gap-[10px]">
+          <div className="max-w-[500px] w-full h-[500px] bg-white rounded-[24px] pt-8 px-4 pb-4 flex flex-col gap-[10px]">
             {/* Card Header */}
             <div className="flex flex-col items-center mb-8">
               <div className="w-8 h-8 rounded-full border-2 border-[#0336BC] flex items-center justify-center mb-3">
