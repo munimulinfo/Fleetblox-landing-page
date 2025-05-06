@@ -65,7 +65,7 @@ const page = () => {
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex flex-col px-5 lg:flex-row items-center justify-between">
           <div className="lg:pl-[130px]">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px]">
-              Inspections
+              Digital Inspections
             </h3>
             <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-[1.1]">
               Smarter Inspections Powered by AI
@@ -278,7 +278,7 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-            // className="lg:max-w-[380px] lg:w-full"
+              // className="lg:max-w-[380px] lg:w-full"
             />
           ))}
         </div>
@@ -289,8 +289,9 @@ const page = () => {
               icon={<data.icon />}
               title={data.title}
               description={data.description}
-              className={`w-full ${index === 4 && "md:col-span-2 md:max-w-[380px] mx-auto"
-                }`}
+              className={`w-full ${
+                index === 4 && "md:col-span-2 md:max-w-[380px] mx-auto"
+              }`}
             />
           ))}
         </div>

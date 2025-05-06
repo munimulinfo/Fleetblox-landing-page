@@ -49,7 +49,7 @@ const page = () => {
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex flex-col px-5 lg:flex-row items-center justify-between">
           <div className="lg:pl-[130px] max-w-[700px] w-full">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px] w-full">
-              Dynamic Maintenance
+              Maintenance & Diagnostics
             </h3>
             <h1 className="text-[#04082C] text-[36px] lg:text-[50px] font-bold leading-[1.1] w-full">
               Smarter Maintenance That Thinks Ahead

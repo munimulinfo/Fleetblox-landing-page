@@ -86,7 +86,7 @@ const Footer = () => {
               </div>
             </div>
             {/* pages section */}
-            <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10 lg:gap-[70px]">
+            <div className="lg:flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 text-[16px] font-openSans font-normal text-white leading-6 gap-10 lg:gap-[60px]">
               {/* product section */}
               <div className="text-[14px] leading-5">
                 <h5 className=" font-openSans text-[#DFDFDF] text-[12px] leading-normal mb-[10px] ">
@@ -97,44 +97,50 @@ const Footer = () => {
                     Overview
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/features/onboarding">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Onboarding
+                    Getting Started
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/features/fleet-connectivity">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Connectivity
+                    Fleet Integration
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/features/scalability">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Scalability
+                    Fleet Expansion
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/features/ai-powered-inspection">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Inspections
+                    Digital Inspections
                   </h5>
                 </Link>
                 <Link href="/features/dynamic-maintenance">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Maintenance
+                    Maintenance & Diagnostics
                   </h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className="font-openSans py-[2px] mb-[5px]">Expenses</h5>
                 </Link>
                 <Link href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
-                    Compliance
+                    Expenses Management
                   </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className="font-openSans py-[2px] mb-[5px]">Alerts</h5>
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Documents Management
+                  </h5>
                 </Link>
                 <Link href="/under-development">
-                  <h5 className="font-openSans py-[2px] mb-[5px]">Teams</h5>
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Intelligent Alerts
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className="font-openSans py-[2px] mb-[5px]">
+                    Team Management
+                  </h5>
                 </Link>
                 <Link href="/features/ai-assistant">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
@@ -210,22 +216,12 @@ const Footer = () => {
                 </h5>
                 <Link href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
+                    Fleet Management
+                  </h5>
+                </Link>
+                <Link href="/under-development">
+                  <h5 className=" font-openSans py-[2px] mb-[5px]">
                     Auto Dealerships
-                  </h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Car Sharing Services
-                  </h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Car Subscription Services
-                  </h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Auto Insurance Services
                   </h5>
                 </Link>
                 <Link href="/under-development">
@@ -236,11 +232,6 @@ const Footer = () => {
                 <Link href="/under-development">
                   <h5 className=" font-openSans py-[2px] mb-[5px]">
                     E-Mobility Services
-                  </h5>
-                </Link>
-                <Link href="/under-development">
-                  <h5 className=" font-openSans py-[2px] mb-[5px]">
-                    Fleet Management Services
                   </h5>
                 </Link>
               </div>

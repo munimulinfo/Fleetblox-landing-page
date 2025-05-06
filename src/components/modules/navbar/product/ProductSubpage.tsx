@@ -19,14 +19,19 @@ const ProductSubpage = () => {
               Getting Started
             </h1>
           </Link>
+          <Link href="/features/fleet-connectivity">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+              Fleet Integration
+            </h1>
+          </Link>
           <Link href="/features/scalability">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Scalability
+              Fleet Expansion
             </h1>
           </Link>
           <Link href="/features/ai-powered-inspection">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
-              Inspections
+              Digital Inspections
               <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
                 Upcoming
               </button>
@@ -34,7 +39,7 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/features/dynamic-maintenance">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
-              Maintenance
+              Maintenance & Diagnostics
               <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
                 Upcoming
               </button>
@@ -42,7 +47,7 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
-              Expenses
+              Expenses Management
               <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
                 Upcoming
               </button>
@@ -50,12 +55,12 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Compliance
+              Documents Management
             </h1>
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
-              Alerts
+              Intelligent Alerts
               <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
                 Upcoming
               </button>
@@ -63,7 +68,7 @@ const ProductSubpage = () => {
           </Link>
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Teams
+              Team Management
             </h1>
           </Link>
           <Link href="/features/ai-assistant">
