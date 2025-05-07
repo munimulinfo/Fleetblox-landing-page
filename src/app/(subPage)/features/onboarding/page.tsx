@@ -272,8 +272,8 @@ const Onboarding = () => {
             </section>
             {/* vehicle might be smarter section */}
             <GlobeSection
-                title="Start Your Fleet Remote Diagnosing Today"
-                description="Take the first step towards smarter fleet maintenance with Fleetblox, leveraging AI to optimize your fleet’s performance."
+                title="Take Command of Your Fleet— Day One"
+                description="Add your first vehicles today and watch your business expand with precision"
             />
         </div>
     );

@@ -273,8 +273,9 @@ const Scalability = () => {
             </section>
             {/* vehicle might be smarter section */}
             <GlobeSection
-                title="Start Your Fleet Remote Diagnosing Today"
-                description="Take the first step towards smarter fleet maintenance with Fleetblox, leveraging AI to optimize your fleet’s performance."
+                title="Expand and Simplify Your Fleet Management Today"
+                description=" Unlock the full potential of centralized, intelligent fleet control. Start onboarding your fleet 
+today and experience seamless growth across all locations."
             />
         </div>
     );
