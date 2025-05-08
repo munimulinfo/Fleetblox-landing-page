@@ -207,7 +207,7 @@ const page = () => {
         </div>
         <div className="max-w-[1200px] hidden md:block w-full mx-auto mt-[60px] px-5">
           <Image
-            src="/images/features/Fleetblox-connect.svg"
+            src="/images/features/maintenance/Fleetblox-connect.svg"
             alt="Remote Scalability Hero"
             width={700}
             height={491}
