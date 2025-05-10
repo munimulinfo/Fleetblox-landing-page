@@ -121,7 +121,7 @@ body {
 
 /* Add to your global CSS or component-style */
 .content-section {
-  min-height: 60vh;
+  min-height: 60vh; /* Reduced from 100vh to 50vh for tighter spacing */
   display: flex;
   flex-direction: column;
   justify-content: center;

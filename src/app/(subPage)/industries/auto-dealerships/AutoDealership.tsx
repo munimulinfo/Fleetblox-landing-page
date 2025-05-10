@@ -4,14 +4,20 @@ import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import Image from "next/image";
 import Link from "next/link";
 import GlobeSection from "@/components/modules/home/globe";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+// Register the ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const AutoDealership = () => {
-    const triggerRef = useRef(null);
-    const imageRef = useRef(null);
+    const triggerRef = useRef<HTMLElement>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
+
 
     const animationItems = [
         {
@@ -31,60 +37,59 @@ const AutoDealership = () => {
         }
     ];
 
-    useEffect(() => {
-        if (typeof window === "undefined") return;
+    useGSAP(() => {
+        if (!triggerRef.current || !imageRef.current || !contentRef.current) return;
 
-        // Register the ScrollTrigger plugin
-        gsap.registerPlugin(ScrollTrigger);
-
-        const sections = document.querySelectorAll(".content-section");
-
-        // Create triggers for each content section with smoother transitions
-        sections.forEach((section, i) => {
-            ScrollTrigger.create({
-                trigger: section,
-                start: "center 65%", // Trigger when center of section reaches 65% of viewport
-                end: "center 35%", // End when center of section is at 35% of viewport
-                onEnter: () => {
-                    gsap.to(".image-container", {
-                        opacity: 0,
-                        duration: 0.5,
-                        onComplete: () => {
-                            setActiveIndex(i);
-                            gsap.to(".image-container", { opacity: 1, duration: 0.5 });
-                        }
-                    });
-                },
-                onEnterBack: () => {
-                    gsap.to(".image-container", {
-                        opacity: 0,
-                        duration: 0.5,
-                        onComplete: () => {
-                            setActiveIndex(i);
-                            gsap.to(".image-container", { opacity: 1, duration: 0.5 });
-                        }
-                    });
-                },
-                markers: false // Set to true for debugging
-            });
+        // Pin the image container
+        ScrollTrigger.create({
+            trigger: triggerRef.current,
+            start: "top 20%",
+            end: "bottom bottom-=100",
+            pin: imageRef.current,
+            pinSpacing: false,
+            markers: false, // Set to false in production
+            scrub: true,
         });
 
-        // Create sticky effect for the image container that stays centered
-        if (triggerRef.current && imageRef.current) {
-            ScrollTrigger.create({
-                trigger: triggerRef.current,
-                start: "top center", // Pin when section top hits center of viewport
-                end: "bottom center", // Unpin when section bottom hits center
-                pin: imageRef.current,
-                pinReparent: false,
-                pinSpacing: true
-            });
-        }
+        // Animate content sections
+        const contentElements = Array.from(contentRef.current.children) as HTMLElement[];
 
-        return () => {
-            // Clean up all ScrollTrigger instances
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
+        contentElements.forEach((content, index) => {
+            gsap.fromTo(content as HTMLElement,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scrollTrigger: {
+                        trigger: content,
+                        start: "top 70%", // Trigger earlier
+                        end: "center 40%", // End animation sooner
+                        scrub: 0.5,
+                        onEnter: () => {
+                            setActiveIndex(index);
+                            contentElements.forEach((el, i) => {
+                                gsap.to(el as HTMLElement, {
+                                    filter: i === index ? "blur(0px)" : "blur(2px)",
+                                    duration: 0.3
+                                });
+                            });
+                        },
+                        onLeaveBack: () => {
+                            if (index > 0) {
+                                setActiveIndex(index - 1);
+                            }
+                            contentElements.forEach((el, i) => {
+                                gsap.to(el as HTMLElement, {
+                                    filter: i === (index - 1) ? "blur(0px)" : "blur(2px)",
+                                    duration: 0.3
+                                });
+                            });
+                        }
+                    },
+                    duration: 0.5
+                }
+            );
+        });
     }, []);
 
     return (
@@ -136,6 +141,7 @@ const AutoDealership = () => {
             </section>
 
             {/* smart dealership section */}
+
             <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5">
                 <div className="max-w-[840px] mx-auto w-full text-center">
                     <h1 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
@@ -172,6 +178,7 @@ const AutoDealership = () => {
                                 title: "Cross-Location Logistics",
                                 content: "Effortlessly move vehicles between branches. Our platform simplifies logistics, ensuring your fleet is always where it needs to be."
                             },
+
                         ].map((item, index) => (
                             <div key={index} className="border-l-2 border-[#DFDFDF] pl-4">
                                 <button
@@ -182,6 +189,7 @@ const AutoDealership = () => {
                                     }}
                                 >
                                     <span className="text-lg">{item.title}</span>
+
                                 </button>
                                 <div id={`content-${index}`} className="mt-2 text-[#333333] text-[16px] leading-[150%] font-openSans hidden">
                                     <p>{item.content}</p>
@@ -193,73 +201,69 @@ const AutoDealership = () => {
             </section>
 
             {/* animations section with GSAP scrolling */}
-            <section className="relative max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5 mb-[200px]" ref={triggerRef}>
-                <div className="max-w-[900px] mx-auto w-full text-center mb-16">
-                    <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[16px]">
+            <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5 mb-[100px]" ref={triggerRef}>
+                <div className="max-w-[900px] mx-auto w-full text-center mb-6">
+                    <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
                         Smart Fleet Management That Adapts
                     </h2>
-                    <p className="text-[#333] text-[16px] leading-6 font-openSans max-w-[700px] mx-auto">
+                    <p className="text-[#333] text-[16px] leading-6 font-openSans">
                         From vehicle maintenance to compliance management, our platform delivers end-to-end solutions
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 relative">
                     {/* Sticky Image Container */}
                     <div className="hidden lg:block" ref={imageRef}>
-                        <div className="bg-[#F9F9FC] rounded-lg overflow-hidden flex items-center justify-center p-8 h-[500px] relative">
-                            <div className="image-container w-full h-full flex items-center justify-center">
-                                {animationItems.map((item, index) => (
-                                    <div
-                                        key={`image-${index}`}
-                                        className={`transition-all duration-700 ${activeIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} absolute inset-0 flex items-center justify-center`}
-                                    >
-                                        <Image
-                                            src={item.image}
-                                            alt={`Auto Dealership Feature ${index + 1}`}
-                                            width={500}
-                                            height={380}
-                                            priority={index === 0}
-                                            className="object-contain max-w-[500px] max-h-[380px]"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
+                        <div className="rounded-lg overflow-hidden flex items-center justify-center p-8 h-[500px]">
+                            {animationItems.map((item, index) => (
+                                <div
+                                    key={`image-${index}`}
+                                    className={`transition-opacity duration-500 ${activeIndex === index ? 'opacity-100' : 'opacity-0'} absolute`}
+                                >
+                                    <Image
+                                        src={item.image}
+                                        alt={`Auto Dealership Feature ${index + 1}`}
+                                        width={500}
+                                        height={380}
+                                        className="object-contain max-w-[500px] max-h-[380px]"
+                                    />
+                                </div>
+                            ))}
                         </div>
                     </div>
 
                     {/* Scrolling Content */}
-                    <div className="lg:min-h-[1500px]">
-                        <div className="space-y-[60vh]">
-                            {animationItems.map((item, index) => (
-                                <div
-                                    key={`content-${index}`}
-                                    className="content-section bg-white rounded-lg p-10 shadow-sm border border-gray-100"
-                                >
-                                    {/* Mobile-only image */}
-                                    <div className="lg:hidden mb-8">
-                                        <Image
-                                            src={item.image}
-                                            alt={`Auto Dealership Feature ${index + 1}`}
-                                            width={400}
-                                            height={300}
-                                            className="object-contain w-full"
-                                        />
-                                    </div>
-
-                                    <h3 className="text-[#04082C] leading-[120%] font-bold text-[28px] lg:text-[32px] font-montserrat">
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-[#333333] mt-6 text-[16px] leading-[160%] font-openSans">
-                                        {item.content}
-                                    </p>
+                    <div className="lg:min-h-[500px] space-y-[30px]" ref={contentRef}>
+                        {animationItems.map((item, index) => (
+                            <div
+                                key={`content-${index}`}
+                                className="content-section bg-white rounded-lg p-8 mb-[20px]"
+                            >
+                                {/* Mobile-only image */}
+                                <div className="lg:hidden mb-6">
+                                    <Image
+                                        src={item.image}
+                                        alt={`Auto Dealership Feature ${index + 1}`}
+                                        width={400}
+                                        height={300}
+                                        className="object-contain w-full"
+                                    />
                                 </div>
-                            ))}
-                        </div>
+
+                                <h3 className="text-[#04082C] mt-2 leading-[120%] font-bold text-[28px] lg:text-[32px] font-montserrat">
+                                    {item.title}
+                                </h3>
+                                <p className="text-[#333333] mt-4 text-[16px] leading-[150%] font-openSans">
+                                    {item.content}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* fill the gap section */}
+
             <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5">
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-10">
                     {/* Left side - Content */}
@@ -272,7 +276,7 @@ const AutoDealership = () => {
                     </div>
 
                     {/* Right side - Image */}
-                    <div className="rounded-lg overflow-hidden flex items-center justify-center py-12">
+                    <div className=" rounded-lg overflow-hidden flex items-center justify-center py-12">
                         <Image
                             src="/images/industries/fill-the-gaps.png"
                             alt="Auto Dealership Management System"
@@ -284,7 +288,6 @@ const AutoDealership = () => {
                     </div>
                 </div>
             </section>
-            
             {/* maximize customer satisfaction section */}
             <section className="bg-[#FAFAFF] w-full mt-[60px] lg:mt-[100px] py-12">
                 <div className="max-w-[1200px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-10">
@@ -309,7 +312,6 @@ const AutoDealership = () => {
                     </div>
                 </div>
             </section>
-            
             <GlobeSection
                 title="Unify Your Dealership Network, Elevate Your Fleet Operations."
                 description="No more blind spots, missed inspections, or inventory imbalances. Fleetblox gives you total control of all brands and branches - so you can manage smarter, move faster, and sell more."
@@ -319,3 +321,5 @@ const AutoDealership = () => {
 };
 
 export default AutoDealership;
+
+
