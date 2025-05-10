@@ -77,22 +77,12 @@ const SolutionsSubpage = () => {
         <div className="flex flex-col lg:space-y-[8px] space-y-[5px]">
           <Link href="/industries/auto-dealerships">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
+              Fleet Management
+            </h1>
+          </Link>
+          <Link href="/industries/auto-dealerships">
+            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Auto Dealerships
-            </h1>
-          </Link>
-          <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Car Sharing Services
-            </h1>
-          </Link>
-          <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Car Subscription Services
-            </h1>
-          </Link>
-          <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Auto Insurance Services
             </h1>
           </Link>
           <Link href="/under-development">
@@ -103,11 +93,6 @@ const SolutionsSubpage = () => {
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               E-Mobility Services
-            </h1>
-          </Link>
-          <Link href="/under-development">
-            <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Fleet Management Services
             </h1>
           </Link>
         </div>
