@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import StepCard from "../component/StepCard";
 import { NoHardware, RealtimeVisibility } from "../fleet-connectivity/page";
+import FleetConnectionStep from "../component/FleetConnectionStep";
 
 const page = () => {
   const whyFleetTeamChoose = [
@@ -145,14 +146,7 @@ const page = () => {
           conversation.
         </p>
         <div className="max-w-[1200px] w-full mx-auto mt-[60px] mb-10 px-5">
-          <Image
-            src="/images/features/connect-fleet-step.svg"
-            alt="Remote Scalability Hero"
-            width={700}
-            height={491}
-            className="object-contain w-full"
-            quality={100}
-          />
+          <FleetConnectionStep />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 relative max-w-[1200px] mx-auto w-full gap-5 justify-items-center items-center px-5">
           <div className="absolute hidden lg:block left-1/2 top-1/2 mt-[90px] max-w-[664px] max-h-[664px] h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FBEECA] opacity-40 blur-[200px]"></div>
@@ -164,12 +158,12 @@ const page = () => {
           <StepCard
             title="Get Instant Insights"
             description="Bee pulls data instantly from your system and gives you clear, actionable answers."
-            imagePath="/images/features/connect-step-2.svg"
+            imagePath="/images/features/BEE-step-2.svg"
           />
           <StepCard
             title="Take Action Immediately"
             description="Use Bee to trigger tasks like generating reports, updating vehicle records, or alerting your team."
-            imagePath="/images/features/connect-step-3.svg"
+            imagePath="/images/features/BEE-step-3.svg"
           />
         </div>
       </section>
@@ -385,7 +379,7 @@ const AlwaysOnAssistant = () => {
     </svg>
   );
 };
-const DecisionMakingIcon = () => {
+export const DecisionMakingIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
