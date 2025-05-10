@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GlobeSection from "@/components/modules/home/globe";
 import StepCard from "../component/StepCard";
+import FleetConnectionStep from "../component/FleetConnectionStep";
 const page = () => {
   const FleetsFit = [
     {
@@ -132,14 +133,7 @@ const page = () => {
           operates at peak performance.
         </p>
         <div className="max-w-[1200px] w-full mx-auto mt-[60px] mb-10 px-5">
-          <Image
-            src="/images/features/connect-fleet-step.svg"
-            alt="Remote Scalability Hero"
-            width={700}
-            height={491}
-            className="object-contain w-full"
-            quality={100}
-          />
+          <FleetConnectionStep />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 relative max-w-[1200px] mx-auto w-full gap-5 justify-items-center items-center px-5">
           <div className="absolute hidden lg:block left-1/2 top-1/2 mt-[90px] max-w-[664px] max-h-[664px] h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FBEECA] opacity-40 blur-[200px]"></div>
@@ -198,11 +192,12 @@ const page = () => {
           <Image
             src="/images/features/optimizedMaintenanceWorkflow.svg"
             alt="Remote Scalability Hero"
-            width={700}
+            width={500}
             height={491}
-            className="object-contain w-full"
+            className="object-contain max-w-[850px] w-full mx-auto"
             quality={100}
           />
+          {/* <MaintenanceWorkFlow /> */}
         </div>
         <div className="max-w-[1200px] md:hidden block w-full mx-auto mt-[40px] px-5">
           <Image

@@ -45,7 +45,7 @@ const ProductSubpage = () => {
               </button>
             </h1>
           </Link>
-          <Link href="/under-development">
+          <Link href="/features/expenses-management">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
               Expenses Management
               <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">

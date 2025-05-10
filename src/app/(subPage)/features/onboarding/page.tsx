@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GlobeSection from "@/components/modules/home/globe";
 import StepCard from "../component/StepCard";
+import FleetConnectionStep from "../component/FleetConnectionStep";
 const Onboarding = () => {
   const FleetEfficiency = [
     {
@@ -103,7 +104,7 @@ const Onboarding = () => {
             fleet—right at your fingertips.
           </p>
         </div>
-        <div className="mt-[60px] grid grid-cols-1 lg:grid-cols-3 max-w-[1000px] mx-auto w-full px-5 gap-4">
+        <div className="mt-[60px] grid grid-cols-1 lg:grid-cols-3 max-w-[1000px] mx-auto w-full px-5 gap-4 items-center">
           <div className="py-10 text-center flex flex-col items-center rounded-[16px] border border-[#DFDFDF]">
             <FleetMonitoringAlertIcon />
             <h4 className="text-[#333] text-[22px] font-bold font-openSans mt-4">
@@ -133,14 +134,7 @@ const Onboarding = () => {
           Simplify your fleet management and track your vehicle with ease
         </p>
         <div className="max-w-[1200px] w-full mx-auto mt-[60px] mb-10 px-5">
-          <Image
-            src="/images/features/connect-fleet-step.svg"
-            alt="Remote Scalability Hero"
-            width={700}
-            height={491}
-            className="object-contain w-full"
-            quality={100}
-          />
+          <FleetConnectionStep />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 relative max-w-[1200px] mx-auto w-full gap-5 justify-items-center items-center px-5">
           <div className="absolute hidden lg:block left-1/2 top-1/2 mt-[90px] max-w-[664px] max-h-[664px] h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FBEECA] opacity-40 blur-[200px]"></div>
@@ -179,7 +173,7 @@ const Onboarding = () => {
             alt="Remote Scalability Hero"
             width={700}
             height={491}
-            className="object-contain w-full"
+            className="object-contain max-w-[870px] w-full mx-auto"
             quality={100}
           />
         </div>
@@ -213,8 +207,8 @@ const Onboarding = () => {
       </section>
       {/* vehicle might be smarter section */}
       <GlobeSection
-        title="Start Your Fleet Remote Diagnosing Today"
-        description="Take the first step towards smarter fleet maintenance with Fleetblox, leveraging AI to optimize your fleet’s performance."
+        title="Take Command of Your Fleet— Day One"
+        description="Add your first vehicles today and watch your business expand with precision"
       />
     </div>
   );
