@@ -4,7 +4,7 @@ import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import Image from "next/image";
 import Link from "next/link";
 import GlobeSection from "@/components/modules/home/globe";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -13,9 +13,9 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const AutoDealership = () => {
-    const triggerRef = useRef(null);
-    const imageRef = useRef(null);
-    const contentRef = useRef(null);
+    const triggerRef = useRef<HTMLElement>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
 
@@ -38,6 +38,8 @@ const AutoDealership = () => {
     ];
 
     useGSAP(() => {
+        if (!triggerRef.current || !imageRef.current || !contentRef.current) return;
+
         // Pin the image container
         ScrollTrigger.create({
             trigger: triggerRef.current,
@@ -50,10 +52,10 @@ const AutoDealership = () => {
         });
 
         // Animate content sections
-        const contentElements = Array.from(contentRef.current.children);
+        const contentElements = Array.from(contentRef.current.children) as HTMLElement[];
 
         contentElements.forEach((content, index) => {
-            gsap.fromTo(content,
+            gsap.fromTo(content as HTMLElement,
                 { opacity: 0, y: 50 },
                 {
                     opacity: 1,
@@ -66,7 +68,7 @@ const AutoDealership = () => {
                         onEnter: () => {
                             setActiveIndex(index);
                             contentElements.forEach((el, i) => {
-                                gsap.to(el, {
+                                gsap.to(el as HTMLElement, {
                                     filter: i === index ? "blur(0px)" : "blur(2px)",
                                     duration: 0.3
                                 });
@@ -77,7 +79,7 @@ const AutoDealership = () => {
                                 setActiveIndex(index - 1);
                             }
                             contentElements.forEach((el, i) => {
-                                gsap.to(el, {
+                                gsap.to(el as HTMLElement, {
                                     filter: i === (index - 1) ? "blur(0px)" : "blur(2px)",
                                     duration: 0.3
                                 });
