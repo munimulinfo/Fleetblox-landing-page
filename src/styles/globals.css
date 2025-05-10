@@ -118,3 +118,20 @@ body {
   max-height: 1000px; /* Adjust based on expected content height */
   transition: max-height 0.5s ease-in;
 }
+
+/* Add to your global CSS or component-style */
+.content-section {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
