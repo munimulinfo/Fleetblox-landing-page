@@ -122,7 +122,7 @@ const Footer = () => {
                     Maintenance & Diagnostics
                   </h5>
                 </Link>
-                <Link href="/under-development">
+                <Link href="/features/expenses-management">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Expenses Management
                   </h5>

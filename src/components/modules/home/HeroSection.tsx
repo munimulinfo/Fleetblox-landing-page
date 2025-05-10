@@ -1,4 +1,3 @@
-
 import CheckboxIcon from "@/components/icons/CheckboxIcon";
 import heroCardImg from "../../../assets/heroCardImage.png";
 import Image from "next/image";
@@ -6,11 +5,7 @@ import VerticalDividerIcon from "@/components/icons/VerticalDividerIcon";
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import Link from "next/link";
 
-
-
 const HeroSection = () => {
-
-
   return (
     <section className="bg-[#FAFAFF] flex flex-col justify-center items-center z-50 overflow-hidden">
       {/* Main content section */}
@@ -21,17 +16,18 @@ const HeroSection = () => {
             Instant Fleet Connectivity
           </p>
           <h1 className="text-[36px] md:text-[52px] lg:text-[52px] text-left md:text-center font-bold text-[#04082C] leading-[1.1] font-montserrat">
-            Manage and Scale Without Boundaries
+            Manage and scale your fleet Ecosystem potentials
           </h1>
           <p className="text-left md:text-center font-openSans text-[#333] leading-6 text-[16px] mt-[10px]">
-            Say goodbye to traditional hardware hassles! Fleetblox&apos;s
-            AI-powered, cloud based fleet connectivity solution cuts costs,
-            reduces downtime, and transforms the way you manage your fleet
+            Fleetblox is an AI-powered, cloud-based platform that simplifies
+            fleet management, cuts costs, and reduces downtime. Streamline
+            operations, scale effortlessly, and turn your fleet into a growth
+            engine.
           </p>
           <div className="flex flex-col md:flex-row lg:flex-row items-start md:items-center justify-center gap-4 mt-5 pb-[30px] font-openSans">
             <div className="flex gap-[5px] text-[16px] font-openSans leading-6 font-semibold text-[#7D7D7D] text-left md:text-center">
               <CheckboxIcon />
-              <p>No Hardware</p>
+              <p>No Tools </p>
             </div>
             <div className="flex gap-[5px] text-[16px] font-openSans leading-6 font-semibold text-[#7D7D7D]">
               <CheckboxIcon />
@@ -39,7 +35,7 @@ const HeroSection = () => {
             </div>
             <div className="flex gap-[5px] text-[16px] font-openSans leading-6 font-semibold text-[#7D7D7D]">
               <CheckboxIcon />
-              <p>No Additional Costs</p>
+              <p>No Additional Cost </p>
             </div>
           </div>
           <Link aria-label="Get started with FleetBlox" href="/getting-started">
@@ -65,7 +61,6 @@ const HeroSection = () => {
         {/* Desktop hero with skeleton loader */}
         <div className="hidden lg:block relative max-h-[800px] lg:h-[800px] md:h-[500px] lg:w-[1200px] xl:w-[1400px] z-[0] overflow-hidden">
           <div className="relative h-full w-full flex justify-center items-center">
-
             <Image
               src={heroCardImg}
               alt="Fleet management dashboard"
@@ -76,7 +71,6 @@ const HeroSection = () => {
               sizes="(max-width: 1200px) 90vw, 1200px"
               priority={true}
             />
-
 
             {/* Centered blur effect */}
             <div
@@ -104,18 +98,19 @@ const HeroSection = () => {
           <div className="absolute -bottom-[10px] z-50 left-1/2 max-w-[880px] w-full gap-5 -translate-x-1/2 py-[30px] grid grid-cols-1 lg:grid-cols-3 text-center items-center justify-items-center">
             {[
               {
-                title: "Easy Set Up",
+                title: "Instant Onboarding",
                 description:
-                  "No hardware, no hassle - just create your account",
+                  "Integrate your fleet in minutes with no hassle and minimal setup.",
               },
               {
-                title: "Instant Fleet Build",
-                description: "Upload your vehicles with just a few clicks",
+                title: "Unified Ecosystem",
+                description:
+                  "Unify all fleet locations and operations into a single platform",
               },
               {
-                title: "Smarter Control",
+                title: "Remote Scalability",
                 description:
-                  "Use AI-powered tools for better efficiency and safety",
+                  "Scale your fleet remotely with ease, without limits.",
               },
             ].map((feature, index, arr) => (
               <div
@@ -159,7 +154,6 @@ const HeroSection = () => {
 
           {/* Hero image with skeleton fallback */}
           <div className="relative z-30 flex justify-center items-center h-full">
-
             <Image
               src="/images/hero-2.webp"
               priority={true}
@@ -171,9 +165,7 @@ const HeroSection = () => {
               sizes="(max-width: 400px) 300px, 50vw"
               placeholder="blur"
               blurDataURL="data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA"
-
             />
-
           </div>
         </div>
 
@@ -181,17 +173,19 @@ const HeroSection = () => {
         <div className="px-4 pt-10 pb-6 space-y-6">
           {[
             {
-              title: "Easy Set Up",
-              description: "No hardware, no hassle - just create your account",
-            },
-            {
-              title: "Instant Fleet Build",
-              description: "Upload your vehicles with just a few clicks",
-            },
-            {
-              title: "Smarter Control",
+              title: "Instant Onboarding",
               description:
-                "Use AI-powered tools for better efficiency and safety",
+                "Integrate your fleet in minutes with no hassle and minimal setup.",
+            },
+            {
+              title: "Unified Ecosystem",
+              description:
+                "Unify all fleet locations and operations into a single platform",
+            },
+            {
+              title: "Remote Scalability",
+              description:
+                "Scale your fleet remotely with ease, without limits.",
             },
           ].map((feature, index) => (
             <div

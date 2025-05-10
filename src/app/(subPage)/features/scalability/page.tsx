@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GlobeSection from "@/components/modules/home/globe";
 import StepCard from "../component/StepCard";
+import FleetConnectionStep from "../component/FleetConnectionStep";
 const Scalability = () => {
   const FleetEfficiency = [
     {
@@ -95,7 +96,7 @@ const Scalability = () => {
       {/* Fleet management section */}
       <section className="py-[80px]">
         <div className="max-w-[840px] mx-auto w-full text-center">
-          <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
+          <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px] max-w-[600px] w-full mx-auto">
             Expand Your Fleet Across Brands and Locations
           </h2>
           <p className="text-[#333] text-[16px] leading-6 font-openSans">
@@ -103,22 +104,22 @@ const Scalability = () => {
             brands.
           </p>
         </div>
-        <div className="mt-[60px] grid grid-cols-1 lg:grid-cols-3 max-w-[1000px] mx-auto w-full px-5 gap-4">
-          <div className="py-10 text-center flex flex-col items-center rounded-[16px] border border-[#DFDFDF]">
+        <div className="mt-[60px] grid grid-cols-1 lg:grid-cols-3 max-w-[1000px] mx-auto w-full px-5 gap-4 leading-[1.3]">
+          <div className="p-10 text-center flex flex-col items-center rounded-[16px] border border-[#DFDFDF]">
             <MultiRegionExpansion />
             <h4 className="text-[#333] text-[22px] font-bold font-openSans mt-4">
               Multi-Region Expansion
             </h4>
           </div>
-          <div className="py-10 text-center flex flex-col items-center rounded-[16px] border border-[#DFDFDF]">
+          <div className="p-10 text-center flex flex-col items-center rounded-[16px] border border-[#DFDFDF]">
             <WideBrandsCompatibility />
             <h4 className="text-[#333] text-[22px] font-bold font-openSans mt-4">
               Wide Brands Compatibility
             </h4>
           </div>
-          <div className="py-10 text-center flex flex-col items-center rounded-[16px] border border-[#DFDFDF]">
+          <div className="p-10 text-center flex flex-col items-center rounded-[16px] border border-[#DFDFDF]">
             <InstantFleetScaling />
-            <h4 className="text-[#333] text-[22px] font-bold font-openSans mt-4">
+            <h4 className="text-[#333] text-[22px] font-bold font-openSans mt-4 max-w-[200px] w-full mx-auto">
               Instant Fleet Scaling
             </h4>
           </div>
@@ -134,14 +135,7 @@ const Scalability = () => {
           new site.
         </p>
         <div className="max-w-[1200px] w-full mx-auto mt-[60px] mb-10 px-5">
-          <Image
-            src="/images/features/connect-fleet-step.svg"
-            alt="Remote Scalability Hero"
-            width={700}
-            height={491}
-            className="object-contain w-full"
-            quality={100}
-          />
+          <FleetConnectionStep />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 relative max-w-[1200px] mx-auto w-full gap-5 justify-items-center items-center px-5">
           <div className="absolute hidden lg:block left-1/2 top-1/2 mt-[90px] max-w-[664px] max-h-[664px] h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FBEECA] opacity-40 blur-[200px]"></div>
@@ -200,7 +194,7 @@ const Scalability = () => {
             alt="Remote Scalability Hero"
             width={700}
             height={491}
-            className="object-contain w-full"
+            className="object-contain max-w-[870px] w-full mx-auto"
             quality={100}
           />
         </div>
