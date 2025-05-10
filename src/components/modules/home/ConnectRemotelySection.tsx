@@ -35,13 +35,10 @@ const ConnectRemotelySection = () => {
                 technology, you can monitor and manage your fleet from anywhere
                 seamlessly, securely, and efficiently.
               </p>
-              <Link
-                href="/getting-started"
-                aria-label="Get started with FleetBlox"
-              >
+              <Link href="/features/fleet-connectivity">
                 <button className="hidden md:flex lg:flex transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white duration-300 hover:w-[144.16px] w-[122.16px] items-center px-4 py-3 text-[16px] font-bold rounded-md group">
                   <div className="z-20 whitespace-nowrap font-openSans font-bold">
-                    Start Today
+                    Learn More
                   </div>
                   <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
                     <RightArrowIcon />
@@ -76,12 +73,9 @@ const ConnectRemotelySection = () => {
             </section>
 
             {/* <div className=" flex md:hidden lg:hidden justify-center w-full"> */}
-            <Link
-              href="/getting-started"
-              aria-label="Get started with FleetBlox"
-            >
+            <Link href="/features/fleet-connectivity">
               <button className="lg:hidden bg-[#2D65F2] hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
-                Start Today
+                Learn More
               </button>
             </Link>
             {/* </div> */}
@@ -97,24 +91,17 @@ const ConnectRemotelySection = () => {
               Optimize Fleet Safety
               <span className="md:block"> and Ensure Compliance</span>
             </h1>
-            {/* <p className="my-4 md:my-5 text-[#333] leading-6 text-[15px] font-openSans md:text-[16px]">
-              Stay ahead with dynamic reminders for registrations and insurance
-              renewals, ensuring your fleet&apos;s compliance. Simplify repairs,
-              access vehicles with digital keys, and keep your fleet in peak
-              condition. Utilize GPS tracking, customize trips, and review
-              detailed vehicle condition reports, including diagnostic diagrams,
-              all from a single platform.
-            </p> */}
+
             <p className="my-4 md:my-5 text-[#333] leading-6 text-[15px] font-openSans md:text-[16px]">
               Stay ahead with dynamic reminders for registration and insurance
-              renewals, seamless repair coordination, and real-time GPS
-              tracking. Access detailed vehicle condition reports, including
+              renewals, seamless repair coordination, and real-time location
+              allocation. Access detailed vehicle condition reports, including
               diagnostic diagrams, all from a single platform. Your data is
               secured with HTTPS encryption, AES-256, SOC 2 Type 2, and complies
               with CCPA & GDPR, ensuring top-notch security and privacy
               standards.
             </p>
-            <Link href="/under-development">
+            <Link href="/features/document-management">
               <button className="hidden lg:flex font-openSans transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
                 <div className="z-20 whitespace-nowrap">Learn More</div>
                 <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
@@ -138,7 +125,7 @@ const ConnectRemotelySection = () => {
           {/* </div> */}
 
           <div className="lg:hidden block w-full">
-            <Link href="/under-development">
+            <Link href="/features/document-management">
               <button className="bg-[#2D65F2] mt-5 hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
                 Learn More
               </button>

@@ -19,13 +19,10 @@ const HeroSection = () => {
             Manage and scale your fleet Ecosystem potentials
           </h1>
           <p className="text-left md:text-center font-openSans text-[#333] leading-6 text-[16px] mt-[10px]">
-            Fleetblox enables you to revolutionize your fleet management with an
-            AI-powered, cloud-based solution. By optimizing operations and
-            eliminating complexity , Fleetblox allows you to unlock new growth
-            opportunities and expand your fleet effortlessly. Achieve cost
-            savings, reduce downtime, and expand your business opportunities,
-            all while remaining competitive. With Fleetblox, your fleet is a
-            growth engine.
+            Fleetblox is an AI-powered, cloud-based platform that simplifies
+            fleet management, cuts costs, and reduces downtime. Streamline
+            operations, scale effortlessly, and turn your fleet into a growth
+            engine.
           </p>
           <div className="flex flex-col md:flex-row lg:flex-row items-start md:items-center justify-center gap-4 mt-5 pb-[30px] font-openSans">
             <div className="flex gap-[5px] text-[16px] font-openSans leading-6 font-semibold text-[#7D7D7D] text-left md:text-center">
@@ -108,7 +105,7 @@ const HeroSection = () => {
               {
                 title: "Unified Ecosystem",
                 description:
-                  "Unify all fleet brands and location operations into a single platform.",
+                  "Unify all fleet locations and operations into a single platform",
               },
               {
                 title: "Remote Scalability",
@@ -183,7 +180,7 @@ const HeroSection = () => {
             {
               title: "Unified Ecosystem",
               description:
-                "Unify all fleet brands and location operations into a single platform.",
+                "Unify all fleet locations and operations into a single platform",
             },
             {
               title: "Remote Scalability",
