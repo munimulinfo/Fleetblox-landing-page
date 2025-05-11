@@ -94,7 +94,7 @@ const Footer = () => {
                 </h5>
                 <Link className="cursor-pointer" href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px] cursor-pointer">
-                    Overview
+                    Dashboard
                   </h5>
                 </Link>
                 <Link href="/features/onboarding">

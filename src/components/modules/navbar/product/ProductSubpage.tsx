@@ -11,7 +11,7 @@ const ProductSubpage = () => {
         <div className="flex flex-col  space-y-[5px] lg:space-y-[8px]">
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Overview
+              Dashboard
             </h1>
           </Link>
           <Link href="/features/onboarding">

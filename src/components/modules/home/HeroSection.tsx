@@ -16,7 +16,7 @@ const HeroSection = () => {
             Instant Fleet Connectivity
           </p>
           <h1 className="text-[36px] md:text-[52px] lg:text-[52px] text-left md:text-center font-bold text-[#04082C] leading-[1.1] font-montserrat">
-            Manage and scale your fleet Ecosystem potentials
+            Manage and Scale Your Fleet Ecosystem Potentials
           </h1>
           <p className="text-left md:text-center font-openSans text-[#333] leading-6 text-[16px] mt-[10px]">
             Fleetblox is an AI-powered, cloud-based platform that simplifies
