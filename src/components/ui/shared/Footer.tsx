@@ -97,7 +97,7 @@ const Footer = () => {
                     Dashboard
                   </h5>
                 </Link>
-                <Link href="/features/onboarding">
+                <Link href="/features/getting-started">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Getting Started
                   </h5>
