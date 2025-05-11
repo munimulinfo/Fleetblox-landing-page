@@ -112,12 +112,12 @@ const Footer = () => {
                     Fleet Expansion
                   </h5>
                 </Link>
-                <Link href="/features/ai-powered-inspection">
+                <Link href="/features/digital-inspections">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Digital Inspections
                   </h5>
                 </Link>
-                <Link href="/features/dynamic-maintenance">
+                <Link href="/features/maintenance-diagnostics">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Maintenance & Diagnostics
                   </h5>
