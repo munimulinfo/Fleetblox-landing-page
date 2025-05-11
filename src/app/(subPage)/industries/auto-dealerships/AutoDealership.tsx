@@ -1,96 +1,22 @@
-"use client"
+
 
 import RightArrowIcon from "@/components/icons/RightArrowIcon";
 import Image from "next/image";
 import Link from "next/link";
 import GlobeSection from "@/components/modules/home/globe";
-import { useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 
-// Register the ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
+
+import ScrollingSection from "./components/scrollingAnnimation";
+import Deal from "./components/LoadingSection";
+
+
 
 const AutoDealership = () => {
-    const triggerRef = useRef<HTMLElement>(null);
-    const imageRef = useRef<HTMLDivElement>(null);
-    const contentRef = useRef<HTMLDivElement>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
 
 
-    const animationItems = [
-        {
-            title: "Keep All Vehicle Sales Ready and in Excellent Condition",
-            content: "Check the condition of every vehicle in your inventory on a consistent basis, whether it is a demo, loaner, or new vehicle. Use checks to track wear-and-tear, damage, or service needed, so that your inventory remains sale-ready.",
-            image: "/images/industries/slide-annimation-1.png"
-        },
-        {
-            title: "Ensure Every Vehicle Is Compliant and Road-Ready",
-            content: "Monitor registrations, insurance, and servicing with a system that will maintain your entire fleet in immaculate compliance. Automated monitoring and on-time reminders ensure nothing slips through the cracks - so every vehicle remains legal, safe, and ready to roll.",
-            image: "/images/industries/slide-annimation-2.png"
-        },
-        {
-            title: "Maximize Customer Satisfaction and Fleet Health",
-            content: "Lease cars, demos, and courtesy cars shouldn't keep you in suspense - they should leave you with potential. Fleetblox gives you real-time visibility into the status, utilization, and health of every unit. Look to the future for service requirements, sidestep costly delays, and keep each vehicle road-ready and revenue-ready - no matter where it is in its life cycle.",
-            image: "/images/industries/slide-annimation-3.png"
-        }
-    ];
 
-    useGSAP(() => {
-        if (!triggerRef.current || !imageRef.current || !contentRef.current) return;
 
-        // Pin the image container
-        ScrollTrigger.create({
-            trigger: triggerRef.current,
-            start: "top 20%",
-            end: "bottom bottom-=100",
-            pin: imageRef.current,
-            pinSpacing: false,
-            markers: false, // Set to false in production
-            scrub: true,
-        });
 
-        // Animate content sections
-        const contentElements = Array.from(contentRef.current.children) as HTMLElement[];
-
-        contentElements.forEach((content, index) => {
-            gsap.fromTo(content as HTMLElement,
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    scrollTrigger: {
-                        trigger: content,
-                        start: "top 70%", // Trigger earlier
-                        end: "center 40%", // End animation sooner
-                        scrub: 0.5,
-                        onEnter: () => {
-                            setActiveIndex(index);
-                            contentElements.forEach((el, i) => {
-                                gsap.to(el as HTMLElement, {
-                                    filter: i === index ? "blur(0px)" : "blur(2px)",
-                                    duration: 0.3
-                                });
-                            });
-                        },
-                        onLeaveBack: () => {
-                            if (index > 0) {
-                                setActiveIndex(index - 1);
-                            }
-                            contentElements.forEach((el, i) => {
-                                gsap.to(el as HTMLElement, {
-                                    filter: i === (index - 1) ? "blur(0px)" : "blur(2px)",
-                                    duration: 0.3
-                                });
-                            });
-                        }
-                    },
-                    duration: 0.5
-                }
-            );
-        });
-    }, []);
 
     return (
         <div>
@@ -131,8 +57,8 @@ const AutoDealership = () => {
                         <Image
                             src="/images/industries/auto-dealership-hero.svg"
                             alt="Remote Scalability Hero"
-                            width={700}
-                            height={491}
+                            width={560}
+                            height={420}
                             priority
                             className="object-contain w-full"
                         />
@@ -142,7 +68,7 @@ const AutoDealership = () => {
 
             {/* smart dealership section */}
 
-            <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5">
+            <section className=" mx-auto w-full mt-[60px] lg:mt-[100px] px-5">
                 <div className="max-w-[840px] mx-auto w-full text-center">
                     <h1 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
                         Smarter Dealerships Network
@@ -151,116 +77,11 @@ const AutoDealership = () => {
                         Sync stock, move faster, and manage every branch with ease
                     </p>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 items-center my-8 gap-6 lg:gap-10">
-                    {/* Left side - Image */}
-                    <div className="flex items-center justify-center">
-                        <Image
-                            src="/images/industries/auto-dealership-2.svg"
-                            alt="Remote Scalability Hero"
-                            width={450}
-                            height={260}
-                            priority
-                            className="object-contain w-full lg:max-w-[450px] max-h-[260px]"
-                        />
-                    </div>
-                    {/* Right side - Accordions */}
-                    <div className="flex-1 space-y-4">
-                        {[
-                            {
-                                title: "Centralized Inventory",
-                                content: "Manage your entire fleet from one dashboard. Monitor health, availability, and readiness across all locations in real time."
-                            },
-                            {
-                                title: "Multi-Brand Sync",
-                                content: "Easily manage vehicles from different brands. Our platform integrates seamlessly with various manufacturers, ensuring a smooth experience."
-                            },
-                            {
-                                title: "Cross-Location Logistics",
-                                content: "Effortlessly move vehicles between branches. Our platform simplifies logistics, ensuring your fleet is always where it needs to be."
-                            },
-
-                        ].map((item, index) => (
-                            <div key={index} className="border-l-2 border-[#DFDFDF] pl-4">
-                                <button
-                                    className="flex justify-between items-center w-full text-left font-bold text-[#04082C]"
-                                    onClick={() => {
-                                        const content = document.getElementById(`content-${index}`);
-                                        content?.classList.toggle('hidden');
-                                    }}
-                                >
-                                    <span className="text-lg">{item.title}</span>
-
-                                </button>
-                                <div id={`content-${index}`} className="mt-2 text-[#333333] text-[16px] leading-[150%] font-openSans hidden">
-                                    <p>{item.content}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <Deal />
             </section>
 
             {/* animations section with GSAP scrolling */}
-            <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5 mb-[100px]" ref={triggerRef}>
-                <div className="max-w-[900px] mx-auto w-full text-center mb-6">
-                    <h2 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
-                        Smart Fleet Management That Adapts
-                    </h2>
-                    <p className="text-[#333] text-[16px] leading-6 font-openSans">
-                        From vehicle maintenance to compliance management, our platform delivers end-to-end solutions
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 relative">
-                    {/* Sticky Image Container */}
-                    <div className="hidden lg:block" ref={imageRef}>
-                        <div className="rounded-lg overflow-hidden flex items-center justify-center p-8 h-[500px]">
-                            {animationItems.map((item, index) => (
-                                <div
-                                    key={`image-${index}`}
-                                    className={`transition-opacity duration-500 ${activeIndex === index ? 'opacity-100' : 'opacity-0'} absolute`}
-                                >
-                                    <Image
-                                        src={item.image}
-                                        alt={`Auto Dealership Feature ${index + 1}`}
-                                        width={500}
-                                        height={380}
-                                        className="object-contain max-w-[500px] max-h-[380px]"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Scrolling Content */}
-                    <div className="lg:min-h-[500px] space-y-[30px]" ref={contentRef}>
-                        {animationItems.map((item, index) => (
-                            <div
-                                key={`content-${index}`}
-                                className="content-section bg-white rounded-lg p-8 mb-[20px]"
-                            >
-                                {/* Mobile-only image */}
-                                <div className="lg:hidden mb-6">
-                                    <Image
-                                        src={item.image}
-                                        alt={`Auto Dealership Feature ${index + 1}`}
-                                        width={400}
-                                        height={300}
-                                        className="object-contain w-full"
-                                    />
-                                </div>
-
-                                <h3 className="text-[#04082C] mt-2 leading-[120%] font-bold text-[28px] lg:text-[32px] font-montserrat">
-                                    {item.title}
-                                </h3>
-                                <p className="text-[#333333] mt-4 text-[16px] leading-[150%] font-openSans">
-                                    {item.content}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <ScrollingSection />
 
             {/* fill the gap section */}
 
@@ -296,8 +117,8 @@ const AutoDealership = () => {
                         <Image
                             src="/images/industries/maximize-customer.png"
                             alt="Auto Dealership Management System"
-                            width={550}
-                            height={400}
+                            width={500}
+                            height={280}
                             priority
                             className="object-contain w-full max-w-[550px]"
                         />
