@@ -102,12 +102,12 @@ const Footer = () => {
                     Getting Started
                   </h5>
                 </Link>
-                <Link href="/features/fleet-connectivity">
+                <Link href="/features/fleet-integration">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Fleet Integration
                   </h5>
                 </Link>
-                <Link href="/features/scalability">
+                <Link href="/features/fleet-expansion">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Fleet Expansion
                   </h5>
