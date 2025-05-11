@@ -11,25 +11,25 @@ const ProductSubpage = () => {
         <div className="flex flex-col  space-y-[5px] lg:space-y-[8px]">
           <Link href="/under-development">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
-              Overview
+              Dashboard
             </h1>
           </Link>
-          <Link href="/features/onboarding">
+          <Link href="/features/getting-started">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Getting Started
             </h1>
           </Link>
-          <Link href="/features/fleet-connectivity">
+          <Link href="/features/fleet-integration">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Fleet Integration
             </h1>
           </Link>
-          <Link href="/features/scalability">
+          <Link href="/features/fleet-expansion">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Fleet Expansion
             </h1>
           </Link>
-          <Link href="/features/ai-powered-inspection">
+          <Link href="/features/digital-inspections">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
               Digital Inspections
               <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">
@@ -37,7 +37,7 @@ const ProductSubpage = () => {
               </button>
             </h1>
           </Link>
-          <Link href="/features/dynamic-maintenance">
+          <Link href="/features/maintenance-diagnostics">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D] flex gap-[10px]">
               Maintenance & Diagnostics
               <button className="text-[8px] rounded-[4px] py-[0px] px-[6px] bg-[#2D65F2] text-white">

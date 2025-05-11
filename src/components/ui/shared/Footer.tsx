@@ -94,30 +94,30 @@ const Footer = () => {
                 </h5>
                 <Link className="cursor-pointer" href="/under-development">
                   <h5 className="font-openSans py-[2px] mb-[5px] cursor-pointer">
-                    Overview
+                    Dashboard
                   </h5>
                 </Link>
-                <Link href="/features/onboarding">
+                <Link href="/features/getting-started">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Getting Started
                   </h5>
                 </Link>
-                <Link href="/features/fleet-connectivity">
+                <Link href="/features/fleet-integration">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Fleet Integration
                   </h5>
                 </Link>
-                <Link href="/features/scalability">
+                <Link href="/features/fleet-expansion">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Fleet Expansion
                   </h5>
                 </Link>
-                <Link href="/features/ai-powered-inspection">
+                <Link href="/features/digital-inspections">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Digital Inspections
                   </h5>
                 </Link>
-                <Link href="/features/dynamic-maintenance">
+                <Link href="/features/maintenance-diagnostics">
                   <h5 className="font-openSans py-[2px] mb-[5px]">
                     Maintenance & Diagnostics
                   </h5>

@@ -5,7 +5,7 @@ import FeatureCard from "@/components/ui/FeatureCard";
 import Image from "next/image";
 import Link from "next/link";
 import StepCard from "../component/StepCard";
-import { NoHardware, RealtimeVisibility } from "../fleet-connectivity/page";
+import { NoHardware, RealtimeVisibility } from "../fleet-integration/page";
 import FleetConnectionStep from "../component/FleetConnectionStep";
 
 const page = () => {
