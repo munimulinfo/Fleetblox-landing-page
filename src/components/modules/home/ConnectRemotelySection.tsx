@@ -101,7 +101,7 @@ const ConnectRemotelySection = () => {
               with CCPA & GDPR, ensuring top-notch security and privacy
               standards.
             </p>
-            <Link href="/features/document-management">
+            <Link href="/features/documents-management">
               <button className="hidden lg:flex font-openSans transition-all bg-[#2D65F2] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px]  items-center px-[13px] hover:px-4 py-3 text-base font-bold rounded-md group">
                 <div className="z-20 whitespace-nowrap">Learn More</div>
                 <div className="z-10 transform transition-transform opacity-0 group-hover:opacity-100 -translate-x-4 duration-300 group-hover:translate-x-0">
