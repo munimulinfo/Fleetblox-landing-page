@@ -137,7 +137,10 @@ const GlobalCoverageAndCompatibility = () => {
               Whether in North America, Europe, or beyond, our platform supports
               a wide range of fleet types and sizes, meeting local standards
             </p>
-            <Link href="/under-development">
+            <Link
+              aria-label="Get started with FleetBlox"
+              href="/getting-started"
+            >
               <button className="mt-4 text-[#2D65F2] text-[16px] font-openSans font-bold">
                 Check Your Region
               </button>
@@ -167,7 +170,10 @@ const GlobalCoverageAndCompatibility = () => {
               support eco-friendly fleets. Optimize EV performance for greater
               sustainability
             </p>
-            <Link href="/under-development">
+            <Link
+              aria-label="Get started with FleetBlox"
+              href="/getting-started"
+            >
               <button className="mt-4 text-[#2D65F2] text-[16px] font-openSans font-bold">
                 Check Compatibility
               </button>

@@ -39,7 +39,7 @@ const WorkforceManageSection = () => {
               insights to perform their duties efficiently, no matter where they
               are
             </p>
-            <Link href="/under-development">
+            <Link href="/features/team-management">
               <button className=" hidden md:flex lg:flex transition-all bg-[#2D65F2] hover:bg-[#0336BC] text-white-primary text-white duration-300 hover:w-[144.16px] w-[122.16px] items-center px-4 py-3 text-[16px] font-bold rounded-md group ">
                 <div className="z-20 whitespace-nowrap font-openSans font-bold">
                   Learn More
@@ -95,7 +95,7 @@ const WorkforceManageSection = () => {
               ))}
             </div>
             <div className="mt-5 mb-10 md:hidden lg:hidden w-full">
-              <Link href="/under-development">
+              <Link href="/features/team-management">
                 <button className="bg-[#2D65F2] mt-5 hover:bg-[#0336BC] text-white w-full flex px-4 py-3 text-[14px] font-openSans font-bold rounded-md justify-center">
                   Learn More
                 </button>
