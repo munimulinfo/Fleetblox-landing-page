@@ -69,10 +69,10 @@ const page = () => {
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px]">
               Digital Inspections
             </h3>
-            <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-[1.1]">
+            <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-tight lg:leading-[1.1]">
               Smarter Inspections Powered by AI
             </h1>
-            <p className="text-[#333] text-[16px] leading-6 mt-[10px] lg:mt-4 mb-5 font-openSans">
+            <p className="text-[#333] text-[16px] leading-6 mt-4 mb-5 font-openSans">
               Ensure every vehicle meets your standards before it hits the road.
               Capture vehicle condition, performance, compliance, and
               documentation—right from the start.

@@ -53,10 +53,10 @@ const Scalability = () => {
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px] w-full">
               Fleet Expansion
             </h3>
-            <h1 className="text-[#04082C] text-[36px] lg:text-[50px] font-bold leading-[1.1] w-full">
+            <h1 className="text-[#04082C] text-[36px] lg:text-[50px] font-bold leading-tight lg:leading-[1.1] w-full">
               Power Your Business Expansion Instantly
             </h1>
-            <p className="text-[#333] text-[16px] leading-6 mt-[10px] lg:mt-4 mb-5 font-openSans">
+            <p className="text-[#333] text-[16px] leading-6 mt-4 mb-5 font-openSans">
               Easily scale your fleet across multiple locations, ensuring
               seamless compatibility and effortless management at every
               location, all from one unified platform.

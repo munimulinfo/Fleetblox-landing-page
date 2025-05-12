@@ -62,10 +62,10 @@ const page = () => {
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px]">
               AI-Assistant
             </h3>
-            <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-[1.1]">
+            <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-tight lg:leading-[1.1]">
               Meet Bee – Your Smart Fleet Co-Pilot
             </h1>
-            <p className="text-[#333] text-[16px] leading-6 mt-[10px] lg:mt-4 mb-5 font-openSans">
+            <p className="text-[#333] text-[16px] leading-6 mt-4 mb-5 font-openSans">
               Stay one step ahead with Bee, your AI-powered assistant designed
               to help you manage your fleet, answer your questions, and keep you
               informed—anytime, anywhere.
