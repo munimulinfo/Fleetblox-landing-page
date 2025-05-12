@@ -16,7 +16,7 @@ const useScrollSpy = (className: string, triggerPercentage: number = 0.8) => {
 
             sections.forEach((section, index) => {
                 const sectionRect = section.getBoundingClientRect();
-                const sectionCenter = sectionRect.top + sectionRect.height / 2;
+                const sectionCenter = sectionRect.top;
 
                 // Detect if the section's center crosses the trigger point
                 if (
