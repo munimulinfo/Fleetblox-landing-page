@@ -26,7 +26,7 @@ const ScrollingSection = () => {
             image: `/images/industries/slide-animation-3.svg`
         }
     ];
-    const { activeIndex, componentRef } = useScrollSpy(".scroll-section", 0.5);
+    const { activeIndex, componentRef } = useScrollSpy(".scroll-section", 1);
 
     // Debug logging to see active index changes
     // console.log("ScrollingSection activeIndex:", animationItems[activeIndex].image);
@@ -38,10 +38,10 @@ const ScrollingSection = () => {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeIndex}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.4 }}
                     >
                         <div className="relative flex h-[430px] w-[630px] items-center justify-center">
                             <Image
