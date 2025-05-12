@@ -53,10 +53,10 @@ const Onboarding = () => {
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px] w-full">
               Getting Started
             </h3>
-            <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-[1.1] w-full">
+            <h1 className="text-[#04082C] text-[36px] lg:text-[52px] font-bold leading-tight lg:leading-[1.1] w-full">
               Streamline Fleet Onboarding and Inventory Management
             </h1>
-            <p className="text-[#333] text-[16px] leading-6 mt-[10px] lg:mt-4 mb-5 font-openSans">
+            <p className="text-[#333] text-[16px] leading-6 mt-4 mb-5 font-openSans">
               Manage and control your entire fleet from one command center.
               Onboard vehicles instantly, monitor inventory, and have your fleet
               up and running—all in one platform.
