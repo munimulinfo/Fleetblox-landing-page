@@ -49,7 +49,7 @@ const Onboarding = () => {
       {/* hero section */}
       <section className="bg-[#FAFAFF] pt-[100px] lg:pt-[120px] pb-[30px] ">
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex flex-col px-5 lg:flex-row items-center justify-between">
-          <div className="lg:pl-[130px] w-full">
+          <div className="xl:pl-[120px] w-full">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px] w-full">
               Getting Started
             </h3>
@@ -81,7 +81,7 @@ const Onboarding = () => {
               </button>
             </Link>
           </div>
-          <div className="py-10 lg:pl-[60px]">
+          <div className="py-5 lg:pl-[60px]">
             <Image
               src="/images/features/onboarding-hero.png"
               alt="Remote Scalability Hero"

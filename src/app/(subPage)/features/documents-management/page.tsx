@@ -53,7 +53,7 @@ const page = () => {
       {/* hero section */}
       <section className="bg-[#FAFAFF] pt-[100px] lg:pt-[120px] pb-[30px] ">
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex flex-col px-5 gap-10 lg:flex-row items-center justify-between">
-          <div className="lg:pl-[120px] max-w-[800px] w-full">
+          <div className="xl:pl-[120px] max-w-[800px] w-full">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px] w-full">
               Documents Management
             </h3>
@@ -83,7 +83,7 @@ const page = () => {
               </button>
             </Link>
           </div>
-          <div className=" w-1/2 py-10">
+          <div className=" w-1/2 py-5">
             <Image
               src="/images/features/document-management-hero.svg"
               alt="Remote Scalability Hero"
@@ -97,7 +97,7 @@ const page = () => {
       </section>
       {/* Fleet management section */}
       <section className="py-[80px]">
-        <div className="max-w-[840px] mx-auto w-full text-center">
+        <div className="max-w-[840px] mx-auto w-full text-center px-5">
           <h2 className="text-[#04082C] w-full mx-auto text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
             Stay Ahead, Stay Compliant, Every Where
           </h2>
@@ -150,7 +150,7 @@ const page = () => {
         </div>
         <div className="max-w-[1200px] md:hidden block w-full mx-auto mt-[40px] px-5">
           <Image
-            src="/images/features/personalize-expenses-mobile.svg"
+            src="/images/features/document-management-mobile.svg"
             alt="Remote Scalability Hero"
             width={700}
             height={491}

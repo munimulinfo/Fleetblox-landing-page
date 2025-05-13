@@ -56,7 +56,7 @@ const page = () => {
       {/* hero section */}
       <section className="bg-[#FAFAFF] pt-[100px] lg:pt-[120px] pb-[30px] ">
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex flex-col px-5 lg:flex-row items-center justify-between">
-          <div className="lg:pl-[130px] max-w-[700px] w-full">
+          <div className="xl:pl-[120px] max-w-[700px] w-full">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px] w-full">
               Expenses Management
             </h3>
@@ -88,7 +88,7 @@ const page = () => {
               </button>
             </Link>
           </div>
-          <div className=" w-full py-10 lg:pl-[60px]">
+          <div className=" w-full py-5 lg:pl-[60px]">
             <Image
               src="/images/features/expenses-management-hero.svg"
               alt="Remote Scalability Hero"
@@ -102,7 +102,7 @@ const page = () => {
       </section>
       {/* Fleet management section */}
       <section className="py-[80px]">
-        <div className="max-w-[840px] mx-auto w-full text-center">
+        <div className="max-w-[840px] mx-auto w-full text-center px-5">
           <h2 className="text-[#04082C] max-w-[700px] w-full mx-auto text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
             Master Your Fleet’s Budgeting Across Locations
           </h2>
