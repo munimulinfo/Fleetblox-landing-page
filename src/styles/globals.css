@@ -8,6 +8,13 @@ body::-webkit-scrollbar {
 
 body {
   @apply font-montserrat;
+  scroll-behavior: smooth; /* Smooth scrolling for the entire site */
+}
+
+/* Add smooth scroll snap to scroll-section elements */
+.scroll-section {
+  scroll-snap-align: start;
+  transition: all 0.5s ease;
 }
 .AccordionChevron[data-state="open"] {
   transform: rotate(180deg);

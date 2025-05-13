@@ -89,7 +89,7 @@ const Deal = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 1.0 }}
+                            transition={{ duration: 0 }}
                             className="w-full flex justify-center items-center"
                         >
                             <div className="relative flex justify-center items-center w-full max-w-[550px]">
