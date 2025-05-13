@@ -65,7 +65,7 @@ const page = () => {
       {/* hero section */}
       <section className="bg-[#FAFAFF] pt-[100px] lg:pt-[140px] pb-[30px] ">
         <div className="lg:max-w-[calc(100vw-30px)] xxl:max-w-[1440px] mx-auto w-full flex flex-col px-5 lg:flex-row items-center justify-between">
-          <div className="lg:pl-[130px]">
+          <div className="xl:pl-[120px]">
             <h3 className="text-[#0336BC] font-openSans font-bold text-[22px]">
               Digital Inspections
             </h3>
@@ -97,7 +97,7 @@ const page = () => {
               </button>
             </Link>
           </div>
-          <div className=" w-full py-10 lg:pl-[60px]">
+          <div className=" w-full py-5 lg:pl-[60px]">
             <Image
               src="/images/ai-powered-inspectionHero.png"
               alt="AI assistant for fleet optimization"
@@ -110,7 +110,7 @@ const page = () => {
       </section>
       {/* hero section end */}
       <section className="max-w-[1200px] mx-auto w-full mt-[60px] lg:mt-[100px] px-5">
-        <div className="max-w-[840px] mx-auto w-full text-center">
+        <div className="max-w-[840px] mx-auto w-full text-center px-5">
           <h1 className="text-[#04082C] text-[28px] lg:text-[36px] font-bold text-center leading-[1.1] mb-[10px]">
             Compliance Made Simple for Smarter Fleets
           </h1>
