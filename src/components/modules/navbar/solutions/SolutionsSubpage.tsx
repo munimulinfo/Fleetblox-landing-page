@@ -85,12 +85,12 @@ const SolutionsSubpage = () => {
               Auto Dealerships
             </h1>
           </Link>
-          <Link href="/under-development">
+          <Link href="/industries/car-rental-providers">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               Car Rental Providers
             </h1>
           </Link>
-          <Link href="/under-development">
+          <Link href="/industries/e-mobility-services">
             <h1 className="text-[#333] text-[14px] leading-5 font-openSans py-[10px] lg:py-0 font-bold lg:font-semibold hover:text-[#7D7D7D]">
               E-Mobility Services
             </h1>

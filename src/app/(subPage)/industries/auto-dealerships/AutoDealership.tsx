@@ -14,8 +14,43 @@ import Deal from "./components/LoadingSection";
 const AutoDealership = () => {
 
 
+    const animationItems = [
+        {
+            title: "Keep All Vehicle Sales Ready and in Excellent Condition",
+            content: "Check the condition of every vehicle in your inventory on a consistent basis, whether it is a demo, loaner, or new vehicle. Use checks to track wear-and-tear, damage, or service needed, so that your inventory remains sale-ready.",
+            image: `/images/industries/slide-animation-1.svg`
+        },
+        {
+            title: "Ensure Every Vehicle Is Compliant and Road-Ready",
+            content: "Monitor registrations, insurance, and servicing with a system that will maintain your entire fleet in immaculate compliance. Automated monitoring and on-time reminders ensure nothing slips through the cracks - so every vehicle remains legal, safe, and ready to roll.",
+            image: `/images/industries/slide-animation-2.svg`
+        },
+        {
+            title: "Maximize Customer Satisfaction and Fleet Health",
+            content: "Lease cars, demos, and courtesy cars shouldn't keep you in suspense - they should leave you with potential. Fleetblox gives you real-time visibility into the status, utilization, and health of every unit. Look to the future for service requirements, sidestep costly delays, and keep each vehicle road-ready and revenue-ready - no matter where it is in its life cycle.",
+            image: `/images/industries/slide-animation-3.svg`
+        }
+    ];
 
+    const Deals = [
+        {
+            title: "Centralized Inventory",
+            content: "Manage your entire fleet from one dashboard. Monitor health, availability, and readiness across all locations in real time.",
+            image: "/images/industries/auto-dealership-a-1.svg"
+        },
 
+        {
+            title: "Multi-Brand Sync",
+            content: "Easily manage vehicles from different brands. Our platform integrates seamlessly with various manufacturers, ensuring a smooth experience.",
+            image: "/images/industries/auto-dealership-a-2.svg"
+        },
+        {
+            title: "Cross-Location Logistics",
+            content: "Effortlessly move vehicles between branches. Our platform simplifies logistics, ensuring your fleet is always where it needs to be.",
+            image: "/images/industries/auto-dealership-a-3.svg"
+        },
+
+    ];
 
 
     return (
@@ -77,11 +112,11 @@ const AutoDealership = () => {
                         Sync stock, move faster, and manage every branch with ease
                     </p>
                 </div>
-                <Deal />
+                <Deal Deals={Deals} />
             </section>
 
             {/* animations section with GSAP scrolling */}
-            <ScrollingSection />
+            <ScrollingSection animationItems={animationItems} />
 
             {/* fill the gap section */}
 

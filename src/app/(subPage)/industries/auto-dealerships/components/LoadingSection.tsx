@@ -5,28 +5,13 @@ import Image from "next/image";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-const Deal = () => {
+const Deal = ({ Deals }: {
+    Deals:
+    Array<{ title: string; content: string; image: string }>
+}) => {
     const pathname = usePathname();
 
-    const Deals = [
-        {
-            title: "Centralized Inventory",
-            content: "Manage your entire fleet from one dashboard. Monitor health, availability, and readiness across all locations in real time.",
-            image: "/images/industries/auto-dealership-a-1.svg"
-        },
 
-        {
-            title: "Multi-Brand Sync",
-            content: "Easily manage vehicles from different brands. Our platform integrates seamlessly with various manufacturers, ensuring a smooth experience.",
-            image: "/images/industries/auto-dealership-a-2.svg"
-        },
-        {
-            title: "Cross-Location Logistics",
-            content: "Effortlessly move vehicles between branches. Our platform simplifies logistics, ensuring your fleet is always where it needs to be.",
-            image: "/images/industries/auto-dealership-a-3.svg"
-        },
-
-    ];
     useEffect(() => {
         if (typeof window !== 'undefined') {
             if (pathname === '/') {
