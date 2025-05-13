@@ -8,43 +8,43 @@ import ScrollingSection from "../auto-dealerships/components/scrollingAnnimation
 
 
 
-const FleetManagement = () => {
+const EMobilityServices = () => {
 
     const animationItems = [
         {
-            title: "Turn Fragmented Operations into One Revenue Network ",
-            content: "Unify operations whether you’re managing luxury cars, utility vans, EVs, or specialized vehicles. Track availability, monitor vehicle health, and streamline handoffs all from one intelligent dashboard, in real-time.",
-            image: `/images/industries/one-network-1.svg`
+            title: "Unleash Your Fleet’s Full Potential and Scale Your Sales ",
+            content: "Seamlessly integrate gas, hybrid, and electric vehicles into a single system. Fleetblox streamlines every aspect of your fleet operation, for greater efficiency, heightened profitability, and smarter management of all vehicle types.",
+            image: `/images/industries/unleash-fleet-1.svg`
         },
         {
-            title: "Cut the Cost of Non- Compliance",
-            content: "Avoid expensive delays and operations with Fleetblox. Our system automates critical compliance processes, including VIN verification, entry inspections, registration monitoring, and document storage, all in one place. Manage every deadline, keep your roads ready fleet, and reduce costs with ease.",
-            image: `/images/industries/one-network-2.svg`
+            title: "Compliance Simplified, Revenue Amplified",
+            content: "Fleetblox simplifies compliance with digital inspections and auto-tracking of vehicle documents and status — keeping each vehicle in optimal condition, having your fleet ready to roll and reducing unnecessary operational cost",
+            image: `/images/industries/unleash-fleet-2.svg`
         },
         {
-            title: "Remote Diagnostic that Keep Revenue Rolling",
-            content: "With Fleetblox, you're able to track your entire fleet ecosystem - vehicle health to maintenance schedules, digital inspections, and real-time diagnostics. Have complete visibility into the status of all vehicles, monitor all assets in multiple locations, and coordinate proactive repairs and inspections - all in one platform.",
-            image: `/images/industries/one-network-3.svg`
+            title: "Rev Up Your Revenue, Cut Down on Costs",
+            content: "Keep your fleet running at its best without overspending. Fleetblox helps you track costs with custom budgets and real-time alerts, while automated maintenance reminders prevent costly repairs and maximize uptime.",
+            image: `/images/industries/unleash-fleet-3.svg`
         }
     ];
 
 
     const Deals = [
         {
-            title: "Unified Ecosystem",
-            content: "Bring together all elements of your fleet business—vehicles, personnel, locations, and information—into a single intelligent platform that simplifies management and unlocks total visibility.",
-            image: "/images/industries/ecosystem-2.svg"
+            title: "Easy Scale",
+            content: "Expand your rental business without the complicity . Fleetblox adapts to your expanding fleet , bringing all your vehicles, locations, and crew together in one place",
+            image: "/images/industries/easy-scale-1.svg"
         },
 
         {
-            title: "Optimized Assets",
-            content: "Maintain every vehicle and crew operating at top condition with smart diagnostics, scheduled checks, and synchronized tasks in the cloud—maximizing uptime and value.",
-            image: "/images/industries/ecosystem.png"
+            title: "Reduce Downtime",
+            content: "Keep your fleet in peak condition. Fleetblox monitor fleet status,maintenance and service reminders to keep downtime to a minimum and have all your vehicles available to rent at all times.",
+            image: "/images/industries/easy-scale-2.svg"
         },
         {
-            title: "Expansion-Ready",
-            content: "Scale on a malleable infrastructure that adjusts according to your business model. Growing into new territories or introducing new services, scale with zero drag and complete autonomy.",
-            image: "/images/industries/easy-scale-1.svg"
+            title: "Boost Security",
+            content: "Protect your vehicles and your business with location logs, remote diagnostics, and automated compliance tools, ensuring your fleet stays fully compliant, and protected across all locations.",
+            image: "/images/industries/easy-scale-3.svg"
         },
 
     ];
@@ -121,17 +121,16 @@ const FleetManagement = () => {
                     {/* Left side - Content */}
                     <div className="flex items-center justify-center">
                         <div className="max-w-[500px] w-full">
-                            <h3 className="text-[#04082C] leading-[100%] font-bold text-[36px] font-montserrat">Turn Budgeting Into a
-                                Profit Strategy</h3>
-                            <p className="text-[#333333] mt-4 text-[16px] leading-[150%] font-openSans text-justify">Fleetblox enables easy budgeting across all your locations, with personalized expense categories and real-time budget tracking. Set dynamic budgets for each location, receive smart alerts for potential overages, and leverage data-driven insights to optimize spending and boost profitability in your entire fleet business.</p>
+                            <h3 className="text-[#04082C] leading-[100%] font-bold text-[36px] font-montserrat">Roam Beyond Boundaries, Your Fleet Always Visible</h3>
+                            <p className="text-[#333333] mt-4 text-[16px] leading-[150%] font-openSans text-justify">Track the last known position of vehicles and view historical location records, minimizing risk and enhancing security, providing peace of mind while safeguarding your assets throughout all business sites.</p>
                         </div>
                     </div>
 
                     {/* Right side - Image */}
                     <div className=" rounded-lg overflow-hidden flex items-center justify-center py-12">
                         <Image
-                            src="/images/industries/turn-budget.svg"
-                            alt="Turn Budgeting Into a Profit Strategy"
+                            src="/images/industries/Roam-Beyond-Boundaries.svg"
+                            alt="Roam Beyond Boundaries, Your Fleet Always Visible"
                             width={600}
                             height={440}
                             priority
@@ -146,8 +145,8 @@ const FleetManagement = () => {
                     {/* Left side - Image */}
                     <div className="flex items-center justify-center">
                         <Image
-                            src="/images/industries/AI-assistant.svg"
-                            alt="AI Assistant"
+                            src="/images/industries/move-your-fleet.svg"
+                            alt="Move Your Fleet Where It’s Needed, When It’s Needed"
                             width={500}
                             height={280}
                             priority
@@ -158,20 +157,20 @@ const FleetManagement = () => {
                     {/* Right side - Content */}
                     <div className="flex items-center justify-center">
                         <div className="max-w-[500px] w-full">
-                            <h3 className="text-[#04082C] leading-[100%] font-bold text-[36px] font-montserrat">Keep Assets Road-Ready with Scheduled Inspections</h3>
-                            <p className="text-[#333333] mt-4 text-[16px] leading-[150%] font-openSans">Assign tasks to technicians, maintain vehicles in prime condition. Schedule and track routine maintenance inspections, catch issues early, and prevent costly downtime. Keep the value of your fleet intact and road-ready at all times</p>
+                            <h3 className="text-[#04082C] leading-[100%] font-bold text-[36px] font-montserrat">Move Your Fleet Where It’s Needed, When It’s Needed</h3>
+                            <p className="text-[#333333] mt-4 text-[16px] leading-[150%] font-openSans">Shift idle vehicles to high-demand areas with ease. Fleetblox unifies your team, vehicles, and workflows into one streamlined system - so you always make the most of your fleet, wherever the demand is.</p>
                         </div>
                     </div>
                 </div>
             </section>
             <GlobeSection
-                title="Streamline Your Fleet Ecosystem and Fuel Growth"
-                description="Fleetblox empowers you to transform your fleet management business with a new, integrated platform. Simplify operations, boost efficiency, and drive scalable growth across all locations."
+                title="Get More Bookings, Fewer Headaches"
+                description="Fleetblox gives you the tools to move faster, rent smoother, and grow stronger - all while keeping your vehicles working and your customers coming back. It’s not just fleet management; it’s your competitive edge."
             />
         </div>
     );
 };
 
-export default FleetManagement;
+export default EMobilityServices;
 
 
