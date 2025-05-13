@@ -6,8 +6,8 @@ import GlobeSection from "@/components/modules/home/globe";
 import FeatureCard from "@/components/ui/FeatureCard";
 import Image from "next/image";
 import Link from "next/link";
-import StepCard from "../component/StepCard";
 import FleetConnectionStep from "../component/FleetConnectionStep";
+import StepCard from "../component/StepCard";
 
 const page = () => {
   const whyFleetManager = [
