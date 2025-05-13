@@ -44,7 +44,7 @@ const Deal = ({ Deals }: {
                     return 0;
                 }
                 // Increment progress
-                return prevProgress + (100 / 150); // Slower progression - 15 seconds total
+                return prevProgress + (100 / 50); // Change from 150 to 50 - now ~2 seconds total
             });
         }, 100);
 
