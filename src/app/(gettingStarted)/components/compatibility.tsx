@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useProgressUpdater } from "@/hooks/useProgress";
-import Vin from "@/../public/images/vinsvg.svg";
+import Vin from "@/../public/images/vin-image.svg";
 import vehicle from "@/../public/images/vehicle.svg";
 import { ChevronLeft } from "lucide-react";
 interface CarModel {
@@ -119,11 +119,10 @@ const Compatibility = () => {
         <div className="flex flex-col gap-[10px]">
           <div
             onClick={() => handleModeSelect("vin")}
-            className={`flex w-full cursor-pointer  h-[250px] flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${
-              compatibility === "vin" ? "bg-[#2D65F20F] border-[#B8CBFC]" : ""
-            }`}
+            className={`flex w-full cursor-pointer  h-[250px] flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${compatibility === "vin" ? "bg-[#2D65F20F] border-[#B8CBFC]" : ""
+              }`}
           >
-            <Image src={Vin} alt="Test VIN" />
+            <Image src={Vin} alt="Test VIN" className="w-[150px] h-[100px]" />
             <h4 className="mt-[32px] text-center font-openSans text-[18px] font-semibold text-ti_black">
               Test by VIN
             </h4>
@@ -133,13 +132,12 @@ const Compatibility = () => {
           </div>
           <div
             onClick={() => handleModeSelect("vehicle")}
-            className={`flex w-full max-h-[300px] min-[230px] h-full cursor-pointer flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${
-              compatibility === "vehicle"
-                ? "bg-[#2D65F20F] border-[#B8CBFC]"
-                : ""
-            }`}
+            className={`flex w-full max-h-[300px] min-[230px] h-full cursor-pointer flex-col items-center justify-center rounded-[16px] border border-[#DFDFDF] p-[20px] ${compatibility === "vehicle"
+              ? "bg-[#2D65F20F] border-[#B8CBFC]"
+              : ""
+              }`}
           >
-            <Image src={vehicle} alt="Test by vehicle" />
+            <Image src={vehicle} alt="Test by vehicle" className="w-[150px] h-[100px]" />
             <h4 className="mt-[32px] text-center font-openSans text-[18px] font-semibold text-ti_black">
               Test by vehicle models
             </h4>
@@ -154,9 +152,8 @@ const Compatibility = () => {
       <div className="mt-[40px] flex flex-none flex-col-reverse items-center gap-4 lg:flex-row">
         <button
           onClick={handleNext}
-          className={`w-full rounded-md px-[14px] py-[10px] font-openSans text-white ${
-            compatibility ? "bg-[#2D65F2]" : "bg-[#2D65F2]/50"
-          }`}
+          className={`w-full rounded-md px-[14px] py-[10px] font-openSans text-white ${compatibility ? "bg-[#2D65F2]" : "bg-[#2D65F2]/50"
+            }`}
           disabled={!compatibility || disabled}
         >
           Next
