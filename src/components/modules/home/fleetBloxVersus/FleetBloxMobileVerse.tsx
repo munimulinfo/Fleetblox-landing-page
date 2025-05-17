@@ -43,7 +43,7 @@ const FleetBloxMobileVerse = () => {
                 style={{ top: `calc(-5vh + ${index * 15}px)` }}
               >
                 {/* main card */}
-                <div className="absolute top-[5vh] left-1/2 -translate-x-1/2 z-[200] w-[400px] md:w-[700px] mx-auto h-full">
+                <div className="absolute top-[17vh] left-1/2 -translate-x-1/2 z-[200] w-[340px] md:w-[700px] mx-auto h-full">
                   <div className="h-[500px] bg-white rounded-[24px] pt-8 px-4 pb-4 flex flex-col gap-[10px]">
                     {/* Card Header */}
                     <div className="flex flex-col items-center mb-8">
@@ -86,7 +86,7 @@ const FleetBloxMobileVerse = () => {
                   </div>
                 </div>
                 {/* shadow */}
-                <div className="absolute top-[5vh] left-1/2 -translate-x-1/2 z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[530px] w-[370px] md:w-[640px]"></div>
+                <div className="absolute top-[17vh] left-1/2 -translate-x-1/2 z-[20] rounded-[2px] bg-black opacity-[0.07] blur-[20px] h-[530px] w-[320px] md:w-[640px]"></div>
               </motion.div>
             </div>
           );
