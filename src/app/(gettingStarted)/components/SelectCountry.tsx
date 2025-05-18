@@ -140,11 +140,11 @@ const SelectCountry = () => {
 
     // Determine the route
     if (uniqueGroups.length === 1 && uniqueGroups[0] === "US") {
-      router.push(`/collections/compatibility?country=${countryParam}`);
+      // router.push(`/collections/compatibility?country=${countryParam}`);
+      router.push(`/collections/select-brand?country=${countryParam}`);
     } else {
       router.push(`/collections/select-brand?country=${countryParam}`);
     }
-
     // Clear other storage items when moving forward
     localStorage.removeItem("brands");
     localStorage.removeItem("brandModels");
@@ -246,11 +246,10 @@ const SelectCountry = () => {
                 filteredCountries.map((country) => (
                   <div
                     key={country.country}
-                    className={`flex items-center p-4 rounded-[12px] cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${
-                      selectedCountries.includes(country.country)
-                        ? "border-[#B8CBFC] bg-[#2D65F20F]"
-                        : "border-[#F7F7F7]"
-                    }`}
+                    className={`flex items-center p-4 rounded-[12px] cursor-pointer transition-all duration-200 hover:bg-[#F5F9FC] border ${selectedCountries.includes(country.country)
+                      ? "border-[#B8CBFC] bg-[#2D65F20F]"
+                      : "border-[#F7F7F7]"
+                      }`}
                     onClick={() => handleCountrySelect(country)}
                   >
                     <div className="flex-shrink-0 w-[28px] h-[28px] rounded-full overflow-hidden mr-4 border border-gray-300">

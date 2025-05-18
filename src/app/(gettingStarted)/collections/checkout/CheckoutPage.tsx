@@ -278,7 +278,7 @@ const CheckOutPage = () => {
     price: selectedPlan?.price,
     interval: selectedPlan?.annually ? "year" : "month",
     // @ts-ignore
-    phoneCountryId: filterSelectedCountry?.[0]?.id, // Use an existing property, or add 'id' to Country type if needed
+    phoneCountryId: filterSelectedCountry?.[0]?.id,
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -455,8 +455,8 @@ const CheckOutPage = () => {
                         </h4>
 
                         {brand.compatible &&
-                        brand.models &&
-                        brand.models.length > 0 ? (
+                          brand.models &&
+                          brand.models.length > 0 ? (
                           <div>
                             {/* Preview first 2 models */}
                             <p className="font-openSans text-[12px] font-[500] text-[#6F6464]">
@@ -809,8 +809,8 @@ const CheckOutPage = () => {
                       </h4>
 
                       {brand.compatible &&
-                      brand.models &&
-                      brand.models.length > 0 ? (
+                        brand.models &&
+                        brand.models.length > 0 ? (
                         <div>
                           {/* Preview first 2 models */}
                           <p className="font-openSans text-[12px] font-[500] text-[#6F6464]">

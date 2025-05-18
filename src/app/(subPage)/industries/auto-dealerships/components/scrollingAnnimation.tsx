@@ -26,10 +26,10 @@ const ScrollingSection = ({ animationItems }: { animationItems: Array<{ title: s
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeIndex}
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.4 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.1 }}
                     >
                         <div className="relative flex h-[430px] w-[630px] md:mr-10 md2:mr-12 lg:mr-10 xl:ml-20 xxl:ml-28 items-center justify-center">
                             <Image

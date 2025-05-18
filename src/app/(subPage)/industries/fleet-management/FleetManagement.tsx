@@ -151,7 +151,7 @@ const FleetManagement = () => {
                             width={500}
                             height={280}
                             priority
-                            className="object-contain w-full max-w-[500px]"
+                            className="object-contain w-full max-w-[450px]"
                         />
                     </div>
 
