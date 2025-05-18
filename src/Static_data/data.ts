@@ -4,9 +4,11 @@ import blog_image_3 from "../assets/blog_img_3.png";
 import icon_1 from "../../public/animation/icon1.svg";
 import icon_2 from "../../public/animation/icon2.svg";
 import icon_3 from "../../public/animation/icon3.svg";
+import icon_4 from "../../public/animation/fleet-ecosystem-expansive.svg";
 import image_1 from "../../public/animation/image1.png";
 import image_2 from "../../public/animation/image2.png";
 import image_3 from "../../public/animation/image3.png";
+import image_4 from "../../public/animation/image4.png";
 import image1 from "../assets/image-1.webp";
 import image2 from "../assets/image-2.webp";
 import image3 from "../assets/image-3.webp";
@@ -98,12 +100,12 @@ const full_control_with_virtual_slot_data = [
   },
   {
     id: "slot_4",
-    icon: icon_3,
+    icon: icon_4,
     title: "Fleet Ecosystem Expansion",
     description:
       "Scale your operations effortlessly across regions, cities, and teams on a secure cloud-based platform. Integrate all assets in real time, enable effortless coordination, and put your entire fleet operation under one intelligent system.",
     link: "Read More",
-    image: image_3,
+    image: image_4,
     mobile: image3,
     absolute: my_fleet_3,
   },

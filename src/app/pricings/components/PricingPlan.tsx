@@ -285,7 +285,7 @@ const PricingPlan = () => {
                   <div className="flex items-center gap-[5px]">
                     <VehicleIcon />
                     <p className="text-[#333] text-[14px] font-openSans font-normal leading-5">
-                      {starterPlan[0]?.slotMinimum} slots minimal purchase
+                      {starterPlan[0]?.slotMinimum} slots minimum purchase
                     </p>
                   </div>
                   <div className="flex items-center gap-[5px]">
@@ -319,8 +319,11 @@ const PricingPlan = () => {
         )}
       </section>
       <section className="flex justify-center flex-col items-center px-5 pt-[80px] pb-[20px]">
-        <h2 className="text-[#333] text-[28px] font-bold text-center leading-[1.1] mb-[8px]">
+        {/* <h2 className="text-[#333] text-[28px] font-bold text-center leading-[1.1] mb-[8px]">
           Scale Your Fleet Seamlessly
+        </h2> */}
+        <h2 className="text-[#333] text-[28px] font-bold text-center leading-[1.1] mb-[8px]">
+          Link your fleet ecosystem
         </h2>
         <p className="text-[#7D7D7D] text-center leading-5 text-[14px] font-openSans">
           Slide the bar to explore pricing based on vehicle slots - Clear and
